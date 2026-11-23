@@ -137,14 +137,14 @@ export function Sidebar({ collapsed, onToggleCollapse, kddCountBySubsystem }: Si
             {!collapsed && subsystemsOpen && (
               <div
                 id="sidebar-subsystems"
-                className="ml-4 flex flex-col border-l border-[var(--akdd-border-subtle)] py-0.5"
+                className="ml-4 flex max-h-[212px] flex-col overflow-y-auto border-l border-[var(--akdd-border-subtle)] py-0.5"
               >
                 {SUBSYSTEM_CATALOG.map((sub) => (
                   <NavLink
                     key={sub.code}
                     to={`/subsystems/${sub.code}`}
                     className={({ isActive }) =>
-                      `-ml-px flex items-center justify-between gap-2 border-l-2 pl-3 pr-2.5 py-1 text-xs transition-colors ${
+                      `-ml-px flex items-center justify-between gap-2 border-l-2 pl-3 pr-2.5 py-1 text-[11.5px] leading-tight transition-colors ${
                         isActive
                           ? 'border-[var(--akdd-ink)] bg-[var(--akdd-slate-100)] font-semibold text-[var(--akdd-text-primary)]'
                           : 'border-transparent text-[var(--akdd-text-secondary)] hover:border-[var(--akdd-slate-300)] hover:text-[var(--akdd-text-primary)]'

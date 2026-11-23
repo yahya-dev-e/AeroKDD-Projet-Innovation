@@ -302,7 +302,7 @@ export function TopDownPage() {
               <CentralityBadge level="FORT" label="FORT (4–7 liens)" />
               <CentralityBadge level="CIBLE" label="CIBLE (1–3 liens)" />
             </div>
-            <div className="bg-[#fbfdff]">
+            <div className="bg-[#fafafa]">
               <TopDownTreeFlow
                 analysis={analysis}
                 onSelectLever={(id) => navigate(`/explore/${encodeURIComponent(id)}`)}

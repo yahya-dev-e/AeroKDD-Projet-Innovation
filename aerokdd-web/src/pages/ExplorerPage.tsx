@@ -243,7 +243,7 @@ export function ExplorerPage() {
       <Card className="overflow-hidden">
         <CardHeader
           title="SCHEMA KDD — Vue Orientée 3 Colonnes (Amont | KDD Sélectionné | Aval)"
-          subtitle="Bleu = Entrants · Bleu marine = KDD exploré · Rouge = Sortants"
+          subtitle="Bleu = Entrants · Noir = KDD exploré · Rouge = Sortants"
           action={
             <Button
               variant="primary"
@@ -255,7 +255,7 @@ export function ExplorerPage() {
             </Button>
           }
         />
-        <div className="h-[460px] w-full bg-[#fbfdff]">
+        <div className="h-[460px] w-full bg-[#fafafa]">
           <EgoSchemaFlow ego={ego} onSelectKdd={handleSelectKdd} />
         </div>
       </Card>
@@ -448,7 +448,7 @@ export function ExplorerPage() {
               Quitter plein écran (Esc)
             </Button>
           </div>
-          <div className="flex-1 bg-[#fbfdff]">
+          <div className="flex-1 bg-[#fafafa]">
             <EgoSchemaFlow ego={ego} onSelectKdd={handleSelectKdd} />
           </div>
         </div>

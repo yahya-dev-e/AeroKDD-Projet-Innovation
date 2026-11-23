@@ -10,7 +10,7 @@ export interface BadgeProps {
 export function Badge({ children, className = '' }: BadgeProps) {
   return (
     <span
-      className={`inline-flex items-center gap-1 rounded-[var(--akdd-radius-xs)] px-1.5 py-0.5 font-mono text-[10.5px] font-medium leading-tight tracking-[0.02em] whitespace-nowrap border shadow-none ${className}`}
+      className={`inline-flex items-center gap-1.5 rounded-[var(--akdd-radius-xs)] px-1.5 py-0.5 font-mono text-[10px] font-medium uppercase leading-tight tracking-[0.04em] whitespace-nowrap border shadow-none ${className}`}
     >
       {children}
     </span>
@@ -44,7 +44,12 @@ export function getStatutStyleClasses(statut: StatutKdd | string): string {
 }
 
 export function StatutBadge({ statut }: { statut: StatutKdd | string }) {
-  return <Badge className={getStatutStyleClasses(statut)}>{statut || 'Non classé'}</Badge>
+  return (
+    <Badge className={getStatutStyleClasses(statut)}>
+      <span className="h-1.5 w-1.5 shrink-0 bg-current" aria-hidden="true" />
+      <span>{statut || 'Non classé'}</span>
+    </Badge>
+  )
 }
 
 export function KsdBadge({ value }: { value: KddClassification | string }) {
@@ -85,7 +90,12 @@ export function CentralityBadge({ level, label }: { level: CentralityLevel; labe
         ? 'bg-[var(--akdd-badge-fort-bg)] text-[var(--akdd-badge-fort-text)] border-[var(--akdd-badge-fort-border)] font-semibold'
         : 'bg-[var(--akdd-badge-cible-bg)] text-[var(--akdd-badge-cible-text)] border-[var(--akdd-badge-cible-border)]'
 
-  return <Badge className={classes}>{label ?? level}</Badge>
+  return (
+    <Badge className={classes}>
+      <span className="h-1.5 w-1.5 shrink-0 bg-current" aria-hidden="true" />
+      <span>{label ?? level}</span>
+    </Badge>
+  )
 }
 
 export function SubsystemBadge({ code }: { code: string }) {

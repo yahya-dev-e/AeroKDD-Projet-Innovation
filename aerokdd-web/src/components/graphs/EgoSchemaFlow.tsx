@@ -156,14 +156,14 @@ export function EgoSchemaFlow({ ego, onSelectKdd, className = '' }: EgoSchemaFlo
         }}
         proOptions={{ hideAttribution: true }}
       >
-        <Background gap={18} size={1} color="#e2e8f0" />
+        <Background gap={18} size={1} color="#e4e4e7" />
         <Controls />
         <MiniMap
           pannable
           zoomable
           nodeColor={(n) => {
             const v = (n.data as EgoNodeData)?.variant
-            if (v === 'center') return '#183b5e'
+            if (v === 'center') return '#09090b'
             if (v === 'in') return '#0070c0'
             return '#c00000'
           }}

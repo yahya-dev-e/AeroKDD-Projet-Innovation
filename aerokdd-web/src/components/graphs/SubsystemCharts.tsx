@@ -50,11 +50,11 @@ export function FamilyBarChart({ data }: { data: ChartDatum[] }) {
     <div className="h-[240px] w-full">
       <ResponsiveContainer width="100%" height="100%">
         <BarChart data={data} margin={{ top: 10, right: 16, left: -12, bottom: 4 }}>
-          <CartesianGrid strokeDasharray="3 3" stroke="#e2e8f0" />
-          <XAxis dataKey="name" tick={{ fontSize: 12, fill: '#475569' }} />
-          <YAxis allowDecimals={false} tick={{ fontSize: 12, fill: '#475569' }} />
+          <CartesianGrid strokeDasharray="2 2" stroke="#e4e4e7" />
+          <XAxis dataKey="name" tick={{ fontSize: 11, fill: '#71717a' }} />
+          <YAxis allowDecimals={false} tick={{ fontSize: 11, fill: '#71717a' }} />
           <Tooltip />
-          <Bar dataKey="value" name="Éléments" radius={[4, 4, 0, 0]}>
+          <Bar dataKey="value" name="Éléments" radius={[0, 0, 0, 0]}>
             {data.map((entry) => (
               <Cell key={entry.name} fill={entry.color} />
             ))}
@@ -74,16 +74,16 @@ export function StatutHorizontalBarChart({ data }: { data: ChartDatum[] }) {
           layout="vertical"
           margin={{ top: 8, right: 24, left: 16, bottom: 8 }}
         >
-          <CartesianGrid strokeDasharray="3 3" stroke="#e2e8f0" horizontal={false} />
-          <XAxis type="number" allowDecimals={false} tick={{ fontSize: 12, fill: '#475569' }} />
+          <CartesianGrid strokeDasharray="2 2" stroke="#e4e4e7" horizontal={false} />
+          <XAxis type="number" allowDecimals={false} tick={{ fontSize: 11, fill: '#71717a' }} />
           <YAxis
             type="category"
             dataKey="name"
             width={185}
-            tick={{ fontSize: 11, fill: '#334155' }}
+            tick={{ fontSize: 11, fill: '#09090b' }}
           />
           <Tooltip />
-          <Bar dataKey="value" name="Éléments" radius={[0, 4, 4, 0]} barSize={20}>
+          <Bar dataKey="value" name="Éléments" radius={[0, 0, 0, 0]} barSize={18}>
             {data.map((entry) => (
               <Cell key={entry.name} fill={entry.color} />
             ))}

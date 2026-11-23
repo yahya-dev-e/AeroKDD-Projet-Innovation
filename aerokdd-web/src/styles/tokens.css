@@ -1,4 +1,34 @@
 @font-face {
+  font-family: 'Archivo';
+  font-style: normal;
+  font-weight: 600;
+  font-stretch: normal;
+  font-display: swap;
+  src: url('https://fonts.gstatic.com/s/archivo/v25/k3k6o8UDI-1M0wlSV9XAw6lQkqWY8Q82sJaRE-NWIDdgffTT6jRp8A.ttf')
+    format('truetype');
+}
+
+@font-face {
+  font-family: 'Archivo';
+  font-style: normal;
+  font-weight: 700;
+  font-stretch: normal;
+  font-display: swap;
+  src: url('https://fonts.gstatic.com/s/archivo/v25/k3k6o8UDI-1M0wlSV9XAw6lQkqWY8Q82sJaRE-NWIDdgffTT0zRp8A.ttf')
+    format('truetype');
+}
+
+@font-face {
+  font-family: 'Archivo';
+  font-style: normal;
+  font-weight: 800;
+  font-stretch: normal;
+  font-display: swap;
+  src: url('https://fonts.gstatic.com/s/archivo/v25/k3k6o8UDI-1M0wlSV9XAw6lQkqWY8Q82sJaRE-NWIDdgffTTtDRp8A.ttf')
+    format('truetype');
+}
+
+@font-face {
   font-family: 'Space Grotesk';
   font-style: normal;
   font-weight: 500;
@@ -248,16 +278,16 @@
   --akdd-sys-oil: #fafafa;
 
   /* --- Typography --- */
-  --akdd-font-display: 'Space Grotesk', 'Inter', system-ui, -apple-system, sans-serif;
+  --akdd-font-display: 'Archivo', 'Space Grotesk', 'Inter', system-ui, -apple-system, sans-serif;
   --akdd-font-sans: 'Inter', system-ui, -apple-system, sans-serif;
   --akdd-font-mono: 'JetBrains Mono', ui-monospace, SFMono-Regular, Consolas, monospace;
 
   /* --- Architectural Radii --- */
-  --akdd-radius-xs: 3px;
-  --akdd-radius-sm: 4px;
-  --akdd-radius-md: 6px;
-  --akdd-radius-lg: 8px;
-  --akdd-radius-xl: 10px;
+  --akdd-radius-xs: 2px;
+  --akdd-radius-sm: 2px;
+  --akdd-radius-md: 2px;
+  --akdd-radius-lg: 2px;
+  --akdd-radius-xl: 2px;
   --akdd-radius-full: 9999px;
 
   /* --- Shadows (Strictly Disabled — Hairline Borders Only) --- */

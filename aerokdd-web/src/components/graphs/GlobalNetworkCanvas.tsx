@@ -112,13 +112,13 @@ export function GlobalNetworkCanvas({
             label: 'data(label)',
             'font-size': 11,
             'font-weight': 700,
-            'font-family': 'Inter, Segoe UI, sans-serif',
+            'font-family': 'Archivo, Inter, sans-serif',
             'text-valign': 'center',
             'text-halign': 'center',
             'background-color': '#ffffff',
-            'background-opacity': 0.9,
-            color: '#17375d',
-            'border-color': '#cbd5e1',
+            'background-opacity': 0.96,
+            color: '#09090b',
+            'border-color': '#e4e4e7',
             'border-width': 1,
             events: 'no',
           },
@@ -152,7 +152,7 @@ export function GlobalNetworkCanvas({
           selector: '.highlighted-node',
           style: {
             'border-width': 3,
-            'border-color': '#0f172a',
+            'border-color': '#09090b',
             'z-index': 999,
             opacity: 1,
           },
@@ -247,7 +247,7 @@ export function GlobalNetworkCanvas({
       </div>
 
       {/* Cytoscape Viewport */}
-      <div ref={containerRef} className="flex-1 min-h-[540px] w-full bg-[#fbfdff]" />
+      <div ref={containerRef} className="flex-1 min-h-[540px] w-full bg-[#fafafa]" />
     </div>
   )
 }

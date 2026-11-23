@@ -116,8 +116,8 @@ export function TopDownTreeFlow({ analysis, onSelectLever }: TopDownTreeFlowProp
         id: `E-OBJ-${sys.subsystem}`,
         source: 'OBJ',
         target: sysId,
-        style: { stroke: '#17375d', strokeWidth: 1.75 },
-        markerEnd: { type: MarkerType.ArrowClosed, color: '#17375d' },
+        style: { stroke: '#09090b', strokeWidth: 1.5 },
+        markerEnd: { type: MarkerType.ArrowClosed, color: '#09090b' },
       })
     })
 
@@ -139,7 +139,7 @@ export function TopDownTreeFlow({ analysis, onSelectLever }: TopDownTreeFlowProp
       })
 
       const isCarrefourDirect = lev.isDirect && lev.badge.level === 'CARREFOUR'
-      const stroke = lev.isDirect ? (isCarrefourDirect ? '#9c0006' : '#334155') : '#94a3b8'
+      const stroke = lev.isDirect ? (isCarrefourDirect ? '#881337' : '#3f3f46') : '#a1a1aa'
       builtEdges.push({
         id: `E-${lev.subsystem}-${levNodeId}`,
         source: `SYS-${lev.subsystem}`,
@@ -175,7 +175,7 @@ export function TopDownTreeFlow({ analysis, onSelectLever }: TopDownTreeFlowProp
         }}
         proOptions={{ hideAttribution: true }}
       >
-        <Background gap={18} size={1} color="#e2e8f0" />
+        <Background gap={18} size={1} color="#e4e4e7" />
         <Controls />
       </ReactFlow>
     </div>

@@ -213,7 +213,7 @@ export function SubsystemPage() {
     const familyChartData: ChartDatum[] = famCounts.map((count, i) => ({
       name: `F${i + 1}`,
       value: count,
-      color: '#1f4e79',
+      color: '#09090b',
     }))
 
     const statutColor = (name: string): string => {
