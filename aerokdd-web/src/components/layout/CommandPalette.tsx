@@ -72,14 +72,14 @@ export function CommandPalette({ open, onClose, kdds }: CommandPaletteProps) {
 
   return (
     <div
-      className="fixed inset-0 z-50 flex items-start justify-center bg-[rgb(15_23_42/0.55)] pt-20 px-4 backdrop-blur-[1px]"
+      className="fixed inset-0 z-50 flex items-start justify-center bg-[rgb(9_9_11/0.45)] pt-20 px-4"
       role="dialog"
       aria-modal="true"
       aria-label="Recherche globale KDD"
       onClick={onClose}
     >
       <div
-        className="flex w-full max-w-2xl flex-col overflow-hidden rounded-[var(--akdd-radius-lg)] bg-[var(--akdd-bg-surface)] border border-[var(--akdd-border-default)] shadow-[var(--akdd-shadow-lg)]"
+        className="flex w-full max-w-2xl flex-col overflow-hidden rounded-[var(--akdd-radius-lg)] bg-[var(--akdd-bg-surface)] border border-[var(--akdd-ink)] shadow-none"
         onClick={(e) => e.stopPropagation()}
         onKeyDown={handleKeyDown}
       >
@@ -98,7 +98,7 @@ export function CommandPalette({ open, onClose, kdds }: CommandPaletteProps) {
             type="button"
             onClick={onClose}
             aria-label="Fermer"
-            className="flex h-6 w-6 items-center justify-center rounded text-[var(--akdd-text-muted)] hover:bg-[var(--akdd-slate-100)] cursor-pointer"
+            className="flex h-6 w-6 items-center justify-center rounded-[var(--akdd-radius-xs)] text-[var(--akdd-text-muted)] hover:bg-[var(--akdd-slate-100)] hover:text-[var(--akdd-text-primary)] cursor-pointer"
           >
             <X className="h-4 w-4" />
           </button>
@@ -106,8 +106,8 @@ export function CommandPalette({ open, onClose, kdds }: CommandPaletteProps) {
 
         {/* Quick Actions when query is empty */}
         {!query.trim() && (
-          <div className="flex flex-wrap items-center gap-2 border-b border-[var(--akdd-border-subtle)] bg-[var(--akdd-bg-canvas)] px-4 py-2.5">
-            <span className="text-[11px] font-semibold uppercase tracking-wider text-[var(--akdd-text-muted)]">
+          <div className="flex flex-wrap items-center gap-2 border-b border-[var(--akdd-border-subtle)] bg-[var(--akdd-bg-subtle)] px-4 py-2.5">
+            <span className="font-mono text-[10px] font-medium uppercase tracking-[0.08em] text-[var(--akdd-text-muted)]">
               Accès rapide :
             </span>
             {QUICK_ROUTES.map((item) => {
@@ -120,7 +120,7 @@ export function CommandPalette({ open, onClose, kdds }: CommandPaletteProps) {
                     onClose()
                     navigate(item.path)
                   }}
-                  className="inline-flex items-center gap-1.5 rounded-[var(--akdd-radius-sm)] bg-[var(--akdd-bg-surface)] px-2.5 py-1 text-xs font-medium text-[var(--akdd-navy-800)] border border-[var(--akdd-border-subtle)] hover:border-[var(--akdd-navy-600)] cursor-pointer"
+                  className="inline-flex items-center gap-1.5 rounded-full bg-[var(--akdd-bg-surface)] px-3 py-1 text-xs font-medium text-[var(--akdd-text-primary)] border border-[var(--akdd-border-subtle)] hover:border-[var(--akdd-ink)] cursor-pointer"
                 >
                   <Icon className="h-3.5 w-3.5" />
                   {item.label}
@@ -177,7 +177,7 @@ export function CommandPalette({ open, onClose, kdds }: CommandPaletteProps) {
         </div>
 
         {/* Footer Hints */}
-        <div className="flex items-center justify-between border-t border-[var(--akdd-border-subtle)] bg-[var(--akdd-bg-canvas)] px-4 py-2 text-[11px] text-[var(--akdd-text-muted)]">
+        <div className="flex items-center justify-between border-t border-[var(--akdd-border-subtle)] bg-[var(--akdd-bg-subtle)] px-4 py-2 font-mono text-[10.5px] text-[var(--akdd-text-muted)]">
           <span>↑↓ Naviguer · ↵ Ouvrir la fiche · Esc Fermer</span>
           <span className="font-mono">{matchedKdds.length} résultat(s)</span>
         </div>

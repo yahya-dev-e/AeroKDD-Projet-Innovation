@@ -120,7 +120,7 @@ export function ExplorerPage() {
   }
 
   return (
-    <div className="mx-auto flex max-w-7xl flex-col gap-5">
+    <div className="mx-auto flex max-w-7xl flex-col gap-7">
       {/* Searchable KDD Selector Header */}
       <Card>
         <CardContent className="flex flex-col gap-4">
@@ -154,7 +154,7 @@ export function ExplorerPage() {
                   key={preset}
                   type="button"
                   onClick={() => handleSelectKdd(preset)}
-                  className={`rounded-[var(--akdd-radius-xs)] px-2 py-1 text-xs font-mono border cursor-pointer transition-colors ${
+                  className={`rounded-full px-3 py-1 text-xs font-mono border cursor-pointer transition-colors ${
                     selectedId === preset
                       ? 'bg-[var(--akdd-navy-700)] text-[var(--akdd-text-inverse)] border-[var(--akdd-navy-700)]'
                       : 'bg-[var(--akdd-bg-canvas)] text-[var(--akdd-text-secondary)] border-[var(--akdd-border-subtle)] hover:border-[var(--akdd-navy-600)]'
@@ -189,7 +189,7 @@ export function ExplorerPage() {
             </div>
 
             {selectorOpen && (
-              <div className="flex max-h-56 flex-col overflow-y-auto rounded-[var(--akdd-radius-md)] border border-[var(--akdd-border-default)] bg-[var(--akdd-bg-surface)] divide-y divide-[var(--akdd-border-subtle)] shadow-[var(--akdd-shadow-md)]">
+              <div className="flex max-h-56 flex-col overflow-y-auto rounded-[var(--akdd-radius-md)] border border-[var(--akdd-border-subtle)] bg-[var(--akdd-bg-surface)] divide-y divide-[var(--akdd-border-subtle)] shadow-none">
                 {selectorMatches.map((k) => (
                   <button
                     key={k.id}

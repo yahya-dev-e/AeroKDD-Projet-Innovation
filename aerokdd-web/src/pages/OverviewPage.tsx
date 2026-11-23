@@ -1,16 +1,12 @@
 import {
-  ArrowRight,
-  BookOpen,
+  ArrowUpRight,
   Compass,
-  Database,
   GitBranch,
-  Layers,
-  Link2,
   Network,
 } from 'lucide-react'
 import { useMemo } from 'react'
 import { Link } from 'react-router-dom'
-import { Badge, Card, CardContent, CardHeader, KpiCard, SubsystemBadge } from '../components/ui'
+import { Badge, Card, CardContent, CardHeader, SubsystemBadge } from '../components/ui'
 import { normalizeSubsystemCode, statutToShortCat } from '../engines/graphBuilder'
 import { useAeroKddStore } from '../store/useAeroKddStore'
 import { SUBSYSTEM_CATALOG } from '../types/subsystems'
@@ -62,198 +58,256 @@ export function OverviewPage() {
     return { kCount, sCount, dCount, prestCount, otherCount, bySub }
   }, [kdds, relations])
 
+  const total = Math.max(kdds.length, 1)
+  const composition = [
+    { label: 'KDD', value: summary.kCount, bar: 'bg-[var(--akdd-status-kdd-border)]' },
+    { label: 'S', value: summary.sCount, bar: 'bg-[var(--akdd-status-s-border)]' },
+    { label: 'D', value: summary.dCount, bar: 'bg-[var(--akdd-status-d-border)]' },
+    { label: 'Prestation', value: summary.prestCount, bar: 'bg-[var(--akdd-status-prestation-border)]' },
+    { label: 'Autres', value: summary.otherCount, bar: 'bg-[var(--akdd-status-input-border)]' },
+  ]
+
+  const engines = [
+    {
+      index: '01',
+      to: '/top-down',
+      icon: GitBranch,
+      title: 'Moteur d’Analyse Top-Down',
+      meta: '10 THÉMATIQUES',
+      text: 'Remontée causale depuis une prestation système vers les leviers directs (N1), relais inter-modules (N2) et effets induits.',
+    },
+    {
+      index: '02',
+      to: '/network',
+      icon: Network,
+      title: 'Cartographie Globale du Réseau',
+      meta: `${kdds.length.toLocaleString('en-US')} NŒUDS`,
+      text: 'Topologie complète des 10 sous-systèmes propulsifs avec codage sémantique des liens Top-Down, couplages et contexte.',
+    },
+    {
+      index: '03',
+      to: '/explore',
+      icon: Compass,
+      title: 'Unit Explorer (GRAPH_KDD)',
+      meta: 'AMONT · AVAL',
+      text: 'Inspection unitaire d’un paramètre avec ses relations entrantes, sortantes, équations physiques et schéma orienté.',
+    },
+  ]
+
   return (
     <div className="mx-auto flex max-w-7xl flex-col gap-6">
-      {/* Executive Header Banner */}
-      <section className="flex flex-col gap-3 rounded-[var(--akdd-radius-lg)] bg-[var(--akdd-navy-900)] px-6 py-6 text-[var(--akdd-text-inverse)] shadow-[var(--akdd-shadow-md)]">
-        <div className="flex flex-wrap items-center justify-between gap-4">
-          <div className="flex flex-col gap-1.5">
-            <div className="flex items-center gap-2">
-              <span className="rounded-[var(--akdd-radius-xs)] bg-[var(--akdd-navy-700)] px-2 py-0.5 text-[11px] font-semibold tracking-wide uppercase border border-[var(--akdd-navy-600)]">
-                Projet Innovation · ECC × SHERPA Engineering
-              </span>
-              <span className="text-xs text-[var(--akdd-slate-300)] font-mono">
-                Référentiel Turboréacteur
-              </span>
+      {/* Swiss Editorial Masthead & Live Telemetry Matrix */}
+      <section className="overflow-hidden rounded-[var(--akdd-radius-lg)] border border-[var(--akdd-border-subtle)] bg-[var(--akdd-bg-surface)] shadow-none">
+        <div className="flex flex-wrap items-center justify-between gap-2 border-b border-[var(--akdd-border-subtle)] bg-[var(--akdd-bg-subtle)] px-6 py-2.5 font-mono text-[10.5px] uppercase tracking-[0.08em] text-[var(--akdd-text-muted)]">
+          <span>00 / Référentiel Turboréacteur Double Flux · ECC × SHERPA Engineering</span>
+          <span className="text-[var(--akdd-text-primary)]">
+            SPEC · TDB · TRACA · TOP-DOWN
+          </span>
+        </div>
+
+        <div className="grid grid-cols-1 divide-y divide-[var(--akdd-border-subtle)] lg:grid-cols-[1.35fr_1fr] lg:divide-x lg:divide-y-0">
+          {/* Editorial Statement */}
+          <div className="flex flex-col justify-between gap-8 p-8 lg:p-10">
+            <div className="flex flex-col gap-4">
+              <h1 className="font-display text-3xl font-bold leading-[1.05] tracking-[-0.035em] text-[var(--akdd-text-primary)] sm:text-[42px]">
+                Architecture Propulsive &amp; Key Design Drivers.
+              </h1>
+              <p className="max-w-xl text-sm leading-relaxed text-[var(--akdd-text-muted)]">
+                Référentiel formel d’ingénierie système reliant les exigences de performance aux
+                paramètres physiques de dimensionnement (KDD, S, D), aux équations de couplage et à
+                la traçabilité sur 10 sous-systèmes.
+              </p>
             </div>
-            <h1 className="text-2xl font-bold tracking-tight">
-              AeroKDD — Référentiel de Spécifications Génériques & Key Design Drivers
-            </h1>
-            <p className="max-w-3xl text-sm text-[var(--akdd-slate-300)]">
-              Structuration, traçabilité système, analyse Top-Down à deux niveaux et cartographie
-              des couplages physiques sur les 10 sous-systèmes propulsifs.
-            </p>
+
+            <div className="flex flex-wrap items-center gap-2.5">
+              <Link
+                to="/top-down"
+                className="inline-flex items-center gap-2 rounded-full border border-[var(--akdd-ink)] bg-[var(--akdd-ink)] px-5 py-2.5 text-xs font-medium text-[var(--akdd-text-inverse)] shadow-none transition-colors hover:bg-[var(--akdd-ink-hover)]"
+              >
+                Lancer l’analyse Top-Down <ArrowUpRight className="h-3.5 w-3.5" />
+              </Link>
+              <Link
+                to="/network"
+                className="inline-flex items-center gap-2 rounded-full border border-[var(--akdd-border-subtle)] bg-[var(--akdd-bg-surface)] px-4 py-2.5 text-xs font-medium text-[var(--akdd-text-primary)] shadow-none transition-colors hover:border-[var(--akdd-ink)] hover:bg-[var(--akdd-bg-subtle)]"
+              >
+                Graphe global
+              </Link>
+              <Link
+                to="/manager"
+                className="inline-flex items-center gap-2 rounded-full border border-[var(--akdd-border-subtle)] bg-[var(--akdd-bg-surface)] px-4 py-2.5 text-xs font-medium text-[var(--akdd-text-primary)] shadow-none transition-colors hover:border-[var(--akdd-ink)] hover:bg-[var(--akdd-bg-subtle)]"
+              >
+                KDD Manager
+              </Link>
+            </div>
+          </div>
+
+          {/* Architectural 2x2 KPI Telemetry + Taxonomic Bar */}
+          <div className="flex flex-col divide-y divide-[var(--akdd-border-subtle)] bg-[var(--akdd-bg-subtle)]">
+            <div className="grid grid-cols-2 divide-x divide-[var(--akdd-border-subtle)]">
+              <div className="flex flex-col gap-1.5 p-5 lg:p-6">
+                <span className="font-mono text-[10px] font-medium uppercase tracking-[0.08em] text-[var(--akdd-text-muted)]">
+                  01 / Éléments KDD
+                </span>
+                <span className="font-display text-3xl font-bold leading-none tracking-[-0.03em] tabular-nums text-[var(--akdd-text-primary)] sm:text-4xl">
+                  {kdds.length.toLocaleString('en-US')}
+                </span>
+                <span className="font-mono text-[10.5px] text-[var(--akdd-text-muted)]">
+                  {summary.kCount + summary.sCount + summary.dCount} leviers physiques
+                </span>
+              </div>
+
+              <div className="flex flex-col gap-1.5 p-5 lg:p-6">
+                <span className="font-mono text-[10px] font-medium uppercase tracking-[0.08em] text-[var(--akdd-text-muted)]">
+                  02 / Couplages Actifs
+                </span>
+                <span className="font-display text-3xl font-bold leading-none tracking-[-0.03em] tabular-nums text-[var(--akdd-text-primary)] sm:text-4xl">
+                  {relations.length.toLocaleString('en-US')}
+                </span>
+                <span className="font-mono text-[10.5px] text-[var(--akdd-text-muted)]">
+                  Matrice KDD E1–E3
+                </span>
+              </div>
+            </div>
+
+            <div className="grid grid-cols-2 divide-x divide-[var(--akdd-border-subtle)]">
+              <div className="flex flex-col gap-1.5 p-5 lg:p-6">
+                <span className="font-mono text-[10px] font-medium uppercase tracking-[0.08em] text-[var(--akdd-text-muted)]">
+                  03 / Sous-Systèmes
+                </span>
+                <span className="font-display text-3xl font-bold leading-none tracking-[-0.03em] tabular-nums text-[var(--akdd-text-primary)] sm:text-4xl">
+                  {SUBSYSTEM_CATALOG.length}
+                </span>
+                <span className="font-mono text-[10.5px] text-[var(--akdd-text-muted)]">
+                  Modules propulsifs
+                </span>
+              </div>
+
+              <div className="flex flex-col gap-1.5 p-5 lg:p-6">
+                <span className="font-mono text-[10px] font-medium uppercase tracking-[0.08em] text-[var(--akdd-text-muted)]">
+                  04 / Bibliothèque
+                </span>
+                <span className="font-display text-3xl font-bold leading-none tracking-[-0.03em] tabular-nums text-[var(--akdd-text-primary)] sm:text-4xl">
+                  {bibliotheque.length.toLocaleString('en-US')}
+                </span>
+                <span className="font-mono text-[10.5px] text-[var(--akdd-text-muted)]">
+                  {sources.length} sources ouvertes
+                </span>
+              </div>
+            </div>
+
+            <div className="flex flex-col gap-2.5 bg-[var(--akdd-bg-surface)] p-5 lg:px-6">
+              <div className="flex items-center justify-between font-mono text-[10px] uppercase tracking-[0.08em] text-[var(--akdd-text-muted)]">
+                <span>Distribution taxonomique (Statuts KDD)</span>
+                <span>100%</span>
+              </div>
+              <div className="flex h-1.5 w-full overflow-hidden rounded-[2px] border border-[var(--akdd-border-subtle)] bg-[var(--akdd-bg-subtle)]">
+                {composition.map((c) => (
+                  <span
+                    key={c.label}
+                    className={c.bar}
+                    style={{ width: `${(c.value / total) * 100}%` }}
+                  />
+                ))}
+              </div>
+              <div className="flex flex-wrap items-center gap-1.5 pt-0.5">
+                <Badge className="bg-[var(--akdd-status-kdd-bg)] text-[var(--akdd-status-kdd-text)] border-[var(--akdd-status-kdd-border)]">
+                  {summary.kCount} KDD
+                </Badge>
+                <Badge className="bg-[var(--akdd-status-s-bg)] text-[var(--akdd-status-s-text)] border-[var(--akdd-status-s-border)]">
+                  {summary.sCount} S
+                </Badge>
+                <Badge className="bg-[var(--akdd-status-d-bg)] text-[var(--akdd-status-d-text)] border-[var(--akdd-status-d-border)]">
+                  {summary.dCount} D
+                </Badge>
+                <Badge className="bg-[var(--akdd-status-prestation-bg)] text-[var(--akdd-status-prestation-text)] border-[var(--akdd-status-prestation-border)]">
+                  {summary.prestCount} PREST.
+                </Badge>
+                <Badge className="bg-[var(--akdd-status-input-bg)] text-[var(--akdd-status-input-text)] border-[var(--akdd-status-input-border)]">
+                  {summary.otherCount} INPUT / CONTR.
+                </Badge>
+              </div>
+            </div>
           </div>
         </div>
       </section>
 
-      {/* Executive KPI Cards */}
-      <section className="grid grid-cols-1 gap-4 sm:grid-cols-2 xl:grid-cols-4">
-        <KpiCard
-          label="Éléments du Référentiel"
-          value={kdds.length}
-          subtitle={`${summary.kCount + summary.sCount + summary.dCount} leviers · ${summary.prestCount} prestations · ${summary.otherCount} inputs/contraintes`}
-          icon={<Database className="h-5 w-5" />}
-          accentClassName="border-l-[var(--akdd-navy-700)]"
-          footer={
-            <div className="flex flex-wrap items-center gap-1.5">
-              <Badge className="bg-[var(--akdd-status-kdd-bg)] text-[var(--akdd-status-kdd-text)] border-[var(--akdd-status-kdd-border)]">
-                {summary.kCount} KDD
-              </Badge>
-              <Badge className="bg-[var(--akdd-status-s-bg)] text-[var(--akdd-status-s-text)] border-[var(--akdd-status-s-border)]">
-                {summary.sCount} S
-              </Badge>
-              <Badge className="bg-[var(--akdd-status-d-bg)] text-[var(--akdd-status-d-text)] border-[var(--akdd-status-d-border)]">
-                {summary.dCount} D
-              </Badge>
-            </div>
-          }
-        />
+      {/* 3 Analysis Engines — Hairline-Divided Monochrome Strip */}
+      <section className="grid grid-cols-1 divide-y divide-[var(--akdd-border-subtle)] overflow-hidden rounded-[var(--akdd-radius-lg)] border border-[var(--akdd-border-subtle)] bg-[var(--akdd-bg-surface)] shadow-none md:grid-cols-3 md:divide-x md:divide-y-0">
+        {engines.map((e) => {
+          const Icon = e.icon
+          return (
+            <Link
+              key={e.to}
+              to={e.to}
+              className="group flex flex-col justify-between gap-5 p-6 transition-colors hover:bg-[var(--akdd-bg-subtle)]"
+            >
+              <div className="flex flex-col gap-3">
+                <div className="flex items-center justify-between font-mono text-[10.5px] uppercase tracking-[0.08em] text-[var(--akdd-text-muted)]">
+                  <span className="inline-flex items-center gap-2">
+                    <Icon className="h-3.5 w-3.5 text-[var(--akdd-text-primary)] stroke-[1.75]" />
+                    {e.index} / Module
+                  </span>
+                  <span>{e.meta}</span>
+                </div>
+                <h2 className="font-display text-base font-bold tracking-[-0.03em] text-[var(--akdd-text-primary)]">
+                  {e.title}
+                </h2>
+                <p className="text-xs leading-relaxed text-[var(--akdd-text-muted)]">{e.text}</p>
+              </div>
 
-        <KpiCard
-          label="Couplages Actifs"
-          value={relations.length.toLocaleString('fr-FR')}
-          subtitle="Matrice active KDD - Relations (E1–E3)"
-          icon={<Link2 className="h-5 w-5" />}
-          accentClassName="border-l-[var(--akdd-edge-topdown)]"
-        />
-
-        <KpiCard
-          label="Sous-Systèmes Propulsifs"
-          value={SUBSYSTEM_CATALOG.length}
-          subtitle="Triptyque SPEC-* / TDB-* / TRACA SYS-*"
-          icon={<Layers className="h-5 w-5" />}
-          accentClassName="border-l-[var(--akdd-accent-blue)]"
-        />
-
-        <KpiCard
-          label="Bibliothèque & Sources"
-          value={bibliotheque.length.toLocaleString('fr-FR')}
-          subtitle={`${sources.length} références ouvertes (NASA Glenn, NTRS, NACA)`}
-          icon={<BookOpen className="h-5 w-5" />}
-          accentClassName="border-l-[var(--akdd-edge-coupling)]"
-        />
+              <span className="inline-flex items-center gap-1.5 font-mono text-[11px] font-medium uppercase tracking-[0.05em] text-[var(--akdd-text-primary)]">
+                Ouvrir le moteur
+                <ArrowUpRight className="h-3.5 w-3.5 transition-transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
+              </span>
+            </Link>
+          )
+        })}
       </section>
 
-      {/* Quick-Launch Analysis Cards */}
-      <section className="grid grid-cols-1 gap-4 md:grid-cols-3">
-        <Link
-          to="/top-down"
-          className="group flex flex-col justify-between gap-4 rounded-[var(--akdd-radius-lg)] bg-[var(--akdd-bg-surface)] border border-[var(--akdd-border-subtle)] p-5 shadow-[var(--akdd-shadow-sm)] hover:border-[var(--akdd-edge-topdown)] hover:shadow-[var(--akdd-shadow-md)] transition-all"
-        >
-          <div className="flex flex-col gap-2">
-            <div className="flex items-center justify-between">
-              <span className="flex h-10 w-10 items-center justify-center rounded-[var(--akdd-radius-md)] bg-[var(--akdd-edge-topdown-bg)] text-[var(--akdd-edge-topdown-text)]">
-                <GitBranch className="h-5 w-5" />
-              </span>
-              <span className="text-xs font-mono text-[var(--akdd-text-muted)]">10 thématiques</span>
-            </div>
-            <h2 className="text-base font-semibold text-[var(--akdd-text-primary)]">
-              Moteur d’Analyse Top-Down
-            </h2>
-            <p className="text-xs leading-relaxed text-[var(--akdd-text-secondary)]">
-              Partez d’une prestation cible (ex. Bruit / Acoustique) pour remonter vers les leviers
-              directs (Niv. 1), indirects (Niv. 2), badges Carrefour et effets de bord réels.
-            </p>
-          </div>
-          <span className="inline-flex items-center gap-1.5 text-xs font-semibold text-[var(--akdd-edge-topdown-text)] group-hover:translate-x-0.5 transition-transform">
-            Lancer l’analyse Top-Down <ArrowRight className="h-3.5 w-3.5" />
-          </span>
-        </Link>
-
-        <Link
-          to="/network"
-          className="group flex flex-col justify-between gap-4 rounded-[var(--akdd-radius-lg)] bg-[var(--akdd-bg-surface)] border border-[var(--akdd-border-subtle)] p-5 shadow-[var(--akdd-shadow-sm)] hover:border-[var(--akdd-navy-600)] hover:shadow-[var(--akdd-shadow-md)] transition-all"
-        >
-          <div className="flex flex-col gap-2">
-            <div className="flex items-center justify-between">
-              <span className="flex h-10 w-10 items-center justify-center rounded-[var(--akdd-radius-md)] bg-[var(--akdd-accent-blue-soft)] text-[var(--akdd-navy-700)]">
-                <Network className="h-5 w-5" />
-              </span>
-              <span className="text-xs font-mono text-[var(--akdd-text-muted)]">566 nœuds</span>
-            </div>
-            <h2 className="text-base font-semibold text-[var(--akdd-text-primary)]">
-              Cartographie Globale du Réseau
-            </h2>
-            <p className="text-xs leading-relaxed text-[var(--akdd-text-secondary)]">
-              Explorez la topologie circulaire des 10 sous-systèmes, les liens Top-Down (vert),
-              couplages Levier–Levier (orange) et vues filtrées par module.
-            </p>
-          </div>
-          <span className="inline-flex items-center gap-1.5 text-xs font-semibold text-[var(--akdd-navy-700)] group-hover:translate-x-0.5 transition-transform">
-            Ouvrir le Graphe Global <ArrowRight className="h-3.5 w-3.5" />
-          </span>
-        </Link>
-
-        <Link
-          to="/explore"
-          className="group flex flex-col justify-between gap-4 rounded-[var(--akdd-radius-lg)] bg-[var(--akdd-bg-surface)] border border-[var(--akdd-border-subtle)] p-5 shadow-[var(--akdd-shadow-sm)] hover:border-[var(--akdd-edge-coupling)] hover:shadow-[var(--akdd-shadow-md)] transition-all"
-        >
-          <div className="flex flex-col gap-2">
-            <div className="flex items-center justify-between">
-              <span className="flex h-10 w-10 items-center justify-center rounded-[var(--akdd-radius-md)] bg-[var(--akdd-edge-coupling-bg)] text-[var(--akdd-edge-coupling-text)]">
-                <Compass className="h-5 w-5" />
-              </span>
-              <span className="text-xs font-mono text-[var(--akdd-text-muted)]">Amont / Aval</span>
-            </div>
-            <h2 className="text-base font-semibold text-[var(--akdd-text-primary)]">
-              Unit Explorer (GRAPH_KDD)
-            </h2>
-            <p className="text-xs leading-relaxed text-[var(--akdd-text-secondary)]">
-              Inspectez un paramètre unique avec ses relations entrantes (bleu) et sortantes (rouge)
-              et son schéma orienté plein écran.
-            </p>
-          </div>
-          <span className="inline-flex items-center gap-1.5 text-xs font-semibold text-[var(--akdd-edge-coupling-text)] group-hover:translate-x-0.5 transition-transform">
-            Explorer un KDD <ArrowRight className="h-3.5 w-3.5" />
-          </span>
-        </Link>
-      </section>
-
-      {/* Interactive 10-Subsystem Selector Grid */}
-      <Card>
+      {/* 10-Subsystem Architectural Hairline Matrix */}
+      <Card className="overflow-hidden">
         <CardHeader
           title="Architecture Propulsive — 10 Sous-Systèmes"
-          subtitle="Sélectionnez un module pour ouvrir son espace triptyque SPEC / TDB / TRACA"
+          subtitle="Sélectionnez un sous-système pour accéder au triptyque SPEC / TDB / TRACA"
         />
-        <CardContent>
-          <div className="grid grid-cols-1 gap-3.5 sm:grid-cols-2 lg:grid-cols-5">
+        <CardContent className="p-0">
+          <div className="grid grid-cols-1 gap-px bg-[var(--akdd-border-subtle)] sm:grid-cols-2 lg:grid-cols-5">
             {SUBSYSTEM_CATALOG.map((sub) => {
               const stats = summary.bySub[sub.code]
               return (
                 <Link
                   key={sub.code}
                   to={`/subsystems/${sub.code}`}
-                  className="group flex flex-col justify-between gap-3 rounded-[var(--akdd-radius-md)] border border-[var(--akdd-border-subtle)] bg-[var(--akdd-bg-canvas)] p-4 hover:border-[var(--akdd-navy-600)] hover:bg-[var(--akdd-bg-surface)] hover:shadow-[var(--akdd-shadow-sm)] transition-all"
+                  className="group flex flex-col justify-between gap-4 bg-[var(--akdd-bg-surface)] p-5 transition-colors hover:bg-[var(--akdd-bg-subtle)]"
                 >
                   <div className="flex flex-col gap-2">
                     <div className="flex items-center justify-between gap-2">
                       <SubsystemBadge code={sub.code} />
-                      <span className="font-mono text-xs font-semibold text-[var(--akdd-text-secondary)]">
+                      <span className="font-mono text-[11px] font-semibold text-[var(--akdd-text-primary)]">
                         {stats?.total ?? 0} KDD
                       </span>
                     </div>
-                    <h3 className="text-sm font-semibold text-[var(--akdd-text-primary)]">
+                    <h3 className="font-display text-sm font-bold tracking-[-0.02em] text-[var(--akdd-text-primary)]">
                       {sub.frenchName}
                     </h3>
-                    <p className="text-xs leading-snug text-[var(--akdd-text-muted)]">
+                    <p className="text-xs leading-relaxed text-[var(--akdd-text-muted)]">
                       {sub.shortRole}
                     </p>
                   </div>
 
-                  <div className="flex items-center justify-between gap-2 border-t border-[var(--akdd-border-subtle)] pt-2.5 text-[11px]">
-                    <div className="flex items-center gap-1 font-mono">
-                      <span className="rounded bg-[var(--akdd-status-kdd-bg)] px-1.5 py-0.5 text-[var(--akdd-status-kdd-text)] font-semibold">
+                  <div className="flex items-center justify-between gap-2 border-t border-[var(--akdd-border-subtle)] pt-3 font-mono text-[10px]">
+                    <div className="flex items-center gap-1">
+                      <span className="rounded-[var(--akdd-radius-xs)] border border-[var(--akdd-status-kdd-border)] bg-[var(--akdd-status-kdd-bg)] px-1 py-0.5 font-semibold text-[var(--akdd-status-kdd-text)]">
                         K:{stats?.k ?? 0}
                       </span>
-                      <span className="rounded bg-[var(--akdd-status-s-bg)] px-1.5 py-0.5 text-[var(--akdd-status-s-text)] font-semibold">
+                      <span className="rounded-[var(--akdd-radius-xs)] border border-[var(--akdd-status-s-border)] bg-[var(--akdd-status-s-bg)] px-1 py-0.5 font-semibold text-[var(--akdd-status-s-text)]">
                         S:{stats?.s ?? 0}
                       </span>
-                      <span className="rounded bg-[var(--akdd-status-d-bg)] px-1.5 py-0.5 text-[var(--akdd-status-d-text)]">
+                      <span className="rounded-[var(--akdd-radius-xs)] border border-[var(--akdd-status-d-border)] bg-[var(--akdd-status-d-bg)] px-1 py-0.5 text-[var(--akdd-status-d-text)]">
                         D:{stats?.d ?? 0}
                       </span>
                     </div>
-                    <span className="font-mono text-[var(--akdd-text-muted)]">
+                    <span className="uppercase text-[var(--akdd-text-muted)]">
                       {stats?.links ?? 0} liens
                     </span>
                   </div>

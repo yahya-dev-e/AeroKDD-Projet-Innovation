@@ -25,19 +25,21 @@ export function Drawer({ open, onClose, title, subtitle, headerExtra, children }
 
   return (
     <div
-      className="fixed inset-0 z-50 flex justify-end bg-[rgb(15_23_42/0.45)] backdrop-blur-[1px]"
+      className="fixed inset-0 z-50 flex justify-end bg-[rgb(9_9_11/0.4)]"
       role="dialog"
       aria-modal="true"
       onClick={onClose}
     >
       <aside
-        className="flex h-full w-full max-w-xl flex-col bg-[var(--akdd-bg-surface)] border-l border-[var(--akdd-border-default)] shadow-[var(--akdd-shadow-lg)]"
+        className="flex h-full w-full max-w-xl flex-col bg-[var(--akdd-bg-surface)] border-l border-[var(--akdd-border-subtle)] shadow-none"
         onClick={(e) => e.stopPropagation()}
       >
-        <div className="flex items-start justify-between gap-4 border-b border-[var(--akdd-border-subtle)] bg-[var(--akdd-bg-subtle)] px-6 py-4">
+        <div className="flex items-start justify-between gap-4 border-b border-[var(--akdd-border-subtle)] bg-[var(--akdd-bg-subtle)] px-7 py-5">
           <div className="flex flex-col gap-1 min-w-0">
-            <h2 className="text-base font-semibold text-[var(--akdd-text-primary)]">{title}</h2>
-            {subtitle && <p className="text-xs text-[var(--akdd-text-secondary)]">{subtitle}</p>}
+            <h2 className="font-display text-base font-bold tracking-[-0.03em] text-[var(--akdd-text-primary)]">
+              {title}
+            </h2>
+            {subtitle && <p className="text-xs text-[var(--akdd-text-muted)]">{subtitle}</p>}
             {headerExtra && <div className="flex flex-wrap items-center gap-2 pt-1">{headerExtra}</div>}
           </div>
           <Button variant="ghost" size="sm" onClick={onClose} aria-label="Fermer le panneau">
@@ -45,7 +47,7 @@ export function Drawer({ open, onClose, title, subtitle, headerExtra, children }
           </Button>
         </div>
 
-        <div className="flex-1 overflow-y-auto px-6 py-5">{children}</div>
+        <div className="flex-1 overflow-y-auto px-7 py-6">{children}</div>
       </aside>
     </div>
   )

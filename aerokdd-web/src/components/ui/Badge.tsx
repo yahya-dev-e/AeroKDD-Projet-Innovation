@@ -10,7 +10,7 @@ export interface BadgeProps {
 export function Badge({ children, className = '' }: BadgeProps) {
   return (
     <span
-      className={`inline-flex items-center gap-1 rounded-[var(--akdd-radius-full)] px-2.5 py-1 text-[11px] font-semibold leading-none tracking-[0.01em] whitespace-nowrap border shadow-[inset_0_1px_0_rgb(255_255_255/0.55)] ${className}`}
+      className={`inline-flex items-center gap-1 rounded-[var(--akdd-radius-xs)] px-1.5 py-0.5 font-mono text-[10.5px] font-medium leading-tight tracking-[0.02em] whitespace-nowrap border shadow-none ${className}`}
     >
       {children}
     </span>
@@ -40,7 +40,7 @@ export function getStatutStyleClasses(statut: StatutKdd | string): string {
   if (s.startsWith('CONTRAINT')) {
     return 'bg-[var(--akdd-status-contrainte-bg)] text-[var(--akdd-status-contrainte-text)] border-[var(--akdd-status-contrainte-border)]'
   }
-  return 'bg-[var(--akdd-slate-100)] text-[var(--akdd-slate-700)] border-[var(--akdd-border-default)]'
+  return 'bg-[var(--akdd-bg-subtle)] text-[var(--akdd-text-secondary)] border-[var(--akdd-border-subtle)]'
 }
 
 export function StatutBadge({ statut }: { statut: StatutKdd | string }) {
@@ -88,24 +88,10 @@ export function CentralityBadge({ level, label }: { level: CentralityLevel; labe
   return <Badge className={classes}>{label ?? level}</Badge>
 }
 
-const SUBSYSTEM_BG_VARS: Record<string, string> = {
-  FAN: 'bg-[var(--akdd-sys-fan)]',
-  BOOSTER: 'bg-[var(--akdd-sys-booster)]',
-  HPC: 'bg-[var(--akdd-sys-hpc)]',
-  COMB: 'bg-[var(--akdd-sys-comb)]',
-  HPT: 'bg-[var(--akdd-sys-hpt)]',
-  LPT: 'bg-[var(--akdd-sys-lpt)]',
-  NOZZLE: 'bg-[var(--akdd-sys-nozzle)]',
-  COOLING: 'bg-[var(--akdd-sys-cooling)]',
-  ELECTRICAL: 'bg-[var(--akdd-sys-electrical)]',
-  OIL: 'bg-[var(--akdd-sys-oil)]',
-}
-
 export function SubsystemBadge({ code }: { code: string }) {
-  const bg = SUBSYSTEM_BG_VARS[code.toUpperCase()] ?? 'bg-[var(--akdd-slate-100)]'
   return (
     <Badge
-      className={`${bg} text-[var(--akdd-slate-900)] border-[var(--akdd-border-default)] font-mono font-semibold`}
+      className="bg-[var(--akdd-bg-subtle)] text-[var(--akdd-text-primary)] border-[var(--akdd-border-subtle)] font-mono font-semibold uppercase tracking-[0.05em]"
     >
       {code}
     </Badge>

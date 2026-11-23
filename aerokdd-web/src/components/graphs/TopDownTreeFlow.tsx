@@ -28,7 +28,7 @@ function TopDownTreeNode({ data }: NodeProps<Node<TreeNodeData>>) {
 
   if (data.tier === 'objective') {
     classes =
-      'bg-[var(--akdd-navy-900)] text-[var(--akdd-text-inverse)] border-[var(--akdd-navy-950)] shadow-[var(--akdd-shadow-md)]'
+      'bg-[var(--akdd-ink)] text-[var(--akdd-text-inverse)] border-[var(--akdd-ink)] shadow-none'
   } else if (data.tier === 'subsystem') {
     classes =
       'bg-[var(--akdd-slate-100)] text-[var(--akdd-navy-900)] border-[var(--akdd-navy-700)]'
@@ -52,7 +52,7 @@ function TopDownTreeNode({ data }: NodeProps<Node<TreeNodeData>>) {
 
   return (
     <div
-      className={`flex flex-col gap-0.5 rounded-[var(--akdd-radius-md)] border-2 px-3 py-2 text-left transition-shadow hover:shadow-[var(--akdd-shadow-md)] ${classes}`}
+      className={`flex flex-col gap-0.5 rounded-[var(--akdd-radius-md)] border px-3 py-2 text-left shadow-none ${classes}`}
       style={{ width }}
     >
       {data.tier !== 'objective' && (

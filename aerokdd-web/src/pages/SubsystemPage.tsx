@@ -275,9 +275,9 @@ export function SubsystemPage() {
   }
 
   return (
-    <div className="mx-auto flex max-w-7xl flex-col gap-5">
+    <div className="mx-auto flex max-w-7xl flex-col gap-7">
       {/* Subsystem Header & Module Switcher */}
-      <div className="flex flex-col gap-4 rounded-[var(--akdd-radius-lg)] bg-[var(--akdd-bg-surface)] border border-[var(--akdd-border-subtle)] p-5 shadow-[var(--akdd-shadow-sm)]">
+      <div className="flex flex-col gap-4 rounded-[var(--akdd-radius-lg)] bg-[var(--akdd-bg-surface)] border border-[var(--akdd-border-subtle)] p-6 shadow-none">
         <div className="flex flex-wrap items-center justify-between gap-4">
           <div className="flex items-center gap-3">
             <SubsystemBadge code={meta.code} />
@@ -323,7 +323,7 @@ export function SubsystemPage() {
                 key={sub.code}
                 type="button"
                 onClick={() => navigate(`/subsystems/${sub.code}`)}
-                className={`rounded-[var(--akdd-radius-xs)] px-2.5 py-1 text-xs font-mono font-medium transition-colors cursor-pointer ${
+                className={`rounded-full px-3.5 py-1.5 text-xs font-mono font-medium transition-colors cursor-pointer ${
                   isCurrent
                     ? 'bg-[var(--akdd-navy-800)] text-[var(--akdd-text-inverse)]'
                     : 'bg-[var(--akdd-slate-100)] text-[var(--akdd-text-secondary)] hover:bg-[var(--akdd-slate-200)]'
@@ -340,9 +340,9 @@ export function SubsystemPage() {
       {activeTab === 'SPEC' && (
         <div className="flex flex-col gap-4">
           {/* Filter Toolbar */}
-          <div className="flex flex-col gap-3 rounded-[var(--akdd-radius-lg)] bg-[var(--akdd-bg-surface)] border border-[var(--akdd-border-subtle)] p-4 shadow-[var(--akdd-shadow-sm)]">
+          <div className="flex flex-col gap-3 rounded-[var(--akdd-radius-lg)] bg-[var(--akdd-bg-surface)] border border-[var(--akdd-border-subtle)] p-5 shadow-none">
             <div className="flex flex-wrap items-center justify-between gap-3">
-              <div className="flex flex-1 min-w-[240px] items-center gap-2 rounded-[var(--akdd-radius-sm)] border border-[var(--akdd-border-default)] bg-[var(--akdd-bg-canvas)] px-3 py-1.5">
+              <div className="flex flex-1 min-w-[240px] items-center gap-2 rounded-full border border-[var(--akdd-border-default)] bg-[var(--akdd-bg-subtle)] px-4 py-2">
                 <Search className="h-4 w-4 shrink-0 text-[var(--akdd-text-muted)]" />
                 <input
                   type="text"

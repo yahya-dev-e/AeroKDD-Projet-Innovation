@@ -24,14 +24,14 @@ interface EgoNodeData extends Record<string, unknown> {
 function EgoKddNode({ data }: NodeProps<Node<EgoNodeData>>) {
   const palette =
     data.variant === 'center'
-      ? 'bg-[var(--akdd-navy-800)] text-[var(--akdd-text-inverse)] border-[var(--akdd-navy-950)] shadow-[var(--akdd-shadow-md)]'
+      ? 'bg-[var(--akdd-ink)] text-[var(--akdd-text-inverse)] border-[var(--akdd-ink)] shadow-none'
       : data.variant === 'in'
         ? 'bg-[var(--akdd-dir-in-bg)] text-[var(--akdd-dir-in-text)] border-[var(--akdd-dir-in-border)]'
         : 'bg-[var(--akdd-dir-out-bg)] text-[var(--akdd-dir-out-text)] border-[var(--akdd-dir-out-border)]'
 
   return (
     <div
-      className={`flex flex-col gap-0.5 rounded-[var(--akdd-radius-md)] border-2 px-3 py-2 text-left transition-shadow hover:shadow-[var(--akdd-shadow-md)] ${palette}`}
+      className={`flex flex-col gap-0.5 rounded-[var(--akdd-radius-md)] border px-3 py-2 text-left shadow-none ${palette}`}
       style={{ width: data.variant === 'center' ? 280 : 270 }}
     >
       {data.variant !== 'in' && (

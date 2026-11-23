@@ -50,9 +50,9 @@ export function AppShell() {
           onToggleSidebar={() => setSidebarCollapsed((c) => !c)}
         />
 
-        <main className="flex-1 overflow-y-auto px-6 py-6">
+        <main className="flex-1 overflow-y-auto bg-[var(--akdd-bg-canvas)] px-6 py-7 lg:px-8 lg:py-8">
           {error ? (
-            <div className="mx-auto flex max-w-lg flex-col items-center gap-3 rounded-[var(--akdd-radius-lg)] border border-[var(--akdd-status-contrainte-border)] bg-[var(--akdd-status-contrainte-bg)] p-6 text-center">
+            <div className="mx-auto flex max-w-lg flex-col items-center gap-3 rounded-[var(--akdd-radius-lg)] border border-[var(--akdd-status-contrainte-border)] bg-[var(--akdd-status-contrainte-bg)] p-6 text-center shadow-none">
               <p className="text-sm font-semibold text-[var(--akdd-status-contrainte-text)]">
                 Impossible de charger le référentiel AeroKDD
               </p>
@@ -62,8 +62,8 @@ export function AppShell() {
               </Button>
             </div>
           ) : !isLoaded && isLoading ? (
-            <div className="flex h-64 items-center justify-center text-sm text-[var(--akdd-text-muted)]">
-              Chargement du référentiel AeroKDD (566 KDDs · 1 267 relations)…
+            <div className="flex h-64 items-center justify-center font-mono text-xs uppercase tracking-[0.08em] text-[var(--akdd-text-muted)]">
+              Chargement du référentiel AeroKDD (566 KDDs · 1,267 LIENS)…
             </div>
           ) : (
             <Outlet />

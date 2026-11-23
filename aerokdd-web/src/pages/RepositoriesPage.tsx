@@ -219,8 +219,8 @@ export function RepositoriesPage() {
   }
 
   return (
-    <div className="mx-auto flex max-w-7xl flex-col gap-5">
-      <div className="flex flex-wrap items-center justify-between gap-4 rounded-[var(--akdd-radius-lg)] bg-[var(--akdd-bg-surface)] border border-[var(--akdd-border-subtle)] p-5 shadow-[var(--akdd-shadow-sm)]">
+    <div className="mx-auto flex max-w-7xl flex-col gap-7">
+      <div className="flex flex-wrap items-center justify-between gap-4 rounded-[var(--akdd-radius-lg)] bg-[var(--akdd-bg-surface)] border border-[var(--akdd-border-subtle)] p-6 shadow-none">
         <div className="flex flex-col gap-1">
           <h1 className="text-xl font-bold text-[var(--akdd-text-primary)]">
             Référentiels Centraux & Instanciation Projet

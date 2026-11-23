@@ -41,7 +41,7 @@ export function NetworkPage() {
   }
 
   return (
-    <div className="mx-auto flex max-w-[1600px] flex-col gap-5">
+    <div className="mx-auto flex max-w-[1600px] flex-col gap-7">
       {/* Live Metric Header */}
       <section className="grid grid-cols-2 gap-3 lg:grid-cols-4">
         <KpiCard
@@ -78,7 +78,7 @@ export function NetworkPage() {
             <button
               type="button"
               onClick={() => handleFilterChange(null)}
-              className={`rounded-[var(--akdd-radius-sm)] px-3 py-1.5 text-xs font-semibold border transition-colors cursor-pointer ${
+              className={`rounded-full px-4 py-1.5 text-xs font-semibold border transition-colors cursor-pointer ${
                 filterSubsystem === null
                   ? 'bg-[var(--akdd-navy-700)] text-[var(--akdd-text-inverse)] border-[var(--akdd-navy-700)]'
                   : 'bg-[var(--akdd-bg-canvas)] text-[var(--akdd-navy-800)] border-[var(--akdd-border-default)] hover:border-[var(--akdd-navy-600)]'
@@ -93,7 +93,7 @@ export function NetworkPage() {
                   key={sub}
                   type="button"
                   onClick={() => handleFilterChange(sub)}
-                  className={`rounded-[var(--akdd-radius-sm)] px-2.5 py-1.5 text-xs font-mono font-semibold border transition-colors cursor-pointer ${
+                  className={`rounded-full px-3.5 py-1.5 text-xs font-mono font-semibold border transition-colors cursor-pointer ${
                     isActive
                       ? 'bg-[var(--akdd-navy-800)] text-[var(--akdd-text-inverse)] border-[var(--akdd-navy-800)]'
                       : 'bg-[var(--akdd-bg-canvas)] text-[var(--akdd-text-secondary)] border-[var(--akdd-border-subtle)] hover:border-[var(--akdd-navy-600)]'
@@ -226,7 +226,7 @@ export function NetworkPage() {
 
                 <Link
                   to={`/explore/${encodeURIComponent(selectedEgo.selectedKdd.id)}`}
-                  className="inline-flex w-full items-center justify-center gap-2 rounded-[var(--akdd-radius-sm)] bg-[var(--akdd-navy-700)] px-3.5 py-2 text-xs font-semibold text-[var(--akdd-text-inverse)] hover:bg-[var(--akdd-navy-900)] transition-colors"
+                  className="inline-flex w-full items-center justify-center gap-2 rounded-full bg-[var(--akdd-ink)] px-4 py-2 text-xs font-medium text-[var(--akdd-text-inverse)] shadow-none hover:bg-[var(--akdd-ink-hover)] transition-colors"
                 >
                   <Compass className="h-4 w-4" />
                   Ouvrir dans Unit Explorer (/explore/{selectedEgo.selectedKdd.id})

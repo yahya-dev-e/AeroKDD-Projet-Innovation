@@ -63,7 +63,7 @@ export function TopDownPage() {
   }, [analysis.rows, levelFilter, searchQuery])
 
   return (
-    <div className="mx-auto flex max-w-7xl flex-col gap-5">
+    <div className="mx-auto flex max-w-7xl flex-col gap-7">
       {/* Control Header */}
       <Card>
         <CardContent className="flex flex-wrap items-center justify-between gap-4">
@@ -187,7 +187,7 @@ export function TopDownPage() {
             <div className="overflow-x-auto rounded-[var(--akdd-radius-md)] border border-[var(--akdd-border-subtle)]">
               <table className="w-full border-collapse text-left text-xs">
                 <thead>
-                  <tr className="border-b border-[var(--akdd-border-subtle)] bg-[var(--akdd-navy-600)] text-[11px] font-semibold text-[var(--akdd-text-inverse)]">
+                  <tr className="border-b border-[var(--akdd-border-subtle)] bg-[var(--akdd-bg-subtle)] font-mono text-[10.5px] font-medium uppercase tracking-[0.06em] text-[var(--akdd-text-muted)]">
                     <th className="px-3 py-2.5 min-w-[175px]">Prestation Cible</th>
                     <th className="px-3 py-2.5 w-[100px]">Sous-Sys.</th>
                     <th className="px-3 py-2.5 w-[110px]">ID Levier</th>

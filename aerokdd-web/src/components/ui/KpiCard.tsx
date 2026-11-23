@@ -14,32 +14,38 @@ export function KpiCard({
   value,
   subtitle,
   icon,
-  accentClassName = 'border-l-[var(--akdd-navy-700)]',
+  accentClassName = '',
   footer,
 }: KpiCardProps) {
+  const hasEdgeAccent = Boolean(
+    accentClassName && !accentClassName.includes('navy') && !accentClassName.includes('accent-blue'),
+  )
+
   return (
     <div
-      className={`flex flex-col justify-between gap-3 rounded-[var(--akdd-radius-lg)] bg-[var(--akdd-bg-surface)] border border-[var(--akdd-border-subtle)] border-l-4 ${accentClassName} p-4 shadow-[var(--akdd-shadow-md)]`}
+      className={`flex flex-col justify-between gap-3.5 rounded-[var(--akdd-radius-lg)] bg-[var(--akdd-bg-surface)] border border-[var(--akdd-border-subtle)] ${
+        hasEdgeAccent ? `border-l-2 ${accentClassName}` : ''
+      } p-5 shadow-none`}
     >
       <div className="flex items-start justify-between gap-3">
-        <div className="flex flex-col gap-1 min-w-0">
-          <span className="text-[11px] font-semibold uppercase tracking-wider text-[var(--akdd-text-muted)]">
+        <div className="flex flex-col gap-1.5 min-w-0">
+          <span className="font-mono text-[10.5px] font-medium uppercase tracking-[0.08em] text-[var(--akdd-text-muted)]">
             {label}
           </span>
-          <span className="text-2xl font-bold tracking-tight text-[var(--akdd-text-primary)] font-mono">
+          <span className="font-display text-3xl font-bold tracking-[-0.03em] tabular-nums leading-none text-[var(--akdd-text-primary)]">
             {value}
           </span>
         </div>
         {icon && (
-          <div className="flex h-9 w-9 shrink-0 items-center justify-center rounded-[var(--akdd-radius-md)] bg-[var(--akdd-bg-subtle)] text-[var(--akdd-navy-700)]">
+          <span className="inline-flex shrink-0 text-[var(--akdd-text-muted)]" aria-hidden="true">
             {icon}
-          </div>
+          </span>
         )}
       </div>
 
       {(subtitle || footer) && (
         <div className="flex flex-col gap-1.5 border-t border-[var(--akdd-border-subtle)] pt-2.5">
-          {subtitle && <p className="text-xs text-[var(--akdd-text-secondary)]">{subtitle}</p>}
+          {subtitle && <p className="text-xs text-[var(--akdd-text-muted)]">{subtitle}</p>}
           {footer}
         </div>
       )}
