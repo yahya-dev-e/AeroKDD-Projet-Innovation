@@ -304,37 +304,37 @@ export function RepositoriesPage() {
           <div className="overflow-x-auto">
             <table className="w-full border-collapse text-left text-xs">
               <thead>
-                <tr className="border-b border-[var(--akdd-border-subtle)] bg-[var(--akdd-bg-canvas)] text-[11px] font-semibold uppercase text-[var(--akdd-text-muted)]">
-                  <th className="px-3 py-2.5">ID</th>
-                  <th className="px-3 py-2.5">Sous-Sys.</th>
-                  <th className="px-3 py-2.5">Nom KDD</th>
-                  <th className="px-3 py-2.5">Type</th>
-                  <th className="px-3 py-2.5 text-center">K/S/D</th>
-                  <th className="px-3 py-2.5">Statut KDD</th>
+                <tr className="border-b border-[var(--akdd-border-subtle)] bg-[var(--akdd-bg-subtle)] text-[11px] font-semibold uppercase tracking-[0.08em] text-[#71717A]">
+                  <th className="px-4 py-3 w-[124px]">ID</th>
+                  <th className="px-4 py-3 w-[115px]">Sous-Sys.</th>
+                  <th className="px-4 py-3">Nom KDD</th>
+                  <th className="px-4 py-3 w-[180px]">Type</th>
+                  <th className="px-4 py-3 w-[84px] text-center">K/S/D</th>
+                  <th className="px-4 py-3 w-[230px]">Statut KDD</th>
                 </tr>
               </thead>
               <tbody className="divide-y divide-[var(--akdd-border-subtle)]">
                 {filteredKdds.slice((page - 1) * PAGE_SIZE, page * PAGE_SIZE).map((k) => (
-                  <tr key={k.id} className="hover:bg-[var(--akdd-slate-50)]">
-                    <td className="px-3 py-2 font-mono font-bold whitespace-nowrap">
+                  <tr key={k.id} className="hover:bg-[var(--akdd-bg-subtle)] transition-colors">
+                    <td className="px-4 py-3.5 font-mono font-semibold tabular-nums whitespace-nowrap">
                       <Link
                         to={`/explore/${encodeURIComponent(k.id)}`}
-                        className="text-[var(--akdd-accent-blue)] hover:underline"
+                        className="text-[var(--akdd-ink)] hover:underline"
                       >
                         {k.id}
                       </Link>
                     </td>
-                    <td className="px-3 py-2">
+                    <td className="px-4 py-3.5">
                       <SubsystemBadge code={k.subsystemCode} />
                     </td>
-                    <td className="px-3 py-2 font-medium text-[var(--akdd-text-primary)]">
+                    <td className="px-4 py-3.5 text-[13px] font-medium text-[var(--akdd-text-primary)]">
                       {k.name}
                     </td>
-                    <td className="px-3 py-2 text-[var(--akdd-text-secondary)]">{k.type}</td>
-                    <td className="px-3 py-2 text-center">
+                    <td className="px-4 py-3.5 text-[var(--akdd-text-secondary)]">{k.type}</td>
+                    <td className="px-4 py-3.5 text-center">
                       <KsdBadge value={k.classification} />
                     </td>
-                    <td className="px-3 py-2">
+                    <td className="px-4 py-3.5">
                       <StatutBadge statut={k.statutKdd} />
                     </td>
                   </tr>
@@ -381,38 +381,38 @@ export function RepositoriesPage() {
           <div className="overflow-x-auto">
             <table className="w-full border-collapse text-left text-xs">
               <thead>
-                <tr className="border-b border-[var(--akdd-border-subtle)] bg-[var(--akdd-bg-canvas)] text-[11px] font-semibold uppercase text-[var(--akdd-text-muted)]">
-                  <th className="px-3 py-2.5">ID</th>
-                  <th className="px-3 py-2.5">Source → Cible</th>
-                  <th className="px-3 py-2.5">Nature</th>
-                  <th className="px-3 py-2.5">Justification & Équation</th>
-                  <th className="px-3 py-2.5">Ref.</th>
-                  <th className="px-3 py-2.5 w-[210px]">Statut Validation</th>
+                <tr className="border-b border-[var(--akdd-border-subtle)] bg-[var(--akdd-bg-subtle)] text-[11px] font-semibold uppercase tracking-[0.08em] text-[#71717A]">
+                  <th className="px-4 py-3 w-[95px]">ID</th>
+                  <th className="px-4 py-3">Source → Cible</th>
+                  <th className="px-4 py-3">Nature</th>
+                  <th className="px-4 py-3">Justification &amp; Équation</th>
+                  <th className="px-4 py-3">Ref.</th>
+                  <th className="px-4 py-3 w-[210px]">Statut Validation</th>
                 </tr>
               </thead>
               <tbody className="divide-y divide-[var(--akdd-border-subtle)]">
                 {filteredRelations.slice((page - 1) * PAGE_SIZE, page * PAGE_SIZE).map((r) => (
-                  <tr key={r.id} className="hover:bg-[var(--akdd-slate-50)]">
-                    <td className="px-3 py-2 font-mono text-[var(--akdd-text-muted)] whitespace-nowrap">
+                  <tr key={r.id} className="hover:bg-[var(--akdd-bg-subtle)] transition-colors">
+                    <td className="px-4 py-3.5 font-mono tabular-nums text-[var(--akdd-text-muted)] whitespace-nowrap">
                       {r.id}
                     </td>
-                    <td className="px-3 py-2 whitespace-nowrap">
+                    <td className="px-4 py-3.5 font-mono tabular-nums whitespace-nowrap">
                       <Link
                         to={`/explore/${encodeURIComponent(r.sourceId)}`}
-                        className="font-mono font-bold text-[var(--akdd-navy-800)] hover:underline"
+                        className="font-semibold text-[var(--akdd-ink)] hover:underline"
                       >
                         {r.sourceId}
                       </Link>{' '}
-                      →{' '}
+                      <span className="text-[var(--akdd-text-muted)]">→</span>{' '}
                       <Link
                         to={`/explore/${encodeURIComponent(r.targetId)}`}
-                        className="font-mono font-bold text-[var(--akdd-navy-800)] hover:underline"
+                        className="font-semibold text-[var(--akdd-ink)] hover:underline"
                       >
                         {r.targetId}
                       </Link>
                     </td>
-                    <td className="px-3 py-2 text-[var(--akdd-text-primary)]">{r.nature}</td>
-                    <td className="px-3 py-2 max-w-md text-[var(--akdd-text-secondary)]">
+                    <td className="px-4 py-3.5 text-[var(--akdd-text-primary)]">{r.nature}</td>
+                    <td className="px-4 py-3.5 max-w-md text-[var(--akdd-text-secondary)]">
                       <p className="line-clamp-2">{r.justification}</p>
                       {r.equation && (
                         <code className="font-mono text-[10px] text-[var(--akdd-navy-700)]">
@@ -420,8 +420,8 @@ export function RepositoriesPage() {
                         </code>
                       )}
                     </td>
-                    <td className="px-3 py-2 font-mono text-[11px]">{r.sourceRef || '—'}</td>
-                    <td className="px-3 py-2">
+                    <td className="px-4 py-3.5 font-mono text-[11px]">{r.sourceRef || '—'}</td>
+                    <td className="px-4 py-3.5">
                       <select
                         value={r.validationStatus}
                         onChange={(e) =>
@@ -486,30 +486,30 @@ export function RepositoriesPage() {
           <div className="overflow-x-auto">
             <table className="w-full border-collapse text-left text-xs">
               <thead>
-                <tr className="border-b border-[var(--akdd-border-subtle)] bg-[var(--akdd-bg-canvas)] text-[11px] font-semibold uppercase text-[var(--akdd-text-muted)]">
-                  <th className="px-3 py-2.5">ID</th>
-                  <th className="px-3 py-2.5">Source → Cible</th>
-                  <th className="px-3 py-2.5">Portée</th>
-                  <th className="px-3 py-2.5">Maturité</th>
-                  <th className="px-3 py-2.5">Justification</th>
-                  <th className="px-3 py-2.5">Notes / Revue</th>
+                <tr className="border-b border-[var(--akdd-border-subtle)] bg-[var(--akdd-bg-subtle)] text-[11px] font-semibold uppercase tracking-[0.08em] text-[#71717A]">
+                  <th className="px-4 py-3 w-[95px]">ID</th>
+                  <th className="px-4 py-3">Source → Cible</th>
+                  <th className="px-4 py-3">Portée</th>
+                  <th className="px-4 py-3">Maturité</th>
+                  <th className="px-4 py-3">Justification</th>
+                  <th className="px-4 py-3">Notes / Revue</th>
                 </tr>
               </thead>
               <tbody className="divide-y divide-[var(--akdd-border-subtle)]">
                 {filteredBib.slice((page - 1) * PAGE_SIZE, page * PAGE_SIZE).map((b, i) => (
-                  <tr key={`${b.id}-${i}`} className="hover:bg-[var(--akdd-slate-50)]">
-                    <td className="px-3 py-2 font-mono text-[var(--akdd-text-muted)] whitespace-nowrap">
+                  <tr key={`${b.id}-${i}`} className="hover:bg-[var(--akdd-bg-subtle)] transition-colors">
+                    <td className="px-4 py-3.5 font-mono tabular-nums text-[var(--akdd-text-muted)] whitespace-nowrap">
                       {b.id}
                     </td>
-                    <td className="px-3 py-2 whitespace-nowrap font-mono font-semibold text-[var(--akdd-navy-800)]">
+                    <td className="px-4 py-3.5 whitespace-nowrap font-mono font-semibold tabular-nums text-[var(--akdd-ink)]">
                       {b.sourceId} → {b.targetId}
                     </td>
-                    <td className="px-3 py-2 whitespace-nowrap">
+                    <td className="px-4 py-3.5 whitespace-nowrap">
                       <Badge className="bg-[var(--akdd-bg-subtle)] text-[var(--akdd-navy-800)] border-[var(--akdd-border-default)]">
                         {b.scope || '—'}
                       </Badge>
                     </td>
-                    <td className="px-3 py-2">
+                    <td className="px-4 py-3.5">
                       <Badge
                         className={
                           b.maturity.startsWith('E4')
@@ -520,10 +520,10 @@ export function RepositoriesPage() {
                         {b.maturity || '—'}
                       </Badge>
                     </td>
-                    <td className="px-3 py-2 max-w-md text-[var(--akdd-text-secondary)]">
+                    <td className="px-4 py-3.5 max-w-md text-[var(--akdd-text-secondary)]">
                       <p className="line-clamp-2">{b.justification}</p>
                     </td>
-                    <td className="px-3 py-2 text-[var(--akdd-text-muted)]">
+                    <td className="px-4 py-3.5 text-[var(--akdd-text-muted)]">
                       {b.notes || b.reviewAction || '—'}
                     </td>
                   </tr>
@@ -557,24 +557,24 @@ export function RepositoriesPage() {
           <div className="overflow-x-auto">
             <table className="w-full border-collapse text-left text-xs">
               <thead>
-                <tr className="border-b border-[var(--akdd-border-subtle)] bg-[var(--akdd-bg-canvas)] text-[11px] font-semibold uppercase text-[var(--akdd-text-muted)]">
-                  <th className="px-3 py-2.5 w-[90px]">ID</th>
-                  <th className="px-3 py-2.5 w-[150px]">Organisme</th>
-                  <th className="px-3 py-2.5 min-w-[220px]">Titre & Lien</th>
-                  <th className="px-3 py-2.5 min-w-[240px]">Domaines d’appui</th>
-                  <th className="px-3 py-2.5 min-w-[220px]">Portée / Limites</th>
+                <tr className="border-b border-[var(--akdd-border-subtle)] bg-[var(--akdd-bg-subtle)] text-[11px] font-semibold uppercase tracking-[0.08em] text-[#71717A]">
+                  <th className="px-4 py-3 w-[95px]">ID</th>
+                  <th className="px-4 py-3 w-[150px]">Organisme</th>
+                  <th className="px-4 py-3 min-w-[220px]">Titre &amp; Lien</th>
+                  <th className="px-4 py-3 min-w-[240px]">Domaines d’appui</th>
+                  <th className="px-4 py-3 min-w-[220px]">Portée / Limites</th>
                 </tr>
               </thead>
               <tbody className="divide-y divide-[var(--akdd-border-subtle)]">
                 {filteredSources.map((s) => (
-                  <tr key={s.id} className="align-top hover:bg-[var(--akdd-slate-50)]">
-                    <td className="px-3 py-3 font-mono font-bold text-[var(--akdd-navy-800)]">
+                  <tr key={s.id} className="align-top hover:bg-[var(--akdd-bg-subtle)] transition-colors">
+                    <td className="px-4 py-3.5 font-mono font-semibold tabular-nums text-[var(--akdd-ink)]">
                       {s.id}
                     </td>
-                    <td className="px-3 py-3 font-medium text-[var(--akdd-text-primary)]">
+                    <td className="px-4 py-3.5 font-medium text-[var(--akdd-text-primary)]">
                       {s.organization}
                     </td>
-                    <td className="px-3 py-3">
+                    <td className="px-4 py-3.5">
                       {s.url ? (
                         <a
                           href={s.url}
@@ -591,10 +591,10 @@ export function RepositoriesPage() {
                         </span>
                       )}
                     </td>
-                    <td className="px-3 py-3 leading-relaxed text-[var(--akdd-text-secondary)]">
+                    <td className="px-4 py-3.5 leading-relaxed text-[var(--akdd-text-secondary)]">
                       {s.domains}
                     </td>
-                    <td className="px-3 py-3 leading-relaxed text-[var(--akdd-text-muted)]">
+                    <td className="px-4 py-3.5 leading-relaxed text-[var(--akdd-text-muted)]">
                       {s.scopeLimits}
                     </td>
                   </tr>
@@ -734,14 +734,14 @@ export function RepositoriesPage() {
             <div className="overflow-x-auto">
               <table className="w-full border-collapse text-left text-xs">
                 <thead>
-                  <tr className="border-b border-[var(--akdd-border-subtle)] bg-[var(--akdd-bg-canvas)] text-[11px] font-semibold uppercase text-[var(--akdd-text-muted)]">
-                    <th className="px-3 py-2.5">ID Req.</th>
-                    <th className="px-3 py-2.5">Sous-Sys.</th>
-                    <th className="px-3 py-2.5">Exigence</th>
-                    <th className="px-3 py-2.5">Critère</th>
-                    <th className="px-3 py-2.5">KDD Associé</th>
-                    <th className="px-3 py-2.5">Statut</th>
-                    <th className="px-3 py-2.5 w-[44px]" />
+                  <tr className="border-b border-[var(--akdd-border-subtle)] bg-[var(--akdd-bg-subtle)] text-[11px] font-semibold uppercase tracking-[0.08em] text-[#71717A]">
+                    <th className="px-4 py-3">ID Req.</th>
+                    <th className="px-4 py-3">Sous-Sys.</th>
+                    <th className="px-4 py-3">Exigence</th>
+                    <th className="px-4 py-3">Critère</th>
+                    <th className="px-4 py-3">KDD Associé</th>
+                    <th className="px-4 py-3">Statut</th>
+                    <th className="px-4 py-3 w-[44px]" />
                   </tr>
                 </thead>
                 <tbody className="divide-y divide-[var(--akdd-border-subtle)]">
@@ -756,20 +756,20 @@ export function RepositoriesPage() {
                     </tr>
                   ) : (
                     requirements.map((req) => (
-                      <tr key={req.id} className="hover:bg-[var(--akdd-slate-50)]">
-                        <td className="px-3 py-2 font-mono font-bold text-[var(--akdd-navy-800)]">
+                      <tr key={req.id} className="hover:bg-[var(--akdd-bg-subtle)] transition-colors">
+                        <td className="px-4 py-3.5 font-mono font-semibold tabular-nums text-[var(--akdd-ink)]">
                           {req.id}
                         </td>
-                        <td className="px-3 py-2">
+                        <td className="px-4 py-3.5">
                           <SubsystemBadge code={req.subsystemCode} />
                         </td>
-                        <td className="px-3 py-2 font-medium text-[var(--akdd-text-primary)]">
+                        <td className="px-4 py-3.5 font-medium text-[var(--akdd-text-primary)]">
                           {req.text}
                         </td>
-                        <td className="px-3 py-2 font-mono">
+                        <td className="px-4 py-3.5 font-mono tabular-nums">
                           {req.acceptanceCriteria} {req.unit}
                         </td>
-                        <td className="px-3 py-2">
+                        <td className="px-4 py-3.5">
                           {req.kddId ? (
                             <Link
                               to={`/explore/${encodeURIComponent(req.kddId)}`}
@@ -781,7 +781,7 @@ export function RepositoriesPage() {
                             '—'
                           )}
                         </td>
-                        <td className="px-3 py-2">
+                        <td className="px-4 py-3.5">
                           <select
                             value={req.status}
                             onChange={(e) =>
@@ -795,7 +795,7 @@ export function RepositoriesPage() {
                             <option value="Validé">Validé</option>
                           </select>
                         </td>
-                        <td className="px-3 py-2">
+                        <td className="px-4 py-3.5">
                           <button
                             type="button"
                             onClick={() => void deleteRequirement(req.id)}

@@ -205,27 +205,27 @@ export function SubsystemPage() {
     }
 
     const ksdChartData: ChartDatum[] = [
-      { name: 'KDD (K)', value: kCount, color: '#38761d' },
-      { name: 'Sizing (S)', value: sCount, color: '#3d85c6' },
-      { name: 'Design (D)', value: dCount, color: '#789bbe' },
+      { name: 'KDD (K)', value: kCount, color: '#09090B' },
+      { name: 'Sizing (S)', value: sCount, color: '#52525B' },
+      { name: 'Design (D)', value: dCount, color: '#D4D4D8' },
     ]
 
     const familyChartData: ChartDatum[] = famCounts.map((count, i) => ({
       name: `F${i + 1}`,
       value: count,
-      color: '#09090b',
+      color: '#09090B',
     }))
 
     const statutColor = (name: string): string => {
       const u = name.toUpperCase()
-      if (u.startsWith('KDD')) return '#38761d'
-      if (u.startsWith('S -')) return '#3d85c6'
-      if (u.startsWith('D -')) return '#789bbe'
-      if (u.startsWith('EFFET')) return '#e69138'
-      if (u.startsWith('PREST')) return '#bf9000'
-      if (u.startsWith('INPUT')) return '#8c8c8c'
-      if (u.startsWith('CONTRAINT')) return '#cc4125'
-      return '#64748b'
+      if (u.startsWith('KDD')) return '#15803D'
+      if (u.startsWith('S -')) return '#1D4ED8'
+      if (u.startsWith('D -')) return '#52525B'
+      if (u.startsWith('EFFET')) return '#C2410C'
+      if (u.startsWith('PREST')) return '#B45309'
+      if (u.startsWith('INPUT')) return '#D4D4D8'
+      if (u.startsWith('CONTRAINT')) return '#BE123C'
+      return '#71717A'
     }
 
     const statutChartData: ChartDatum[] = Array.from(statutMap.entries())
@@ -323,10 +323,10 @@ export function SubsystemPage() {
                 key={sub.code}
                 type="button"
                 onClick={() => navigate(`/subsystems/${sub.code}`)}
-                className={`rounded-full px-3.5 py-1.5 text-xs font-mono font-medium transition-colors cursor-pointer ${
+                className={`rounded-full border px-3 py-1 font-mono text-[11px] font-medium transition-colors shadow-none cursor-pointer ${
                   isCurrent
-                    ? 'bg-[var(--akdd-navy-800)] text-[var(--akdd-text-inverse)]'
-                    : 'bg-[var(--akdd-slate-100)] text-[var(--akdd-text-secondary)] hover:bg-[var(--akdd-slate-200)]'
+                    ? 'border-[var(--akdd-ink)] bg-[var(--akdd-ink)] text-[var(--akdd-text-inverse)]'
+                    : 'border-[var(--akdd-border-subtle)] bg-[var(--akdd-bg-surface)] text-[var(--akdd-text-secondary)] hover:border-[var(--akdd-ink)] hover:text-[var(--akdd-ink)]'
                 }`}
               >
                 {sub.code}
@@ -436,13 +436,13 @@ export function SubsystemPage() {
                     <div className="overflow-x-auto">
                       <table className="w-full border-collapse text-left text-sm">
                         <thead>
-                          <tr className="border-b border-[var(--akdd-border-subtle)] bg-[var(--akdd-bg-canvas)] text-[11px] font-semibold uppercase tracking-wider text-[var(--akdd-text-muted)]">
-                            <th className="px-4 py-2.5 w-[120px]">ID KDD</th>
-                            <th className="px-4 py-2.5">Nom KDD</th>
-                            <th className="px-4 py-2.5 w-[180px]">Type</th>
-                            <th className="px-4 py-2.5 w-[80px] text-center">Class.</th>
-                            <th className="px-4 py-2.5 w-[120px]">Niveau</th>
-                            <th className="px-4 py-2.5 w-[220px]">Statut KDD (Filtre)</th>
+                          <tr className="border-b border-[var(--akdd-border-subtle)] bg-[var(--akdd-bg-subtle)] text-[11px] font-semibold uppercase tracking-[0.08em] text-[#71717A]">
+                            <th className="px-4 py-3 w-[124px]">ID KDD</th>
+                            <th className="px-4 py-3">Nom KDD</th>
+                            <th className="px-4 py-3 w-[180px]">Type</th>
+                            <th className="px-4 py-3 w-[84px] text-center">Class.</th>
+                            <th className="px-4 py-3 w-[124px]">Niveau</th>
+                            <th className="px-4 py-3 w-[230px]">Statut KDD</th>
                           </tr>
                         </thead>
                         <tbody className="divide-y divide-[var(--akdd-border-subtle)]">
@@ -450,14 +450,14 @@ export function SubsystemPage() {
                             <tr
                               key={kdd.id}
                               onClick={() => setDrawerKdd(kdd)}
-                              className="hover:bg-[var(--akdd-accent-blue-soft)] transition-colors cursor-pointer"
+                              className="hover:bg-[var(--akdd-bg-subtle)] transition-colors cursor-pointer"
                             >
-                              <td className="px-4 py-2.5 font-mono text-xs font-bold text-[var(--akdd-navy-800)] whitespace-nowrap">
+                              <td className="px-4 py-3.5 font-mono text-xs font-semibold tabular-nums text-[var(--akdd-ink)] whitespace-nowrap">
                                 {kdd.id}
                               </td>
-                              <td className="px-4 py-2.5">
+                              <td className="px-4 py-3.5">
                                 <div className="flex flex-col gap-0.5">
-                                  <span className="font-medium text-[var(--akdd-text-primary)]">
+                                  <span className="text-[13px] font-medium text-[var(--akdd-text-primary)]">
                                     {kdd.name}
                                   </span>
                                   <span className="text-xs text-[var(--akdd-text-muted)] line-clamp-1">
@@ -465,16 +465,16 @@ export function SubsystemPage() {
                                   </span>
                                 </div>
                               </td>
-                              <td className="px-4 py-2.5 text-xs text-[var(--akdd-text-secondary)]">
+                              <td className="px-4 py-3.5 text-xs text-[var(--akdd-text-secondary)]">
                                 {kdd.type}
                               </td>
-                              <td className="px-4 py-2.5 text-center">
+                              <td className="px-4 py-3.5 text-center">
                                 <KsdBadge value={kdd.classification} />
                               </td>
-                              <td className="px-4 py-2.5 text-xs text-[var(--akdd-text-secondary)] whitespace-nowrap">
+                              <td className="px-4 py-3.5 font-mono text-xs text-[var(--akdd-text-secondary)] whitespace-nowrap">
                                 {kdd.level}
                               </td>
-                              <td className="px-4 py-2.5">
+                              <td className="px-4 py-3.5">
                                 <StatutBadge statut={kdd.statutKdd} />
                               </td>
                             </tr>
@@ -763,22 +763,22 @@ export function SubsystemPage() {
               <div className="overflow-x-auto">
                 <table className="w-full border-collapse text-left text-xs">
                   <thead>
-                    <tr className="border-b border-[var(--akdd-border-subtle)] bg-[var(--akdd-bg-canvas)] text-[11px] font-semibold uppercase tracking-wider text-[var(--akdd-text-muted)]">
-                      <th className="px-3 py-2.5 w-[130px]">ID TRACA</th>
-                      <th className="px-3 py-2.5 min-w-[160px]">Élément / Fonction</th>
-                      <th className="px-3 py-2.5 w-[140px]">ID Requirement</th>
-                      <th className="px-3 py-2.5 min-w-[210px]">ID KDD Associé</th>
-                      <th className="px-3 py-2.5 w-[130px]">Vérification</th>
-                      <th className="px-3 py-2.5 w-[140px]">Preuve</th>
-                      <th className="px-3 py-2.5 w-[120px]">Statut</th>
-                      <th className="px-3 py-2.5 w-[120px]">Responsable</th>
-                      <th className="px-3 py-2.5 w-[44px]" />
+                    <tr className="border-b border-[var(--akdd-border-subtle)] bg-[var(--akdd-bg-subtle)] text-[11px] font-semibold uppercase tracking-[0.08em] text-[#71717A]">
+                      <th className="px-4 py-3 w-[136px]">ID TRACA</th>
+                      <th className="px-4 py-3 min-w-[160px]">Élément / Fonction</th>
+                      <th className="px-4 py-3 w-[140px]">ID Requirement</th>
+                      <th className="px-4 py-3 min-w-[210px]">ID KDD Associé</th>
+                      <th className="px-4 py-3 w-[130px]">Vérification</th>
+                      <th className="px-4 py-3 w-[140px]">Preuve</th>
+                      <th className="px-4 py-3 w-[120px]">Statut</th>
+                      <th className="px-4 py-3 w-[120px]">Responsable</th>
+                      <th className="px-4 py-3 w-[44px]" />
                     </tr>
                   </thead>
                   <tbody className="divide-y divide-[var(--akdd-border-subtle)]">
                     {subsystemTraca.map((row) => (
-                      <tr key={row.id} className="hover:bg-[var(--akdd-slate-50)]">
-                        <td className="px-3 py-2 font-mono font-bold text-[var(--akdd-navy-800)] whitespace-nowrap">
+                      <tr key={row.id} className="hover:bg-[var(--akdd-bg-subtle)]">
+                        <td className="px-4 py-3 font-mono font-semibold tabular-nums text-[var(--akdd-ink)] whitespace-nowrap">
                           {row.id}
                         </td>
                         <td className="px-3 py-2">

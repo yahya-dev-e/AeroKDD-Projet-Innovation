@@ -12,6 +12,7 @@ export function AppShell() {
   const [sidebarCollapsed, setSidebarCollapsed] = useState(false)
   const [paletteOpen, setPaletteOpen] = useState(false)
   const isOverview = location.pathname === '/'
+  const isNetwork = location.pathname.startsWith('/network')
 
   useEffect(() => {
     void initialize()
@@ -53,8 +54,12 @@ export function AppShell() {
         />
 
         <main
-          className={`flex-1 overflow-y-auto bg-[var(--akdd-bg-canvas)] ${
-            isOverview ? 'p-0' : 'px-6 py-7 lg:px-8 lg:py-8'
+          className={`flex-1 bg-[var(--akdd-bg-canvas)] ${
+            isNetwork
+              ? 'overflow-hidden p-0'
+              : isOverview
+                ? 'overflow-y-auto p-0'
+                : 'overflow-y-auto px-6 py-7 lg:px-8 lg:py-8'
           }`}
         >
           {error ? (

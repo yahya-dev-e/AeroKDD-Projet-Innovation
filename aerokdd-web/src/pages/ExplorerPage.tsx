@@ -303,13 +303,13 @@ export function ExplorerPage() {
           <div className="overflow-x-auto rounded-[var(--akdd-radius-md)] border border-[var(--akdd-border-subtle)]">
             <table className="w-full border-collapse text-left text-xs">
               <thead>
-                <tr className="border-b border-[var(--akdd-border-subtle)] bg-[var(--akdd-bg-canvas)] text-[11px] font-semibold uppercase tracking-wider text-[var(--akdd-text-muted)]">
-                  <th className="px-3 py-2.5 w-[105px]">Sens</th>
-                  <th className="px-3 py-2.5 w-[90px]">ID Rel.</th>
-                  <th className="px-3 py-2.5 min-w-[200px]">Paramètre lié</th>
-                  <th className="px-3 py-2.5 min-w-[160px]">Nature & Rôle</th>
-                  <th className="px-3 py-2.5 min-w-[260px]">Justification Physique</th>
-                  <th className="px-3 py-2.5 w-[150px]">Sources NASA</th>
+                <tr className="border-b border-[var(--akdd-border-subtle)] bg-[var(--akdd-bg-subtle)] text-[11px] font-semibold uppercase tracking-[0.08em] text-[#71717A]">
+                  <th className="px-4 py-3 w-[110px]">Sens</th>
+                  <th className="px-4 py-3 w-[95px]">ID Rel.</th>
+                  <th className="px-4 py-3 min-w-[200px]">Paramètre lié</th>
+                  <th className="px-4 py-3 min-w-[165px]">Nature &amp; Rôle</th>
+                  <th className="px-4 py-3 min-w-[260px]">Justification Physique</th>
+                  <th className="px-4 py-3 w-[155px]">Sources NASA</th>
                 </tr>
               </thead>
               <tbody className="divide-y divide-[var(--akdd-border-subtle)]">
@@ -329,9 +329,9 @@ export function ExplorerPage() {
                     return (
                       <tr
                         key={`${item.relation.id}-${item.direction}`}
-                        className="hover:bg-[var(--akdd-slate-50)]"
+                        className="hover:bg-[var(--akdd-bg-subtle)] transition-colors"
                       >
-                        <td className="px-3 py-2.5 whitespace-nowrap">
+                        <td className="px-4 py-3.5 whitespace-nowrap">
                           <Badge
                             className={
                               isOut
@@ -342,10 +342,10 @@ export function ExplorerPage() {
                             {item.arrow} {item.direction}
                           </Badge>
                         </td>
-                        <td className="px-3 py-2.5 font-mono text-[var(--akdd-text-muted)] whitespace-nowrap">
+                        <td className="px-4 py-3.5 font-mono tabular-nums text-[var(--akdd-text-muted)] whitespace-nowrap">
                           {item.relation.id}
                         </td>
-                        <td className="px-3 py-2.5">
+                        <td className="px-4 py-3.5">
                           <button
                             type="button"
                             onClick={() => handleSelectKdd(peerId)}
@@ -357,7 +357,7 @@ export function ExplorerPage() {
                             <span className="text-[var(--akdd-text-primary)]">{peerName}</span>
                           </button>
                         </td>
-                        <td className="px-3 py-2.5">
+                        <td className="px-4 py-3.5">
                           <div className="flex flex-col gap-1">
                             <span className="font-medium text-[var(--akdd-text-primary)]">
                               {item.relation.nature}
@@ -370,7 +370,7 @@ export function ExplorerPage() {
                             </span>
                           </div>
                         </td>
-                        <td className="px-3 py-2.5">
+                        <td className="px-4 py-3.5">
                           <div className="flex flex-col gap-1">
                             <span className="leading-relaxed text-[var(--akdd-text-secondary)]">
                               {item.relation.justification || '—'}
@@ -382,7 +382,7 @@ export function ExplorerPage() {
                             )}
                           </div>
                         </td>
-                        <td className="px-3 py-2.5">
+                        <td className="px-4 py-3.5">
                           {refs.length > 0 ? (
                             <div className="flex flex-wrap gap-1">
                               {refs.map((ref) =>

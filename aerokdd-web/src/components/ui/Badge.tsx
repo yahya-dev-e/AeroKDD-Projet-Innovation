@@ -10,7 +10,7 @@ export interface BadgeProps {
 export function Badge({ children, className = '' }: BadgeProps) {
   return (
     <span
-      className={`inline-flex items-center gap-1.5 rounded-[var(--akdd-radius-xs)] px-1.5 py-0.5 font-mono text-[10px] font-medium uppercase leading-tight tracking-[0.04em] whitespace-nowrap border shadow-none ${className}`}
+      className={`inline-flex items-center gap-1.5 rounded-[var(--akdd-radius-xs)] px-1.5 py-0.5 font-mono text-[10px] font-semibold uppercase leading-none tracking-[0.04em] whitespace-nowrap border shadow-none ${className}`}
     >
       {children}
     </span>
@@ -46,7 +46,7 @@ export function getStatutStyleClasses(statut: StatutKdd | string): string {
 export function StatutBadge({ statut }: { statut: StatutKdd | string }) {
   return (
     <Badge className={getStatutStyleClasses(statut)}>
-      <span className="h-1.5 w-1.5 shrink-0 bg-current" aria-hidden="true" />
+      <span className="h-[5px] w-[5px] shrink-0 bg-current" aria-hidden="true" />
       <span>{statut || 'Non classé'}</span>
     </Badge>
   )
@@ -92,7 +92,7 @@ export function CentralityBadge({ level, label }: { level: CentralityLevel; labe
 
   return (
     <Badge className={classes}>
-      <span className="h-1.5 w-1.5 shrink-0 bg-current" aria-hidden="true" />
+      <span className="h-[5px] w-[5px] shrink-0 bg-current" aria-hidden="true" />
       <span>{label ?? level}</span>
     </Badge>
   )
