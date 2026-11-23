@@ -193,7 +193,7 @@ export function RepositoriesPage() {
     if (totalPages <= 1) return null
     return (
       <div className="flex items-center justify-between border-t border-[var(--akdd-border-subtle)] px-4 py-2.5 text-xs text-[var(--akdd-text-secondary)]">
-        <span className="font-mono">
+        <span className="font-mono tabular-nums">
           Page {page} / {totalPages} ({total} lignes)
         </span>
         <div className="flex items-center gap-1.5">
@@ -222,7 +222,7 @@ export function RepositoriesPage() {
     <div className="mx-auto flex max-w-7xl flex-col gap-7">
       <div className="flex flex-wrap items-center justify-between gap-4 rounded-[var(--akdd-radius-lg)] bg-[var(--akdd-bg-surface)] border border-[var(--akdd-border-subtle)] p-6 shadow-none">
         <div className="flex flex-col gap-1">
-          <h1 className="text-xl font-bold text-[var(--akdd-text-primary)]">
+          <h1 className="font-display text-2xl font-semibold leading-[1.05] tracking-[-0.02em] text-[var(--akdd-text-primary)]">
             Référentiels Centraux & Instanciation Projet
           </h1>
           <p className="text-xs text-[var(--akdd-text-secondary)]">
@@ -304,7 +304,7 @@ export function RepositoriesPage() {
           <div className="overflow-x-auto">
             <table className="w-full border-collapse text-left text-xs">
               <thead>
-                <tr className="border-b border-[var(--akdd-border-subtle)] bg-[var(--akdd-bg-subtle)] text-[11px] font-semibold uppercase tracking-[0.08em] text-[#71717A]">
+                <tr className="border-b border-[var(--akdd-border-subtle)] bg-[var(--akdd-bg-subtle)] font-mono text-[11px] font-medium uppercase tracking-[0.08em] text-[#71717A]">
                   <th className="px-4 py-3 w-[124px]">ID</th>
                   <th className="px-4 py-3 w-[115px]">Sous-Sys.</th>
                   <th className="px-4 py-3">Nom KDD</th>
@@ -316,7 +316,7 @@ export function RepositoriesPage() {
               <tbody className="divide-y divide-[var(--akdd-border-subtle)]">
                 {filteredKdds.slice((page - 1) * PAGE_SIZE, page * PAGE_SIZE).map((k) => (
                   <tr key={k.id} className="hover:bg-[var(--akdd-bg-subtle)] transition-colors">
-                    <td className="px-4 py-3.5 font-mono font-semibold tabular-nums whitespace-nowrap">
+                    <td className="px-4 py-3.5 font-mono font-medium tabular-nums whitespace-nowrap">
                       <Link
                         to={`/explore/${encodeURIComponent(k.id)}`}
                         className="text-[var(--akdd-ink)] hover:underline"
@@ -381,7 +381,7 @@ export function RepositoriesPage() {
           <div className="overflow-x-auto">
             <table className="w-full border-collapse text-left text-xs">
               <thead>
-                <tr className="border-b border-[var(--akdd-border-subtle)] bg-[var(--akdd-bg-subtle)] text-[11px] font-semibold uppercase tracking-[0.08em] text-[#71717A]">
+                <tr className="border-b border-[var(--akdd-border-subtle)] bg-[var(--akdd-bg-subtle)] font-mono text-[11px] font-medium uppercase tracking-[0.08em] text-[#71717A]">
                   <th className="px-4 py-3 w-[95px]">ID</th>
                   <th className="px-4 py-3">Source → Cible</th>
                   <th className="px-4 py-3">Nature</th>
@@ -399,14 +399,14 @@ export function RepositoriesPage() {
                     <td className="px-4 py-3.5 font-mono tabular-nums whitespace-nowrap">
                       <Link
                         to={`/explore/${encodeURIComponent(r.sourceId)}`}
-                        className="font-semibold text-[var(--akdd-ink)] hover:underline"
+                        className="font-medium text-[var(--akdd-ink)] hover:underline"
                       >
                         {r.sourceId}
                       </Link>{' '}
                       <span className="text-[var(--akdd-text-muted)]">→</span>{' '}
                       <Link
                         to={`/explore/${encodeURIComponent(r.targetId)}`}
-                        className="font-semibold text-[var(--akdd-ink)] hover:underline"
+                        className="font-medium text-[var(--akdd-ink)] hover:underline"
                       >
                         {r.targetId}
                       </Link>
@@ -461,7 +461,7 @@ export function RepositoriesPage() {
                     key={mat}
                     type="button"
                     onClick={() => setMaturityFilter(mat)}
-                    className={`rounded-full px-2.5 py-1 text-xs font-mono font-semibold border cursor-pointer ${
+                    className={`rounded-full px-2.5 py-1 text-xs font-mono font-medium border cursor-pointer ${
                       maturityFilter === mat
                         ? 'bg-[var(--akdd-navy-700)] text-[var(--akdd-text-inverse)] border-[var(--akdd-navy-700)]'
                         : 'bg-[var(--akdd-bg-canvas)] text-[var(--akdd-text-secondary)] border-[var(--akdd-border-subtle)]'
@@ -486,7 +486,7 @@ export function RepositoriesPage() {
           <div className="overflow-x-auto">
             <table className="w-full border-collapse text-left text-xs">
               <thead>
-                <tr className="border-b border-[var(--akdd-border-subtle)] bg-[var(--akdd-bg-subtle)] text-[11px] font-semibold uppercase tracking-[0.08em] text-[#71717A]">
+                <tr className="border-b border-[var(--akdd-border-subtle)] bg-[var(--akdd-bg-subtle)] font-mono text-[11px] font-medium uppercase tracking-[0.08em] text-[#71717A]">
                   <th className="px-4 py-3 w-[95px]">ID</th>
                   <th className="px-4 py-3">Source → Cible</th>
                   <th className="px-4 py-3">Portée</th>
@@ -501,7 +501,7 @@ export function RepositoriesPage() {
                     <td className="px-4 py-3.5 font-mono tabular-nums text-[var(--akdd-text-muted)] whitespace-nowrap">
                       {b.id}
                     </td>
-                    <td className="px-4 py-3.5 whitespace-nowrap font-mono font-semibold tabular-nums text-[var(--akdd-ink)]">
+                    <td className="px-4 py-3.5 whitespace-nowrap font-mono font-medium tabular-nums text-[var(--akdd-ink)]">
                       {b.sourceId} → {b.targetId}
                     </td>
                     <td className="px-4 py-3.5 whitespace-nowrap">
@@ -557,7 +557,7 @@ export function RepositoriesPage() {
           <div className="overflow-x-auto">
             <table className="w-full border-collapse text-left text-xs">
               <thead>
-                <tr className="border-b border-[var(--akdd-border-subtle)] bg-[var(--akdd-bg-subtle)] text-[11px] font-semibold uppercase tracking-[0.08em] text-[#71717A]">
+                <tr className="border-b border-[var(--akdd-border-subtle)] bg-[var(--akdd-bg-subtle)] font-mono text-[11px] font-medium uppercase tracking-[0.08em] text-[#71717A]">
                   <th className="px-4 py-3 w-[95px]">ID</th>
                   <th className="px-4 py-3 w-[150px]">Organisme</th>
                   <th className="px-4 py-3 min-w-[220px]">Titre &amp; Lien</th>
@@ -568,7 +568,7 @@ export function RepositoriesPage() {
               <tbody className="divide-y divide-[var(--akdd-border-subtle)]">
                 {filteredSources.map((s) => (
                   <tr key={s.id} className="align-top hover:bg-[var(--akdd-bg-subtle)] transition-colors">
-                    <td className="px-4 py-3.5 font-mono font-semibold tabular-nums text-[var(--akdd-ink)]">
+                    <td className="px-4 py-3.5 font-mono font-medium tabular-nums text-[var(--akdd-ink)]">
                       {s.id}
                     </td>
                     <td className="px-4 py-3.5 font-medium text-[var(--akdd-text-primary)]">
@@ -580,13 +580,13 @@ export function RepositoriesPage() {
                           href={s.url}
                           target="_blank"
                           rel="noreferrer"
-                          className="inline-flex items-start gap-1.5 font-semibold text-[var(--akdd-accent-blue)] hover:underline"
+                          className="inline-flex items-start gap-1.5 font-medium text-[var(--akdd-ink)] hover:underline"
                         >
                           <span>{s.title}</span>
                           <ExternalLink className="h-3.5 w-3.5 shrink-0 mt-0.5" />
                         </a>
                       ) : (
-                        <span className="font-semibold text-[var(--akdd-text-primary)]">
+                        <span className="font-medium text-[var(--akdd-text-primary)]">
                           {s.title}
                         </span>
                       )}
@@ -613,7 +613,7 @@ export function RepositoriesPage() {
               title="Instanciation Programme — Ajouter une Exigence (Requirements)"
               subtitle="Les identifiants REQ-xxx sont générés automatiquement et alimentent les compteurs TDB-*"
               action={
-                <span className="rounded bg-[var(--akdd-navy-900)] px-2.5 py-1 font-mono text-xs font-bold text-[var(--akdd-text-inverse)]">
+                <span className="rounded-[var(--akdd-radius-xs)] bg-[var(--akdd-ink)] px-2.5 py-1 font-mono text-xs font-medium tabular-nums text-[var(--akdd-text-inverse)]">
                   Prochain ID : {getNextRequirementId()}
                 </span>
               }
@@ -624,7 +624,7 @@ export function RepositoriesPage() {
                 className="grid grid-cols-1 gap-3 md:grid-cols-4"
               >
                 <div className="flex flex-col gap-1">
-                  <label className="text-[11px] font-semibold text-[var(--akdd-text-secondary)]">
+                  <label className="text-xs font-medium text-[var(--akdd-text-secondary)]">
                     Sous-système
                   </label>
                   <select
@@ -644,7 +644,7 @@ export function RepositoriesPage() {
                 </div>
 
                 <div className="flex flex-col gap-1 md:col-span-2">
-                  <label className="text-[11px] font-semibold text-[var(--akdd-text-secondary)]">
+                  <label className="text-xs font-medium text-[var(--akdd-text-secondary)]">
                     ID KDD associé (met à jour TDB-{reqSub})
                   </label>
                   <select
@@ -662,7 +662,7 @@ export function RepositoriesPage() {
                 </div>
 
                 <div className="flex flex-col gap-1">
-                  <label className="text-[11px] font-semibold text-[var(--akdd-text-secondary)]">
+                  <label className="text-xs font-medium text-[var(--akdd-text-secondary)]">
                     Méthode de vérification
                   </label>
                   <select
@@ -678,7 +678,7 @@ export function RepositoriesPage() {
                 </div>
 
                 <div className="flex flex-col gap-1 md:col-span-2">
-                  <label className="text-[11px] font-semibold text-[var(--akdd-text-secondary)]">
+                  <label className="text-xs font-medium text-[var(--akdd-text-secondary)]">
                     Texte de l’exigence *
                   </label>
                   <input
@@ -692,7 +692,7 @@ export function RepositoriesPage() {
                 </div>
 
                 <div className="flex flex-col gap-1">
-                  <label className="text-[11px] font-semibold text-[var(--akdd-text-secondary)]">
+                  <label className="text-xs font-medium text-[var(--akdd-text-secondary)]">
                     Critère d’acceptation & Unité
                   </label>
                   <div className="flex gap-1.5">
@@ -734,7 +734,7 @@ export function RepositoriesPage() {
             <div className="overflow-x-auto">
               <table className="w-full border-collapse text-left text-xs">
                 <thead>
-                  <tr className="border-b border-[var(--akdd-border-subtle)] bg-[var(--akdd-bg-subtle)] text-[11px] font-semibold uppercase tracking-[0.08em] text-[#71717A]">
+                  <tr className="border-b border-[var(--akdd-border-subtle)] bg-[var(--akdd-bg-subtle)] font-mono text-[11px] font-medium uppercase tracking-[0.08em] text-[#71717A]">
                     <th className="px-4 py-3">ID Req.</th>
                     <th className="px-4 py-3">Sous-Sys.</th>
                     <th className="px-4 py-3">Exigence</th>
@@ -757,7 +757,7 @@ export function RepositoriesPage() {
                   ) : (
                     requirements.map((req) => (
                       <tr key={req.id} className="hover:bg-[var(--akdd-bg-subtle)] transition-colors">
-                        <td className="px-4 py-3.5 font-mono font-semibold tabular-nums text-[var(--akdd-ink)]">
+                        <td className="px-4 py-3.5 font-mono font-medium tabular-nums text-[var(--akdd-ink)]">
                           {req.id}
                         </td>
                         <td className="px-4 py-3.5">
@@ -773,7 +773,7 @@ export function RepositoriesPage() {
                           {req.kddId ? (
                             <Link
                               to={`/explore/${encodeURIComponent(req.kddId)}`}
-                              className="font-mono font-semibold text-[var(--akdd-accent-blue)] hover:underline"
+                              className="font-mono font-medium text-[var(--akdd-ink)] hover:underline"
                             >
                               {req.kddId} · {req.kddName}
                             </Link>

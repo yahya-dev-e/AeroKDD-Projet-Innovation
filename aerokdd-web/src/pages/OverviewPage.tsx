@@ -70,11 +70,11 @@ export function OverviewPage() {
         }}
       >
         <div className="mx-auto flex max-w-4xl flex-col items-center gap-6 text-center">
-          <span className="font-mono text-[11px] font-medium uppercase tracking-[0.14em] text-[var(--akdd-text-muted)]">
+          <span className="font-mono text-[11px] font-medium uppercase tracking-[0.08em] text-[var(--akdd-text-muted)]">
             SPEC · TDB · TRACA · Turbofan System Repository
           </span>
 
-          <h1 className="font-display text-3xl font-bold leading-[1.06] tracking-[-0.035em] text-[var(--akdd-ink)] sm:text-5xl lg:text-[54px]">
+          <h1 className="font-display text-4xl font-bold leading-[1.05] tracking-[-0.02em] text-[var(--akdd-ink)] sm:text-5xl lg:text-[60px]">
             AeroKDD — Propulsion Architecture &amp; Key Design Drivers
           </h1>
 
@@ -107,7 +107,7 @@ export function OverviewPage() {
         <div className="mx-auto flex max-w-7xl flex-col divide-y divide-[var(--akdd-border-subtle)] lg:flex-row lg:items-center lg:justify-between lg:divide-y-0">
           <div className="flex items-center gap-2.5 px-6 py-3.5 lg:px-10">
             <span className="h-1.5 w-1.5 shrink-0 bg-[var(--akdd-ink)]" aria-hidden="true" />
-            <span className="text-xs font-semibold tracking-[-0.01em] text-[var(--akdd-ink)]">
+            <span className="text-xs font-medium text-[var(--akdd-ink)]">
               École Centrale Casablanca × SHERPA Engineering
             </span>
           </div>
@@ -116,9 +116,9 @@ export function OverviewPage() {
             {telemetryCounters.map((item) => (
               <div
                 key={item.label}
-                className="flex items-baseline gap-2 px-5 py-3.5 font-mono text-xs lg:px-6"
+                className="flex items-baseline gap-2 px-5 py-3.5 font-mono text-xs tabular-nums lg:px-6"
               >
-                <span className="font-semibold text-[var(--akdd-ink)]">{item.value}</span>
+                <span className="font-medium text-[var(--akdd-ink)]">{item.value}</span>
                 <span className="text-[11px] text-[var(--akdd-text-muted)]">{item.label}</span>
               </div>
             ))}
@@ -130,15 +130,15 @@ export function OverviewPage() {
       <section className="mx-auto flex w-full max-w-7xl flex-col gap-5 px-6 py-10 lg:px-10 lg:py-12">
         <div className="flex flex-wrap items-end justify-between gap-4">
           <div className="flex flex-col gap-1">
-            <span className="font-mono text-[10.5px] font-medium uppercase tracking-[0.12em] text-[var(--akdd-text-muted)]">
+            <span className="font-mono text-[11px] font-medium uppercase tracking-[0.08em] text-[var(--akdd-text-muted)]">
               Index / Architecture Propulsive
             </span>
-            <h2 className="font-display text-lg font-bold tracking-[-0.03em] text-[var(--akdd-ink)]">
+            <h2 className="text-base font-semibold text-[var(--akdd-ink)]">
               10 Turbofan Subsystems
             </h2>
           </div>
 
-          <div className="flex flex-wrap items-center gap-4 font-mono text-[11px] text-[var(--akdd-text-muted)]">
+          <div className="flex flex-wrap items-center gap-4 font-mono text-[11px] tabular-nums text-[var(--akdd-text-muted)]">
             <span>
               {summary.kCount} KDD · {summary.sCount} S · {summary.dCount} D · {summary.prestCount}{' '}
               PREST.
@@ -164,13 +164,13 @@ export function OverviewPage() {
               >
                 <div className="flex flex-col gap-2.5">
                   <div className="flex items-center justify-between gap-2">
-                    <span className="font-mono text-[11px] font-semibold uppercase tracking-[0.06em] text-[var(--akdd-ink)]">
+                    <span className="font-mono text-[11px] font-medium uppercase tracking-[0.08em] tabular-nums text-[var(--akdd-ink)]">
                       {indexCode}
                     </span>
                     <ArrowUpRight className="h-3.5 w-3.5 shrink-0 text-[var(--akdd-slate-400)] transition-transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5 group-hover:text-[var(--akdd-ink)]" />
                   </div>
 
-                  <h3 className="font-display text-sm font-bold tracking-[-0.02em] text-[var(--akdd-ink)]">
+                  <h3 className="text-sm font-medium text-[var(--akdd-ink)]">
                     {sub.frenchName}
                   </h3>
                   <p className="text-xs leading-relaxed text-[var(--akdd-text-muted)]">
@@ -178,11 +178,11 @@ export function OverviewPage() {
                   </p>
                 </div>
 
-                <div className="flex items-center justify-between gap-2 border-t border-[var(--akdd-border-subtle)] pt-3 font-mono text-[11px]">
-                  <span className="font-semibold text-[var(--akdd-ink)]">
+                <div className="flex items-center justify-between gap-2 border-t border-[var(--akdd-border-subtle)] pt-3 font-mono text-[11px] tabular-nums">
+                  <span className="font-medium text-[var(--akdd-ink)]">
                     {stats?.total ?? 0} KDDs
                   </span>
-                  <span className="text-[10px] text-[var(--akdd-text-muted)]">
+                  <span className="text-[11px] text-[var(--akdd-text-muted)]">
                     {stats?.links ?? 0} links
                   </span>
                 </div>

@@ -38,10 +38,10 @@ function EgoKddNode({ data }: NodeProps<Node<EgoNodeData>>) {
         <Handle type="target" position={Position.Left} className="!bg-[var(--akdd-navy-600)]" />
       )}
       <div className="flex items-center justify-between gap-2">
-        <span className="font-mono text-xs font-bold">{data.kddId}</span>
+        <span className="font-mono text-xs font-medium">{data.kddId}</span>
         <span className="text-[10px] opacity-80 truncate">{data.subtitle}</span>
       </div>
-      <div className="text-xs font-semibold leading-snug line-clamp-2">{data.name}</div>
+      <div className="text-xs font-medium leading-snug line-clamp-2">{data.name}</div>
       {data.variant !== 'out' && (
         <Handle type="source" position={Position.Right} className="!bg-[var(--akdd-navy-600)]" />
       )}

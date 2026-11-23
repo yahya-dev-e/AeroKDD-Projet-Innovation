@@ -31,7 +31,7 @@ export function CardHeader({
       className={`flex items-center justify-between gap-3 px-5 py-3.5 border-b border-[var(--akdd-border-subtle)] bg-[var(--akdd-bg-subtle)] ${className}`}
     >
       <div className="flex flex-col gap-0.5 min-w-0">
-        <h2 className="font-display text-sm font-bold tracking-[-0.03em] text-[var(--akdd-text-primary)] truncate">
+        <h2 className="text-sm font-medium text-[var(--akdd-text-primary)] truncate">
           {title}
         </h2>
         {subtitle && <p className="text-xs text-[var(--akdd-text-muted)] truncate">{subtitle}</p>}

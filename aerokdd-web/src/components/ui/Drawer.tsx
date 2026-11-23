@@ -36,7 +36,7 @@ export function Drawer({ open, onClose, title, subtitle, headerExtra, children }
       >
         <div className="flex items-start justify-between gap-4 border-b border-[var(--akdd-border-subtle)] bg-[var(--akdd-bg-subtle)] px-7 py-5">
           <div className="flex flex-col gap-1 min-w-0">
-            <h2 className="font-display text-base font-bold tracking-[-0.03em] text-[var(--akdd-text-primary)]">
+            <h2 className="text-base font-semibold text-[var(--akdd-text-primary)]">
               {title}
             </h2>
             {subtitle && <p className="text-xs text-[var(--akdd-text-muted)]">{subtitle}</p>}

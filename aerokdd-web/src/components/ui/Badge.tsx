@@ -10,7 +10,7 @@ export interface BadgeProps {
 export function Badge({ children, className = '' }: BadgeProps) {
   return (
     <span
-      className={`inline-flex items-center gap-1.5 rounded-[var(--akdd-radius-xs)] px-1.5 py-0.5 font-mono text-[10px] font-semibold uppercase leading-none tracking-[0.04em] whitespace-nowrap border shadow-none ${className}`}
+      className={`inline-flex items-center gap-1.5 rounded-[var(--akdd-radius-xs)] px-1.5 py-0.5 font-mono text-[10.5px] font-medium uppercase leading-none tracking-[0.04em] whitespace-nowrap border shadow-none ${className}`}
     >
       {children}
     </span>
@@ -20,10 +20,10 @@ export function Badge({ children, className = '' }: BadgeProps) {
 export function getStatutStyleClasses(statut: StatutKdd | string): string {
   const s = (statut || '').toUpperCase()
   if (s.startsWith('KDD')) {
-    return 'bg-[var(--akdd-status-kdd-bg)] text-[var(--akdd-status-kdd-text)] border-[var(--akdd-status-kdd-border)] font-semibold'
+    return 'bg-[var(--akdd-status-kdd-bg)] text-[var(--akdd-status-kdd-text)] border-[var(--akdd-status-kdd-border)]'
   }
   if (s.startsWith('S -') || s === 'S') {
-    return 'bg-[var(--akdd-status-s-bg)] text-[var(--akdd-status-s-text)] border-[var(--akdd-status-s-border)] font-semibold'
+    return 'bg-[var(--akdd-status-s-bg)] text-[var(--akdd-status-s-text)] border-[var(--akdd-status-s-border)]'
   }
   if (s.startsWith('D -') || s === 'D') {
     return 'bg-[var(--akdd-status-d-bg)] text-[var(--akdd-status-d-text)] border-[var(--akdd-status-d-border)]'
@@ -56,21 +56,21 @@ export function KsdBadge({ value }: { value: KddClassification | string }) {
   const v = (value || '').toUpperCase()
   if (v === 'K') {
     return (
-      <Badge className="bg-[var(--akdd-status-kdd-bg)] text-[var(--akdd-status-kdd-text)] border-[var(--akdd-status-kdd-border)] font-bold">
+      <Badge className="bg-[var(--akdd-status-kdd-bg)] text-[var(--akdd-status-kdd-text)] border-[var(--akdd-status-kdd-border)]">
         K
       </Badge>
     )
   }
   if (v === 'S') {
     return (
-      <Badge className="bg-[var(--akdd-status-s-bg)] text-[var(--akdd-status-s-text)] border-[var(--akdd-status-s-border)] font-bold">
+      <Badge className="bg-[var(--akdd-status-s-bg)] text-[var(--akdd-status-s-text)] border-[var(--akdd-status-s-border)]">
         S
       </Badge>
     )
   }
   if (v === 'D') {
     return (
-      <Badge className="bg-[var(--akdd-status-d-bg)] text-[var(--akdd-status-d-text)] border-[var(--akdd-status-d-border)] font-semibold">
+      <Badge className="bg-[var(--akdd-status-d-bg)] text-[var(--akdd-status-d-text)] border-[var(--akdd-status-d-border)]">
         D
       </Badge>
     )
@@ -85,9 +85,9 @@ export function KsdBadge({ value }: { value: KddClassification | string }) {
 export function CentralityBadge({ level, label }: { level: CentralityLevel; label?: string }) {
   const classes =
     level === 'CARREFOUR'
-      ? 'bg-[var(--akdd-badge-carrefour-bg)] text-[var(--akdd-badge-carrefour-text)] border-[var(--akdd-badge-carrefour-border)] font-bold'
+      ? 'bg-[var(--akdd-badge-carrefour-bg)] text-[var(--akdd-badge-carrefour-text)] border-[var(--akdd-badge-carrefour-border)]'
       : level === 'FORT'
-        ? 'bg-[var(--akdd-badge-fort-bg)] text-[var(--akdd-badge-fort-text)] border-[var(--akdd-badge-fort-border)] font-semibold'
+        ? 'bg-[var(--akdd-badge-fort-bg)] text-[var(--akdd-badge-fort-text)] border-[var(--akdd-badge-fort-border)]'
         : 'bg-[var(--akdd-badge-cible-bg)] text-[var(--akdd-badge-cible-text)] border-[var(--akdd-badge-cible-border)]'
 
   return (
@@ -101,7 +101,7 @@ export function CentralityBadge({ level, label }: { level: CentralityLevel; labe
 export function SubsystemBadge({ code }: { code: string }) {
   return (
     <Badge
-      className="bg-[var(--akdd-bg-subtle)] text-[var(--akdd-text-primary)] border-[var(--akdd-border-subtle)] font-mono font-semibold uppercase tracking-[0.05em]"
+      className="bg-[var(--akdd-bg-subtle)] text-[var(--akdd-text-primary)] border-[var(--akdd-border-subtle)] font-mono font-medium uppercase tracking-[0.06em]"
     >
       {code}
     </Badge>

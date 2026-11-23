@@ -68,13 +68,13 @@ export function TopDownPage() {
       <Card>
         <CardContent className="flex flex-wrap items-center justify-between gap-4">
           <div className="flex flex-col gap-1">
-            <span className="text-[11px] font-semibold uppercase tracking-wider text-[var(--akdd-text-muted)]">
+            <span className="font-mono text-[11px] font-medium uppercase tracking-[0.08em] text-[var(--akdd-text-muted)]">
               Moteur d’Analyse Top-Down (mod_AnalyseTopDown)
             </span>
             <div className="flex flex-wrap items-center gap-3">
               <label
                 htmlFor="topdown-theme-select"
-                className="text-sm font-semibold text-[var(--akdd-navy-900)]"
+                className="text-sm font-medium text-[var(--akdd-text-primary)]"
               >
                 Objectif / Prestation Cible :
               </label>
@@ -82,7 +82,7 @@ export function TopDownPage() {
                 id="topdown-theme-select"
                 value={selectedTheme}
                 onChange={(e) => setSelectedTheme(e.target.value as TopDownTheme)}
-                className="rounded-[var(--akdd-radius-sm)] border border-[var(--akdd-navy-600)] bg-[var(--akdd-accent-blue-soft)] px-3.5 py-1.5 text-sm font-semibold text-[var(--akdd-navy-900)] focus:outline-none"
+                className="rounded-[var(--akdd-radius-sm)] border border-[var(--akdd-border-subtle)] bg-[var(--akdd-bg-subtle)] px-3.5 py-1.5 text-sm font-medium text-[var(--akdd-text-primary)] focus:border-[var(--akdd-ink)] focus:outline-none"
               >
                 {TOP_DOWN_THEMES.map((theme) => (
                   <option key={theme} value={theme}>
@@ -187,7 +187,7 @@ export function TopDownPage() {
             <div className="overflow-x-auto rounded-[var(--akdd-radius-md)] border border-[var(--akdd-border-subtle)]">
               <table className="w-full border-collapse text-left text-xs">
                 <thead>
-                  <tr className="border-b border-[var(--akdd-border-subtle)] bg-[var(--akdd-bg-subtle)] text-[11px] font-semibold uppercase tracking-[0.08em] text-[#71717A]">
+                  <tr className="border-b border-[var(--akdd-border-subtle)] bg-[var(--akdd-bg-subtle)] font-mono text-[11px] font-medium uppercase tracking-[0.08em] text-[#71717A]">
                     <th className="px-4 py-3 min-w-[175px]">Prestation Cible</th>
                     <th className="px-4 py-3 w-[105px]">Sous-Sys.</th>
                     <th className="px-4 py-3 w-[115px]">ID Levier</th>
@@ -224,7 +224,7 @@ export function TopDownPage() {
                           <button
                             type="button"
                             onClick={() => navigate(`/explore/${encodeURIComponent(row.leverId)}`)}
-                            className="font-mono font-semibold tabular-nums text-[var(--akdd-ink)] hover:underline cursor-pointer"
+                            className="font-mono font-medium tabular-nums text-[var(--akdd-ink)] hover:underline cursor-pointer"
                           >
                             {row.leverId}
                           </button>
@@ -266,7 +266,7 @@ export function TopDownPage() {
                             ) : (
                               row.sideEffects.map((se, i) => (
                                 <span key={se.kddId}>
-                                  <strong className="font-mono text-[var(--akdd-navy-800)]">
+                                  <strong className="font-mono font-medium tabular-nums text-[var(--akdd-ink)]">
                                     {i + 1}) {se.kddId}
                                   </strong>{' '}
                                   — {se.kddName}
@@ -327,7 +327,7 @@ export function TopDownPage() {
               <CardContent className="p-0">
                 <table className="w-full border-collapse text-left text-xs">
                   <thead>
-                    <tr className="border-b border-[var(--akdd-border-subtle)] bg-[var(--akdd-bg-subtle)] text-[11px] font-semibold uppercase tracking-[0.08em] text-[#71717A]">
+                    <tr className="border-b border-[var(--akdd-border-subtle)] bg-[var(--akdd-bg-subtle)] font-mono text-[11px] font-medium uppercase tracking-[0.08em] text-[#71717A]">
                       <th className="px-4 py-2.5">Sous-Système</th>
                       <th className="px-4 py-2.5 text-right">Direct (N1)</th>
                       <th className="px-4 py-2.5 text-right">Indirect (N2)</th>
@@ -336,10 +336,10 @@ export function TopDownPage() {
                   <tbody className="divide-y divide-[var(--akdd-border-subtle)]">
                     {analysis.subsystemSummary.map((item) => (
                       <tr key={item.subsystem} className="hover:bg-[var(--akdd-bg-subtle)]">
-                        <td className="px-4 py-2.5 font-mono font-semibold text-[var(--akdd-ink)]">
+                        <td className="px-4 py-2.5 font-mono font-medium text-[var(--akdd-ink)]">
                           {item.subsystem}
                         </td>
-                        <td className="px-4 py-2.5 text-right font-mono font-semibold tabular-nums text-[var(--akdd-ink)]">
+                        <td className="px-4 py-2.5 text-right font-mono font-medium tabular-nums text-[var(--akdd-ink)]">
                           {item.directCount}
                         </td>
                         <td className="px-4 py-2.5 text-right font-mono tabular-nums text-[var(--akdd-text-muted)]">

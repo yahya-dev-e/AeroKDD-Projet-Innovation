@@ -56,12 +56,12 @@ export function Sidebar({ collapsed, onToggleCollapse, kddCountBySubsystem }: Si
       {/* Brand Header — exact 56px height matching Topbar hairline */}
       <div className="flex h-14 shrink-0 items-center justify-between gap-2 border-b border-[var(--akdd-border-subtle)] px-3.5">
         <div className="flex items-center gap-2.5 min-w-0">
-          <div className="flex h-6 w-6 shrink-0 items-center justify-center rounded-[var(--akdd-radius-xs)] bg-[var(--akdd-ink)] font-mono text-[10px] font-bold tracking-tight text-[var(--akdd-text-inverse)]">
+          <div className="flex h-6 w-6 shrink-0 items-center justify-center rounded-[var(--akdd-radius-xs)] bg-[var(--akdd-ink)] font-mono text-[10px] font-medium tracking-tight text-[var(--akdd-text-inverse)]">
             AK
           </div>
           {!collapsed && (
             <div className="flex items-baseline gap-1.5 min-w-0">
-              <span className="font-display text-sm font-bold uppercase tracking-[-0.03em] text-[var(--akdd-text-primary)] truncate">
+              <span className="font-display text-lg font-semibold uppercase tracking-[-0.02em] leading-[1.05] text-[var(--akdd-text-primary)] truncate">
                 AEROKDD®
               </span>
               <span className="font-mono text-[10px] text-[var(--akdd-text-muted)] truncate">
@@ -85,7 +85,7 @@ export function Sidebar({ collapsed, onToggleCollapse, kddCountBySubsystem }: Si
         {/* Core */}
         <div className="flex flex-col gap-0.5">
           {!collapsed && (
-            <span className="px-3 pb-1.5 font-mono text-[10px] font-medium uppercase tracking-[0.1em] text-[var(--akdd-text-muted)]">
+            <span className="px-3 pb-1.5 font-mono text-[11px] font-medium uppercase tracking-[0.08em] text-[var(--akdd-text-muted)]">
               01 / Navigation
             </span>
           )}
@@ -144,21 +144,21 @@ export function Sidebar({ collapsed, onToggleCollapse, kddCountBySubsystem }: Si
                     key={sub.code}
                     to={`/subsystems/${sub.code}`}
                     className={({ isActive }) =>
-                      `-ml-px flex items-center justify-between gap-2 border-l-2 pl-3 pr-2.5 py-1 text-[11.5px] leading-tight transition-colors ${
+                      `-ml-px flex items-center justify-between gap-2 border-l-2 pl-3 pr-2.5 py-1 text-[11.5px] font-medium leading-tight transition-colors ${
                         isActive
-                          ? 'border-[var(--akdd-ink)] bg-[var(--akdd-slate-100)] font-semibold text-[var(--akdd-text-primary)]'
+                          ? 'border-[var(--akdd-ink)] bg-[var(--akdd-slate-100)] text-[var(--akdd-text-primary)]'
                           : 'border-transparent text-[var(--akdd-text-secondary)] hover:border-[var(--akdd-slate-300)] hover:text-[var(--akdd-text-primary)]'
                       }`
                     }
                   >
                     <span className="truncate">
-                      <span className="font-mono text-[11px] font-semibold">{sub.code}</span>
+                      <span className="font-mono text-[11px] font-medium">{sub.code}</span>
                       <span className="text-[var(--akdd-text-muted)]">
                         {' '}
                         · {SUBSYSTEM_SHORT_NAMES[sub.code] ?? sub.frenchName}
                       </span>
                     </span>
-                    <span className="shrink-0 font-mono text-[10px] text-[var(--akdd-text-muted)]">
+                    <span className="shrink-0 font-mono text-[11px] tabular-nums text-[var(--akdd-text-muted)]">
                       {kddCountBySubsystem[sub.code] ?? 0}
                     </span>
                   </NavLink>
@@ -171,7 +171,7 @@ export function Sidebar({ collapsed, onToggleCollapse, kddCountBySubsystem }: Si
         {/* Analysis Engines */}
         <div className="flex flex-col gap-0.5 border-t border-[var(--akdd-border-subtle)] pt-3">
           {!collapsed && (
-            <span className="px-3 pb-1.5 font-mono text-[10px] font-medium uppercase tracking-[0.1em] text-[var(--akdd-text-muted)]">
+            <span className="px-3 pb-1.5 font-mono text-[11px] font-medium uppercase tracking-[0.08em] text-[var(--akdd-text-muted)]">
               02 / Analyse & Graphes
             </span>
           )}
@@ -192,7 +192,7 @@ export function Sidebar({ collapsed, onToggleCollapse, kddCountBySubsystem }: Si
         {/* Governance & Repositories */}
         <div className="flex flex-col gap-0.5 border-t border-[var(--akdd-border-subtle)] pt-3">
           {!collapsed && (
-            <span className="px-3 pb-1.5 font-mono text-[10px] font-medium uppercase tracking-[0.1em] text-[var(--akdd-text-muted)]">
+            <span className="px-3 pb-1.5 font-mono text-[11px] font-medium uppercase tracking-[0.08em] text-[var(--akdd-text-muted)]">
               03 / Référentiel & Projet
             </span>
           )}
@@ -237,7 +237,7 @@ export function Sidebar({ collapsed, onToggleCollapse, kddCountBySubsystem }: Si
 
       {/* Footer */}
       {!collapsed && (
-        <div className="border-t border-[var(--akdd-border-subtle)] px-4 py-3 font-mono text-[10px] uppercase tracking-[0.06em] text-[var(--akdd-text-muted)]">
+        <div className="border-t border-[var(--akdd-border-subtle)] px-4 py-3 font-mono text-[11px] uppercase tracking-[0.08em] text-[var(--akdd-text-muted)]">
           <div className="flex items-center justify-between">
             <span>ECC × SHERPA</span>
             <span className="text-[var(--akdd-text-primary)]">REV 2.0</span>

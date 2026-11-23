@@ -93,8 +93,8 @@ export function GlobalNetworkCanvas({
             height: AKDD_NODE_H + 2,
             label: 'data(label)',
             'font-size': 8,
-            'font-weight': 700,
-            'font-family': 'JetBrains Mono, monospace',
+            'font-weight': 500,
+            'font-family': 'IBM Plex Mono, monospace',
             'text-valign': 'center',
             'text-halign': 'center',
             'background-color': 'data(fillHex)',
@@ -110,9 +110,9 @@ export function GlobalNetworkCanvas({
             width: 148,
             height: 24,
             label: 'data(label)',
-            'font-size': 11,
-            'font-weight': 700,
-            'font-family': 'Archivo, Inter, sans-serif',
+            'font-size': 10.5,
+            'font-weight': 500,
+            'font-family': 'IBM Plex Mono, monospace',
             'text-valign': 'center',
             'text-halign': 'center',
             'background-color': '#ffffff',
@@ -232,7 +232,7 @@ export function GlobalNetworkCanvas({
       {/* Bottom-Left Floating Legend Card */}
       <div className="pointer-events-auto absolute bottom-4 left-4 z-10 flex max-w-[calc(100%-10rem)] flex-col gap-2 rounded-[var(--akdd-radius-sm)] border border-[#E4E4E7] bg-[#FFFFFF] px-3.5 py-2.5 shadow-none">
         <div className="flex flex-wrap items-center gap-1.5">
-          <span className="mr-1 font-mono text-[10px] font-semibold uppercase tracking-[0.08em] text-[#71717A]">
+          <span className="mr-1 font-mono text-[11px] font-medium uppercase tracking-[0.08em] text-[#71717A]">
             Nœuds
           </span>
           <Badge className="bg-[var(--akdd-status-kdd-bg)] text-[var(--akdd-status-kdd-text)] border-[var(--akdd-status-kdd-border)]">
@@ -255,8 +255,8 @@ export function GlobalNetworkCanvas({
           </Badge>
         </div>
 
-        <div className="flex flex-wrap items-center gap-3 border-t border-[#E4E4E7] pt-1.5 font-mono text-[10px] text-[#52525B]">
-          <span className="font-semibold uppercase tracking-[0.08em] text-[#71717A]">Liens</span>
+        <div className="flex flex-wrap items-center gap-3 border-t border-[#E4E4E7] pt-1.5 font-mono text-[11px] text-[#52525B]">
+          <span className="font-medium uppercase tracking-[0.08em] text-[#71717A]">Liens</span>
           <span className="inline-flex items-center gap-1.5">
             <span className="h-[2px] w-3.5 bg-[var(--akdd-edge-topdown)]" /> Top-Down
           </span>

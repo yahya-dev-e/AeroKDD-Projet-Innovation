@@ -64,7 +64,7 @@ export function AppShell() {
         >
           {error ? (
             <div className="mx-auto my-12 flex max-w-lg flex-col items-center gap-3 rounded-[var(--akdd-radius-lg)] border border-[var(--akdd-status-contrainte-border)] bg-[var(--akdd-status-contrainte-bg)] p-6 text-center shadow-none">
-              <p className="text-sm font-semibold text-[var(--akdd-status-contrainte-text)]">
+              <p className="text-sm font-medium text-[var(--akdd-status-contrainte-text)]">
                 Impossible de charger le référentiel AeroKDD
               </p>
               <p className="text-xs text-[var(--akdd-status-contrainte-text)]">{error}</p>

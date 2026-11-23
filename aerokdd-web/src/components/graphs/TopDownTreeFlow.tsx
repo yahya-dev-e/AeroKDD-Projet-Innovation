@@ -58,7 +58,7 @@ function TopDownTreeNode({ data }: NodeProps<Node<TreeNodeData>>) {
       {data.tier !== 'objective' && (
         <Handle type="target" position={Position.Left} className="!bg-[var(--akdd-navy-700)]" />
       )}
-      <div className="text-xs font-bold leading-tight truncate">{data.title}</div>
+      <div className="text-xs font-medium leading-tight truncate">{data.title}</div>
       <div className="text-[11px] opacity-85 truncate">{data.subtitle}</div>
       {data.tier !== 'lever' && (
         <Handle type="source" position={Position.Right} className="!bg-[var(--akdd-navy-700)]" />

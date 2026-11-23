@@ -29,10 +29,10 @@ export function KpiCard({
     >
       <div className="flex items-start justify-between gap-3">
         <div className="flex flex-col gap-1.5 min-w-0">
-          <span className="font-mono text-[10.5px] font-medium uppercase tracking-[0.08em] text-[var(--akdd-text-muted)]">
+          <span className="font-mono text-[11px] font-medium uppercase tracking-[0.08em] text-[var(--akdd-text-muted)]">
             {label}
           </span>
-          <span className="font-display text-3xl font-bold tracking-[-0.03em] tabular-nums leading-none text-[var(--akdd-text-primary)]">
+          <span className="font-display text-4xl font-semibold tracking-[-0.02em] leading-[1.05] tabular-nums text-[var(--akdd-text-primary)]">
             {value}
           </span>
         </div>

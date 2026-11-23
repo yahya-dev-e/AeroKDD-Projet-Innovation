@@ -100,7 +100,7 @@ export function AdminPage() {
   return (
     <div className="mx-auto flex max-w-6xl flex-col gap-7">
       <div className="flex flex-col gap-1 rounded-[var(--akdd-radius-lg)] bg-[var(--akdd-bg-surface)] border border-[var(--akdd-border-subtle)] p-6 shadow-none">
-        <h1 className="text-xl font-bold text-[var(--akdd-text-primary)]">
+        <h1 className="font-display text-2xl font-semibold leading-[1.05] tracking-[-0.02em] text-[var(--akdd-text-primary)]">
           Administration & Outils de Maintenance
         </h1>
         <p className="text-xs text-[var(--akdd-text-secondary)]">

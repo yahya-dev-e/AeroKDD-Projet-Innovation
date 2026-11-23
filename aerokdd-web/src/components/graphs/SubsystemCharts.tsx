@@ -24,14 +24,14 @@ const TOOLTIP_STYLE = {
   borderRadius: '2px',
   boxShadow: 'none',
   fontSize: '11px',
-  fontFamily: 'JetBrains Mono, monospace',
+  fontFamily: 'IBM Plex Mono, monospace',
   color: '#09090B',
 }
 
 const AXIS_TICK = {
   fontSize: 11,
   fill: '#52525B',
-  fontFamily: 'JetBrains Mono, monospace',
+  fontFamily: 'IBM Plex Mono, monospace',
 }
 
 export function KsdDonutChart({ data }: { data: ChartDatum[] }) {
@@ -57,7 +57,7 @@ export function KsdDonutChart({ data }: { data: ChartDatum[] }) {
           <Legend
             wrapperStyle={{
               fontSize: '11px',
-              fontFamily: 'JetBrains Mono, monospace',
+              fontFamily: 'IBM Plex Mono, monospace',
               color: '#52525B',
             }}
           />
@@ -120,7 +120,7 @@ export function StatutHorizontalBarChart({ data }: { data: ChartDatum[] }) {
             width={185}
             axisLine={{ stroke: '#D4D4D8' }}
             tickLine={false}
-            tick={{ fontSize: 10.5, fill: '#09090B', fontFamily: 'JetBrains Mono, monospace' }}
+            tick={{ fontSize: 10.5, fill: '#09090B', fontFamily: 'IBM Plex Mono, monospace' }}
           />
           <Tooltip contentStyle={TOOLTIP_STYLE} cursor={{ fill: '#FAFAFA' }} />
           <Bar dataKey="value" name="Éléments" radius={[0, 0, 0, 0]} barSize={16}>

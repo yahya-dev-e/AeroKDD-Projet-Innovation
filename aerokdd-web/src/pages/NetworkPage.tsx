@@ -69,16 +69,16 @@ export function NetworkPage() {
           })}
         </div>
 
-        <div className="hidden xl:flex items-center gap-3 font-mono text-[11px] text-[var(--akdd-text-muted)]">
+        <div className="hidden xl:flex items-center gap-3 font-mono text-[11px] tabular-nums text-[var(--akdd-text-muted)]">
           <span>
-            <strong className="font-semibold text-[var(--akdd-ink)]">
+            <strong className="font-medium text-[var(--akdd-ink)]">
               {graph.metrics.nodeCount}
             </strong>{' '}
             NŒUDS
           </span>
           <span>·</span>
           <span>
-            <strong className="font-semibold text-[var(--akdd-ink)]">
+            <strong className="font-medium text-[var(--akdd-ink)]">
               {graph.metrics.drawnRelations}
             </strong>{' '}
             LIENS ({graph.metrics.topDownRelations} TD / {graph.metrics.couplingRelations} CPL /{' '}
@@ -101,7 +101,7 @@ export function NetworkPage() {
           <aside className="flex w-full shrink-0 flex-col border-t border-[var(--akdd-border-subtle)] bg-[var(--akdd-bg-surface)] xl:w-[340px] xl:border-t-0 xl:border-l">
             <div className="flex items-center justify-between gap-2 border-b border-[var(--akdd-border-subtle)] bg-[var(--akdd-bg-subtle)] px-4 py-3">
               <div className="flex items-center gap-2 min-w-0">
-                <span className="font-mono text-xs font-bold text-[var(--akdd-ink)]">
+                <span className="font-mono text-xs font-medium text-[var(--akdd-ink)]">
                   {selectedEgo.selectedKdd.id}
                 </span>
                 <SubsystemBadge code={selectedEgo.selectedKdd.subsystemCode} />
@@ -122,7 +122,7 @@ export function NetworkPage() {
                   <StatutBadge statut={selectedEgo.selectedKdd.statutKdd} />
                   <KsdBadge value={selectedEgo.selectedKdd.classification} />
                 </div>
-                <h3 className="font-display text-sm font-bold tracking-[-0.02em] text-[var(--akdd-ink)]">
+                <h3 className="text-sm font-semibold text-[var(--akdd-ink)]">
                   {selectedEgo.selectedKdd.name}
                 </h3>
                 <p className="text-xs leading-relaxed text-[var(--akdd-text-muted)]">
@@ -130,28 +130,28 @@ export function NetworkPage() {
                 </p>
               </div>
 
-              <div className="grid grid-cols-3 divide-x divide-[var(--akdd-border-subtle)] border border-[var(--akdd-border-subtle)] bg-[var(--akdd-bg-subtle)] text-center">
+              <div className="grid grid-cols-3 divide-x divide-[var(--akdd-border-subtle)] border border-[var(--akdd-border-subtle)] bg-[var(--akdd-bg-subtle)] text-center tabular-nums">
                 <div className="py-2">
-                  <div className="font-mono text-sm font-bold text-[var(--akdd-dir-in-text)]">
+                  <div className="font-mono text-sm font-medium text-[var(--akdd-dir-in-text)]">
                     {selectedEgo.incoming.length}
                   </div>
-                  <div className="font-mono text-[10px] uppercase text-[var(--akdd-text-muted)]">
+                  <div className="font-mono text-[11px] uppercase tracking-[0.08em] text-[var(--akdd-text-muted)]">
                     Amont
                   </div>
                 </div>
                 <div className="py-2">
-                  <div className="font-mono text-sm font-bold text-[var(--akdd-dir-out-text)]">
+                  <div className="font-mono text-sm font-medium text-[var(--akdd-dir-out-text)]">
                     {selectedEgo.outgoing.length}
                   </div>
-                  <div className="font-mono text-[10px] uppercase text-[var(--akdd-text-muted)]">
+                  <div className="font-mono text-[11px] uppercase tracking-[0.08em] text-[var(--akdd-text-muted)]">
                     Aval
                   </div>
                 </div>
                 <div className="py-2">
-                  <div className="font-mono text-sm font-bold text-[var(--akdd-ink)]">
+                  <div className="font-mono text-sm font-medium text-[var(--akdd-ink)]">
                     {selectedEgo.allLinks.length}
                   </div>
-                  <div className="font-mono text-[10px] uppercase text-[var(--akdd-text-muted)]">
+                  <div className="font-mono text-[11px] uppercase tracking-[0.08em] text-[var(--akdd-text-muted)]">
                     Total
                   </div>
                 </div>
@@ -166,7 +166,7 @@ export function NetworkPage() {
               </Link>
 
               <div className="flex flex-col gap-1.5 border-t border-[var(--akdd-border-subtle)] pt-3">
-                <span className="font-mono text-[10px] font-semibold uppercase tracking-[0.08em] text-[var(--akdd-text-muted)]">
+                <span className="font-mono text-[11px] font-medium uppercase tracking-[0.08em] tabular-nums text-[var(--akdd-text-muted)]">
                   Voisins directs ({selectedEgo.allLinks.length})
                 </span>
                 <div className="flex flex-col divide-y divide-[var(--akdd-border-subtle)] border border-[var(--akdd-border-subtle)]">
@@ -183,7 +183,7 @@ export function NetworkPage() {
                       >
                         <span className="truncate">
                           <span
-                            className={`mr-1.5 font-mono font-bold ${
+                            className={`mr-1.5 font-mono font-medium ${
                               isOut
                                 ? 'text-[var(--akdd-dir-out-text)]'
                                 : 'text-[var(--akdd-dir-in-text)]'
@@ -191,7 +191,7 @@ export function NetworkPage() {
                           >
                             {item.arrow}
                           </span>
-                          <span className="font-mono font-semibold text-[var(--akdd-ink)]">
+                          <span className="font-mono font-medium text-[var(--akdd-ink)]">
                             {peerId}
                           </span>{' '}
                           <span className="text-[var(--akdd-text-muted)]">{peerName}</span>

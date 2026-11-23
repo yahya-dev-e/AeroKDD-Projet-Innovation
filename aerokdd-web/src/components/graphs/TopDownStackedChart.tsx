@@ -16,7 +16,7 @@ const TOOLTIP_STYLE = {
   borderRadius: '2px',
   boxShadow: 'none',
   fontSize: '11px',
-  fontFamily: 'JetBrains Mono, monospace',
+  fontFamily: 'IBM Plex Mono, monospace',
   color: '#09090B',
 }
 
@@ -35,7 +35,7 @@ export function TopDownStackedChart({ data }: { data: SubsystemTopDownSummary[] 
             allowDecimals={false}
             axisLine={{ stroke: '#D4D4D8' }}
             tickLine={false}
-            tick={{ fontSize: 11, fill: '#52525B', fontFamily: 'JetBrains Mono, monospace' }}
+            tick={{ fontSize: 11, fill: '#52525B', fontFamily: 'IBM Plex Mono, monospace' }}
           />
           <YAxis
             type="category"
@@ -46,15 +46,15 @@ export function TopDownStackedChart({ data }: { data: SubsystemTopDownSummary[] 
             tick={{
               fontSize: 11,
               fill: '#09090B',
-              fontWeight: 600,
-              fontFamily: 'JetBrains Mono, monospace',
+              fontWeight: 500,
+              fontFamily: 'IBM Plex Mono, monospace',
             }}
           />
           <Tooltip contentStyle={TOOLTIP_STYLE} cursor={{ fill: '#FAFAFA' }} />
           <Legend
             wrapperStyle={{
               fontSize: '11px',
-              fontFamily: 'JetBrains Mono, monospace',
+              fontFamily: 'IBM Plex Mono, monospace',
               color: '#52525B',
             }}
           />

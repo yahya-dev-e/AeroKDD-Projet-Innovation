@@ -107,7 +107,7 @@ export function CommandPalette({ open, onClose, kdds }: CommandPaletteProps) {
         {/* Quick Actions when query is empty */}
         {!query.trim() && (
           <div className="flex flex-wrap items-center gap-2 border-b border-[var(--akdd-border-subtle)] bg-[var(--akdd-bg-subtle)] px-4 py-2.5">
-            <span className="font-mono text-[10px] font-medium uppercase tracking-[0.08em] text-[var(--akdd-text-muted)]">
+            <span className="font-mono text-[11px] font-medium uppercase tracking-[0.08em] text-[var(--akdd-text-muted)]">
               Accès rapide :
             </span>
             {QUICK_ROUTES.map((item) => {
@@ -153,7 +153,7 @@ export function CommandPalette({ open, onClose, kdds }: CommandPaletteProps) {
                     <SubsystemBadge code={kdd.subsystemCode} />
                     <div className="flex flex-col min-w-0">
                       <div className="flex items-center gap-2">
-                        <span className="font-mono text-xs font-bold text-[var(--akdd-navy-900)]">
+                        <span className="font-mono text-xs font-medium text-[var(--akdd-ink)]">
                           {kdd.id}
                         </span>
                         <span className="text-sm font-medium text-[var(--akdd-text-primary)] truncate">
@@ -177,9 +177,9 @@ export function CommandPalette({ open, onClose, kdds }: CommandPaletteProps) {
         </div>
 
         {/* Footer Hints */}
-        <div className="flex items-center justify-between border-t border-[var(--akdd-border-subtle)] bg-[var(--akdd-bg-subtle)] px-4 py-2 font-mono text-[10.5px] text-[var(--akdd-text-muted)]">
+        <div className="flex items-center justify-between border-t border-[var(--akdd-border-subtle)] bg-[var(--akdd-bg-subtle)] px-4 py-2 font-mono text-[11px] tabular-nums text-[var(--akdd-text-muted)]">
           <span>↑↓ Naviguer · ↵ Ouvrir la fiche · Esc Fermer</span>
-          <span className="font-mono">{matchedKdds.length} résultat(s)</span>
+          <span className="font-mono tabular-nums">{matchedKdds.length} résultat(s)</span>
         </div>
       </div>
     </div>

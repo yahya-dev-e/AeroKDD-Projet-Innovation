@@ -67,7 +67,7 @@ export function Topbar({
             {section}
           </span>
           <span className="text-[var(--akdd-slate-300)] shrink-0">/</span>
-          <h1 className="font-display text-sm font-bold tracking-[-0.03em] text-[var(--akdd-text-primary)] truncate">
+          <h1 className="font-display text-lg font-semibold tracking-[-0.02em] leading-[1.05] text-[var(--akdd-text-primary)] truncate">
             {title}
           </h1>
         </div>
@@ -89,7 +89,7 @@ export function Topbar({
       </button>
 
       {/* Right: Monospace System Telemetry */}
-      <div className="hidden md:flex items-center justify-end gap-2 font-mono text-[11px] font-medium uppercase tracking-[0.04em] text-[var(--akdd-text-primary)]">
+      <div className="hidden md:flex items-center justify-end gap-2 font-mono text-[11px] font-medium uppercase tracking-[0.08em] tabular-nums text-[var(--akdd-text-primary)]">
         <span className="h-1.5 w-1.5 bg-[var(--akdd-ink)]" aria-hidden="true" />
         <span>{kddCount.toLocaleString('en-US')} KDDs</span>
         <span className="text-[var(--akdd-text-muted)]">·</span>

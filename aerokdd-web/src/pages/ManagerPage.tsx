@@ -266,7 +266,7 @@ export function ManagerPage() {
       {/* Header */}
       <div className="flex flex-wrap items-center justify-between gap-4 rounded-[var(--akdd-radius-lg)] bg-[var(--akdd-bg-surface)] border border-[var(--akdd-border-subtle)] p-6 shadow-none">
         <div className="flex flex-col gap-1">
-          <h1 className="text-xl font-bold text-[var(--akdd-text-primary)]">
+          <h1 className="font-display text-2xl font-semibold leading-[1.05] tracking-[-0.02em] text-[var(--akdd-text-primary)]">
             KDD Manager — Gestion Dynamique Synchronisée
           </h1>
           <p className="text-xs text-[var(--akdd-text-secondary)]">
@@ -304,7 +304,7 @@ export function ManagerPage() {
               </div>
               <Link
                 to={`/explore/${encodeURIComponent(saveSuccess.id)}`}
-                className="inline-flex items-center gap-1 text-xs font-semibold underline"
+                className="inline-flex items-center gap-1 text-xs font-medium underline"
               >
                 <Compass className="h-3.5 w-3.5" /> Explorer {saveSuccess.id}
               </Link>
@@ -318,7 +318,7 @@ export function ManagerPage() {
               subtitle="L’identifiant suivant et le badge Statut KDD (Filtre) sont calculés en temps réel"
               action={
                 <div className="flex items-center gap-2">
-                  <span className="rounded-[var(--akdd-radius-sm)] bg-[var(--akdd-navy-900)] px-3 py-1 font-mono text-xs font-bold text-[var(--akdd-text-inverse)]">
+                  <span className="rounded-[var(--akdd-radius-xs)] bg-[var(--akdd-ink)] px-3 py-1 font-mono text-xs font-medium tabular-nums text-[var(--akdd-text-inverse)]">
                     ID auto : {nextId}
                   </span>
                   <StatutBadge statut={liveClassification.statut} />
@@ -327,7 +327,7 @@ export function ManagerPage() {
             />
             <CardContent className="grid grid-cols-1 gap-4 md:grid-cols-3">
               <div className="flex flex-col gap-1">
-                <label className="text-xs font-semibold text-[var(--akdd-text-secondary)]">
+                <label className="text-xs font-medium text-[var(--akdd-text-secondary)]">
                   Sous-système *
                 </label>
                 <select
@@ -344,7 +344,7 @@ export function ManagerPage() {
               </div>
 
               <div className="flex flex-col gap-1 md:col-span-2">
-                <label className="text-xs font-semibold text-[var(--akdd-text-secondary)]">
+                <label className="text-xs font-medium text-[var(--akdd-text-secondary)]">
                   Famille fonctionnelle *
                 </label>
                 <select
@@ -361,7 +361,7 @@ export function ManagerPage() {
               </div>
 
               <div className="flex flex-col gap-1 md:col-span-2">
-                <label className="text-xs font-semibold text-[var(--akdd-text-secondary)]">
+                <label className="text-xs font-medium text-[var(--akdd-text-secondary)]">
                   Nom KDD *
                 </label>
                 <input
@@ -375,7 +375,7 @@ export function ManagerPage() {
               </div>
 
               <div className="flex flex-col gap-1">
-                <label className="text-xs font-semibold text-[var(--akdd-text-secondary)]">
+                <label className="text-xs font-medium text-[var(--akdd-text-secondary)]">
                   Niveau *
                 </label>
                 <select
@@ -389,7 +389,7 @@ export function ManagerPage() {
               </div>
 
               <div className="flex flex-col gap-1">
-                <label className="text-xs font-semibold text-[var(--akdd-text-secondary)]">
+                <label className="text-xs font-medium text-[var(--akdd-text-secondary)]">
                   Type *
                 </label>
                 <select
@@ -406,7 +406,7 @@ export function ManagerPage() {
               </div>
 
               <div className="flex flex-col gap-1">
-                <label className="text-xs font-semibold text-[var(--akdd-text-secondary)]">
+                <label className="text-xs font-medium text-[var(--akdd-text-secondary)]">
                   Classification (K / S / D)
                 </label>
                 <select
@@ -422,7 +422,7 @@ export function ManagerPage() {
               </div>
 
               <div className="flex flex-col gap-1">
-                <label className="text-xs font-semibold text-[var(--akdd-text-secondary)]">
+                <label className="text-xs font-medium text-[var(--akdd-text-secondary)]">
                   Nature du verrou
                 </label>
                 <input
@@ -435,7 +435,7 @@ export function ManagerPage() {
               </div>
 
               <div className="flex flex-col gap-1 md:col-span-3">
-                <label className="text-xs font-semibold text-[var(--akdd-text-secondary)]">
+                <label className="text-xs font-medium text-[var(--akdd-text-secondary)]">
                   Définition physique *
                 </label>
                 <textarea
@@ -449,7 +449,7 @@ export function ManagerPage() {
               </div>
 
               <div className="flex flex-col gap-1">
-                <label className="text-xs font-semibold text-[var(--akdd-text-secondary)]">
+                <label className="text-xs font-medium text-[var(--akdd-text-secondary)]">
                   Importance & Enjeux
                 </label>
                 <textarea
@@ -461,7 +461,7 @@ export function ManagerPage() {
               </div>
 
               <div className="flex flex-col gap-1">
-                <label className="text-xs font-semibold text-[var(--akdd-text-secondary)]">
+                <label className="text-xs font-medium text-[var(--akdd-text-secondary)]">
                   Choix Technologiques
                 </label>
                 <textarea
@@ -473,7 +473,7 @@ export function ManagerPage() {
               </div>
 
               <div className="flex flex-col gap-1">
-                <label className="text-xs font-semibold text-[var(--akdd-text-secondary)]">
+                <label className="text-xs font-medium text-[var(--akdd-text-secondary)]">
                   Verrous associés
                 </label>
                 <textarea
@@ -495,7 +495,7 @@ export function ManagerPage() {
             <CardContent className="flex flex-col gap-4">
               <div className="grid grid-cols-1 gap-3 rounded-[var(--akdd-radius-md)] bg-[var(--akdd-bg-canvas)] p-4 border border-[var(--akdd-border-subtle)] md:grid-cols-4">
                 <div className="flex flex-col gap-1">
-                  <label className="text-[11px] font-semibold text-[var(--akdd-text-secondary)]">
+                  <label className="text-xs font-medium text-[var(--akdd-text-secondary)]">
                     Filtrer sous-système
                   </label>
                   <select
@@ -516,7 +516,7 @@ export function ManagerPage() {
                 </div>
 
                 <div className="flex flex-col gap-1 md:col-span-2">
-                  <label className="text-[11px] font-semibold text-[var(--akdd-text-secondary)]">
+                  <label className="text-xs font-medium text-[var(--akdd-text-secondary)]">
                     KDD lié
                   </label>
                   <select
@@ -534,13 +534,13 @@ export function ManagerPage() {
                 </div>
 
                 <div className="flex flex-col gap-1">
-                  <label className="text-[11px] font-semibold text-[var(--akdd-text-secondary)]">
+                  <label className="text-xs font-medium text-[var(--akdd-text-secondary)]">
                     Sens de la relation
                   </label>
                   <button
                     type="button"
                     onClick={() => setRelDirection((d) => (d === 'OUT' ? 'IN' : 'OUT'))}
-                    className="inline-flex items-center justify-center gap-1.5 rounded border border-[var(--akdd-navy-600)] bg-[var(--akdd-accent-blue-soft)] px-2.5 py-1.5 text-xs font-semibold text-[var(--akdd-navy-900)] cursor-pointer"
+                    className="inline-flex items-center justify-center gap-1.5 rounded-[var(--akdd-radius-sm)] border border-[var(--akdd-border-subtle)] bg-[var(--akdd-bg-surface)] px-2.5 py-1.5 text-xs font-medium text-[var(--akdd-ink)] hover:border-[var(--akdd-ink)] cursor-pointer"
                   >
                     <ArrowLeftRight className="h-3.5 w-3.5" />
                     {relDirection === 'OUT' ? `${nextId} → Autre` : `Autre → ${nextId}`}
@@ -548,7 +548,7 @@ export function ManagerPage() {
                 </div>
 
                 <div className="flex flex-col gap-1">
-                  <label className="text-[11px] font-semibold text-[var(--akdd-text-secondary)]">
+                  <label className="text-xs font-medium text-[var(--akdd-text-secondary)]">
                     Nature
                   </label>
                   <input
@@ -560,7 +560,7 @@ export function ManagerPage() {
                 </div>
 
                 <div className="flex flex-col gap-1">
-                  <label className="text-[11px] font-semibold text-[var(--akdd-text-secondary)]">
+                  <label className="text-xs font-medium text-[var(--akdd-text-secondary)]">
                     Influence
                   </label>
                   <input
@@ -572,7 +572,7 @@ export function ManagerPage() {
                 </div>
 
                 <div className="flex flex-col gap-1">
-                  <label className="text-[11px] font-semibold text-[var(--akdd-text-secondary)]">
+                  <label className="text-xs font-medium text-[var(--akdd-text-secondary)]">
                     Équation / Modèle
                   </label>
                   <input
@@ -585,7 +585,7 @@ export function ManagerPage() {
                 </div>
 
                 <div className="flex flex-col gap-1">
-                  <label className="text-[11px] font-semibold text-[var(--akdd-text-secondary)]">
+                  <label className="text-xs font-medium text-[var(--akdd-text-secondary)]">
                     Référence (SOURCES_REL)
                   </label>
                   <select
@@ -603,7 +603,7 @@ export function ManagerPage() {
                 </div>
 
                 <div className="flex flex-col gap-1 md:col-span-3">
-                  <label className="text-[11px] font-semibold text-[var(--akdd-text-secondary)]">
+                  <label className="text-xs font-medium text-[var(--akdd-text-secondary)]">
                     Justification physique
                   </label>
                   <input
@@ -642,7 +642,7 @@ export function ManagerPage() {
                       className="flex flex-wrap items-center justify-between gap-2 rounded-[var(--akdd-radius-sm)] border border-[var(--akdd-border-subtle)] bg-[var(--akdd-bg-surface)] px-3 py-2 text-xs"
                     >
                       <div className="flex flex-wrap items-center gap-2">
-                        <span className="font-mono font-bold text-[var(--akdd-navy-900)]">
+                        <span className="font-mono font-medium text-[var(--akdd-ink)]">
                           {r.direction === 'OUT'
                             ? `${nextId} → ${r.peerId}`
                             : `${r.peerId} → ${nextId}`}
@@ -747,7 +747,7 @@ export function ManagerPage() {
                         }`}
                       >
                         <div className="flex items-center gap-2 min-w-0">
-                          <span className="font-mono font-bold text-[var(--akdd-navy-900)]">
+                          <span className="font-mono font-medium text-[var(--akdd-ink)]">
                             {k.id}
                           </span>
                           <span className="truncate font-medium text-[var(--akdd-text-primary)]">
@@ -778,13 +778,13 @@ export function ManagerPage() {
                     <div className="flex flex-col gap-2 rounded-[var(--akdd-radius-md)] bg-[var(--akdd-bg-canvas)] p-3.5 border border-[var(--akdd-border-subtle)]">
                       <div className="flex flex-wrap items-center gap-2">
                         <SubsystemBadge code={deleteTargetEgo.selectedKdd.subsystemCode} />
-                        <span className="font-mono text-sm font-bold text-[var(--akdd-navy-900)]">
+                        <span className="font-mono text-sm font-medium text-[var(--akdd-ink)]">
                           {deleteTargetEgo.selectedKdd.id}
                         </span>
                         <StatutBadge statut={deleteTargetEgo.selectedKdd.statutKdd} />
                         <KsdBadge value={deleteTargetEgo.selectedKdd.classification} />
                       </div>
-                      <p className="text-sm font-semibold text-[var(--akdd-text-primary)]">
+                      <p className="text-sm font-medium text-[var(--akdd-text-primary)]">
                         {deleteTargetEgo.selectedKdd.name}
                       </p>
                       <p className="text-xs text-[var(--akdd-text-secondary)]">
@@ -793,7 +793,7 @@ export function ManagerPage() {
                     </div>
 
                     <div className="flex flex-col gap-2">
-                      <span className="text-xs font-semibold text-[var(--akdd-navy-900)]">
+                      <span className="text-xs font-medium tabular-nums text-[var(--akdd-ink)]">
                         Relations qui seront supprimées en cascade (
                         {deleteTargetEgo.incoming.length} entrantes ·{' '}
                         {deleteTargetEgo.outgoing.length} sortantes) :
@@ -814,14 +814,14 @@ export function ManagerPage() {
                                 <span
                                   className={
                                     isOut
-                                      ? 'text-[var(--akdd-dir-out-text)] font-semibold'
-                                      : 'text-[var(--akdd-dir-in-text)] font-semibold'
+                                        ? 'text-[var(--akdd-dir-out-text)] font-medium'
+                                        : 'text-[var(--akdd-dir-in-text)] font-medium'
                                   }
                                 >
                                   [{isOut ? 'SORTANT →' : 'ENTRANT ←'}] {item.relation.sourceId} →{' '}
                                   {item.relation.targetId}
                                 </span>
-                                <span className="text-[var(--akdd-text-muted)]">
+                                  <span className="font-mono tabular-nums text-[var(--akdd-text-muted)]">
                                   {item.relation.id}
                                 </span>
                               </div>
@@ -834,14 +834,14 @@ export function ManagerPage() {
                     <div className="flex items-start gap-2.5 rounded-[var(--akdd-radius-md)] border border-[var(--akdd-status-contrainte-border)] bg-[var(--akdd-status-contrainte-bg)] p-3 text-xs text-[var(--akdd-status-contrainte-text)]">
                       <AlertTriangle className="h-4 w-4 shrink-0 mt-0.5" />
                       <div className="flex flex-col gap-1.5">
-                        <span className="font-semibold">
+                        <span className="font-medium">
                           Invariance des identifiants garantie (Guide §4.3)
                         </span>
                         <span>
                           La suppression retire uniquement {deleteTargetEgo.selectedKdd.id} et ses
                           relations liées. Aucun autre identifiant KDD ne sera renuméroté.
                         </span>
-                        <label className="mt-1 inline-flex items-center gap-2 font-semibold cursor-pointer">
+                        <label className="mt-1 inline-flex items-center gap-2 font-medium cursor-pointer">
                           <input
                             type="checkbox"
                             checked={delConfirmed}
