@@ -53,50 +53,50 @@ export function OverviewPage() {
   }, [kdds, relations])
 
   const telemetryCounters = [
-    { value: SUBSYSTEM_CATALOG.length.toLocaleString('en-US'), label: 'Subsystems' },
-    { value: kdds.length.toLocaleString('en-US'), label: 'KDDs' },
-    { value: relations.length.toLocaleString('en-US'), label: 'Active Links' },
-    { value: bibliotheque.length.toLocaleString('en-US'), label: 'Bibliothèque' },
+    { value: SUBSYSTEM_CATALOG.length.toLocaleString('fr-FR'), label: 'Sous-systèmes' },
+    { value: kdds.length.toLocaleString('fr-FR'), label: 'KDD' },
+    { value: relations.length.toLocaleString('fr-FR'), label: 'Liens actifs' },
+    { value: bibliotheque.length.toLocaleString('fr-FR'), label: 'Bibliothèque' },
   ]
 
   return (
     <div className="flex min-h-full flex-col bg-[var(--akdd-bg-canvas)]">
       {/* 1. Hero Section — Full-width white canvas with 16px dot-matrix grid */}
       <section
-        className="w-full bg-[var(--akdd-bg-canvas)] px-6 py-20 sm:py-24 lg:px-12 lg:py-28"
+        className="w-full bg-[var(--akdd-bg-canvas)] px-6 py-12 lg:px-10"
         style={{
           backgroundImage: 'radial-gradient(#D4D4D8 1px, transparent 1px)',
           backgroundSize: '16px 16px',
         }}
       >
-        <div className="mx-auto flex max-w-4xl flex-col items-center gap-6 text-center">
+        <div className="mx-auto flex max-w-4xl flex-col items-center gap-4 text-center">
           <span className="font-mono text-[11px] font-medium uppercase tracking-[0.08em] text-[var(--akdd-text-muted)]">
-            SPEC · TDB · TRACA · Turbofan System Repository
+            SPEC · TDB · TRACA · Référentiel Système Turboréacteur
           </span>
 
-          <h1 className="font-display text-4xl font-bold leading-[1.05] tracking-[-0.02em] text-[var(--akdd-ink)] sm:text-5xl lg:text-[60px]">
-            AeroKDD — Propulsion Architecture &amp; Key Design Drivers
+          <h1 className="font-display text-4xl font-bold leading-[1.05] tracking-[-0.02em] text-[var(--akdd-ink)] sm:text-5xl lg:text-[54px]">
+            AeroKDD — Architecture Propulsive &amp; Key Design Drivers
           </h1>
 
           <p className="max-w-2xl text-sm leading-relaxed text-[var(--akdd-text-muted)] sm:text-[15px]">
-            Formal systems-engineering repository linking turbofan performance targets to sizing
-            levers, physical coupling equations, and multi-level traceability across 10 propulsion
-            modules.
+            Référentiel formel d’ingénierie système reliant les prestations cibles d’un
+            turboréacteur double flux aux leviers de dimensionnement, équations de couplage et
+            matrices de traçabilité sur 10 sous-systèmes.
           </p>
 
-          <div className="flex flex-wrap items-center justify-center gap-3 pt-2">
+          <div className="flex flex-wrap items-center justify-center gap-3 pt-1">
             <Link
               to="/network"
               className="inline-flex items-center gap-1.5 rounded-full border border-[var(--akdd-ink)] bg-[var(--akdd-ink)] px-6 py-2.5 text-xs font-medium tracking-[-0.01em] text-[var(--akdd-text-inverse)] shadow-none transition-colors hover:bg-[var(--akdd-ink-hover)]"
             >
-              <span>Explore Network</span>
+              <span>Explorer le réseau</span>
               <ArrowUpRight className="h-3.5 w-3.5" />
             </Link>
             <Link
               to="/top-down"
               className="inline-flex items-center gap-1.5 rounded-full border border-[var(--akdd-border-subtle)] bg-[var(--akdd-bg-surface)] px-6 py-2.5 text-xs font-medium tracking-[-0.01em] text-[var(--akdd-ink)] shadow-none transition-colors hover:border-[var(--akdd-ink)] hover:bg-[var(--akdd-bg-subtle)]"
             >
-              Top-Down Analysis
+              Analyse Top-Down
             </Link>
           </div>
         </div>
@@ -104,19 +104,19 @@ export function OverviewPage() {
 
       {/* 2. Partner & Telemetry Strip */}
       <section className="w-full border-y border-[var(--akdd-border-subtle)] bg-[var(--akdd-bg-subtle)]">
-        <div className="mx-auto flex max-w-7xl flex-col divide-y divide-[var(--akdd-border-subtle)] lg:flex-row lg:items-center lg:justify-between lg:divide-y-0">
-          <div className="flex items-center gap-2.5 px-6 py-3.5 lg:px-10">
+        <div className="mx-auto flex max-w-7xl flex-col divide-y divide-[var(--akdd-border-subtle)] xl:flex-row xl:items-center xl:justify-between xl:divide-y-0">
+          <div className="flex shrink-0 items-center gap-2.5 whitespace-nowrap px-6 py-3 lg:px-10">
             <span className="h-1.5 w-1.5 shrink-0 bg-[var(--akdd-ink)]" aria-hidden="true" />
             <span className="text-xs font-medium text-[var(--akdd-ink)]">
               École Centrale Casablanca × SHERPA Engineering
             </span>
           </div>
 
-          <div className="grid grid-cols-2 divide-x divide-[var(--akdd-border-subtle)] sm:grid-cols-4 lg:border-l lg:border-[var(--akdd-border-subtle)]">
+          <div className="grid grid-cols-2 divide-x divide-[var(--akdd-border-subtle)] sm:grid-cols-4 xl:flex xl:items-center xl:border-l xl:border-[var(--akdd-border-subtle)]">
             {telemetryCounters.map((item) => (
               <div
                 key={item.label}
-                className="flex items-baseline gap-2 px-5 py-3.5 font-mono text-xs tabular-nums lg:px-6"
+                className="flex items-baseline gap-1.5 whitespace-nowrap px-4 py-3 font-mono text-xs tabular-nums xl:px-5"
               >
                 <span className="font-medium text-[var(--akdd-ink)]">{item.value}</span>
                 <span className="text-[11px] text-[var(--akdd-text-muted)]">{item.label}</span>
@@ -127,14 +127,14 @@ export function OverviewPage() {
       </section>
 
       {/* 3. Subsystem Index — Sharp Border-Collapsed 10-Subsystem Swiss Grid */}
-      <section className="mx-auto flex w-full max-w-7xl flex-col gap-5 px-6 py-10 lg:px-10 lg:py-12">
+      <section className="mx-auto flex w-full max-w-7xl flex-col gap-4 px-6 py-7 lg:px-10 lg:py-8">
         <div className="flex flex-wrap items-end justify-between gap-4">
           <div className="flex flex-col gap-1">
             <span className="font-mono text-[11px] font-medium uppercase tracking-[0.08em] text-[var(--akdd-text-muted)]">
               Index / Architecture Propulsive
             </span>
             <h2 className="text-base font-semibold text-[var(--akdd-ink)]">
-              10 Turbofan Subsystems
+              10 Sous-systèmes du turboréacteur
             </h2>
           </div>
 
@@ -147,7 +147,7 @@ export function OverviewPage() {
               to="/explore"
               className="inline-flex items-center gap-1 text-[var(--akdd-ink)] hover:underline"
             >
-              Unit Explorer <ArrowUpRight className="h-3 w-3" />
+              Explorateur KDD <ArrowUpRight className="h-3 w-3" />
             </Link>
           </div>
         </div>
@@ -180,10 +180,10 @@ export function OverviewPage() {
 
                 <div className="flex items-center justify-between gap-2 border-t border-[var(--akdd-border-subtle)] pt-3 font-mono text-[11px] tabular-nums">
                   <span className="font-medium text-[var(--akdd-ink)]">
-                    {stats?.total ?? 0} KDDs
+                    {stats?.total ?? 0} KDD
                   </span>
                   <span className="text-[11px] text-[var(--akdd-text-muted)]">
-                    {stats?.links ?? 0} links
+                    {stats?.links ?? 0} liens
                   </span>
                 </div>
               </Link>

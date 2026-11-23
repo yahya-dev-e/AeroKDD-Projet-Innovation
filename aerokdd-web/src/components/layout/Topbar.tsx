@@ -9,36 +9,50 @@ export interface TopbarProps {
   onToggleSidebar: () => void
 }
 
+const SUBSYSTEM_SHORT_LABELS: Record<string, string> = {
+  FAN: 'Soufflante',
+  BOOSTER: 'Compresseur BP',
+  HPC: 'Compresseur HP',
+  COMB: 'Combustion',
+  HPT: 'Turbine HP',
+  LPT: 'Turbine BP',
+  NOZZLE: 'Tuyère',
+  COOLING: 'Refroidissement',
+  ELECTRICAL: 'Électrique',
+  OIL: 'Lubrification',
+}
+
 function getPageTitle(pathname: string, search: string): { section: string; title: string } {
   if (pathname === '/') {
-    return { section: 'AeroKDD', title: 'Vue d’ensemble du Référentiel' }
+    return { section: 'Accueil', title: 'Vue d’ensemble' }
   }
   if (pathname.startsWith('/subsystems/')) {
     const code = pathname.split('/')[2] ?? 'FAN'
     const meta = getSubsystemMeta(code)
-    return { section: 'Sous-Système', title: `${meta.code} — ${meta.frenchName}` }
+    const shortLabel = SUBSYSTEM_SHORT_LABELS[meta.code] ?? meta.frenchName
+    return { section: 'Module', title: `${meta.code} · ${shortLabel}` }
   }
   if (pathname.startsWith('/explore')) {
-    return { section: 'Analyse', title: 'Unit Explorer (GRAPH_KDD & SCHEMA KDD)' }
+    return { section: 'Analyse', title: 'Explorateur KDD' }
   }
   if (pathname.startsWith('/top-down')) {
-    return { section: 'Analyse', title: 'Moteur d’Analyse Top-Down' }
+    return { section: 'Analyse', title: 'Analyse Top-Down' }
   }
   if (pathname.startsWith('/network')) {
-    return { section: 'Cartographie', title: 'Global Network (10 Sous-Systèmes)' }
+    return { section: 'Graphes', title: 'Réseau global' }
   }
   if (pathname.startsWith('/manager')) {
-    return { section: 'Référentiel', title: 'KDD Manager' }
+    return { section: 'Référentiel', title: 'Gestionnaire KDD' }
   }
   if (pathname.startsWith('/repositories')) {
     return search.includes('tab=requirements')
-      ? { section: 'Instanciation Projet', title: 'Requirements & TRACA' }
-      : { section: 'Références', title: 'Bibliothèque & Sources' }
+      ? { section: 'Projet', title: 'Exigences & TRACA' }
+      : { section: 'Référentiel', title: 'Bibliothèque & Sources' }
   }
   if (pathname.startsWith('/admin')) {
-    return { section: 'Maintenance', title: 'Administration & Export' }
+    return { section: 'Système', title: 'Administration' }
   }
-  return { section: 'AeroKDD', title: 'Design System' }
+  return { section: 'AeroKDD', title: 'Système' }
 }
 
 export function Topbar({
@@ -51,9 +65,9 @@ export function Topbar({
   const { section, title } = getPageTitle(location.pathname, location.search)
 
   return (
-    <header className="grid h-14 shrink-0 grid-cols-[1fr_auto] items-center gap-4 border-b border-[var(--akdd-border-subtle)] bg-[var(--akdd-bg-surface)] px-6 shadow-none md:grid-cols-[1fr_auto_1fr] lg:px-8">
+    <header className="flex h-14 shrink-0 items-center justify-between gap-4 border-b border-[var(--akdd-border-subtle)] bg-[var(--akdd-bg-surface)] px-6 shadow-none lg:px-8">
       {/* Left: Breadcrumb */}
-      <div className="flex items-center gap-3 min-w-0">
+      <div className="flex items-center gap-3 shrink-0">
         <button
           type="button"
           onClick={onToggleSidebar}
@@ -62,12 +76,12 @@ export function Topbar({
         >
           <Menu className="h-4 w-4" />
         </button>
-        <div className="flex items-center gap-2 min-w-0 text-sm">
-          <span className="font-mono text-[11px] font-medium uppercase tracking-[0.08em] text-[var(--akdd-text-muted)] shrink-0">
+        <div className="flex items-center gap-2 whitespace-nowrap text-sm">
+          <span className="font-mono text-[11px] font-medium uppercase tracking-[0.08em] text-[var(--akdd-text-muted)]">
             {section}
           </span>
-          <span className="text-[var(--akdd-slate-300)] shrink-0">/</span>
-          <h1 className="font-display text-lg font-semibold tracking-[-0.02em] leading-[1.05] text-[var(--akdd-text-primary)] truncate">
+          <span className="text-[var(--akdd-slate-300)]">/</span>
+          <h1 className="font-display text-lg font-semibold tracking-[-0.02em] leading-[1.05] text-[var(--akdd-text-primary)]">
             {title}
           </h1>
         </div>
@@ -77,7 +91,7 @@ export function Topbar({
       <button
         type="button"
         onClick={onOpenCommandPalette}
-        className="flex items-center justify-between gap-6 rounded-full border border-[var(--akdd-border-subtle)] bg-[var(--akdd-bg-subtle)] px-3.5 py-1.5 text-xs text-[var(--akdd-text-muted)] shadow-none hover:border-[var(--akdd-ink)] hover:bg-[var(--akdd-bg-surface)] hover:text-[var(--akdd-text-primary)] transition-colors cursor-pointer min-w-[210px] lg:min-w-[300px]"
+        className="flex w-full max-w-[280px] items-center justify-between gap-4 rounded-full border border-[var(--akdd-border-subtle)] bg-[var(--akdd-bg-subtle)] px-3.5 py-1.5 text-xs text-[var(--akdd-text-muted)] shadow-none hover:border-[var(--akdd-ink)] hover:bg-[var(--akdd-bg-surface)] hover:text-[var(--akdd-text-primary)] transition-colors cursor-pointer"
       >
         <span className="flex items-center gap-2 truncate">
           <Search className="h-3.5 w-3.5 shrink-0 text-[var(--akdd-text-muted)]" />
@@ -89,11 +103,11 @@ export function Topbar({
       </button>
 
       {/* Right: Monospace System Telemetry */}
-      <div className="hidden md:flex items-center justify-end gap-2 font-mono text-[11px] font-medium uppercase tracking-[0.08em] tabular-nums text-[var(--akdd-text-primary)]">
+      <div className="hidden md:flex shrink-0 items-center justify-end gap-2 whitespace-nowrap font-mono text-[11px] font-medium uppercase tracking-[0.08em] tabular-nums text-[var(--akdd-text-primary)]">
         <span className="h-1.5 w-1.5 bg-[var(--akdd-ink)]" aria-hidden="true" />
-        <span>{kddCount.toLocaleString('en-US')} KDDs</span>
+        <span>{kddCount.toLocaleString('fr-FR')} KDD</span>
         <span className="text-[var(--akdd-text-muted)]">·</span>
-        <span>{relationCount.toLocaleString('en-US')} LIENS</span>
+        <span>{relationCount.toLocaleString('fr-FR')} LIENS</span>
       </div>
     </header>
   )

@@ -62,7 +62,7 @@ export function Sidebar({ collapsed, onToggleCollapse, kddCountBySubsystem }: Si
           {!collapsed && (
             <div className="flex items-baseline gap-1.5 min-w-0">
               <span className="font-display text-lg font-semibold uppercase tracking-[-0.02em] leading-[1.05] text-[var(--akdd-text-primary)] truncate">
-                AEROKDD®
+                AEROKDD
               </span>
               <span className="font-mono text-[10px] text-[var(--akdd-text-muted)] truncate">
                 SYS
@@ -89,9 +89,9 @@ export function Sidebar({ collapsed, onToggleCollapse, kddCountBySubsystem }: Si
               01 / Navigation
             </span>
           )}
-          <NavLink to="/" end className={linkClass} title="Overview">
+          <NavLink to="/" end className={linkClass} title="Vue d’ensemble">
             <Home className="h-3.5 w-3.5 shrink-0 stroke-[1.75]" />
-            {!collapsed && <span className="truncate">Overview</span>}
+            {!collapsed && <span className="truncate">Vue d’ensemble</span>}
           </NavLink>
 
           {/* Subsystems Group */}
@@ -175,17 +175,17 @@ export function Sidebar({ collapsed, onToggleCollapse, kddCountBySubsystem }: Si
               02 / Analyse & Graphes
             </span>
           )}
-          <NavLink to="/explore" className={linkClass} title="Unit Explorer">
+          <NavLink to="/explore" className={linkClass} title="Explorateur KDD">
             <Compass className="h-3.5 w-3.5 shrink-0 stroke-[1.75]" />
-            {!collapsed && <span className="truncate">Unit Explorer</span>}
+            {!collapsed && <span className="truncate">Explorateur KDD</span>}
           </NavLink>
-          <NavLink to="/top-down" className={linkClass} title="Top-Down Engine">
+          <NavLink to="/top-down" className={linkClass} title="Analyse Top-Down">
             <GitBranch className="h-3.5 w-3.5 shrink-0 stroke-[1.75]" />
-            {!collapsed && <span className="truncate">Top-Down Engine</span>}
+            {!collapsed && <span className="truncate">Analyse Top-Down</span>}
           </NavLink>
-          <NavLink to="/network" className={linkClass} title="Global Network">
+          <NavLink to="/network" className={linkClass} title="Réseau global">
             <Network className="h-3.5 w-3.5 shrink-0 stroke-[1.75]" />
-            {!collapsed && <span className="truncate">Global Network</span>}
+            {!collapsed && <span className="truncate">Réseau global</span>}
           </NavLink>
         </div>
 
@@ -196,9 +196,9 @@ export function Sidebar({ collapsed, onToggleCollapse, kddCountBySubsystem }: Si
               03 / Référentiel & Projet
             </span>
           )}
-          <NavLink to="/manager" className={linkClass} title="KDD Manager">
+          <NavLink to="/manager" className={linkClass} title="Gestionnaire KDD">
             <FolderKanban className="h-3.5 w-3.5 shrink-0 stroke-[1.75]" />
-            {!collapsed && <span className="truncate">KDD Manager</span>}
+            {!collapsed && <span className="truncate">Gestionnaire KDD</span>}
           </NavLink>
           <NavLink
             to="/repositories?tab=requirements"
@@ -209,10 +209,10 @@ export function Sidebar({ collapsed, onToggleCollapse, kddCountBySubsystem }: Si
                   location.search.includes('tab=requirements'),
               })
             }
-            title="Project Instantiation (Requirements & TRACA)"
+            title="Instanciation projet (Exigences & TRACA)"
           >
             <ClipboardCheck className="h-3.5 w-3.5 shrink-0 stroke-[1.75]" />
-            {!collapsed && <span className="truncate">Project Instantiation</span>}
+            {!collapsed && <span className="truncate">Exigences & TRACA</span>}
           </NavLink>
           <NavLink
             to="/repositories?tab=bibliotheque"
@@ -223,14 +223,14 @@ export function Sidebar({ collapsed, onToggleCollapse, kddCountBySubsystem }: Si
                   !location.search.includes('tab=requirements'),
               })
             }
-            title="References (Bibliothèque & Sources)"
+            title="Bibliothèque & sources scientifiques"
           >
             <BookOpen className="h-3.5 w-3.5 shrink-0 stroke-[1.75]" />
-            {!collapsed && <span className="truncate">References & Sources</span>}
+            {!collapsed && <span className="truncate">Bibliothèque & Sources</span>}
           </NavLink>
-          <NavLink to="/admin" className={linkClass} title="Admin">
+          <NavLink to="/admin" className={linkClass} title="Administration & maintenance">
             <Settings className="h-3.5 w-3.5 shrink-0 stroke-[1.75]" />
-            {!collapsed && <span className="truncate">Admin</span>}
+            {!collapsed && <span className="truncate">Administration</span>}
           </NavLink>
         </div>
       </nav>
@@ -240,7 +240,7 @@ export function Sidebar({ collapsed, onToggleCollapse, kddCountBySubsystem }: Si
         <div className="border-t border-[var(--akdd-border-subtle)] px-4 py-3 font-mono text-[11px] uppercase tracking-[0.08em] text-[var(--akdd-text-muted)]">
           <div className="flex items-center justify-between">
             <span>ECC × SHERPA</span>
-            <span className="text-[var(--akdd-text-primary)]">REV 2.0</span>
+            <span className="text-[var(--akdd-text-primary)]">RÉV. 2.0</span>
           </div>
         </div>
       )}
