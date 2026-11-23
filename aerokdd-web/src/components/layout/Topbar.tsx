@@ -51,7 +51,7 @@ export function Topbar({
   const { section, title } = getPageTitle(location.pathname, location.search)
 
   return (
-    <header className="flex h-14 shrink-0 items-center justify-between gap-4 border-b border-[var(--akdd-border-subtle)] bg-[var(--akdd-bg-surface)] px-5">
+    <header className="flex h-14 shrink-0 items-center justify-between gap-4 border-b border-[var(--akdd-border-subtle)] bg-[var(--akdd-bg-surface)] px-5 shadow-[var(--akdd-shadow-sm)]">
       <div className="flex items-center gap-3 min-w-0">
         <button
           type="button"
@@ -62,9 +62,13 @@ export function Topbar({
           <Menu className="h-4 w-4" />
         </button>
         <div className="flex items-center gap-2 min-w-0 text-sm">
-          <span className="text-[var(--akdd-text-muted)] shrink-0">{section}</span>
+          <span className="text-xs font-medium uppercase tracking-wide text-[var(--akdd-text-muted)] shrink-0">
+            {section}
+          </span>
           <span className="text-[var(--akdd-slate-300)] shrink-0">/</span>
-          <h1 className="font-semibold text-[var(--akdd-text-primary)] truncate">{title}</h1>
+          <h1 className="font-semibold tracking-tight text-[var(--akdd-text-primary)] truncate">
+            {title}
+          </h1>
         </div>
       </div>
 
@@ -72,7 +76,7 @@ export function Topbar({
         <button
           type="button"
           onClick={onOpenCommandPalette}
-          className="flex items-center justify-between gap-4 rounded-[var(--akdd-radius-md)] border border-[var(--akdd-border-default)] bg-[var(--akdd-bg-canvas)] px-3 py-1.5 text-xs text-[var(--akdd-text-secondary)] hover:border-[var(--akdd-navy-600)] hover:text-[var(--akdd-text-primary)] transition-colors cursor-pointer min-w-[220px]"
+          className="flex items-center justify-between gap-4 rounded-[var(--akdd-radius-md)] border border-[var(--akdd-border-default)] bg-[var(--akdd-bg-canvas)] px-3 py-1.5 text-xs text-[var(--akdd-text-secondary)] shadow-[inset_0_1px_1px_rgb(15_23_42/0.03)] hover:border-[var(--akdd-navy-600)] hover:text-[var(--akdd-text-primary)] transition-all cursor-pointer min-w-[220px]"
         >
           <span className="flex items-center gap-2">
             <Search className="h-3.5 w-3.5 text-[var(--akdd-text-muted)]" />

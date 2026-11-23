@@ -19,11 +19,11 @@ export function KpiCard({
 }: KpiCardProps) {
   return (
     <div
-      className={`flex flex-col justify-between gap-3 rounded-[var(--akdd-radius-lg)] bg-[var(--akdd-bg-surface)] border border-[var(--akdd-border-subtle)] border-l-4 ${accentClassName} p-4 shadow-[var(--akdd-shadow-sm)]`}
+      className={`flex flex-col justify-between gap-3 rounded-[var(--akdd-radius-lg)] bg-[var(--akdd-bg-surface)] border border-[var(--akdd-border-subtle)] border-l-4 ${accentClassName} p-4 shadow-[var(--akdd-shadow-md)]`}
     >
       <div className="flex items-start justify-between gap-3">
         <div className="flex flex-col gap-1 min-w-0">
-          <span className="text-xs font-medium uppercase tracking-wider text-[var(--akdd-text-muted)]">
+          <span className="text-[11px] font-semibold uppercase tracking-wider text-[var(--akdd-text-muted)]">
             {label}
           </span>
           <span className="text-2xl font-bold tracking-tight text-[var(--akdd-text-primary)] font-mono">

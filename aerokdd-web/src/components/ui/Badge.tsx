@@ -10,7 +10,7 @@ export interface BadgeProps {
 export function Badge({ children, className = '' }: BadgeProps) {
   return (
     <span
-      className={`inline-flex items-center gap-1 rounded-[var(--akdd-radius-xs)] px-2 py-0.5 text-xs font-medium leading-tight whitespace-nowrap border ${className}`}
+      className={`inline-flex items-center gap-1 rounded-[var(--akdd-radius-full)] px-2.5 py-1 text-[11px] font-semibold leading-none tracking-[0.01em] whitespace-nowrap border shadow-[inset_0_1px_0_rgb(255_255_255/0.55)] ${className}`}
     >
       {children}
     </span>

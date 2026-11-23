@@ -11,9 +11,9 @@ export interface ButtonProps extends ButtonHTMLAttributes<HTMLButtonElement> {
 
 const VARIANT_CLASSES: Record<ButtonVariant, string> = {
   primary:
-    'bg-[var(--akdd-navy-700)] text-[var(--akdd-text-inverse)] border border-[var(--akdd-navy-700)] hover:bg-[var(--akdd-navy-900)]',
+    'bg-[var(--akdd-navy-700)] text-[var(--akdd-text-inverse)] border border-[var(--akdd-navy-700)] shadow-[var(--akdd-shadow-sm)] hover:bg-[var(--akdd-navy-900)]',
   secondary:
-    'bg-[var(--akdd-bg-surface)] text-[var(--akdd-text-primary)] border border-[var(--akdd-border-default)] hover:bg-[var(--akdd-slate-50)]',
+    'bg-[var(--akdd-bg-surface)] text-[var(--akdd-text-primary)] border border-[var(--akdd-border-default)] shadow-[var(--akdd-shadow-sm)] hover:bg-[var(--akdd-slate-50)]',
   ghost:
     'bg-transparent text-[var(--akdd-text-secondary)] border border-transparent hover:bg-[var(--akdd-slate-100)] hover:text-[var(--akdd-text-primary)]',
   danger:
@@ -37,7 +37,7 @@ export function Button({
   return (
     <button
       type={type}
-      className={`inline-flex items-center justify-center rounded-[var(--akdd-radius-sm)] font-medium transition-colors cursor-pointer disabled:opacity-50 disabled:cursor-not-allowed ${VARIANT_CLASSES[variant]} ${SIZE_CLASSES[size]} ${className}`}
+      className={`inline-flex items-center justify-center rounded-[var(--akdd-radius-sm)] font-medium transition-all cursor-pointer focus-visible:outline-none focus-visible:shadow-[var(--akdd-focus-ring)] disabled:opacity-50 disabled:cursor-not-allowed ${VARIANT_CLASSES[variant]} ${SIZE_CLASSES[size]} ${className}`}
       {...props}
     >
       {icon && <span className="inline-flex shrink-0">{icon}</span>}

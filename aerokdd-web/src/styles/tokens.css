@@ -1,6 +1,78 @@
+@font-face {
+  font-family: 'Inter';
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: url('https://fonts.gstatic.com/s/inter/v20/UcCO3FwrK3iLTeHuS_nVMrMxCp50SjIw2boKoduKmMEVuLyfMZg.ttf')
+    format('truetype');
+}
+
+@font-face {
+  font-family: 'Inter';
+  font-style: normal;
+  font-weight: 500;
+  font-display: swap;
+  src: url('https://fonts.gstatic.com/s/inter/v20/UcCO3FwrK3iLTeHuS_nVMrMxCp50SjIw2boKoduKmMEVuI6fMZg.ttf')
+    format('truetype');
+}
+
+@font-face {
+  font-family: 'Inter';
+  font-style: normal;
+  font-weight: 600;
+  font-display: swap;
+  src: url('https://fonts.gstatic.com/s/inter/v20/UcCO3FwrK3iLTeHuS_nVMrMxCp50SjIw2boKoduKmMEVuGKYMZg.ttf')
+    format('truetype');
+}
+
+@font-face {
+  font-family: 'Inter';
+  font-style: normal;
+  font-weight: 700;
+  font-display: swap;
+  src: url('https://fonts.gstatic.com/s/inter/v20/UcCO3FwrK3iLTeHuS_nVMrMxCp50SjIw2boKoduKmMEVuFuYMZg.ttf')
+    format('truetype');
+}
+
+@font-face {
+  font-family: 'JetBrains Mono';
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: url('https://fonts.gstatic.com/s/jetbrainsmono/v24/tDbY2o-flEEny0FZhsfKu5WU4zr3E_BX0PnT8RD8yKxjPQ.ttf')
+    format('truetype');
+}
+
+@font-face {
+  font-family: 'JetBrains Mono';
+  font-style: normal;
+  font-weight: 500;
+  font-display: swap;
+  src: url('https://fonts.gstatic.com/s/jetbrainsmono/v24/tDbY2o-flEEny0FZhsfKu5WU4zr3E_BX0PnT8RD8-qxjPQ.ttf')
+    format('truetype');
+}
+
+@font-face {
+  font-family: 'JetBrains Mono';
+  font-style: normal;
+  font-weight: 600;
+  font-display: swap;
+  src: url('https://fonts.gstatic.com/s/jetbrainsmono/v24/tDbY2o-flEEny0FZhsfKu5WU4zr3E_BX0PnT8RD8FqtjPQ.ttf')
+    format('truetype');
+}
+
+@font-face {
+  font-family: 'JetBrains Mono';
+  font-style: normal;
+  font-weight: 700;
+  font-display: swap;
+  src: url('https://fonts.gstatic.com/s/jetbrainsmono/v24/tDbY2o-flEEny0FZhsfKu5WU4zr3E_BX0PnT8RD8L6tjPQ.ttf')
+    format('truetype');
+}
+
 /* ============================================================================
  * AeroKDD Design System Tokens (Figma Sync Target)
- * Aerospace Slate / Navy Chrome + Exact VBA Semantic Status Palette
+ * Precision aerospace instrumentation / cool-slate chrome
  * ============================================================================ */
 
 :root {
@@ -28,50 +100,53 @@
   /* --- Surfaces & Text --- */
   --akdd-bg-canvas: #f8fafc;
   --akdd-bg-surface: #ffffff;
-  --akdd-bg-subtle: #f2f6fa;
-  --akdd-bg-sidebar: #0f172a;
+  --akdd-bg-subtle: #f1f5f9;
+  --akdd-bg-sidebar: #0b1220;
+  --akdd-bg-sidebar-raised: #111c2e;
+  --akdd-bg-sidebar-active: #162b49;
+  --akdd-sidebar-active-border: #2f6ba5;
   --akdd-border-default: #cbd5e1;
   --akdd-border-subtle: #e2e8f0;
   --akdd-text-primary: #0f172a;
-  --akdd-text-secondary: #475569;
+  --akdd-text-secondary: #334155;
   --akdd-text-muted: #64748b;
   --akdd-text-inverse: #ffffff;
 
   /* --- Semantic KDD Status Palette (mod_Admin_FiltreSPEC & mod_GrapheGlobal) --- */
   /* KDD - Key Design Driver */
-  --akdd-status-kdd-bg: #d9ead3; /* RGB(217, 234, 211) */
-  --akdd-status-kdd-text: #274e13; /* RGB(39, 78, 19) */
-  --akdd-status-kdd-border: #38761d; /* RGB(56, 118, 29) */
+  --akdd-status-kdd-bg: #ecfdf3;
+  --akdd-status-kdd-text: #14532d;
+  --akdd-status-kdd-border: #86d6a5;
 
   /* S - Sizing Parameter */
-  --akdd-status-s-bg: #cfe2f3; /* RGB(207, 226, 243) */
-  --akdd-status-s-text: #0b5394; /* RGB(11, 83, 148) */
-  --akdd-status-s-border: #3d85c6; /* RGB(61, 133, 198) */
+  --akdd-status-s-bg: #eff6ff;
+  --akdd-status-s-text: #1e4f8a;
+  --akdd-status-s-border: #93bce8;
 
   /* D - Design Parameter */
-  --akdd-status-d-bg: #eaf2f8; /* RGB(234, 242, 248) */
-  --akdd-status-d-text: #244062; /* RGB(36, 64, 98) */
-  --akdd-status-d-border: #789bbe; /* RGB(120, 155, 190) */
+  --akdd-status-d-bg: #f5f7fb;
+  --akdd-status-d-text: #334a68;
+  --akdd-status-d-border: #b8c6d8;
 
   /* Prestation / Performance */
-  --akdd-status-prestation-bg: #fff2cc; /* RGB(255, 242, 204) */
-  --akdd-status-prestation-text: #7f6000; /* RGB(127, 96, 0) */
-  --akdd-status-prestation-border: #bf9000; /* RGB(191, 144, 0) */
+  --akdd-status-prestation-bg: #fffbeb;
+  --akdd-status-prestation-text: #713f12;
+  --akdd-status-prestation-border: #e7c36b;
 
   /* Effet Induit (Prestation) */
-  --akdd-status-effet-bg: #fce5cd; /* RGB(252, 229, 205) */
-  --akdd-status-effet-text: #783f04; /* RGB(120, 63, 4) */
-  --akdd-status-effet-border: #e69138;
+  --akdd-status-effet-bg: #fff7ed;
+  --akdd-status-effet-text: #7c2d12;
+  --akdd-status-effet-border: #efb27d;
 
   /* Input / Interface */
-  --akdd-status-input-bg: #eeeeee; /* RGB(238, 238, 238) */
-  --akdd-status-input-text: #434343; /* RGB(67, 67, 67) */
-  --akdd-status-input-border: #8c8c8c; /* RGB(140, 140, 140) */
+  --akdd-status-input-bg: #f8fafc;
+  --akdd-status-input-text: #334155;
+  --akdd-status-input-border: #cbd5e1;
 
   /* Contrainte / RAMS & Contrainte / Strategie */
-  --akdd-status-contrainte-bg: #f4cccc; /* RGB(244, 204, 204) */
-  --akdd-status-contrainte-text: #990000; /* RGB(153, 0, 0) */
-  --akdd-status-contrainte-border: #cc4125; /* RGB(204, 65, 37) */
+  --akdd-status-contrainte-bg: #fff1f2;
+  --akdd-status-contrainte-text: #9f1239;
+  --akdd-status-contrainte-border: #f1a3b5;
 
   /* --- Graph Edge / Link Role Colors (mod_GrapheGlobal) --- */
   /* Top-Down Green (Levier <-> Prestation) */
@@ -144,7 +219,21 @@
   --akdd-radius-full: 9999px;
 
   /* --- Shadows --- */
-  --akdd-shadow-sm: 0 1px 2px 0 rgb(15 23 42 / 0.05);
-  --akdd-shadow-md: 0 4px 6px -1px rgb(15 23 42 / 0.08), 0 2px 4px -2px rgb(15 23 42 / 0.05);
-  --akdd-shadow-lg: 0 10px 15px -3px rgb(15 23 42 / 0.1), 0 4px 6px -4px rgb(15 23 42 / 0.06);
+  --akdd-shadow-sm: 0 1px 2px rgb(15 23 42 / 0.06), 0 1px 3px rgb(15 23 42 / 0.04);
+  --akdd-shadow-md: 0 8px 20px -8px rgb(15 23 42 / 0.18), 0 2px 6px rgb(15 23 42 / 0.05);
+  --akdd-shadow-lg: 0 20px 45px -16px rgb(15 23 42 / 0.3), 0 8px 18px -8px rgb(15 23 42 / 0.14);
+  --akdd-focus-ring: 0 0 0 3px rgb(0 112 192 / 0.16);
+}
+
+body {
+  font-family: var(--akdd-font-sans);
+  font-feature-settings: 'cv02', 'cv03', 'cv04', 'cv11';
+  background: var(--akdd-bg-canvas);
+  color: var(--akdd-text-primary);
+  text-rendering: optimizeLegibility;
+}
+
+.font-mono {
+  font-family: var(--akdd-font-mono);
+  font-variant-numeric: tabular-nums slashed-zero;
 }
