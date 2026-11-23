@@ -1,0 +1,10 @@
+{
+  "description": "Provides setup and deployment verification tools for newly imported projects, helping teams prepare reliable production and preview deployments.",
+  "robots": {
+    "index": false
+  },
+  "accessibility": {
+    "addBypassLinks": false,
+    "ignoreReducedMotion": false
+  }
+}
