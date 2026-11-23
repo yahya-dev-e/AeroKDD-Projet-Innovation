@@ -1,5 +1,5 @@
 import { useEffect, useMemo, useState } from 'react'
-import { Outlet } from 'react-router-dom'
+import { Outlet, useLocation } from 'react-router-dom'
 import { useAeroKddStore } from '../../store/useAeroKddStore'
 import { Button } from '../ui'
 import { CommandPalette } from './CommandPalette'
@@ -8,8 +8,10 @@ import { Topbar } from './Topbar'
 
 export function AppShell() {
   const { kdds, relations, isLoaded, isLoading, error, initialize } = useAeroKddStore()
+  const location = useLocation()
   const [sidebarCollapsed, setSidebarCollapsed] = useState(false)
   const [paletteOpen, setPaletteOpen] = useState(false)
+  const isOverview = location.pathname === '/'
 
   useEffect(() => {
     void initialize()
@@ -50,9 +52,13 @@ export function AppShell() {
           onToggleSidebar={() => setSidebarCollapsed((c) => !c)}
         />
 
-        <main className="flex-1 overflow-y-auto bg-[var(--akdd-bg-canvas)] px-6 py-7 lg:px-8 lg:py-8">
+        <main
+          className={`flex-1 overflow-y-auto bg-[var(--akdd-bg-canvas)] ${
+            isOverview ? 'p-0' : 'px-6 py-7 lg:px-8 lg:py-8'
+          }`}
+        >
           {error ? (
-            <div className="mx-auto flex max-w-lg flex-col items-center gap-3 rounded-[var(--akdd-radius-lg)] border border-[var(--akdd-status-contrainte-border)] bg-[var(--akdd-status-contrainte-bg)] p-6 text-center shadow-none">
+            <div className="mx-auto my-12 flex max-w-lg flex-col items-center gap-3 rounded-[var(--akdd-radius-lg)] border border-[var(--akdd-status-contrainte-border)] bg-[var(--akdd-status-contrainte-bg)] p-6 text-center shadow-none">
               <p className="text-sm font-semibold text-[var(--akdd-status-contrainte-text)]">
                 Impossible de charger le référentiel AeroKDD
               </p>
