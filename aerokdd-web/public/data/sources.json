@@ -1,0 +1,146 @@
+[
+  {
+    "id": "REF-01",
+    "organization": "NASA Glenn",
+    "title": "Compressor-Turbine Matching",
+    "domains": "Matching thermodynamique, bilan de puissance arbre, rapports de pression, contribution des composants et comportement hors adaptation.",
+    "url": "https://www.grc.nasa.gov/www/k-12/airplane/ctmatch.html",
+    "scopeLimits": "Référence pédagogique de principes. Ne remplace pas les cartes ni les spécifications propres au moteur étudié."
+  },
+  {
+    "id": "REF-02",
+    "organization": "NASA Glenn / NTRS",
+    "title": "Practical Techniques for Modeling Gas Turbine Engine Performance",
+    "domains": "Modélisation cycle, cartes de composants, point de conception et fonctionnement hors adaptation.",
+    "url": "https://ntrs.nasa.gov/archive/nasa/casi.ntrs.nasa.gov/20160012485.pdf",
+    "scopeLimits": "Méthodes de modélisation de performance; les hypothèses et données doivent être adaptées au moteur réel."
+  },
+  {
+    "id": "REF-03",
+    "organization": "NASA NTRS",
+    "title": "Algorithm for Calculating Turbine Cooling Flow and Resulting Decrease in Turbine Efficiency",
+    "domains": "Débit de refroidissement turbine, prélèvement compresseur et pénalité sur l'efficacité turbine.",
+    "url": "https://ntrs.nasa.gov/citations/19800011581",
+    "scopeLimits": "Référence de méthode de calcul; la configuration de refroidissement et les températures métalliques doivent être spécifiques."
+  },
+  {
+    "id": "REF-04",
+    "organization": "NASA NTRS",
+    "title": "Axial and Centrifugal Compressor Mean Line Flow Analysis Method",
+    "domains": "Dimensionnement aérodynamique des compresseurs, chargement, incidence, carte de performance et comportement hors adaptation.",
+    "url": "https://ntrs.nasa.gov/archive/nasa/casi.ntrs.nasa.gov/20090042768.pdf",
+    "scopeLimits": "Méthode de conception/analyse; ne fournit pas la carte de performance du moteur étudié."
+  },
+  {
+    "id": "REF-05",
+    "organization": "NASA NTRS",
+    "title": "Integrated Engine-Generator Concept for Aircraft Electric Secondary Power",
+    "domains": "Couplage générateur-démarreur avec l'arbre moteur et génération de puissance électrique.",
+    "url": "https://ntrs.nasa.gov/citations/19720018387",
+    "scopeLimits": "Exemple d'architecture; confirmer le spool et l'entraînement réellement retenus."
+  },
+  {
+    "id": "REF-06",
+    "organization": "NASA Glenn",
+    "title": "Turbofan Engine",
+    "domains": "Architecture générale du turbofan, partage du débit cœur/secondaire et couplage fan-turbine.",
+    "url": "https://www.grc.nasa.gov/www/k-12/VirtualAero/BottleRocket/airplane/Animation/turbtyp/etfp.html",
+    "scopeLimits": "Source d'architecture générale, pas une spécification de conception détaillée."
+  },
+  {
+    "id": "REF-07",
+    "organization": "NASA NTRS / NACA",
+    "title": "Component Matching Characteristics of Various Engine Configurations",
+    "domains": "Matching entre compresseur, turbine, débit massique et tuyère.",
+    "url": "https://ntrs.nasa.gov/api/citations/19800016128/downloads/19800016128.pdf",
+    "scopeLimits": "Référence générale de matching; vérifier l'applicabilité à l'architecture du turbofan étudié."
+  },
+  {
+    "id": "REF-08",
+    "organization": "NASA Glenn / NACA",
+    "title": "Effects of Turbine Cooling with Compressor Air Bleed on Gas-Turbine Engine Performance",
+    "domains": "Conséquences du refroidissement turbine et des prélèvements d'air compresseur sur les performances.",
+    "url": "https://ntrs.nasa.gov/archive/nasa/casi.ntrs.nasa.gov/19930088543.pdf",
+    "scopeLimits": "Étude historique de principe; une analyse actuelle doit utiliser le cycle et la géométrie moteur concernés."
+  },
+  {
+    "id": "REF-09",
+    "organization": "Données programme / OEM requises",
+    "title": "ICD, cartes de performance, exigences et analyses du moteur étudié",
+    "domains": "Source nécessaire pour valider les interfaces, les limites de fonctionnement, les cartes composant, les matériaux et les critères d'acceptation spécifiques.",
+    "url": "À renseigner depuis la documentation autorisée du programme",
+    "scopeLimits": "Aucune relation candidate ne devient une exigence vérifiée sans source et validation adaptée."
+  },
+  {
+    "id": "REF-10",
+    "organization": "NASA NTRS",
+    "title": "A Method to Further Reduce the Perceived Noise of Low Tip Speed Fans",
+    "domains": "Aéroacoustique fan, vitesse périphérique et réduction du bruit.",
+    "url": "https://ntrs.nasa.gov/citations/20000121142",
+    "scopeLimits": "Source de principe; applicabilité à la géométrie FAN étudiée à vérifier."
+  },
+  {
+    "id": "REF-11",
+    "organization": "NASA NTRS / expérimental",
+    "title": "Rotor tip clearance effects on overall and blade-element performance of an axial-flow transonic fan stage",
+    "domains": "Jeu en bout de pale, rendement, performance et stabilité soufflante.",
+    "url": "https://ntrs.nasa.gov/archive/nasa/casi.ntrs.nasa.gov/19820025513.pdf",
+    "scopeLimits": "Résultats de rig/configuration particulière; ne pas extrapoler quantitativement sans modèle."
+  },
+  {
+    "id": "REF-12",
+    "organization": "NASA NTRS",
+    "title": "Integrated Turbine Tip Clearance and Gas Turbine Engine Simulation",
+    "domains": "Croissance thermique, contrôle de jeu et modèle moteur intégré.",
+    "url": "https://ntrs.nasa.gov/citations/20160012685",
+    "scopeLimits": "Référence de méthode; nécessite la géométrie et les propriétés du moteur étudié."
+  },
+  {
+    "id": "REF-13",
+    "organization": "FAA",
+    "title": "Aviation Maintenance Technician Handbook — Powerplant, turbine-engine lubrication",
+    "domains": "Fonctions de lubrification, pompes, récupération huile, ventilation et paliers.",
+    "url": "https://www.faa.gov/sites/faa.gov/files/regulations_policies/handbooks_manuals/aviation/FAA-H-8083-32-AMT-Powerplant-Vol-2.pdf",
+    "scopeLimits": "Référence pédagogique de système; ne remplace pas un schéma huile OEM."
+  },
+  {
+    "id": "REF-14",
+    "organization": "NASA Glenn",
+    "title": "Turbine Nozzle Performance",
+    "domains": "Rapport de pression tuyère, débit, vitesse de sortie et poussée.",
+    "url": "https://www.grc.nasa.gov/www/k-12/airplane/nozzleh.html",
+    "scopeLimits": "Modèle pédagogique idéal/simplifié; confirmer les pertes et le cycle réel."
+  },
+  {
+    "id": "REF-15",
+    "organization": "NASA NTRS",
+    "title": "Integrated CFD Modeling of Gas Turbine Combustors",
+    "domains": "Écoulement combustion, profils thermiques et interface avec turbine.",
+    "url": "https://ntrs.nasa.gov/search.jsp?R=19930066011",
+    "scopeLimits": "Méthode CFD; géométrie, maillage et données de validation propres au cas nécessaires."
+  },
+  {
+    "id": "REF-16",
+    "organization": "NASA NTRS",
+    "title": "Program Predicts Broadband Noise from a Turbofan Engine",
+    "domains": "Sources de bruit large bande d’un turboréacteur double flux.",
+    "url": "https://ntrs.nasa.gov/archive/nasa/casi.ntrs.nasa.gov/20110016562.pdf",
+    "scopeLimits": "Modèle acoustique; vérifier domaine, données d’entrée et configuration de moteur."
+  },
+  {
+    "id": "REF-17",
+    "organization": "NASA NTRS",
+    "title": "Integrated Engine-Generator Concept for Aircraft Electric Secondary Power",
+    "domains": "Couplage générateur-démarreur avec arbre moteur et puissance électrique.",
+    "url": "https://ntrs.nasa.gov/citations/19720018387",
+    "scopeLimits": "Exemple d’architecture; confirme le principe, pas le spool ou l’entraînement de ce moteur."
+  },
+  {
+    "id": "REF-18",
+    "organization": "SAE International",
+    "title": "ARP4754B — Guidelines for Development of Civil Aircraft and Systems",
+    "domains": "Développement système, allocation d’exigences, vérification et traçabilité.",
+    "url": "https://saemobilus.sae.org/standards/arp4754b-guidelines-development-civil-aircraft-systems",
+    "scopeLimits": "Page de norme SAE; le texte complet peut être payant et la base applicable doit être confirmée."
+  }
+]
