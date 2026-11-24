@@ -16,6 +16,19 @@ import { useState } from 'react'
 import { NavLink, useLocation } from 'react-router-dom'
 import { SUBSYSTEM_CATALOG } from '../../types/subsystems'
 
+const SUBSYSTEM_SHORT_NAMES: Record<string, string> = {
+  FAN: 'Soufflante',
+  BOOSTER: 'Compresseur BP',
+  HPC: 'Compresseur HP',
+  COMB: 'Combustion',
+  HPT: 'Turbine HP',
+  LPT: 'Turbine BP',
+  NOZZLE: 'Tuyère',
+  COOLING: 'Refroidissement',
+  ELECTRICAL: 'Électrique',
+  OIL: 'Lubrification',
+}
+
 export interface SidebarProps {
   collapsed: boolean
   onToggleCollapse: () => void
@@ -25,34 +38,34 @@ export interface SidebarProps {
 export function Sidebar({ collapsed, onToggleCollapse, kddCountBySubsystem }: SidebarProps) {
   const location = useLocation()
   const isSubsystemRoute = location.pathname.startsWith('/subsystems')
-  const [subsystemsOpen, setSubsystemsOpen] = useState(true)
+  const [subsystemsOpen, setSubsystemsOpen] = useState(isSubsystemRoute)
 
   const linkClass = ({ isActive }: { isActive: boolean }) =>
-    `flex items-center gap-2.5 rounded-[var(--akdd-radius-sm)] px-2.5 py-2 text-sm font-medium transition-colors ${
+    `group flex items-center gap-2.5 rounded-full border px-3 py-1.5 text-[13px] font-medium transition-colors shadow-none ${
       isActive
-        ? 'bg-[var(--akdd-navy-700)] text-[var(--akdd-text-inverse)]'
-        : 'text-[var(--akdd-slate-300)] hover:bg-[var(--akdd-slate-800)] hover:text-[var(--akdd-text-inverse)]'
+        ? 'border-[var(--akdd-ink)] bg-[var(--akdd-ink)] text-[var(--akdd-text-inverse)]'
+        : 'border-transparent text-[var(--akdd-text-secondary)] hover:bg-[var(--akdd-slate-100)] hover:text-[var(--akdd-text-primary)]'
     }`
 
   return (
     <aside
-      className={`flex h-screen shrink-0 flex-col bg-[var(--akdd-bg-sidebar)] text-[var(--akdd-text-inverse)] border-r border-[var(--akdd-slate-800)] transition-[width] duration-200 ${
-        collapsed ? 'w-[72px]' : 'w-[264px]'
+      className={`flex h-screen shrink-0 flex-col bg-[var(--akdd-bg-sidebar)] text-[var(--akdd-text-primary)] border-r border-[var(--akdd-border-subtle)] shadow-none transition-[width] duration-150 ${
+        collapsed ? 'w-[68px]' : 'w-[256px]'
       }`}
     >
-      {/* Brand Header */}
-      <div className="flex items-center justify-between gap-2 border-b border-[var(--akdd-slate-800)] px-3.5 py-4">
+      {/* Brand Header — exact 56px height matching Topbar hairline */}
+      <div className="flex h-14 shrink-0 items-center justify-between gap-2 border-b border-[var(--akdd-border-subtle)] px-3.5">
         <div className="flex items-center gap-2.5 min-w-0">
-          <div className="flex h-9 w-9 shrink-0 items-center justify-center rounded-[var(--akdd-radius-md)] bg-[var(--akdd-navy-700)] text-xs font-bold tracking-tight text-[var(--akdd-text-inverse)] border border-[var(--akdd-navy-600)]">
+          <div className="flex h-6 w-6 shrink-0 items-center justify-center rounded-[var(--akdd-radius-xs)] bg-[var(--akdd-ink)] font-mono text-[10px] font-medium tracking-tight text-[var(--akdd-text-inverse)]">
             AK
           </div>
           {!collapsed && (
-            <div className="flex flex-col min-w-0">
-              <span className="text-sm font-bold tracking-tight text-[var(--akdd-text-inverse)] truncate">
-                AeroKDD
+            <div className="flex items-baseline gap-1.5 min-w-0">
+              <span className="font-display text-lg font-semibold uppercase tracking-[-0.02em] leading-[1.05] text-[var(--akdd-text-primary)] truncate">
+                AEROKDD
               </span>
-              <span className="text-[11px] text-[var(--akdd-slate-400)] truncate">
-                ECC × SHERPA Engineering
+              <span className="font-mono text-[10px] text-[var(--akdd-text-muted)] truncate">
+                SYS
               </span>
             </div>
           )}
@@ -61,24 +74,24 @@ export function Sidebar({ collapsed, onToggleCollapse, kddCountBySubsystem }: Si
           type="button"
           onClick={onToggleCollapse}
           aria-label={collapsed ? 'Déplier la barre latérale' : 'Replier la barre latérale'}
-          className="flex h-7 w-7 shrink-0 items-center justify-center rounded-[var(--akdd-radius-xs)] text-[var(--akdd-slate-400)] hover:bg-[var(--akdd-slate-800)] hover:text-[var(--akdd-text-inverse)] cursor-pointer"
+          className="flex h-7 w-7 shrink-0 items-center justify-center rounded-[var(--akdd-radius-sm)] border border-transparent text-[var(--akdd-text-muted)] hover:border-[var(--akdd-border-subtle)] hover:bg-[var(--akdd-bg-surface)] hover:text-[var(--akdd-text-primary)] cursor-pointer"
         >
           {collapsed ? <ChevronRight className="h-4 w-4" /> : <ChevronLeft className="h-4 w-4" />}
         </button>
       </div>
 
       {/* Navigation */}
-      <nav className="flex flex-1 flex-col gap-5 overflow-y-auto px-2.5 py-4">
+      <nav className="flex flex-1 flex-col gap-4 overflow-y-auto px-3 py-4">
         {/* Core */}
-        <div className="flex flex-col gap-1">
+        <div className="flex flex-col gap-0.5">
           {!collapsed && (
-            <span className="px-2.5 pb-1 text-[10px] font-semibold uppercase tracking-wider text-[var(--akdd-slate-400)]">
-              Navigation
+            <span className="px-3 pb-1.5 font-mono text-[11px] font-medium uppercase tracking-[0.08em] text-[var(--akdd-text-muted)]">
+              01 / Navigation
             </span>
           )}
-          <NavLink to="/" end className={linkClass} title="Overview">
-            <Home className="h-4 w-4 shrink-0" />
-            {!collapsed && <span className="truncate">Overview</span>}
+          <NavLink to="/" end className={linkClass} title="Vue d’ensemble">
+            <Home className="h-3.5 w-3.5 shrink-0 stroke-[1.75]" />
+            {!collapsed && <span className="truncate">Vue d’ensemble</span>}
           </NavLink>
 
           {/* Subsystems Group */}
@@ -88,44 +101,64 @@ export function Sidebar({ collapsed, onToggleCollapse, kddCountBySubsystem }: Si
               onClick={() => {
                 if (!collapsed) setSubsystemsOpen((v) => !v)
               }}
-              className={`flex items-center justify-between gap-2 rounded-[var(--akdd-radius-sm)] px-2.5 py-2 text-sm font-medium transition-colors cursor-pointer ${
+              aria-expanded={subsystemsOpen}
+              aria-controls="sidebar-subsystems"
+              className={`flex items-center justify-between gap-2 rounded-full border px-3 py-1.5 text-[13px] font-medium transition-colors shadow-none cursor-pointer ${
                 isSubsystemRoute
-                  ? 'bg-[var(--akdd-slate-800)] text-[var(--akdd-text-inverse)]'
-                  : 'text-[var(--akdd-slate-300)] hover:bg-[var(--akdd-slate-800)] hover:text-[var(--akdd-text-inverse)]'
+                  ? 'border-[var(--akdd-ink)] bg-[var(--akdd-ink)] text-[var(--akdd-text-inverse)]'
+                  : 'border-transparent text-[var(--akdd-text-secondary)] hover:bg-[var(--akdd-slate-100)] hover:text-[var(--akdd-text-primary)]'
               }`}
-              title="Subsystems (10 modules)"
+              title="Sous-systèmes (10)"
             >
               <span className="flex items-center gap-2.5 min-w-0">
-                <Layers className="h-4 w-4 shrink-0" />
-                {!collapsed && <span className="truncate">Subsystems (10)</span>}
+                <Layers className="h-3.5 w-3.5 shrink-0 stroke-[1.75]" />
+                {!collapsed && <span className="truncate">Sous-systèmes (10)</span>}
               </span>
               {!collapsed &&
                 (subsystemsOpen ? (
-                  <ChevronDown className="h-3.5 w-3.5 shrink-0 text-[var(--akdd-slate-400)]" />
+                  <ChevronDown
+                    className={`h-3.5 w-3.5 shrink-0 ${
+                      isSubsystemRoute
+                        ? 'text-[var(--akdd-slate-300)]'
+                        : 'text-[var(--akdd-text-muted)]'
+                    }`}
+                  />
                 ) : (
-                  <ChevronRight className="h-3.5 w-3.5 shrink-0 text-[var(--akdd-slate-400)]" />
+                  <ChevronRight
+                    className={`h-3.5 w-3.5 shrink-0 ${
+                      isSubsystemRoute
+                        ? 'text-[var(--akdd-slate-300)]'
+                        : 'text-[var(--akdd-text-muted)]'
+                    }`}
+                  />
                 ))}
             </button>
 
             {!collapsed && subsystemsOpen && (
-              <div className="flex flex-col gap-0.5 pl-4 border-l border-[var(--akdd-slate-800)] ml-4">
+              <div
+                id="sidebar-subsystems"
+                className="ml-4 flex max-h-[212px] flex-col overflow-y-auto border-l border-[var(--akdd-border-subtle)] py-0.5"
+              >
                 {SUBSYSTEM_CATALOG.map((sub) => (
                   <NavLink
                     key={sub.code}
                     to={`/subsystems/${sub.code}`}
                     className={({ isActive }) =>
-                      `flex items-center justify-between gap-2 rounded-[var(--akdd-radius-xs)] px-2 py-1.5 text-xs font-medium transition-colors ${
+                      `-ml-px flex items-center justify-between gap-2 border-l-2 pl-3 pr-2.5 py-1 text-[11.5px] font-medium leading-tight transition-colors ${
                         isActive
-                          ? 'bg-[var(--akdd-navy-700)] text-[var(--akdd-text-inverse)]'
-                          : 'text-[var(--akdd-slate-400)] hover:bg-[var(--akdd-slate-800)] hover:text-[var(--akdd-text-inverse)]'
+                          ? 'border-[var(--akdd-ink)] bg-[var(--akdd-slate-100)] text-[var(--akdd-text-primary)]'
+                          : 'border-transparent text-[var(--akdd-text-secondary)] hover:border-[var(--akdd-slate-300)] hover:text-[var(--akdd-text-primary)]'
                       }`
                     }
                   >
                     <span className="truncate">
-                      <span className="font-mono font-semibold">{sub.code}</span>
-                      <span className="text-[var(--akdd-slate-400)]"> · {sub.frenchName}</span>
+                      <span className="font-mono text-[11px] font-medium">{sub.code}</span>
+                      <span className="text-[var(--akdd-text-muted)]">
+                        {' '}
+                        · {SUBSYSTEM_SHORT_NAMES[sub.code] ?? sub.frenchName}
+                      </span>
                     </span>
-                    <span className="shrink-0 font-mono text-[10px] opacity-80">
+                    <span className="shrink-0 font-mono text-[11px] tabular-nums text-[var(--akdd-text-muted)]">
                       {kddCountBySubsystem[sub.code] ?? 0}
                     </span>
                   </NavLink>
@@ -136,36 +169,36 @@ export function Sidebar({ collapsed, onToggleCollapse, kddCountBySubsystem }: Si
         </div>
 
         {/* Analysis Engines */}
-        <div className="flex flex-col gap-1">
+        <div className="flex flex-col gap-0.5 border-t border-[var(--akdd-border-subtle)] pt-3">
           {!collapsed && (
-            <span className="px-2.5 pb-1 text-[10px] font-semibold uppercase tracking-wider text-[var(--akdd-slate-400)]">
-              Analyse & Graphes
+            <span className="px-3 pb-1.5 font-mono text-[11px] font-medium uppercase tracking-[0.08em] text-[var(--akdd-text-muted)]">
+              02 / Analyse & Graphes
             </span>
           )}
-          <NavLink to="/explore" className={linkClass} title="Unit Explorer">
-            <Compass className="h-4 w-4 shrink-0" />
-            {!collapsed && <span className="truncate">Unit Explorer</span>}
+          <NavLink to="/explore" className={linkClass} title="Explorateur KDD">
+            <Compass className="h-3.5 w-3.5 shrink-0 stroke-[1.75]" />
+            {!collapsed && <span className="truncate">Explorateur KDD</span>}
           </NavLink>
-          <NavLink to="/top-down" className={linkClass} title="Top-Down Engine">
-            <GitBranch className="h-4 w-4 shrink-0" />
-            {!collapsed && <span className="truncate">Top-Down Engine</span>}
+          <NavLink to="/top-down" className={linkClass} title="Analyse Top-Down">
+            <GitBranch className="h-3.5 w-3.5 shrink-0 stroke-[1.75]" />
+            {!collapsed && <span className="truncate">Analyse Top-Down</span>}
           </NavLink>
-          <NavLink to="/network" className={linkClass} title="Global Network">
-            <Network className="h-4 w-4 shrink-0" />
-            {!collapsed && <span className="truncate">Global Network</span>}
+          <NavLink to="/network" className={linkClass} title="Réseau global">
+            <Network className="h-3.5 w-3.5 shrink-0 stroke-[1.75]" />
+            {!collapsed && <span className="truncate">Réseau global</span>}
           </NavLink>
         </div>
 
         {/* Governance & Repositories */}
-        <div className="flex flex-col gap-1">
+        <div className="flex flex-col gap-0.5 border-t border-[var(--akdd-border-subtle)] pt-3">
           {!collapsed && (
-            <span className="px-2.5 pb-1 text-[10px] font-semibold uppercase tracking-wider text-[var(--akdd-slate-400)]">
-              Référentiel & Projet
+            <span className="px-3 pb-1.5 font-mono text-[11px] font-medium uppercase tracking-[0.08em] text-[var(--akdd-text-muted)]">
+              03 / Référentiel & Projet
             </span>
           )}
-          <NavLink to="/manager" className={linkClass} title="KDD Manager">
-            <FolderKanban className="h-4 w-4 shrink-0" />
-            {!collapsed && <span className="truncate">KDD Manager</span>}
+          <NavLink to="/manager" className={linkClass} title="Gestionnaire KDD">
+            <FolderKanban className="h-3.5 w-3.5 shrink-0 stroke-[1.75]" />
+            {!collapsed && <span className="truncate">Gestionnaire KDD</span>}
           </NavLink>
           <NavLink
             to="/repositories?tab=requirements"
@@ -176,10 +209,10 @@ export function Sidebar({ collapsed, onToggleCollapse, kddCountBySubsystem }: Si
                   location.search.includes('tab=requirements'),
               })
             }
-            title="Project Instantiation (Requirements & TRACA)"
+            title="Instanciation projet (Exigences & TRACA)"
           >
-            <ClipboardCheck className="h-4 w-4 shrink-0" />
-            {!collapsed && <span className="truncate">Project Instantiation</span>}
+            <ClipboardCheck className="h-3.5 w-3.5 shrink-0 stroke-[1.75]" />
+            {!collapsed && <span className="truncate">Exigences & TRACA</span>}
           </NavLink>
           <NavLink
             to="/repositories?tab=bibliotheque"
@@ -190,24 +223,24 @@ export function Sidebar({ collapsed, onToggleCollapse, kddCountBySubsystem }: Si
                   !location.search.includes('tab=requirements'),
               })
             }
-            title="References (Bibliothèque & Sources)"
+            title="Bibliothèque & sources scientifiques"
           >
-            <BookOpen className="h-4 w-4 shrink-0" />
-            {!collapsed && <span className="truncate">References & Sources</span>}
+            <BookOpen className="h-3.5 w-3.5 shrink-0 stroke-[1.75]" />
+            {!collapsed && <span className="truncate">Bibliothèque & Sources</span>}
           </NavLink>
-          <NavLink to="/admin" className={linkClass} title="Admin">
-            <Settings className="h-4 w-4 shrink-0" />
-            {!collapsed && <span className="truncate">Admin</span>}
+          <NavLink to="/admin" className={linkClass} title="Administration & maintenance">
+            <Settings className="h-3.5 w-3.5 shrink-0 stroke-[1.75]" />
+            {!collapsed && <span className="truncate">Administration</span>}
           </NavLink>
         </div>
       </nav>
 
       {/* Footer */}
       {!collapsed && (
-        <div className="border-t border-[var(--akdd-slate-800)] px-4 py-3 text-[11px] text-[var(--akdd-slate-400)]">
+        <div className="border-t border-[var(--akdd-border-subtle)] px-4 py-3 font-mono text-[11px] uppercase tracking-[0.08em] text-[var(--akdd-text-muted)]">
           <div className="flex items-center justify-between">
-            <span>Phase 2 · Web App</span>
-            <span className="font-mono text-[var(--akdd-slate-300)]">v2.0</span>
+            <span>ECC × SHERPA</span>
+            <span className="text-[var(--akdd-text-primary)]">RÉV. 2.0</span>
           </div>
         </div>
       )}

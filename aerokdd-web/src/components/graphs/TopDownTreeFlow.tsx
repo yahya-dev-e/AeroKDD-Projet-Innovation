@@ -28,7 +28,7 @@ function TopDownTreeNode({ data }: NodeProps<Node<TreeNodeData>>) {
 
   if (data.tier === 'objective') {
     classes =
-      'bg-[var(--akdd-navy-900)] text-[var(--akdd-text-inverse)] border-[var(--akdd-navy-950)] shadow-[var(--akdd-shadow-md)]'
+      'bg-[var(--akdd-ink)] text-[var(--akdd-text-inverse)] border-[var(--akdd-ink)] shadow-none'
   } else if (data.tier === 'subsystem') {
     classes =
       'bg-[var(--akdd-slate-100)] text-[var(--akdd-navy-900)] border-[var(--akdd-navy-700)]'
@@ -52,13 +52,13 @@ function TopDownTreeNode({ data }: NodeProps<Node<TreeNodeData>>) {
 
   return (
     <div
-      className={`flex flex-col gap-0.5 rounded-[var(--akdd-radius-md)] border-2 px-3 py-2 text-left transition-shadow hover:shadow-[var(--akdd-shadow-md)] ${classes}`}
+      className={`flex flex-col gap-0.5 rounded-[var(--akdd-radius-md)] border px-3 py-2 text-left shadow-none ${classes}`}
       style={{ width }}
     >
       {data.tier !== 'objective' && (
         <Handle type="target" position={Position.Left} className="!bg-[var(--akdd-navy-700)]" />
       )}
-      <div className="text-xs font-bold leading-tight truncate">{data.title}</div>
+      <div className="text-xs font-medium leading-tight truncate">{data.title}</div>
       <div className="text-[11px] opacity-85 truncate">{data.subtitle}</div>
       {data.tier !== 'lever' && (
         <Handle type="source" position={Position.Right} className="!bg-[var(--akdd-navy-700)]" />
@@ -116,8 +116,8 @@ export function TopDownTreeFlow({ analysis, onSelectLever }: TopDownTreeFlowProp
         id: `E-OBJ-${sys.subsystem}`,
         source: 'OBJ',
         target: sysId,
-        style: { stroke: '#17375d', strokeWidth: 1.75 },
-        markerEnd: { type: MarkerType.ArrowClosed, color: '#17375d' },
+        style: { stroke: '#09090b', strokeWidth: 1.5 },
+        markerEnd: { type: MarkerType.ArrowClosed, color: '#09090b' },
       })
     })
 
@@ -139,7 +139,7 @@ export function TopDownTreeFlow({ analysis, onSelectLever }: TopDownTreeFlowProp
       })
 
       const isCarrefourDirect = lev.isDirect && lev.badge.level === 'CARREFOUR'
-      const stroke = lev.isDirect ? (isCarrefourDirect ? '#9c0006' : '#334155') : '#94a3b8'
+      const stroke = lev.isDirect ? (isCarrefourDirect ? '#881337' : '#3f3f46') : '#a1a1aa'
       builtEdges.push({
         id: `E-${lev.subsystem}-${levNodeId}`,
         source: `SYS-${lev.subsystem}`,
@@ -175,7 +175,7 @@ export function TopDownTreeFlow({ analysis, onSelectLever }: TopDownTreeFlowProp
         }}
         proOptions={{ hideAttribution: true }}
       >
-        <Background gap={18} size={1} color="#e2e8f0" />
+        <Background gap={18} size={1} color="#e4e4e7" />
         <Controls />
       </ReactFlow>
     </div>

@@ -6,7 +6,7 @@ import {
   AKDD_NODE_W,
   type GlobalGraphResult,
 } from '../../engines/graphBuilder'
-import { Button } from '../ui'
+import { Badge } from '../ui'
 
 export interface GlobalNetworkCanvasProps {
   graph: GlobalGraphResult
@@ -93,8 +93,8 @@ export function GlobalNetworkCanvas({
             height: AKDD_NODE_H + 2,
             label: 'data(label)',
             'font-size': 8,
-            'font-weight': 700,
-            'font-family': 'JetBrains Mono, monospace',
+            'font-weight': 500,
+            'font-family': 'IBM Plex Mono, monospace',
             'text-valign': 'center',
             'text-halign': 'center',
             'background-color': 'data(fillHex)',
@@ -110,15 +110,15 @@ export function GlobalNetworkCanvas({
             width: 148,
             height: 24,
             label: 'data(label)',
-            'font-size': 11,
-            'font-weight': 700,
-            'font-family': 'Inter, Segoe UI, sans-serif',
+            'font-size': 10.5,
+            'font-weight': 500,
+            'font-family': 'IBM Plex Mono, monospace',
             'text-valign': 'center',
             'text-halign': 'center',
             'background-color': '#ffffff',
-            'background-opacity': 0.9,
-            color: '#17375d',
-            'border-color': '#cbd5e1',
+            'background-opacity': 0.96,
+            color: '#09090b',
+            'border-color': '#e4e4e7',
             'border-width': 1,
             events: 'no',
           },
@@ -152,7 +152,7 @@ export function GlobalNetworkCanvas({
           selector: '.highlighted-node',
           style: {
             'border-width': 3,
-            'border-color': '#0f172a',
+            'border-color': '#09090b',
             'z-index': 999,
             opacity: 1,
           },
@@ -217,37 +217,89 @@ export function GlobalNetworkCanvas({
   }
 
   return (
-    <div className="flex h-full w-full flex-col overflow-hidden rounded-[var(--akdd-radius-lg)] border border-[var(--akdd-border-subtle)] bg-[var(--akdd-bg-surface)]">
-      {/* Canvas Toolbar */}
-      <div className="flex items-center justify-between gap-2 border-b border-[var(--akdd-border-subtle)] bg-[var(--akdd-bg-canvas)] px-3.5 py-2">
-        <span className="text-xs text-[var(--akdd-text-secondary)]">
-          Molette pour zoomer · Glisser pour déplacer · Cliquer un nœud pour inspecter son voisinage
-        </span>
-        <div className="flex items-center gap-1.5">
-          <Button variant="secondary" size="sm" onClick={() => handleZoom(1.25)} aria-label="Zoomer">
-            <ZoomIn className="h-3.5 w-3.5" />
-          </Button>
-          <Button
-            variant="secondary"
-            size="sm"
-            onClick={() => handleZoom(0.8)}
-            aria-label="Dézoomer"
-          >
-            <ZoomOut className="h-3.5 w-3.5" />
-          </Button>
-          <Button
-            variant="secondary"
-            size="sm"
-            icon={<Maximize2 className="h-3.5 w-3.5" />}
-            onClick={handleFit}
-          >
-            Ajuster
-          </Button>
+    <div className="relative flex h-full min-h-[540px] w-full flex-1 overflow-hidden bg-[#FAFAFA]">
+      {/* Full-Bleed Dot-Matrix Cytoscape Viewport */}
+      <div
+        ref={containerRef}
+        className="h-full w-full flex-1"
+        style={{
+          backgroundColor: '#FAFAFA',
+          backgroundImage: 'radial-gradient(#D4D4D8 1px, transparent 1px)',
+          backgroundSize: '16px 16px',
+        }}
+      />
+
+      {/* Bottom-Left Floating Legend Card */}
+      <div className="pointer-events-auto absolute bottom-4 left-4 z-10 flex max-w-[calc(100%-10rem)] flex-col gap-2 rounded-[var(--akdd-radius-sm)] border border-[#E4E4E7] bg-[#FFFFFF] px-3.5 py-2.5 shadow-none">
+        <div className="flex flex-wrap items-center gap-1.5">
+          <span className="mr-1 font-mono text-[11px] font-medium uppercase tracking-[0.08em] text-[#71717A]">
+            Nœuds
+          </span>
+          <Badge className="bg-[var(--akdd-status-kdd-bg)] text-[var(--akdd-status-kdd-text)] border-[var(--akdd-status-kdd-border)]">
+            KDD
+          </Badge>
+          <Badge className="bg-[var(--akdd-status-s-bg)] text-[var(--akdd-status-s-text)] border-[var(--akdd-status-s-border)]">
+            S
+          </Badge>
+          <Badge className="bg-[var(--akdd-status-d-bg)] text-[var(--akdd-status-d-text)] border-[var(--akdd-status-d-border)]">
+            D
+          </Badge>
+          <Badge className="bg-[var(--akdd-status-prestation-bg)] text-[var(--akdd-status-prestation-text)] border-[var(--akdd-status-prestation-border)]">
+            Prestation
+          </Badge>
+          <Badge className="bg-[var(--akdd-status-input-bg)] text-[var(--akdd-status-input-text)] border-[var(--akdd-status-input-border)]">
+            Input
+          </Badge>
+          <Badge className="bg-[var(--akdd-status-contrainte-bg)] text-[var(--akdd-status-contrainte-text)] border-[var(--akdd-status-contrainte-border)]">
+            Contrainte
+          </Badge>
+        </div>
+
+        <div className="flex flex-wrap items-center gap-3 border-t border-[#E4E4E7] pt-1.5 font-mono text-[11px] text-[#52525B]">
+          <span className="font-medium uppercase tracking-[0.08em] text-[#71717A]">Liens</span>
+          <span className="inline-flex items-center gap-1.5">
+            <span className="h-[2px] w-3.5 bg-[var(--akdd-edge-topdown)]" /> Top-Down
+          </span>
+          <span className="inline-flex items-center gap-1.5">
+            <span className="h-[2px] w-3.5 bg-[var(--akdd-edge-coupling)]" /> Couplage
+          </span>
+          <span className="inline-flex items-center gap-1.5">
+            <span className="h-[2px] w-3.5 bg-[var(--akdd-edge-context)]" /> Contexte
+          </span>
+          <span className="inline-flex items-center gap-1.5">
+            <span className="h-0 w-3.5 border-t border-dashed border-[var(--akdd-val-rejected)]" />{' '}
+            Rejeté
+          </span>
         </div>
       </div>
 
-      {/* Cytoscape Viewport */}
-      <div ref={containerRef} className="flex-1 min-h-[540px] w-full bg-[#fbfdff]" />
+      {/* Bottom-Right Floating Zoom/Fit Pill */}
+      <div className="pointer-events-auto absolute bottom-4 right-4 z-10 inline-flex items-center divide-x divide-[#E4E4E7] overflow-hidden rounded-full border border-[#E4E4E7] bg-[#FFFFFF] shadow-none">
+        <button
+          type="button"
+          onClick={() => handleZoom(1.25)}
+          aria-label="Zoomer"
+          className="flex h-8 w-8 items-center justify-center text-[#09090B] transition-colors hover:bg-[#FAFAFA] cursor-pointer"
+        >
+          <ZoomIn className="h-3.5 w-3.5" />
+        </button>
+        <button
+          type="button"
+          onClick={() => handleZoom(0.8)}
+          aria-label="Dézoomer"
+          className="flex h-8 w-8 items-center justify-center text-[#09090B] transition-colors hover:bg-[#FAFAFA] cursor-pointer"
+        >
+          <ZoomOut className="h-3.5 w-3.5" />
+        </button>
+        <button
+          type="button"
+          onClick={handleFit}
+          className="inline-flex h-8 items-center gap-1.5 px-3 font-mono text-[10.5px] font-medium uppercase tracking-[0.06em] text-[#09090B] transition-colors hover:bg-[#FAFAFA] cursor-pointer"
+        >
+          <Maximize2 className="h-3 w-3" />
+          <span>Fit</span>
+        </button>
+      </div>
     </div>
   )
 }

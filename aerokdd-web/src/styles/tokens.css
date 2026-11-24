@@ -1,150 +1,201 @@
 /* ============================================================================
  * AeroKDD Design System Tokens (Figma Sync Target)
- * Aerospace Slate / Navy Chrome + Exact VBA Semantic Status Palette
+ * Aerospace-Industrial Monochrome Specification System
  * ============================================================================ */
 
 :root {
-  /* --- Aerospace Slate / Navy Chrome --- */
-  --akdd-navy-950: #0b192c;
-  --akdd-navy-900: #17375d; /* VBA TOP DOWN header RGB(23, 55, 93) */
-  --akdd-navy-800: #183b5e; /* VBA SCHEMA KDD center RGB(24, 59, 94) */
-  --akdd-navy-700: #1f4e79; /* VBA GrapheGlobal header RGB(31, 78, 121) */
-  --akdd-navy-600: #2f5597; /* VBA table header RGB(47, 85, 151) */
-  --akdd-accent-blue: #0070c0; /* VBA CTA & incoming edge RGB(0, 112, 192) */
-  --akdd-accent-blue-soft: #e8f1fa; /* VBA selector fill RGB(232, 241, 250) */
+  /* --- Strict Monochrome Ink & Zinc Scale --- */
+  --akdd-ink: #09090b;
+  --akdd-ink-soft: #18181b;
+  --akdd-ink-hover: #27272a;
 
-  --akdd-slate-950: #0f172a;
-  --akdd-slate-900: #1e293b;
-  --akdd-slate-800: #2d3748;
-  --akdd-slate-700: #334155;
-  --akdd-slate-600: #475569;
-  --akdd-slate-500: #64748b;
-  --akdd-slate-400: #94a3b8;
-  --akdd-slate-300: #cbd5e1;
-  --akdd-slate-200: #e2e8f0;
-  --akdd-slate-100: #f1f5f9;
-  --akdd-slate-50: #f8fafc;
+  /* Legacy chrome aliases mapped strictly to monochrome ink/zinc */
+  --akdd-navy-950: #09090b;
+  --akdd-navy-900: #09090b;
+  --akdd-navy-800: #09090b;
+  --akdd-navy-700: #09090b;
+  --akdd-navy-600: #27272a;
+  --akdd-accent-blue: #09090b;
+  --akdd-accent-blue-soft: #f4f4f5;
+
+  --akdd-brand: #09090b;
+  --akdd-brand-strong: #27272a;
+  --akdd-brand-soft: #3f3f46;
+  --akdd-brand-tint: #f4f4f5;
+  --akdd-charcoal: #09090b;
+  --akdd-charcoal-raised: #18181b;
+
+  --akdd-slate-950: #09090b;
+  --akdd-slate-900: #18181b;
+  --akdd-slate-800: #27272a;
+  --akdd-slate-700: #3f3f46;
+  --akdd-slate-600: #52525b;
+  --akdd-slate-500: #71717a;
+  --akdd-slate-400: #a1a1aa;
+  --akdd-slate-300: #d4d4d8;
+  --akdd-slate-200: #e4e4e7;
+  --akdd-slate-100: #f4f4f5;
+  --akdd-slate-50: #fafafa;
 
   /* --- Surfaces & Text --- */
-  --akdd-bg-canvas: #f8fafc;
+  --akdd-bg-canvas: #ffffff;
   --akdd-bg-surface: #ffffff;
-  --akdd-bg-subtle: #f2f6fa;
-  --akdd-bg-sidebar: #0f172a;
-  --akdd-border-default: #cbd5e1;
-  --akdd-border-subtle: #e2e8f0;
-  --akdd-text-primary: #0f172a;
-  --akdd-text-secondary: #475569;
-  --akdd-text-muted: #64748b;
+  --akdd-bg-subtle: #fafafa;
+  --akdd-bg-sidebar: #fafafa;
+  --akdd-bg-sidebar-raised: #f4f4f5;
+  --akdd-bg-sidebar-active: #09090b;
+  --akdd-sidebar-active-border: #09090b;
+  --akdd-border-default: #e4e4e7;
+  --akdd-border-subtle: #e4e4e7;
+  --akdd-border-strong: #09090b;
+  --akdd-text-primary: #09090b;
+  --akdd-text-secondary: #3f3f46;
+  --akdd-text-muted: #71717a;
   --akdd-text-inverse: #ffffff;
 
-  /* --- Semantic KDD Status Palette (mod_Admin_FiltreSPEC & mod_GrapheGlobal) --- */
+  /* --- Semantic KDD Engineering Micro-Tag Palette (1px Crisp Hairline Tags) --- */
   /* KDD - Key Design Driver */
-  --akdd-status-kdd-bg: #d9ead3; /* RGB(217, 234, 211) */
-  --akdd-status-kdd-text: #274e13; /* RGB(39, 78, 19) */
-  --akdd-status-kdd-border: #38761d; /* RGB(56, 118, 29) */
+  --akdd-status-kdd-bg: #f6fef9;
+  --akdd-status-kdd-text: #0f5132;
+  --akdd-status-kdd-border: #a7e3bf;
 
   /* S - Sizing Parameter */
-  --akdd-status-s-bg: #cfe2f3; /* RGB(207, 226, 243) */
-  --akdd-status-s-text: #0b5394; /* RGB(11, 83, 148) */
-  --akdd-status-s-border: #3d85c6; /* RGB(61, 133, 198) */
+  --akdd-status-s-bg: #f5f9ff;
+  --akdd-status-s-text: #173f7a;
+  --akdd-status-s-border: #adc8f0;
 
   /* D - Design Parameter */
-  --akdd-status-d-bg: #eaf2f8; /* RGB(234, 242, 248) */
-  --akdd-status-d-text: #244062; /* RGB(36, 64, 98) */
-  --akdd-status-d-border: #789bbe; /* RGB(120, 155, 190) */
+  --akdd-status-d-bg: #f8fafc;
+  --akdd-status-d-text: #334155;
+  --akdd-status-d-border: #cbd5e1;
 
   /* Prestation / Performance */
-  --akdd-status-prestation-bg: #fff2cc; /* RGB(255, 242, 204) */
-  --akdd-status-prestation-text: #7f6000; /* RGB(127, 96, 0) */
-  --akdd-status-prestation-border: #bf9000; /* RGB(191, 144, 0) */
+  --akdd-status-prestation-bg: #fffdf5;
+  --akdd-status-prestation-text: #6b440a;
+  --akdd-status-prestation-border: #e5c675;
 
   /* Effet Induit (Prestation) */
-  --akdd-status-effet-bg: #fce5cd; /* RGB(252, 229, 205) */
-  --akdd-status-effet-text: #783f04; /* RGB(120, 63, 4) */
-  --akdd-status-effet-border: #e69138;
+  --akdd-status-effet-bg: #fff9f5;
+  --akdd-status-effet-text: #7c2d12;
+  --akdd-status-effet-border: #eeb88d;
 
   /* Input / Interface */
-  --akdd-status-input-bg: #eeeeee; /* RGB(238, 238, 238) */
-  --akdd-status-input-text: #434343; /* RGB(67, 67, 67) */
-  --akdd-status-input-border: #8c8c8c; /* RGB(140, 140, 140) */
+  --akdd-status-input-bg: #fafafa;
+  --akdd-status-input-text: #3f3f46;
+  --akdd-status-input-border: #d4d4d8;
 
   /* Contrainte / RAMS & Contrainte / Strategie */
-  --akdd-status-contrainte-bg: #f4cccc; /* RGB(244, 204, 204) */
-  --akdd-status-contrainte-text: #990000; /* RGB(153, 0, 0) */
-  --akdd-status-contrainte-border: #cc4125; /* RGB(204, 65, 37) */
+  --akdd-status-contrainte-bg: #fff8f8;
+  --akdd-status-contrainte-text: #881337;
+  --akdd-status-contrainte-border: #eeb4bc;
 
   /* --- Graph Edge / Link Role Colors (mod_GrapheGlobal) --- */
   /* Top-Down Green (Levier <-> Prestation) */
-  --akdd-edge-topdown: #00914b; /* RGB(0, 145, 75) */
-  --akdd-edge-topdown-text: #007d3c; /* RGB(0, 125, 60) */
-  --akdd-edge-topdown-bg: #c6efce; /* RGB(198, 239, 206) */
+  --akdd-edge-topdown: #15803d;
+  --akdd-edge-topdown-text: #14532d;
+  --akdd-edge-topdown-bg: #f6fef9;
 
   /* Coupling Orange (Levier <-> Levier) */
-  --akdd-edge-coupling: #e67e22; /* RGB(230, 126, 34) */
-  --akdd-edge-coupling-text: #cc6600; /* RGB(204, 102, 0) */
-  --akdd-edge-coupling-bg: #fce5cd; /* RGB(252, 229, 205) */
+  --akdd-edge-coupling: #d97706;
+  --akdd-edge-coupling-text: #7c2d12;
+  --akdd-edge-coupling-bg: #fff9f5;
 
   /* Context Grey (Input / Contrainte) */
-  --akdd-edge-context: #919191; /* RGB(145, 145, 145) */
-  --akdd-edge-context-text: #5a5a5a; /* RGB(90, 90, 90) */
-  --akdd-edge-context-bg: #d9d9d9; /* RGB(217, 217, 217) */
+  --akdd-edge-context: #71717a;
+  --akdd-edge-context-text: #3f3f46;
+  --akdd-edge-context-bg: #fafafa;
 
   /* --- Explorer Ego-Graph Directions (mod_GraphKDD_Schema) --- */
-  --akdd-dir-in-bg: #ddebf7; /* RGB(221, 235, 247) */
-  --akdd-dir-in-text: #14375f; /* RGB(20, 55, 95) */
-  --akdd-dir-in-border: #0070c0; /* RGB(0, 112, 192) */
+  --akdd-dir-in-bg: #f5f9ff;
+  --akdd-dir-in-text: #173f7a;
+  --akdd-dir-in-border: #2563eb;
 
-  --akdd-dir-out-bg: #fce4d6; /* RGB(252, 228, 214) */
-  --akdd-dir-out-text: #8c0000; /* RGB(140, 0, 0) */
-  --akdd-dir-out-border: #c00000; /* RGB(192, 0, 0) */
+  --akdd-dir-out-bg: #fff8f8;
+  --akdd-dir-out-text: #881337;
+  --akdd-dir-out-border: #dc2626;
 
   /* --- Top-Down Centrality Badges (mod_AnalyseTopDown) --- */
   /* CARREFOUR (>= 8 liens) */
-  --akdd-badge-carrefour-bg: #ffdab9; /* RGB(255, 218, 185) */
-  --akdd-badge-carrefour-text: #780000; /* RGB(120, 0, 0) */
-  --akdd-badge-carrefour-border: #9c0006; /* RGB(156, 0, 6) */
+  --akdd-badge-carrefour-bg: #fff8f8;
+  --akdd-badge-carrefour-text: #881337;
+  --akdd-badge-carrefour-border: #e5989b;
 
   /* FORT (4-7 liens) */
-  --akdd-badge-fort-bg: #fff2cc; /* RGB(255, 242, 204) */
-  --akdd-badge-fort-text: #5a3c00; /* RGB(90, 60, 0) */
-  --akdd-badge-fort-border: #3c3c3c; /* RGB(60, 60, 60) */
+  --akdd-badge-fort-bg: #fffdf5;
+  --akdd-badge-fort-text: #6b440a;
+  --akdd-badge-fort-border: #e5c675;
 
   /* CIBLE (1-3 liens) */
-  --akdd-badge-cible-bg: #ebf5eb; /* RGB(235, 245, 235) */
-  --akdd-badge-cible-text: #005000; /* RGB(0, 80, 0) */
-  --akdd-badge-cible-border: #5a5a5a; /* RGB(90, 90, 90) */
+  --akdd-badge-cible-bg: #f6fef9;
+  --akdd-badge-cible-text: #0f5132;
+  --akdd-badge-cible-border: #a7e3bf;
 
   /* --- Relation Validation Statuses (mod_Admin_TriRelations) --- */
-  --akdd-val-validated: #007d3c; /* RGB(0, 125, 60) */
-  --akdd-val-review: #b45f06; /* RGB(180, 95, 6) */
-  --akdd-val-candidate: #5a5a5a; /* RGB(90, 90, 90) */
-  --akdd-val-rejected: #787878; /* RGB(120, 120, 120) */
+  --akdd-val-validated: #15803d;
+  --akdd-val-review: #b45309;
+  --akdd-val-candidate: #52525b;
+  --akdd-val-rejected: #a1a1aa;
 
-  /* --- 10 Subsystem Cluster Fills (AKDD_SubsystemFill) --- */
-  --akdd-sys-fan: #d9eaf7;
-  --akdd-sys-booster: #e2efda;
-  --akdd-sys-hpc: #fff2cc;
-  --akdd-sys-comb: #fce5cd;
-  --akdd-sys-hpt: #ead1dc;
-  --akdd-sys-lpt: #d9d2e9;
-  --akdd-sys-nozzle: #d0e0e3;
-  --akdd-sys-cooling: #ffe6e6;
-  --akdd-sys-electrical: #cfe2f3;
-  --akdd-sys-oil: #e6e6e6;
+  /* --- 10 Subsystem Fills (Strict Monochrome — No Decorative Pastel Blobs) --- */
+  --akdd-sys-fan: #fafafa;
+  --akdd-sys-booster: #fafafa;
+  --akdd-sys-hpc: #fafafa;
+  --akdd-sys-comb: #fafafa;
+  --akdd-sys-hpt: #fafafa;
+  --akdd-sys-lpt: #fafafa;
+  --akdd-sys-nozzle: #fafafa;
+  --akdd-sys-cooling: #fafafa;
+  --akdd-sys-electrical: #fafafa;
+  --akdd-sys-oil: #fafafa;
 
   /* --- Typography --- */
-  --akdd-font-sans: 'Inter', 'Segoe UI', system-ui, -apple-system, sans-serif;
-  --akdd-font-mono: 'JetBrains Mono', ui-monospace, SFMono-Regular, Consolas, monospace;
+  --font-display: 'Barlow Condensed', 'IBM Plex Sans', system-ui, -apple-system, sans-serif;
+  --font-sans: 'IBM Plex Sans', system-ui, -apple-system, sans-serif;
+  --font-mono: 'IBM Plex Mono', ui-monospace, SFMono-Regular, Consolas, monospace;
 
-  /* --- Radii --- */
-  --akdd-radius-xs: 4px;
-  --akdd-radius-sm: 6px;
-  --akdd-radius-md: 8px;
-  --akdd-radius-lg: 12px;
+  --akdd-font-display: var(--font-display);
+  --akdd-font-sans: var(--font-sans);
+  --akdd-font-mono: var(--font-mono);
+
+  /* --- Architectural Radii --- */
+  --akdd-radius-xs: 2px;
+  --akdd-radius-sm: 2px;
+  --akdd-radius-md: 2px;
+  --akdd-radius-lg: 2px;
+  --akdd-radius-xl: 2px;
   --akdd-radius-full: 9999px;
 
-  /* --- Shadows --- */
-  --akdd-shadow-sm: 0 1px 2px 0 rgb(15 23 42 / 0.05);
-  --akdd-shadow-md: 0 4px 6px -1px rgb(15 23 42 / 0.08), 0 2px 4px -2px rgb(15 23 42 / 0.05);
-  --akdd-shadow-lg: 0 10px 15px -3px rgb(15 23 42 / 0.1), 0 4px 6px -4px rgb(15 23 42 / 0.06);
+  /* --- Shadows (Strictly Disabled — Hairline Borders Only) --- */
+  --akdd-shadow-sm: none;
+  --akdd-shadow-md: none;
+  --akdd-shadow-lg: none;
+  --akdd-focus-ring: none;
+}
+
+body {
+  font-family: var(--font-sans);
+  background: var(--akdd-bg-canvas);
+  color: var(--akdd-text-primary);
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+h1,
+.font-display {
+  font-family: var(--font-display);
+  letter-spacing: -0.02em;
+  line-height: 1.05;
+}
+
+.font-mono,
+code,
+kbd {
+  font-family: var(--font-mono);
+  font-variant-numeric: tabular-nums;
+  font-synthesis-weight: none;
+}
+
+.tabular-nums {
+  font-variant-numeric: tabular-nums;
 }

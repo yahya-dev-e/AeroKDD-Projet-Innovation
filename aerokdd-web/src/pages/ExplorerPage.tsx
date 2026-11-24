@@ -120,14 +120,14 @@ export function ExplorerPage() {
   }
 
   return (
-    <div className="mx-auto flex max-w-7xl flex-col gap-5">
+    <div className="mx-auto flex max-w-7xl flex-col gap-7">
       {/* Searchable KDD Selector Header */}
       <Card>
         <CardContent className="flex flex-col gap-4">
           <div className="flex flex-wrap items-center justify-between gap-4">
             <div className="flex flex-col gap-1">
               <div className="flex flex-wrap items-center gap-2">
-                <h1 className="text-lg font-bold text-[var(--akdd-text-primary)]">
+                <h1 className="font-display text-2xl font-semibold leading-[1.05] tracking-[-0.02em] text-[var(--akdd-text-primary)]">
                   Unit Explorer — GRAPH_KDD & SCHEMA KDD
                 </h1>
                 {ego.selectedKdd && (
@@ -140,7 +140,7 @@ export function ExplorerPage() {
               </div>
               {ego.selectedKdd && (
                 <p className="text-xs text-[var(--akdd-text-secondary)]">
-                  <strong className="font-mono text-[var(--akdd-navy-900)]">
+                  <strong className="font-mono font-medium text-[var(--akdd-ink)]">
                     {ego.selectedKdd.id}
                   </strong>{' '}
                   — {ego.selectedKdd.name} · {ego.selectedKdd.definition}
@@ -154,7 +154,7 @@ export function ExplorerPage() {
                   key={preset}
                   type="button"
                   onClick={() => handleSelectKdd(preset)}
-                  className={`rounded-[var(--akdd-radius-xs)] px-2 py-1 text-xs font-mono border cursor-pointer transition-colors ${
+                  className={`rounded-full px-3 py-1 text-xs font-mono border cursor-pointer transition-colors ${
                     selectedId === preset
                       ? 'bg-[var(--akdd-navy-700)] text-[var(--akdd-text-inverse)] border-[var(--akdd-navy-700)]'
                       : 'bg-[var(--akdd-bg-canvas)] text-[var(--akdd-text-secondary)] border-[var(--akdd-border-subtle)] hover:border-[var(--akdd-navy-600)]'
@@ -189,7 +189,7 @@ export function ExplorerPage() {
             </div>
 
             {selectorOpen && (
-              <div className="flex max-h-56 flex-col overflow-y-auto rounded-[var(--akdd-radius-md)] border border-[var(--akdd-border-default)] bg-[var(--akdd-bg-surface)] divide-y divide-[var(--akdd-border-subtle)] shadow-[var(--akdd-shadow-md)]">
+              <div className="flex max-h-56 flex-col overflow-y-auto rounded-[var(--akdd-radius-md)] border border-[var(--akdd-border-subtle)] bg-[var(--akdd-bg-surface)] divide-y divide-[var(--akdd-border-subtle)] shadow-none">
                 {selectorMatches.map((k) => (
                   <button
                     key={k.id}
@@ -198,7 +198,7 @@ export function ExplorerPage() {
                     className="flex items-center justify-between gap-3 px-3.5 py-2 text-left text-xs hover:bg-[var(--akdd-accent-blue-soft)] cursor-pointer"
                   >
                     <div className="flex items-center gap-2 min-w-0">
-                      <span className="font-mono font-bold text-[var(--akdd-navy-900)]">
+                      <span className="font-mono font-medium text-[var(--akdd-ink)]">
                         {k.id}
                       </span>
                       <span className="font-medium text-[var(--akdd-text-primary)] truncate">
@@ -243,7 +243,7 @@ export function ExplorerPage() {
       <Card className="overflow-hidden">
         <CardHeader
           title="SCHEMA KDD — Vue Orientée 3 Colonnes (Amont | KDD Sélectionné | Aval)"
-          subtitle="Bleu = Entrants · Bleu marine = KDD exploré · Rouge = Sortants"
+          subtitle="Bleu = Entrants · Noir = KDD exploré · Rouge = Sortants"
           action={
             <Button
               variant="primary"
@@ -255,7 +255,7 @@ export function ExplorerPage() {
             </Button>
           }
         />
-        <div className="h-[460px] w-full bg-[#fbfdff]">
+        <div className="h-[460px] w-full bg-[#fafafa]">
           <EgoSchemaFlow ego={ego} onSelectKdd={handleSelectKdd} />
         </div>
       </Card>
@@ -303,13 +303,13 @@ export function ExplorerPage() {
           <div className="overflow-x-auto rounded-[var(--akdd-radius-md)] border border-[var(--akdd-border-subtle)]">
             <table className="w-full border-collapse text-left text-xs">
               <thead>
-                <tr className="border-b border-[var(--akdd-border-subtle)] bg-[var(--akdd-bg-canvas)] text-[11px] font-semibold uppercase tracking-wider text-[var(--akdd-text-muted)]">
-                  <th className="px-3 py-2.5 w-[105px]">Sens</th>
-                  <th className="px-3 py-2.5 w-[90px]">ID Rel.</th>
-                  <th className="px-3 py-2.5 min-w-[200px]">Paramètre lié</th>
-                  <th className="px-3 py-2.5 min-w-[160px]">Nature & Rôle</th>
-                  <th className="px-3 py-2.5 min-w-[260px]">Justification Physique</th>
-                  <th className="px-3 py-2.5 w-[150px]">Sources NASA</th>
+                <tr className="border-b border-[var(--akdd-border-subtle)] bg-[var(--akdd-bg-subtle)] font-mono text-[11px] font-medium uppercase tracking-[0.08em] text-[#71717A]">
+                  <th className="px-4 py-3 w-[110px]">Sens</th>
+                  <th className="px-4 py-3 w-[95px]">ID Rel.</th>
+                  <th className="px-4 py-3 min-w-[200px]">Paramètre lié</th>
+                  <th className="px-4 py-3 min-w-[165px]">Nature &amp; Rôle</th>
+                  <th className="px-4 py-3 min-w-[260px]">Justification Physique</th>
+                  <th className="px-4 py-3 w-[155px]">Sources NASA</th>
                 </tr>
               </thead>
               <tbody className="divide-y divide-[var(--akdd-border-subtle)]">
@@ -329,48 +329,48 @@ export function ExplorerPage() {
                     return (
                       <tr
                         key={`${item.relation.id}-${item.direction}`}
-                        className="hover:bg-[var(--akdd-slate-50)]"
+                        className="hover:bg-[var(--akdd-bg-subtle)] transition-colors"
                       >
-                        <td className="px-3 py-2.5 whitespace-nowrap">
+                        <td className="px-4 py-3.5 whitespace-nowrap">
                           <Badge
                             className={
                               isOut
-                                ? 'bg-[var(--akdd-dir-out-bg)] text-[var(--akdd-dir-out-text)] border-[var(--akdd-dir-out-border)] font-semibold'
-                                : 'bg-[var(--akdd-dir-in-bg)] text-[var(--akdd-dir-in-text)] border-[var(--akdd-dir-in-border)] font-semibold'
+                                ? 'bg-[var(--akdd-dir-out-bg)] text-[var(--akdd-dir-out-text)] border-[var(--akdd-dir-out-border)]'
+                                : 'bg-[var(--akdd-dir-in-bg)] text-[var(--akdd-dir-in-text)] border-[var(--akdd-dir-in-border)]'
                             }
                           >
                             {item.arrow} {item.direction}
                           </Badge>
                         </td>
-                        <td className="px-3 py-2.5 font-mono text-[var(--akdd-text-muted)] whitespace-nowrap">
+                        <td className="px-4 py-3.5 font-mono tabular-nums text-[var(--akdd-text-muted)] whitespace-nowrap">
                           {item.relation.id}
                         </td>
-                        <td className="px-3 py-2.5">
+                        <td className="px-4 py-3.5">
                           <button
                             type="button"
                             onClick={() => handleSelectKdd(peerId)}
                             className="flex flex-col text-left hover:underline cursor-pointer"
                           >
-                            <span className="font-mono font-bold text-[var(--akdd-navy-800)]">
+                            <span className="font-mono font-medium tabular-nums text-[var(--akdd-ink)]">
                               {peerId}
                             </span>
                             <span className="text-[var(--akdd-text-primary)]">{peerName}</span>
                           </button>
                         </td>
-                        <td className="px-3 py-2.5">
+                        <td className="px-4 py-3.5">
                           <div className="flex flex-col gap-1">
                             <span className="font-medium text-[var(--akdd-text-primary)]">
                               {item.relation.nature}
                             </span>
                             <span
-                              className="text-[11px] font-semibold"
+                              className="text-[11px] font-medium"
                               style={{ color: item.roleColorHex }}
                             >
                               {item.roleLabel}
                             </span>
                           </div>
                         </td>
-                        <td className="px-3 py-2.5">
+                        <td className="px-4 py-3.5">
                           <div className="flex flex-col gap-1">
                             <span className="leading-relaxed text-[var(--akdd-text-secondary)]">
                               {item.relation.justification || '—'}
@@ -382,7 +382,7 @@ export function ExplorerPage() {
                             )}
                           </div>
                         </td>
-                        <td className="px-3 py-2.5">
+                        <td className="px-4 py-3.5">
                           {refs.length > 0 ? (
                             <div className="flex flex-wrap gap-1">
                               {refs.map((ref) =>
@@ -393,7 +393,7 @@ export function ExplorerPage() {
                                     target="_blank"
                                     rel="noreferrer"
                                     title={`${ref.organization} — ${ref.title}`}
-                                    className="inline-flex items-center gap-1 rounded bg-[var(--akdd-accent-blue-soft)] px-1.5 py-0.5 font-mono text-[11px] font-semibold text-[var(--akdd-navy-800)] hover:underline"
+                                    className="inline-flex items-center gap-1 rounded-[var(--akdd-radius-xs)] border border-[var(--akdd-border-subtle)] bg-[var(--akdd-bg-subtle)] px-1.5 py-0.5 font-mono text-[11px] font-medium text-[var(--akdd-ink)] hover:underline"
                                   >
                                     {ref.id}
                                     <ExternalLink className="h-3 w-3" />
@@ -433,9 +433,9 @@ export function ExplorerPage() {
         >
           <div className="flex items-center justify-between gap-4 border-b border-[var(--akdd-border-subtle)] bg-[var(--akdd-navy-900)] px-5 py-3 text-[var(--akdd-text-inverse)]">
             <div className="flex items-center gap-3 min-w-0">
-              <span className="font-mono text-sm font-bold">{ego.selectedKdd?.id}</span>
+              <span className="font-mono text-sm font-medium">{ego.selectedKdd?.id}</span>
               <span className="text-sm truncate">{ego.selectedKdd?.name}</span>
-              <span className="text-xs text-[var(--akdd-slate-300)] font-mono">
+              <span className="text-xs text-[var(--akdd-slate-300)] font-mono tabular-nums">
                 Entrantes: {ego.incoming.length} · Sortantes: {ego.outgoing.length}
               </span>
             </div>
@@ -448,7 +448,7 @@ export function ExplorerPage() {
               Quitter plein écran (Esc)
             </Button>
           </div>
-          <div className="flex-1 bg-[#fbfdff]">
+          <div className="flex-1 bg-[#fafafa]">
             <EgoSchemaFlow ego={ego} onSelectKdd={handleSelectKdd} />
           </div>
         </div>

@@ -63,18 +63,18 @@ export function TopDownPage() {
   }, [analysis.rows, levelFilter, searchQuery])
 
   return (
-    <div className="mx-auto flex max-w-7xl flex-col gap-5">
+    <div className="mx-auto flex max-w-7xl flex-col gap-7">
       {/* Control Header */}
       <Card>
         <CardContent className="flex flex-wrap items-center justify-between gap-4">
           <div className="flex flex-col gap-1">
-            <span className="text-[11px] font-semibold uppercase tracking-wider text-[var(--akdd-text-muted)]">
+            <span className="font-mono text-[11px] font-medium uppercase tracking-[0.08em] text-[var(--akdd-text-muted)]">
               Moteur d’Analyse Top-Down (mod_AnalyseTopDown)
             </span>
             <div className="flex flex-wrap items-center gap-3">
               <label
                 htmlFor="topdown-theme-select"
-                className="text-sm font-semibold text-[var(--akdd-navy-900)]"
+                className="text-sm font-medium text-[var(--akdd-text-primary)]"
               >
                 Objectif / Prestation Cible :
               </label>
@@ -82,7 +82,7 @@ export function TopDownPage() {
                 id="topdown-theme-select"
                 value={selectedTheme}
                 onChange={(e) => setSelectedTheme(e.target.value as TopDownTheme)}
-                className="rounded-[var(--akdd-radius-sm)] border border-[var(--akdd-navy-600)] bg-[var(--akdd-accent-blue-soft)] px-3.5 py-1.5 text-sm font-semibold text-[var(--akdd-navy-900)] focus:outline-none"
+                className="rounded-[var(--akdd-radius-sm)] border border-[var(--akdd-border-subtle)] bg-[var(--akdd-bg-subtle)] px-3.5 py-1.5 text-sm font-medium text-[var(--akdd-text-primary)] focus:border-[var(--akdd-ink)] focus:outline-none"
               >
                 {TOP_DOWN_THEMES.map((theme) => (
                   <option key={theme} value={theme}>
@@ -187,15 +187,15 @@ export function TopDownPage() {
             <div className="overflow-x-auto rounded-[var(--akdd-radius-md)] border border-[var(--akdd-border-subtle)]">
               <table className="w-full border-collapse text-left text-xs">
                 <thead>
-                  <tr className="border-b border-[var(--akdd-border-subtle)] bg-[var(--akdd-navy-600)] text-[11px] font-semibold text-[var(--akdd-text-inverse)]">
-                    <th className="px-3 py-2.5 min-w-[175px]">Prestation Cible</th>
-                    <th className="px-3 py-2.5 w-[100px]">Sous-Sys.</th>
-                    <th className="px-3 py-2.5 w-[110px]">ID Levier</th>
-                    <th className="px-3 py-2.5 min-w-[170px]">Nom KDD Physique</th>
-                    <th className="px-3 py-2.5 min-w-[165px]">Relation & Direction</th>
-                    <th className="px-3 py-2.5 w-[145px]">Criticité / Centralité</th>
-                    <th className="px-3 py-2.5 min-w-[230px]">Effets de bord réels</th>
-                    <th className="px-3 py-2.5 min-w-[230px]">Justification Physique</th>
+                  <tr className="border-b border-[var(--akdd-border-subtle)] bg-[var(--akdd-bg-subtle)] font-mono text-[11px] font-medium uppercase tracking-[0.08em] text-[#71717A]">
+                    <th className="px-4 py-3 min-w-[175px]">Prestation Cible</th>
+                    <th className="px-4 py-3 w-[105px]">Sous-Sys.</th>
+                    <th className="px-4 py-3 w-[115px]">ID Levier</th>
+                    <th className="px-4 py-3 min-w-[175px]">Nom KDD Physique</th>
+                    <th className="px-4 py-3 min-w-[170px]">Relation &amp; Direction</th>
+                    <th className="px-4 py-3 w-[150px]">Criticité</th>
+                    <th className="px-4 py-3 min-w-[230px]">Effets de bord réels</th>
+                    <th className="px-4 py-3 min-w-[230px]">Justification Physique</th>
                   </tr>
                 </thead>
                 <tbody className="divide-y divide-[var(--akdd-border-subtle)]">
@@ -212,28 +212,28 @@ export function TopDownPage() {
                     filteredRows.map((row, idx) => (
                       <tr
                         key={`${row.prestationId}-${row.leverId}-${idx}`}
-                        className="align-top hover:bg-[var(--akdd-slate-50)]"
+                        className="align-top hover:bg-[var(--akdd-bg-subtle)] transition-colors"
                       >
-                        <td className="px-3 py-2.5 font-medium text-[var(--akdd-text-primary)]">
+                        <td className="px-4 py-3.5 font-medium text-[var(--akdd-text-primary)]">
                           {row.prestationLabel}
                         </td>
-                        <td className="px-3 py-2.5">
+                        <td className="px-4 py-3.5">
                           <SubsystemBadge code={row.leverSubsystem} />
                         </td>
-                        <td className="px-3 py-2.5 whitespace-nowrap">
+                        <td className="px-4 py-3.5 whitespace-nowrap">
                           <button
                             type="button"
                             onClick={() => navigate(`/explore/${encodeURIComponent(row.leverId)}`)}
-                            className="font-mono font-bold text-[var(--akdd-accent-blue)] hover:underline cursor-pointer"
+                            className="font-mono font-medium tabular-nums text-[var(--akdd-ink)] hover:underline cursor-pointer"
                           >
                             {row.leverId}
                           </button>
                         </td>
-                        <td className="px-3 py-2.5 font-medium text-[var(--akdd-text-primary)]">
+                        <td className="px-4 py-3.5 font-medium text-[var(--akdd-text-primary)]">
                           {row.leverName}
                         </td>
-                        <td className="px-3 py-2.5">
-                          <div className="flex flex-col gap-1">
+                        <td className="px-4 py-3.5">
+                          <div className="flex flex-col gap-1.5">
                             <Badge
                               className={
                                 row.level === 1
@@ -254,10 +254,10 @@ export function TopDownPage() {
                             </span>
                           </div>
                         </td>
-                        <td className="px-3 py-2.5 whitespace-nowrap">
+                        <td className="px-4 py-3.5 whitespace-nowrap">
                           <CentralityBadge level={row.badge.level} label={row.badge.label} />
                         </td>
-                        <td className="px-3 py-2.5">
+                        <td className="px-4 py-3.5">
                           <div className="flex max-h-28 flex-col gap-0.5 overflow-y-auto text-[11px] text-[var(--akdd-text-secondary)]">
                             {row.sideEffects.length === 0 ? (
                               <span className="italic text-[var(--akdd-text-muted)]">
@@ -266,7 +266,7 @@ export function TopDownPage() {
                             ) : (
                               row.sideEffects.map((se, i) => (
                                 <span key={se.kddId}>
-                                  <strong className="font-mono text-[var(--akdd-navy-800)]">
+                                  <strong className="font-mono font-medium tabular-nums text-[var(--akdd-ink)]">
                                     {i + 1}) {se.kddId}
                                   </strong>{' '}
                                   — {se.kddName}
@@ -275,7 +275,7 @@ export function TopDownPage() {
                             )}
                           </div>
                         </td>
-                        <td className="px-3 py-2.5 whitespace-pre-line text-[11px] leading-relaxed text-[var(--akdd-text-secondary)]">
+                        <td className="px-4 py-3.5 whitespace-pre-line text-[11px] leading-relaxed text-[var(--akdd-text-secondary)]">
                           {row.justification || '—'}
                         </td>
                       </tr>
@@ -302,7 +302,7 @@ export function TopDownPage() {
               <CentralityBadge level="FORT" label="FORT (4–7 liens)" />
               <CentralityBadge level="CIBLE" label="CIBLE (1–3 liens)" />
             </div>
-            <div className="bg-[#fbfdff]">
+            <div className="bg-[#fafafa]">
               <TopDownTreeFlow
                 analysis={analysis}
                 onSelectLever={(id) => navigate(`/explore/${encodeURIComponent(id)}`)}
@@ -327,22 +327,22 @@ export function TopDownPage() {
               <CardContent className="p-0">
                 <table className="w-full border-collapse text-left text-xs">
                   <thead>
-                    <tr className="border-b border-[var(--akdd-border-subtle)] bg-[var(--akdd-bg-canvas)] text-[11px] font-semibold uppercase text-[var(--akdd-text-muted)]">
-                      <th className="px-4 py-2">Sous-Système</th>
-                      <th className="px-4 py-2 text-center">Direct (N1)</th>
-                      <th className="px-4 py-2 text-center">Indirect (N2)</th>
+                    <tr className="border-b border-[var(--akdd-border-subtle)] bg-[var(--akdd-bg-subtle)] font-mono text-[11px] font-medium uppercase tracking-[0.08em] text-[#71717A]">
+                      <th className="px-4 py-2.5">Sous-Système</th>
+                      <th className="px-4 py-2.5 text-right">Direct (N1)</th>
+                      <th className="px-4 py-2.5 text-right">Indirect (N2)</th>
                     </tr>
                   </thead>
                   <tbody className="divide-y divide-[var(--akdd-border-subtle)]">
                     {analysis.subsystemSummary.map((item) => (
-                      <tr key={item.subsystem}>
-                        <td className="px-4 py-2 font-semibold text-[var(--akdd-navy-900)]">
+                      <tr key={item.subsystem} className="hover:bg-[var(--akdd-bg-subtle)]">
+                        <td className="px-4 py-2.5 font-mono font-medium text-[var(--akdd-ink)]">
                           {item.subsystem}
                         </td>
-                        <td className="px-4 py-2 text-center font-mono font-bold text-[var(--akdd-navy-900)]">
+                        <td className="px-4 py-2.5 text-right font-mono font-medium tabular-nums text-[var(--akdd-ink)]">
                           {item.directCount}
                         </td>
-                        <td className="px-4 py-2 text-center font-mono text-[var(--akdd-text-secondary)]">
+                        <td className="px-4 py-2.5 text-right font-mono tabular-nums text-[var(--akdd-text-muted)]">
                           {item.indirectCount}
                         </td>
                       </tr>

@@ -24,24 +24,24 @@ interface EgoNodeData extends Record<string, unknown> {
 function EgoKddNode({ data }: NodeProps<Node<EgoNodeData>>) {
   const palette =
     data.variant === 'center'
-      ? 'bg-[var(--akdd-navy-800)] text-[var(--akdd-text-inverse)] border-[var(--akdd-navy-950)] shadow-[var(--akdd-shadow-md)]'
+      ? 'bg-[var(--akdd-ink)] text-[var(--akdd-text-inverse)] border-[var(--akdd-ink)] shadow-none'
       : data.variant === 'in'
         ? 'bg-[var(--akdd-dir-in-bg)] text-[var(--akdd-dir-in-text)] border-[var(--akdd-dir-in-border)]'
         : 'bg-[var(--akdd-dir-out-bg)] text-[var(--akdd-dir-out-text)] border-[var(--akdd-dir-out-border)]'
 
   return (
     <div
-      className={`flex flex-col gap-0.5 rounded-[var(--akdd-radius-md)] border-2 px-3 py-2 text-left transition-shadow hover:shadow-[var(--akdd-shadow-md)] ${palette}`}
+      className={`flex flex-col gap-0.5 rounded-[var(--akdd-radius-md)] border px-3 py-2 text-left shadow-none ${palette}`}
       style={{ width: data.variant === 'center' ? 280 : 270 }}
     >
       {data.variant !== 'in' && (
         <Handle type="target" position={Position.Left} className="!bg-[var(--akdd-navy-600)]" />
       )}
       <div className="flex items-center justify-between gap-2">
-        <span className="font-mono text-xs font-bold">{data.kddId}</span>
+        <span className="font-mono text-xs font-medium">{data.kddId}</span>
         <span className="text-[10px] opacity-80 truncate">{data.subtitle}</span>
       </div>
-      <div className="text-xs font-semibold leading-snug line-clamp-2">{data.name}</div>
+      <div className="text-xs font-medium leading-snug line-clamp-2">{data.name}</div>
       {data.variant !== 'out' && (
         <Handle type="source" position={Position.Right} className="!bg-[var(--akdd-navy-600)]" />
       )}
@@ -156,14 +156,14 @@ export function EgoSchemaFlow({ ego, onSelectKdd, className = '' }: EgoSchemaFlo
         }}
         proOptions={{ hideAttribution: true }}
       >
-        <Background gap={18} size={1} color="#e2e8f0" />
+        <Background gap={18} size={1} color="#e4e4e7" />
         <Controls />
         <MiniMap
           pannable
           zoomable
           nodeColor={(n) => {
             const v = (n.data as EgoNodeData)?.variant
-            if (v === 'center') return '#183b5e'
+            if (v === 'center') return '#09090b'
             if (v === 'in') return '#0070c0'
             return '#c00000'
           }}

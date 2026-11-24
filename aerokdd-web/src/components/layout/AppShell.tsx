@@ -1,5 +1,5 @@
 import { useEffect, useMemo, useState } from 'react'
-import { Outlet } from 'react-router-dom'
+import { Outlet, useLocation } from 'react-router-dom'
 import { useAeroKddStore } from '../../store/useAeroKddStore'
 import { Button } from '../ui'
 import { CommandPalette } from './CommandPalette'
@@ -8,8 +8,11 @@ import { Topbar } from './Topbar'
 
 export function AppShell() {
   const { kdds, relations, isLoaded, isLoading, error, initialize } = useAeroKddStore()
+  const location = useLocation()
   const [sidebarCollapsed, setSidebarCollapsed] = useState(false)
   const [paletteOpen, setPaletteOpen] = useState(false)
+  const isOverview = location.pathname === '/'
+  const isNetwork = location.pathname.startsWith('/network')
 
   useEffect(() => {
     void initialize()
@@ -50,10 +53,18 @@ export function AppShell() {
           onToggleSidebar={() => setSidebarCollapsed((c) => !c)}
         />
 
-        <main className="flex-1 overflow-y-auto px-6 py-6">
+        <main
+          className={`flex-1 bg-[var(--akdd-bg-canvas)] ${
+            isNetwork
+              ? 'overflow-hidden p-0'
+              : isOverview
+                ? 'overflow-y-auto p-0'
+                : 'overflow-y-auto px-6 py-7 lg:px-8 lg:py-8'
+          }`}
+        >
           {error ? (
-            <div className="mx-auto flex max-w-lg flex-col items-center gap-3 rounded-[var(--akdd-radius-lg)] border border-[var(--akdd-status-contrainte-border)] bg-[var(--akdd-status-contrainte-bg)] p-6 text-center">
-              <p className="text-sm font-semibold text-[var(--akdd-status-contrainte-text)]">
+            <div className="mx-auto my-12 flex max-w-lg flex-col items-center gap-3 rounded-[var(--akdd-radius-lg)] border border-[var(--akdd-status-contrainte-border)] bg-[var(--akdd-status-contrainte-bg)] p-6 text-center shadow-none">
+              <p className="text-sm font-medium text-[var(--akdd-status-contrainte-text)]">
                 Impossible de charger le référentiel AeroKDD
               </p>
               <p className="text-xs text-[var(--akdd-status-contrainte-text)]">{error}</p>
@@ -62,8 +73,8 @@ export function AppShell() {
               </Button>
             </div>
           ) : !isLoaded && isLoading ? (
-            <div className="flex h-64 items-center justify-center text-sm text-[var(--akdd-text-muted)]">
-              Chargement du référentiel AeroKDD (566 KDDs · 1 267 relations)…
+            <div className="flex h-64 items-center justify-center font-mono text-xs uppercase tracking-[0.08em] text-[var(--akdd-text-muted)]">
+              Chargement du référentiel AeroKDD (566 KDDs · 1,267 LIENS)…
             </div>
           ) : (
             <Outlet />
