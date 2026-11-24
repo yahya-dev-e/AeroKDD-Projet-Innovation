@@ -56,31 +56,41 @@ export function Sidebar({ collapsed, onToggleCollapse, kddCountBySubsystem }: Si
       {/* Brand Header */}
       <div className="flex shrink-0 items-center justify-between gap-2 border-b border-[#E2E8F0] px-3.5 py-3">
         {collapsed ? (
-          <img
-            src="/assets/logo-ak.png"
-            alt="AeroKDD"
-            className="h-7 w-auto max-w-[40px] object-contain mix-blend-multiply"
-          />
-        ) : (
-          <div className="flex flex-col items-start min-w-0">
+          <button
+            type="button"
+            onClick={onToggleCollapse}
+            aria-label="Déplier la barre latérale"
+            title="Déplier la barre latérale"
+            className="flex w-full items-center justify-center rounded-md py-1 hover:bg-white cursor-pointer"
+          >
             <img
-              src="/assets/logo-aerokdd.png"
+              src="/assets/logo-ak.png"
               alt="AeroKDD"
-              className="h-11 w-auto max-w-[178px] object-contain mix-blend-multiply"
+              className="h-7 w-auto max-w-[40px] object-contain mix-blend-multiply"
             />
-            <span className="mt-0.5 pl-1 inline-flex items-center gap-1 font-mono text-[9.5px] font-medium uppercase tracking-[0.06em] text-[#2B5B84] truncate">
-              <span className="text-[#64748B] lowercase">by</span> SHERPA ENGINEERING
-            </span>
-          </div>
+          </button>
+        ) : (
+          <>
+            <div className="flex flex-col items-start min-w-0">
+              <img
+                src="/assets/logo-aerokdd.png"
+                alt="AeroKDD"
+                className="h-11 w-auto max-w-[178px] object-contain mix-blend-multiply"
+              />
+              <span className="mt-0.5 pl-1 inline-flex items-center gap-1 font-mono text-[9.5px] font-medium uppercase tracking-[0.06em] text-[#2B5B84] truncate">
+                <span className="text-[#64748B] lowercase">by</span> SHERPA ENGINEERING
+              </span>
+            </div>
+            <button
+              type="button"
+              onClick={onToggleCollapse}
+              aria-label="Replier la barre latérale"
+              className="flex h-7 w-7 shrink-0 items-center justify-center rounded-md border border-transparent text-[var(--akdd-text-muted)] hover:border-[#E2E8F0] hover:bg-white hover:text-[#0F1D32] cursor-pointer"
+            >
+              <ChevronLeft className="h-4 w-4" />
+            </button>
+          </>
         )}
-        <button
-          type="button"
-          onClick={onToggleCollapse}
-          aria-label={collapsed ? 'Déplier la barre latérale' : 'Replier la barre latérale'}
-          className="flex h-7 w-7 shrink-0 items-center justify-center rounded-md border border-transparent text-[var(--akdd-text-muted)] hover:border-[#E2E8F0] hover:bg-white hover:text-[#0F1D32] cursor-pointer"
-        >
-          {collapsed ? <ChevronRight className="h-4 w-4" /> : <ChevronLeft className="h-4 w-4" />}
-        </button>
       </div>
 
       {/* Clean Non-Duplicated Navigation */}

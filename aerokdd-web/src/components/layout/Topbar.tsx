@@ -77,12 +77,6 @@ export function Topbar({
           <Menu className="h-4 w-4" />
         </button>
         <div className="flex items-center gap-2.5 whitespace-nowrap text-sm">
-          <img
-            src="/assets/logo-ak.png"
-            alt=""
-            aria-hidden="true"
-            className="h-5 w-auto object-contain mix-blend-multiply"
-          />
           <span className="font-semibold tracking-[-0.01em] text-[#0F1D32]">AeroKDD</span>
           <span className="h-3.5 w-px bg-[#CBD5E1]" aria-hidden="true" />
           <h1 className="font-sans text-sm font-normal tracking-normal leading-normal text-[#475569]">
