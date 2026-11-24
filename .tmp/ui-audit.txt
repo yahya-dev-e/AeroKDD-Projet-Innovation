@@ -1,0 +1,896 @@
+status: exited
+stdout file: /figaro/tool-output/bash/0/stdout (73142 bytes)
+stderr file: /figaro/tool-output/bash/0/stderr (0 bytes)
+exit code: 0
+
+OUTPUT TRUNCATED: the head-and-tail previews below are INCOMPLETE; the middle is omitted. Complete output is saved at the stdout/stderr paths above. If your task depends on omitted content, you MUST use `read` on the relevant file and follow its continuation offsets through the required content before generating or changing code. Do not guess or infer omitted content from the preview. Reading with bash again can truncate again.
+
+--- stdout (head + tail; full output in file above) ---
+--- allowed files ---
+src/components/layout/AppShell.tsx
+src/components/layout/CommandPalette.tsx
+src/components/layout/Sidebar.tsx
+src/components/layout/Topbar.tsx
+src/components/layout/index.ts
+src/components/ui/Badge.tsx
+src/components/ui/Button.tsx
+src/components/ui/Card.tsx
+src/components/ui/Drawer.tsx
+src/components/ui/KpiCard.tsx
+src/components/ui/Tabs.tsx
+src/components/ui/index.ts
+src/styles/tokens.css
+--- imports and component inventory ---
+src/styles/tokens.css:32:  --akdd-bg-sidebar: #0f172a;
+src/styles/tokens.css:42:  --akdd-status-kdd-bg: #d9ead3; /* RGB(217, 234, 211) */
+src/styles/tokens.css:43:  --akdd-status-kdd-text: #274e13; /* RGB(39, 78, 19) */
+src/styles/tokens.css:44:  --akdd-status-kdd-border: #38761d; /* RGB(56, 118, 29) */
+src/styles/tokens.css:47:  --akdd-status-s-bg: #cfe2f3; /* RGB(207, 226, 243) */
+src/styles/tokens.css:48:  --akdd-status-s-text: #0b5394; /* RGB(11, 83, 148) */
+src/styles/tokens.css:49:  --akdd-status-s-border: #3d85c6; /* RGB(61, 133, 198) */
+src/styles/tokens.css:52:  --akdd-status-d-bg: #eaf2f8; /* RGB(234, 242, 248) */
+src/styles/tokens.css:53:  --akdd-status-d-text: #244062; /* RGB(36, 64, 98) */
+src/styles/tokens.css:54:  --akdd-status-d-border: #789bbe; /* RGB(120, 155, 190) */
+src/styles/tokens.css:57:  --akdd-status-prestation-bg: #fff2cc; /* RGB(255, 242, 204) */
+src/styles/tokens.css:58:  --akdd-status-prestation-text: #7f6000; /* RGB(127, 96, 0) */
+src/styles/tokens.css:59:  --akdd-status-prestation-border: #bf9000; /* RGB(191, 144, 0) */
+src/styles/tokens.css:62:  --akdd-status-effet-bg: #fce5cd; /* RGB(252, 229, 205) */
+src/styles/tokens.css:63:  --akdd-status-effet-text: #783f04; /* RGB(120, 63, 4) */
+src/styles/tokens.css:64:  --akdd-status-effet-border: #e69138;
+src/styles/tokens.css:67:  --akdd-status-input-bg: #eeeeee; /* RGB(238, 238, 238) */
+src/styles/tokens.css:68:  --akdd-status-input-text: #434343; /* RGB(67, 67, 67) */
+src/styles/tokens.css:69:  --akdd-status-input-border: #8c8c8c; /* RGB(140, 140, 140) */
+src/styles/tokens.css:72:  --akdd-status-contrainte-bg: #f4cccc; /* RGB(244, 204, 204) */
+src/styles/tokens.css:73:  --akdd-status-contrainte-text: #990000; /* RGB(153, 0, 0) */
+src/styles/tokens.css:74:  --akdd-status-contrainte-border: #cc4125; /* RGB(204, 65, 37) */
+src/styles/tokens.css:101:  /* --- Top-Down Centrality Badges (mod_AnalyseTopDown) --- */
+src/styles/tokens.css:103:  --akdd-badge-carrefour-bg: #ffdab9; /* RGB(255, 218, 185) */
+src/styles/tokens.css:104:  --akdd-badge-carrefour-text: #780000; /* RGB(120, 0, 0) */
+src/styles/tokens.css:105:  --akdd-badge-carrefour-border: #9c0006; /* RGB(156, 0, 6) */
+src/styles/tokens.css:108:  --akdd-badge-fort-bg: #fff2cc; /* RGB(255, 242, 204) */
+src/styles/tokens.css:109:  --akdd-badge-fort-text: #5a3c00; /* RGB(90, 60, 0) */
+src/styles/tokens.css:110:  --akdd-badge-fort-border: #3c3c3c; /* RGB(60, 60, 60) */
+src/styles/tokens.css:113:  --akdd-badge-cible-bg: #ebf5eb; /* RGB(235, 245, 235) */
+src/styles/tokens.css:114:  --akdd-badge-cible-text: #005000; /* RGB(0, 80, 0) */
+src/styles/tokens.css:115:  --akdd-badge-cible-border: #5a5a5a; /* RGB(90, 90, 90) */
+src/components/ui/Tabs.tsx:1:import type { ReactNode } from 'react'
+src/components/ui/Tabs.tsx:6:  badge?: string | number
+src/components/ui/Tabs.tsx:20:      className="inline-flex flex-wrap items-center gap-1 rounded-[var(--akdd-radius-md)] bg-[var(--akdd-slate-100)] p-1 border border-[var(--akdd-border-subtle)]"
+src/components/ui/Tabs.tsx:31:            className={`inline-flex items-center gap-2 rounded-[var(--akdd-radius-sm)] px-3.5 py-1.5 text-sm font-medium transition-all cursor-pointer ${
+src/components/ui/Tabs.tsx:37:            {tab.icon && <span className="inline-flex shrink-0">{tab.icon}</span>}
+src/components/ui/Tabs.tsx:39:            {tab.badge !== undefined && (
+src/components/ui/Tabs.tsx:41:                className={`rounded-full px-1.5 py-0.5 text-[11px] font-mono ${
+src/components/ui/Tabs.tsx:47:                {tab.badge}
+src/components/layout/Sidebar.tsx:14:} from 'lucide-react'
+src/components/layout/Sidebar.tsx:15:import { useState } from 'react'
+src/components/layout/Sidebar.tsx:16:import { NavLink, useLocation } from 'react-router-dom'
+src/components/layout/Sidebar.tsx:17:import { SUBSYSTEM_CATALOG } from '../../types/subsystems'
+src/components/layout/Sidebar.tsx:27:  const isSubsystemRoute = location.pathname.startsWith('/subsystems')
+src/components/layout/Sidebar.tsx:28:  const [subsystemsOpen, setSubsystemsOpen] = useState(true)
+src/components/layout/Sidebar.tsx:39:      className={`flex h-screen shrink-0 flex-col bg-[var(--akdd-bg-sidebar)] text-[var(--akdd-text-inverse)] border-r border-[var(--akdd-slate-800)] transition-[width] duration-200 ${
+src/components/layout/Sidebar.tsx:44:      <div className="flex items-center justify-between gap-2 border-b border-[var(--akdd-slate-800)] px-3.5 py-4">
+src/components/layout/Sidebar.tsx:45:        <div className="flex items-center gap-2.5 min-w-0">
+src/components/layout/Sidebar.tsx:46:          <div className="flex h-9 w-9 shrink-0 items-center justify-center rounded-[var(--akdd-radius-md)] bg-[var(--akdd-navy-700)] text-xs font-bold tracking-tight text-[var(--akdd-text-inverse)] border border-[var(--akdd-navy-600)]">
+src/components/layout/Sidebar.tsx:50:            <div className="flex flex-col min-w-0">
+src/components/layout/Sidebar.tsx:51:              <span className="text-sm font-bold tracking-tight text-[var(--akdd-text-inverse)] truncate">
+src/components/layout/Sidebar.tsx:54:              <span className="text-[11px] text-[var(--akdd-slate-400)] truncate">
+src/components/layout/Sidebar.tsx:64:          className="flex h-7 w-7 shrink-0 items-center justify-center rounded-[var(--akdd-radius-xs)] text-[var(--akdd-slate-400)] hover:bg-[var(--akdd-slate-800)] hover:text-[var(--akdd-text-inverse)] cursor-pointer"
+src/components/layout/Sidebar.tsx:66:          {collapsed ? <ChevronRight className="h-4 w-4" /> : <ChevronLeft className="h-4 w-4" />}
+src/components/layout/Sidebar.tsx:71:      <nav className="flex flex-1 flex-col gap-5 overflow-y-auto px-2.5 py-4">
+src/components/layout/Sidebar.tsx:73:        <div className="flex flex-col gap-1">
+src/components/layout/Sidebar.tsx:75:            <span className="px-2.5 pb-1 text-[10px] font-semibold uppercase tracking-wider text-[var(--akdd-slate-400)]">
+src/components/layout/Sidebar.tsx:79:          <NavLink to="/" end className={linkClass} title="Overview">
+src/components/layout/Sidebar.tsx:80:            <Home className="h-4 w-4 shrink-0" />
+src/components/layout/Sidebar.tsx:81:            {!collapsed && <span className="truncate">Overview</span>}
+src/components/layout/Sidebar.tsx:85:          <div className="flex flex-col gap-1">
+src/components/layout/Sidebar.tsx:91:              className={`flex items-center justify-between gap-2 rounded-[var(--akdd-radius-sm)] px-2.5 py-2 text-sm font-medium transition-colors cursor-pointer ${
+src/components/layout/Sidebar.tsx:98:              <span className="flex items-center gap-2.5 min-w-0">
+src/components/layout/Sidebar.tsx:99:                <Layers className="h-4 w-4 shrink-0" />
+src/components/layout/Sidebar.tsx:100:                {!collapsed && <span className="truncate">Subsystems (10)</span>}
+src/components/layout/Sidebar.tsx:103:                (subsystemsOpen ? (
+src/components/layout/Sidebar.tsx:104:                  <ChevronDown className="h-3.5 w-3.5 shrink-0 text-[var(--akdd-slate-400)]" />
+src/components/layout/Sidebar.tsx:106:                  <ChevronRight className="h-3.5 w-3.5 shrink-0 text-[var(--akdd-slate-400)]" />
+src/components/layout/Sidebar.tsx:110:            {!collapsed && subsystemsOpen && (
+src/components/layout/Sidebar.tsx:111:              <div className="flex flex-col gap-0.5 pl-4 border-l border-[var(--akdd-slate-800)] ml-4">
+src/components/layout/Sidebar.tsx:115:                    to={`/subsystems/${sub.code}`}
+src/components/layout/Sidebar.tsx:116:                    className={({ isActive }) =>
+src/components/layout/Sidebar.tsx:124:                    <span className="truncate">
+src/components/layout/Sidebar.tsx:125:                      <span className="font-mono font-semibold">{sub.code}</span>
+src/components/layout/Sidebar.tsx:126:                      <span className="text-[var(--akdd-slate-400)]"> · {sub.frenchName}</span>
+src/components/layout/Sidebar.tsx:128:                    <span className="shrink-0 font-mono text-[10px] opacity-80">
+src/components/layout/Sidebar.tsx:139:        <div className="flex flex-col gap-1">
+src/components/layout/Sidebar.tsx:141:            <span className="px-2.5 pb-1 text-[10px] font-semibold uppercase tracking-wider text-[var(--akdd-slate-400)]">
+src/components/layout/Sidebar.tsx:142:              Analyse & Graphes
+src/components/layout/Sidebar.tsx:145:          <NavLink to="/explore" className={linkClass} title="Unit Explorer">
+src/components/layout/Sidebar.tsx:146:            <Compass className="h-4 w-4 shrink-0" />
+src/components/layout/Sidebar.tsx:147:            {!collapsed && <span className="truncate">Unit Explorer</span>}
+src/components/layout/Sidebar.tsx:149:          <NavLink to="/top-down" className={linkClass} title="Top-Down Engine">
+src/components/layout/Sidebar.tsx:150:            <GitBranch className="h-4 w-4 shrink-0" />
+src/components/layout/Sidebar.tsx:151:            {!collapsed && <span className="truncate">Top-Down Engine</span>}
+src/components/layout/Sidebar.tsx:153:          <NavLink to="/network" className={linkClass} title="Global Network">
+src/components/layout/Sidebar.tsx:154:            <Network className="h-4 w-4 shrink-0" />
+src/components/layout/Sidebar.tsx:155:            {!collapsed && <span className="truncate">Global Network</span>}
+src/components/layout/Sidebar.tsx:160:        <div className="flex flex-col gap-1">
+src/components/layout/Sidebar.tsx:162:            <span className="px-2.5 pb-1 text-[10px] font-semibold uppercase tracking-wider text-[var(--akdd-slate-400)]">
+src/components/layout/Sidebar.tsx:163:              Référentiel & Projet
+src/components/layout/Sidebar.tsx:166:          <NavLink to="/manager" className={linkClass} title="KDD Manager">
+src/components/layout/Sidebar.tsx:167:            <FolderKanban className="h-4 w-4 shrink-0" />
+src/components/layout/Sidebar.tsx:168:            {!collapsed && <span className="truncate">KDD Manager</span>}
+src/components/layout/Sidebar.tsx:172:            className={() =>
+src/components/layout/Sidebar.tsx:181:            <ClipboardCheck className="h-4 w-4 shrink-0" />
+src/components/layout/Sidebar.tsx:182:            {!collapsed && <span className="truncate">Project Instantiation</span>}
+src/components/layout/Sidebar.tsx:186:            className={() =>
+src/components/layout/Sidebar.tsx:195:            <BookOpen className="h-4 w-4 shrink-0" />
+src/components/layout/Sidebar.tsx:196:            {!collapsed && <span className="truncate">References & Sources</span>}
+src/components/layout/Sidebar.tsx:198:          <NavLink to="/admin" className={linkClass} title="Admin">
+src/components/layout/Sidebar.tsx:199:            <Settings className="h-4 w-4 shrink-0" />
+src/components/layout/Sidebar.tsx:200:            {!collapsed && <span className="truncate">Admin</span>}
+src/components/layout/Sidebar.tsx:207:        <div className="border-t border-[var(--akdd-slate-800)] px-4 py-3 text-[11px] text-[var(--akdd-slate-400)]">
+src/components/layout/Sidebar.tsx:208:          <div className="flex items-center justify-between">
+src/components/layout/Sidebar.tsx:210:            <span className="font-mono text-[var(--akdd-slate-300)]">v2.0</span>
+src/components/ui/Drawer.tsx:1:import { X } from 'lucide-react'
+src/components/ui/Drawer.tsx:2:import { useEffect, type ReactNode } from 'react'
+src/components/ui/Drawer.tsx:3:import { Button } from './Button'
+src/components/ui/Drawer.tsx:28:      className="fixed inset-0 z-50 flex justify-end bg-[rgb(15_23_42/0.45)] backdrop-blur-[1px]"
+src/components/ui/Drawer.tsx:34:        className="flex h-full w-full max-w-xl flex-col bg-[var(--akdd-bg-surface)] border-l border-[var(--akdd-border-default)] shadow-[var(--akdd-shadow-lg)]"
+src/components/ui/Drawer.tsx:37:        <div className="flex items-start justify-between gap-4 border-b border-[var(--akdd-border-subtle)] bg-[var(--akdd-bg-subtle)] px-6 py-4">
+src/components/ui/Drawer.tsx:38:          <div className="flex flex-col gap-1 min-w-0">
+src/components/ui/Drawer.tsx:39:            <h2 className="text-base font-semibold text-[var(--akdd-text-primary)]">{title}</h2>
+src/components/ui/Drawer.tsx:40:            {subtitle && <p className="text-xs text-[var(--akdd-text-secondary)]">{subtitle}</p>}
+src/components/ui/Drawer.tsx:41:            {headerExtra && <div className="flex flex-wrap items-center gap-2 pt-1">{headerExtra}</div>}
+src/components/ui/Drawer.tsx:44:            <X className="h-4 w-4" />
+src/components/ui/Drawer.tsx:48:        <div className="flex-1 overflow-y-auto px-6 py-5">{children}</div>
+src/components/layout/Topbar.tsx:1:import { Menu, Search } from 'lucide-react'
+src/components/layout/Topbar.tsx:2:import { useLocation } from 'react-router-dom'
+src/components/layout/Topbar.tsx:3:import { getSubsystemMeta } from '../../types/subsystems'
+src/components/layout/Topbar.tsx:14:    return { section: 'AeroKDD', title: 'Vue d’ensemble du Référentiel' }
+src/components/layout/Topbar.tsx:16:  if (pathname.startsWith('/subsystems/')) {
+src/components/layout/Topbar.tsx:22:    return { section: 'Analyse', title: 'Unit Explorer (GRAPH_KDD & SCHEMA KDD)' }
+src/components/layout/Topbar.tsx:25:    return { section: 'Analyse', title: 'Moteur d’Analyse Top-Down' }
+src/components/layout/Topbar.tsx:31:    return { section: 'Référentiel', title: 'KDD Manager' }
+src/components/layout/Topbar.tsx:54:    <header className="flex h-14 shrink-0 items-center justify-between gap-4 border-b border-[var(--akdd-border-subtle)] bg-[var(--akdd-bg-surface)] px-5">
+src/components/layout/Topbar.tsx:55:      <div className="flex items-center gap-3 min-w-0">
+src/components/layout/Topbar.tsx:60:          className="flex h-8 w-8 shrink-0 items-center justify-center rounded-[var(--akdd-radius-sm)] text-[var(--akdd-text-secondary)] hover:bg-[var(--akdd-slate-100)] cursor-pointer lg:hidden"
+src/components/layout/Topbar.tsx:62:          <Menu className="h-4 w-4" />
+src/components/layout/Topbar.tsx:64:        <div className="flex items-center gap-2 min-w-0 text-sm">
+src/components/layout/Topbar.tsx:65:          <span className="text-[var(--akdd-text-muted)] shrink-0">{section}</span>
+src/components/layout/Topbar.tsx:66:          <span className="text-[var(--akdd-slate-300)] shrink-0">/</span>
+src/components/layout/Topbar.tsx:67:          <h1 className="font-semibold text-[var(--akdd-text-primary)] truncate">{title}</h1>
+src/components/layout/Topbar.tsx:71:      <div className="flex items-center gap-3 shrink-0">
+src/components/layout/Topbar.tsx:75:          className="flex items-center justify-between gap-4 rounded-[var(--akdd-radius-md)] border border-[var(--akdd-border-default)] bg-[var(--akdd-bg-canvas)] px-3 py-1.5 text-xs text-[var(--akdd-text-secondary)] hover:border-[var(--akdd-navy-600)] hover:text-[var(--akdd-text-primary)] transition-colors cursor-pointer min-w-[220px]"
+src/components/layout/Topbar.tsx:77:          <span className="flex items-center gap-2">
+src/components/layout/Topbar.tsx:78:            <Search className="h-3.5 w-3.5 text-[var(--akdd-text-muted)]" />
+src/components/layout/Topbar.tsx:81:          <kbd className="rounded bg-[var(--akdd-bg-surface)] px-1.5 py-0.5 font-mono text-[10px] text-[var(--akdd-text-muted)] border border-[var(--akdd-border-subtle)]">
+src/components/layout/Topbar.tsx:86:        <div className="hidden md:flex items-center gap-2 rounded-[var(--akdd-radius-md)] bg-[var(--akdd-bg-subtle)] px-3 py-1.5 text-xs font-mono text-[var(--akdd-navy-800)] border border-[var(--akdd-border-subtle)]">
+src/components/layout/Topbar.tsx:88:          <span className="text-[var(--akdd-slate-300)]">·</span>
+src/components/ui/Badge.tsx:1:import type { ReactNode } from 'react'
+src/components/ui/Badge.tsx:2:import type { CentralityLevel } from '../../engines/topDownEngine'
+src/components/ui/Badge.tsx:3:import type { KddClassification, StatutKdd } from '../../types/aerokdd'
+src/components/ui/Badge.tsx:13:      className={`inline-flex items-center gap-1 rounded-[var(--akdd-radius-xs)] px-2 py-0.5 text-xs font-medium leading-tight whitespace-nowrap border ${className}`}
+src/components/ui/Badge.tsx:23:    return 'bg-[var(--akdd-status-kdd-bg)] text-[var(--akdd-status-kdd-text)] border-[var(--akdd-status-kdd-border)] font-semibold'
+src/components/ui/Badge.tsx:26:    return 'bg-[var(--akdd-status-s-bg)] text-[var(--akdd-status-s-text)] border-[var(--akdd-status-s-border)] font-semibold'
+src/components/ui/Badge.tsx:29:    return 'bg-[var(--akdd-status-d-bg)] text-[var(--akdd-status-d-text)] border-[var(--akdd-status-d-border)]'
+src/components/ui/Badge.tsx:32:    return 'bg-[var(--akdd-status-effet-bg)] text-[var(--akdd-status-effet-text)] border-[var(--akdd-status-effet-border)]'
+src/components/ui/Badge.tsx:35:    return 'bg-[var(--akdd-status-prestation-bg)] text-[var(--akdd-status-prestation-text)] border-[var(--akdd-status-prestation-border)]'
+src/components/ui/Badge.tsx:38:    return 'bg-[var(--akdd-status-input-bg)] text-[var(--akdd-status-input-text)] border-[var(--akdd-status-input-border)]'
+src/components/ui/Badge.tsx:41:    return 'bg-[var(--akdd-status-contrainte-bg)] text-[var(--akdd-status-contrainte-text)] border-[var(--akdd-status-contrainte-border)]'
+src/components/ui/Badge.tsx:47:  return <Badge className={getStatutStyleClasses(statut)}>{statut || 'Non classé'}</Badge>
+src/components/ui/Badge.tsx:54:      <Badge className="bg-[var(--akdd-status-kdd-bg)] text-[var(--akdd-status-kdd-text)] border-[var(--akdd-status-kdd-border)] font-bold">
+src/components/ui/Badge.tsx:61:      <Badge className="bg-[var(--akdd-status-s-bg)] text-[var(--akdd-status-s-text)] border-[var(--akdd-status-s-border)] font-bold">
+src/components/ui/Badge.tsx:68:      <Badge className="bg-[var(--akdd-status-d-bg)] text-[var(--akdd-status-d-text)] border-[var(--akdd-status-d-border)] font-semibold">
+src/components/ui/Badge.tsx:74:    <Badge className="bg-[var(--akdd-slate-100)] text-[var(--akdd-slate-500)] border-[var(--akdd-border-subtle)]">
+src/components/ui/Badge.tsx:83:      ? 'bg-[var(--akdd-badge-carrefour-bg)] text-[var(--akdd-badge-carrefour-text)] border-[var(--akdd-badge-carrefour-border)] font-bold'
+src/components/ui/Badge.tsx:85:        ? 'bg-[var(--akdd-badge-fort-bg)] text-[var(--akdd-badge-fort-text)] border-[var(--akdd-badge-fort-border)] font-semibold'
+src/components/ui/Badge.tsx:86:        : 'bg-[var(--akdd-badge-cible-bg)] text-[var(--akdd-badge-cible-text)] border-[var(--akdd-badge-cible-border)]'
+src/components/ui/Badge.tsx:88:  return <Badge className={classes}>{label ?? level}</Badge>
+src/components/ui/Badge.tsx:108:      className={`${bg} text-[var(--akdd-slate-900)] border-[var(--akdd-border-default)] font-mono font-semibold`}
+src/components/layout/AppShell.tsx:1:import { useEffect, useMemo, useState } from 'react'
+src/components/layout/AppShell.tsx:2:import { Outlet } from 'react-router-dom'
+src/components/layout/AppShell.tsx:3:import { useAeroKddStore } from '../../store/useAeroKddStore'
+src/components/layout/AppShell.tsx:4:import { Button } from '../ui'
+src/components/layout/AppShell.tsx:5:import { CommandPalette } from './CommandPalette'
+src/components/layout/AppShell.tsx:6:import { Sidebar } from './Sidebar'
+src/components/layout/AppShell.tsx:7:import { Topbar } from './Topbar'
+src/components/layout/AppShell.tsx:11:  const [sidebarCollapsed, setSidebarCollapsed] = useState(false)
+src/components/layout/AppShell.tsx:32:      counts[k.subsystemCode] = (counts[k.subsystemCode] ?? 0) + 1
+src/components/layout/AppShell.tsx:38:    <div className="flex h-screen w-screen overflow-hidden bg-[var(--akdd-bg-canvas)] text-[var(--akdd-text-primary)]">
+src/components/layout/AppShell.tsx:40:        collapsed={sidebarCollapsed}
+src/components/layout/AppShell.tsx:45:      <div className="flex flex-1 flex-col min-w-0 overflow-hidden">
+src/components/layout/AppShell.tsx:53:        <main className="flex-1 overflow-y-auto px-6 py-6">
+src/components/layout/AppShell.tsx:55:            <div className="mx-auto flex max-w-lg flex-col items-center gap-3 rounded-[var(--akdd-radius-lg)] border border-[var(--akdd-status-contrainte-border)] bg-[var(--akdd-status-contrainte-bg)] p-6 text-center">
+src/components/layout/AppShell.tsx:56:              <p className="text-sm font-semibold text-[var(--akdd-status-contrainte-text)]">
+src/components/layout/AppShell.tsx:59:              <p className="text-xs text-[var(--akdd-status-contrainte-text)]">{error}</p>
+src/components/layout/AppShell.tsx:65:            <div className="flex h-64 items-center justify-center text-sm text-[var(--akdd-text-muted)]">
+src/components/ui/KpiCard.tsx:1:import type { ReactNode } from 'react'
+src/components/ui/KpiCard.tsx:22:      className={`flex flex-col justify-between gap-3 rounded-[var(--akdd-radius-lg)] bg-[var(--akdd-bg-surface)] border border-[var(--akdd-border-subtle)] border-l-4 ${accentClassName} p-4 shadow-[var(--akdd-shadow-sm)]`}
+src/components/ui/KpiCard.tsx:24:      <div className="flex items-start justify-between gap-3">
+src/components/ui/KpiCard.tsx:25:        <div className="flex flex-col gap-1 min-w-0">
+src/components/ui/KpiCard.tsx:26:          <span className="text-xs font-medium uppercase tracking-wider text-[var(--akdd-text-muted)]">
+src/components/ui/KpiCard.tsx:29:          <span className="text-2xl font-bold tracking-tight text-[var(--akdd-text-primary)] font-mono">
+src/components/ui/KpiCard.tsx:34:          <div className="flex h-9 w-9 shrink-0 items-center justify-center rounded-[var(--akdd-radius-md)] bg-[var(--akdd-bg-subtle)] text-[var(--akdd-navy-700)]">
+src/components/ui/KpiCard.tsx:41:        <div className="flex flex-col gap-1.5 border-t border-[var(--akdd-border-subtle)] pt-2.5">
+src/components/ui/KpiCard.tsx:42:          {subtitle && <p className="text-xs text-[var(--akdd-text-secondary)]">{subtitle}</p>}
+src/components/layout/CommandPalette.tsx:1:import { ArrowRight, Compass, GitBranch, Network, Search, X } from 'lucide-react'
+src/components/layout/CommandPalette.tsx:2:import { useEffect, useMemo, useRef, useState } from 'react'
+src/components/layout/CommandPalette.tsx:3:import { useNavigate } from 'react-router-dom'
+src/components/layout/CommandPalette.tsx:4:import type { KDD } from '../../types/aerokdd'
+src/components/layout/CommandPalette.tsx:5:import { StatutBadge, SubsystemBadge } from '../ui'
+src/components/layout/CommandPalette.tsx:14:  { label: 'Moteur d’Analyse Top-Down', path: '/top-down', icon: GitBranch },
+src/components/layout/CommandPalette.tsx:41:          k.subsystemCode.toLowerCase().includes(q) ||
+src/components/layout/CommandPalette.tsx:55:    navigate(`/subsystems/${kdd.subsystemCode}?kdd=${encodeURIComponent(kdd.id)}`)
+src/components/layout/CommandPalette.tsx:75:      className="fixed inset-0 z-50 flex items-start justify-center bg-[rgb(15_23_42/0.55)] pt-20 px-4 backdrop-blur-[1px]"
+src/components/layout/CommandPalette.tsx:82:        className="flex w-full max-w-2xl flex-col overflow-hidden rounded-[var(--akdd-radius-lg)] bg-[var(--akdd-bg-surface)] border border-[var(--akdd-border-default)] shadow-[var(--akdd-shadow-lg)]"
+src/components/layout/CommandPalette.tsx:87:        <div className="flex items-center gap-3 border-b border-[var(--akdd-border-subtle)] px-4 py-3">
+src/components/layout/CommandPalette.tsx:88:          <Search className="h-4 w-4 shrink-0 text-[var(--akdd-text-muted)]" />
+src/components/layout/CommandPalette.tsx:95:            className="flex-1 bg-transparent text-sm text-[var(--akdd-text-primary)] placeholder:text-[var(--akdd-text-muted)] focus:outline-none"
+src/components/layout/CommandPalette.tsx:101:            className="flex h-6 w-6 items-center justify-center rounded text-[var(--akdd-text-muted)] hover:bg-[var(--akdd-slate-100)] cursor-pointer"
+src/components/layout/CommandPalette.tsx:103:            <X className="h-4 w-4" />
+src/components/layout/CommandPalette.tsx:109:          <div className="flex flex-wrap items-center gap-2 border-b border-[var(--akdd-border-subtle)] bg-[var(--akdd-bg-canvas)] px-4 py-2.5">
+src/components/layout/CommandPalette.tsx:110:            <span className="text-[11px] font-semibold uppercase tracking-wider text-[var(--akdd-text-muted)]">
+src/components/layout/CommandPalette.tsx:123:                  className="inline-flex items-center gap-1.5 rounded-[var(--akdd-radius-sm)] bg-[var(--akdd-bg-surface)] px-2.5 py-1 text-xs font-medium text-[var(--akdd-navy-800)] border border-[var(--akdd-border-subtle)] hover:border-[var(--akdd-navy-600)] cursor-pointer"
+src/components/layout/CommandPalette.tsx:125:                  <Icon className="h-3.5 w-3.5" />
+src/components/layout/CommandPalette.tsx:134:        <div className="flex max-h-[380px] flex-col overflow-y-auto divide-y divide-[var(--akdd-border-subtle)]">
+src/components/layout/CommandPalette.tsx:136:            <div className="px-4 py-10 text-center text-sm text-[var(--akdd-text-muted)]">
+src/components/layout/CommandPalette.tsx:148:                  className={`flex items-center justify-between gap-3 px-4 py-2.5 text-left transition-colors cursor-pointer ${
+src/components/layout/Command
+
+[truncated: omitted lines 227-722 (22013 bytes, bytes 25565-47577)]
+
+ter justify-between gap-2 border-b border-[var(--akdd-slate-800)] px-3.5 py-4">
+        <div className="flex items-center gap-2.5 min-w-0">
+          <div className="flex h-9 w-9 shrink-0 items-center justify-center rounded-[var(--akdd-radius-md)] bg-[var(--akdd-navy-700)] text-xs font-bold tracking-tight text-[var(--akdd-text-inverse)] border border-[var(--akdd-navy-600)]">
+            AK
+          </div>
+          {!collapsed && (
+            <div className="flex flex-col min-w-0">
+              <span className="text-sm font-bold tracking-tight text-[var(--akdd-text-inverse)] truncate">
+                AeroKDD
+              </span>
+              <span className="text-[11px] text-[var(--akdd-slate-400)] truncate">
+                ECC × SHERPA Engineering
+              </span>
+            </div>
+          )}
+        </div>
+        <button
+          type="button"
+          onClick={onToggleCollapse}
+          aria-label={collapsed ? 'Déplier la barre latérale' : 'Replier la barre latérale'}
+          className="flex h-7 w-7 shrink-0 items-center justify-center rounded-[var(--akdd-radius-xs)] text-[var(--akdd-slate-400)] hover:bg-[var(--akdd-slate-800)] hover:text-[var(--akdd-text-inverse)] cursor-pointer"
+        >
+          {collapsed ? <ChevronRight className="h-4 w-4" /> : <ChevronLeft className="h-4 w-4" />}
+        </button>
+      </div>
+
+      {/* Navigation */}
+      <nav className="flex flex-1 flex-col gap-5 overflow-y-auto px-2.5 py-4">
+        {/* Core */}
+        <div className="flex flex-col gap-1">
+          {!collapsed && (
+            <span className="px-2.5 pb-1 text-[10px] font-semibold uppercase tracking-wider text-[var(--akdd-slate-400)]">
+              Navigation
+            </span>
+          )}
+          <NavLink to="/" end className={linkClass} title="Overview">
+            <Home className="h-4 w-4 shrink-0" />
+            {!collapsed && <span className="truncate">Overview</span>}
+          </NavLink>
+
+          {/* Subsystems Group */}
+          <div className="flex flex-col gap-1">
+            <button
+              type="button"
+              onClick={() => {
+                if (!collapsed) setSubsystemsOpen((v) => !v)
+              }}
+              className={`flex items-center justify-between gap-2 rounded-[var(--akdd-radius-sm)] px-2.5 py-2 text-sm font-medium transition-colors cursor-pointer ${
+                isSubsystemRoute
+                  ? 'bg-[var(--akdd-slate-800)] text-[var(--akdd-text-inverse)]'
+                  : 'text-[var(--akdd-slate-300)] hover:bg-[var(--akdd-slate-800)] hover:text-[var(--akdd-text-inverse)]'
+              }`}
+              title="Subsystems (10 modules)"
+            >
+              <span className="flex items-center gap-2.5 min-w-0">
+                <Layers className="h-4 w-4 shrink-0" />
+                {!collapsed && <span className="truncate">Subsystems (10)</span>}
+              </span>
+              {!collapsed &&
+                (subsystemsOpen ? (
+                  <ChevronDown className="h-3.5 w-3.5 shrink-0 text-[var(--akdd-slate-400)]" />
+                ) : (
+                  <ChevronRight className="h-3.5 w-3.5 shrink-0 text-[var(--akdd-slate-400)]" />
+                ))}
+            </button>
+
+            {!collapsed && subsystemsOpen && (
+              <div className="flex flex-col gap-0.5 pl-4 border-l border-[var(--akdd-slate-800)] ml-4">
+                {SUBSYSTEM_CATALOG.map((sub) => (
+                  <NavLink
+                    key={sub.code}
+                    to={`/subsystems/${sub.code}`}
+                    className={({ isActive }) =>
+                      `flex items-center justify-between gap-2 rounded-[var(--akdd-radius-xs)] px-2 py-1.5 text-xs font-medium transition-colors ${
+                        isActive
+                          ? 'bg-[var(--akdd-navy-700)] text-[var(--akdd-text-inverse)]'
+                          : 'text-[var(--akdd-slate-400)] hover:bg-[var(--akdd-slate-800)] hover:text-[var(--akdd-text-inverse)]'
+                      }`
+                    }
+                  >
+                    <span className="truncate">
+                      <span className="font-mono font-semibold">{sub.code}</span>
+                      <span className="text-[var(--akdd-slate-400)]"> · {sub.frenchName}</span>
+                    </span>
+                    <span className="shrink-0 font-mono text-[10px] opacity-80">
+                      {kddCountBySubsystem[sub.code] ?? 0}
+                    </span>
+                  </NavLink>
+                ))}
+              </div>
+            )}
+          </div>
+        </div>
+
+        {/* Analysis Engines */}
+        <div className="flex flex-col gap-1">
+          {!collapsed && (
+            <span className="px-2.5 pb-1 text-[10px] font-semibold uppercase tracking-wider text-[var(--akdd-slate-400)]">
+              Analyse & Graphes
+            </span>
+          )}
+          <NavLink to="/explore" className={linkClass} title="Unit Explorer">
+            <Compass className="h-4 w-4 shrink-0" />
+            {!collapsed && <span className="truncate">Unit Explorer</span>}
+          </NavLink>
+          <NavLink to="/top-down" className={linkClass} title="Top-Down Engine">
+            <GitBranch className="h-4 w-4 shrink-0" />
+            {!collapsed && <span className="truncate">Top-Down Engine</span>}
+          </NavLink>
+          <NavLink to="/network" className={linkClass} title="Global Network">
+            <Network className="h-4 w-4 shrink-0" />
+            {!collapsed && <span className="truncate">Global Network</span>}
+          </NavLink>
+        </div>
+
+        {/* Governance & Repositories */}
+        <div className="flex flex-col gap-1">
+          {!collapsed && (
+            <span className="px-2.5 pb-1 text-[10px] font-semibold uppercase tracking-wider text-[var(--akdd-slate-400)]">
+              Référentiel & Projet
+            </span>
+          )}
+          <NavLink to="/manager" className={linkClass} title="KDD Manager">
+            <FolderKanban className="h-4 w-4 shrink-0" />
+            {!collapsed && <span className="truncate">KDD Manager</span>}
+          </NavLink>
+          <NavLink
+            to="/repositories?tab=requirements"
+            className={() =>
+              linkClass({
+                isActive:
+                  location.pathname === '/repositories' &&
+                  location.search.includes('tab=requirements'),
+              })
+            }
+            title="Project Instantiation (Requirements & TRACA)"
+          >
+            <ClipboardCheck className="h-4 w-4 shrink-0" />
+            {!collapsed && <span className="truncate">Project Instantiation</span>}
+          </NavLink>
+          <NavLink
+            to="/repositories?tab=bibliotheque"
+            className={() =>
+              linkClass({
+                isActive:
+                  location.pathname === '/repositories' &&
+                  !location.search.includes('tab=requirements'),
+              })
+            }
+            title="References (Bibliothèque & Sources)"
+          >
+            <BookOpen className="h-4 w-4 shrink-0" />
+            {!collapsed && <span className="truncate">References & Sources</span>}
+          </NavLink>
+          <NavLink to="/admin" className={linkClass} title="Admin">
+            <Settings className="h-4 w-4 shrink-0" />
+            {!collapsed && <span className="truncate">Admin</span>}
+          </NavLink>
+        </div>
+      </nav>
+
+      {/* Footer */}
+      {!collapsed && (
+        <div className="border-t border-[var(--akdd-slate-800)] px-4 py-3 text-[11px] text-[var(--akdd-slate-400)]">
+          <div className="flex items-center justify-between">
+            <span>Phase 2 · Web App</span>
+            <span className="font-mono text-[var(--akdd-slate-300)]">v2.0</span>
+          </div>
+        </div>
+      )}
+    </aside>
+  )
+}
+### src/components/layout/Topbar.tsx
+import { Menu, Search } from 'lucide-react'
+import { useLocation } from 'react-router-dom'
+import { getSubsystemMeta } from '../../types/subsystems'
+
+export interface TopbarProps {
+  kddCount: number
+  relationCount: number
+  onOpenCommandPalette: () => void
+  onToggleSidebar: () => void
+}
+
+function getPageTitle(pathname: string, search: string): { section: string; title: string } {
+  if (pathname === '/') {
+    return { section: 'AeroKDD', title: 'Vue d’ensemble du Référentiel' }
+  }
+  if (pathname.startsWith('/subsystems/')) {
+    const code = pathname.split('/')[2] ?? 'FAN'
+    const meta = getSubsystemMeta(code)
+    return { section: 'Sous-Système', title: `${meta.code} — ${meta.frenchName}` }
+  }
+  if (pathname.startsWith('/explore')) {
+    return { section: 'Analyse', title: 'Unit Explorer (GRAPH_KDD & SCHEMA KDD)' }
+  }
+  if (pathname.startsWith('/top-down')) {
+    return { section: 'Analyse', title: 'Moteur d’Analyse Top-Down' }
+  }
+  if (pathname.startsWith('/network')) {
+    return { section: 'Cartographie', title: 'Global Network (10 Sous-Systèmes)' }
+  }
+  if (pathname.startsWith('/manager')) {
+    return { section: 'Référentiel', title: 'KDD Manager' }
+  }
+  if (pathname.startsWith('/repositories')) {
+    return search.includes('tab=requirements')
+      ? { section: 'Instanciation Projet', title: 'Requirements & TRACA' }
+      : { section: 'Références', title: 'Bibliothèque & Sources' }
+  }
+  if (pathname.startsWith('/admin')) {
+    return { section: 'Maintenance', title: 'Administration & Export' }
+  }
+  return { section: 'AeroKDD', title: 'Design System' }
+}
+
+export function Topbar({
+  kddCount,
+  relationCount,
+  onOpenCommandPalette,
+  onToggleSidebar,
+}: TopbarProps) {
+  const location = useLocation()
+  const { section, title } = getPageTitle(location.pathname, location.search)
+
+  return (
+    <header className="flex h-14 shrink-0 items-center justify-between gap-4 border-b border-[var(--akdd-border-subtle)] bg-[var(--akdd-bg-surface)] px-5">
+      <div className="flex items-center gap-3 min-w-0">
+        <button
+          type="button"
+          onClick={onToggleSidebar}
+          aria-label="Basculer la navigation"
+          className="flex h-8 w-8 shrink-0 items-center justify-center rounded-[var(--akdd-radius-sm)] text-[var(--akdd-text-secondary)] hover:bg-[var(--akdd-slate-100)] cursor-pointer lg:hidden"
+        >
+          <Menu className="h-4 w-4" />
+        </button>
+        <div className="flex items-center gap-2 min-w-0 text-sm">
+          <span className="text-[var(--akdd-text-muted)] shrink-0">{section}</span>
+          <span className="text-[var(--akdd-slate-300)] shrink-0">/</span>
+          <h1 className="font-semibold text-[var(--akdd-text-primary)] truncate">{title}</h1>
+        </div>
+      </div>
+
+      <div className="flex items-center gap-3 shrink-0">
+        <button
+          type="button"
+          onClick={onOpenCommandPalette}
+          className="flex items-center justify-between gap-4 rounded-[var(--akdd-radius-md)] border border-[var(--akdd-border-default)] bg-[var(--akdd-bg-canvas)] px-3 py-1.5 text-xs text-[var(--akdd-text-secondary)] hover:border-[var(--akdd-navy-600)] hover:text-[var(--akdd-text-primary)] transition-colors cursor-pointer min-w-[220px]"
+        >
+          <span className="flex items-center gap-2">
+            <Search className="h-3.5 w-3.5 text-[var(--akdd-text-muted)]" />
+            <span>Rechercher un KDD…</span>
+          </span>
+          <kbd className="rounded bg-[var(--akdd-bg-surface)] px-1.5 py-0.5 font-mono text-[10px] text-[var(--akdd-text-muted)] border border-[var(--akdd-border-subtle)]">
+            Ctrl K
+          </kbd>
+        </button>
+
+        <div className="hidden md:flex items-center gap-2 rounded-[var(--akdd-radius-md)] bg-[var(--akdd-bg-subtle)] px-3 py-1.5 text-xs font-mono text-[var(--akdd-navy-800)] border border-[var(--akdd-border-subtle)]">
+          <span>{kddCount} KDDs</span>
+          <span className="text-[var(--akdd-slate-300)]">·</span>
+          <span>{relationCount} liens</span>
+        </div>
+      </div>
+    </header>
+  )
+}
+### src/components/layout/index.ts
+export { AppShell } from './AppShell'
+export { CommandPalette, type CommandPaletteProps } from './CommandPalette'
+export { Sidebar, type SidebarProps } from './Sidebar'
+export { Topbar, type TopbarProps } from './Topbar'
+--- ui sources ---
+### src/components/ui/Badge.tsx
+import type { ReactNode } from 'react'
+import type { CentralityLevel } from '../../engines/topDownEngine'
+import type { KddClassification, StatutKdd } from '../../types/aerokdd'
+
+export interface BadgeProps {
+  children: ReactNode
+  className?: string
+}
+
+export function Badge({ children, className = '' }: BadgeProps) {
+  return (
+    <span
+      className={`inline-flex items-center gap-1 rounded-[var(--akdd-radius-xs)] px-2 py-0.5 text-xs font-medium leading-tight whitespace-nowrap border ${className}`}
+    >
+      {children}
+    </span>
+  )
+}
+
+export function getStatutStyleClasses(statut: StatutKdd | string): string {
+  const s = (statut || '').toUpperCase()
+  if (s.startsWith('KDD')) {
+    return 'bg-[var(--akdd-status-kdd-bg)] text-[var(--akdd-status-kdd-text)] border-[var(--akdd-status-kdd-border)] font-semibold'
+  }
+  if (s.startsWith('S -') || s === 'S') {
+    return 'bg-[var(--akdd-status-s-bg)] text-[var(--akdd-status-s-text)] border-[var(--akdd-status-s-border)] font-semibold'
+  }
+  if (s.startsWith('D -') || s === 'D') {
+    return 'bg-[var(--akdd-status-d-bg)] text-[var(--akdd-status-d-text)] border-[var(--akdd-status-d-border)]'
+  }
+  if (s.startsWith('EFFET INDUIT')) {
+    return 'bg-[var(--akdd-status-effet-bg)] text-[var(--akdd-status-effet-text)] border-[var(--akdd-status-effet-border)]'
+  }
+  if (s.startsWith('PRESTATION')) {
+    return 'bg-[var(--akdd-status-prestation-bg)] text-[var(--akdd-status-prestation-text)] border-[var(--akdd-status-prestation-border)]'
+  }
+  if (s.startsWith('INPUT')) {
+    return 'bg-[var(--akdd-status-input-bg)] text-[var(--akdd-status-input-text)] border-[var(--akdd-status-input-border)]'
+  }
+  if (s.startsWith('CONTRAINT')) {
+    return 'bg-[var(--akdd-status-contrainte-bg)] text-[var(--akdd-status-contrainte-text)] border-[var(--akdd-status-contrainte-border)]'
+  }
+  return 'bg-[var(--akdd-slate-100)] text-[var(--akdd-slate-700)] border-[var(--akdd-border-default)]'
+}
+
+export function StatutBadge({ statut }: { statut: StatutKdd | string }) {
+  return <Badge className={getStatutStyleClasses(statut)}>{statut || 'Non classé'}</Badge>
+}
+
+export function KsdBadge({ value }: { value: KddClassification | string }) {
+  const v = (value || '').toUpperCase()
+  if (v === 'K') {
+    return (
+      <Badge className="bg-[var(--akdd-status-kdd-bg)] text-[var(--akdd-status-kdd-text)] border-[var(--akdd-status-kdd-border)] font-bold">
+        K
+      </Badge>
+    )
+  }
+  if (v === 'S') {
+    return (
+      <Badge className="bg-[var(--akdd-status-s-bg)] text-[var(--akdd-status-s-text)] border-[var(--akdd-status-s-border)] font-bold">
+        S
+      </Badge>
+    )
+  }
+  if (v === 'D') {
+    return (
+      <Badge className="bg-[var(--akdd-status-d-bg)] text-[var(--akdd-status-d-text)] border-[var(--akdd-status-d-border)] font-semibold">
+        D
+      </Badge>
+    )
+  }
+  return (
+    <Badge className="bg-[var(--akdd-slate-100)] text-[var(--akdd-slate-500)] border-[var(--akdd-border-subtle)]">
+      —
+    </Badge>
+  )
+}
+
+export function CentralityBadge({ level, label }: { level: CentralityLevel; label?: string }) {
+  const classes =
+    level === 'CARREFOUR'
+      ? 'bg-[var(--akdd-badge-carrefour-bg)] text-[var(--akdd-badge-carrefour-text)] border-[var(--akdd-badge-carrefour-border)] font-bold'
+      : level === 'FORT'
+        ? 'bg-[var(--akdd-badge-fort-bg)] text-[var(--akdd-badge-fort-text)] border-[var(--akdd-badge-fort-border)] font-semibold'
+        : 'bg-[var(--akdd-badge-cible-bg)] text-[var(--akdd-badge-cible-text)] border-[var(--akdd-badge-cible-border)]'
+
+  return <Badge className={classes}>{label ?? level}</Badge>
+}
+
+const SUBSYSTEM_BG_VARS: Record<string, string> = {
+  FAN: 'bg-[var(--akdd-sys-fan)]',
+  BOOSTER: 'bg-[var(--akdd-sys-booster)]',
+  HPC: 'bg-[var(--akdd-sys-hpc)]',
+  COMB: 'bg-[var(--akdd-sys-comb)]',
+  HPT: 'bg-[var(--akdd-sys-hpt)]',
+  LPT: 'bg-[var(--akdd-sys-lpt)]',
+  NOZZLE: 'bg-[var(--akdd-sys-nozzle)]',
+  COOLING: 'bg-[var(--akdd-sys-cooling)]',
+  ELECTRICAL: 'bg-[var(--akdd-sys-electrical)]',
+  OIL: 'bg-[var(--akdd-sys-oil)]',
+}
+
+export function SubsystemBadge({ code }: { code: string }) {
+  const bg = SUBSYSTEM_BG_VARS[code.toUpperCase()] ?? 'bg-[var(--akdd-slate-100)]'
+  return (
+    <Badge
+      className={`${bg} text-[var(--akdd-slate-900)] border-[var(--akdd-border-default)] font-mono font-semibold`}
+    >
+      {code}
+    </Badge>
+  )
+}
+### src/components/ui/Button.tsx
+import type { ButtonHTMLAttributes, ReactNode } from 'react'
+
+export type ButtonVariant = 'primary' | 'secondary' | 'ghost' | 'danger'
+export type ButtonSize = 'sm' | 'md'
+
+export interface ButtonProps extends ButtonHTMLAttributes<HTMLButtonElement> {
+  variant?: ButtonVariant
+  size?: ButtonSize
+  icon?: ReactNode
+}
+
+const VARIANT_CLASSES: Record<ButtonVariant, string> = {
+  primary:
+    'bg-[var(--akdd-navy-700)] text-[var(--akdd-text-inverse)] border border-[var(--akdd-navy-700)] hover:bg-[var(--akdd-navy-900)]',
+  secondary:
+    'bg-[var(--akdd-bg-surface)] text-[var(--akdd-text-primary)] border border-[var(--akdd-border-default)] hover:bg-[var(--akdd-slate-50)]',
+  ghost:
+    'bg-transparent text-[var(--akdd-text-secondary)] border border-transparent hover:bg-[var(--akdd-slate-100)] hover:text-[var(--akdd-text-primary)]',
+  danger:
+    'bg-[var(--akdd-status-contrainte-bg)] text-[var(--akdd-status-contrainte-text)] border border-[var(--akdd-status-contrainte-border)] hover:opacity-90',
+}
+
+const SIZE_CLASSES: Record<ButtonSize, string> = {
+  sm: 'px-2.5 py-1.5 text-xs gap-1.5',
+  md: 'px-3.5 py-2 text-sm gap-2',
+}
+
+export function Button({
+  variant = 'secondary',
+  size = 'md',
+  icon,
+  className = '',
+  children,
+  type = 'button',
+  ...props
+}: ButtonProps) {
+  return (
+    <button
+      type={type}
+      className={`inline-flex items-center justify-center rounded-[var(--akdd-radius-sm)] font-medium transition-colors cursor-pointer disabled:opacity-50 disabled:cursor-not-allowed ${VARIANT_CLASSES[variant]} ${SIZE_CLASSES[size]} ${className}`}
+      {...props}
+    >
+      {icon && <span className="inline-flex shrink-0">{icon}</span>}
+      {children}
+    </button>
+  )
+}
+### src/components/ui/Card.tsx
+import type { ReactNode } from 'react'
+
+export interface CardProps {
+  children: ReactNode
+  className?: string
+}
+
+export function Card({ children, className = '' }: CardProps) {
+  return (
+    <section
+      className={`flex flex-col rounded-[var(--akdd-radius-lg)] bg-[var(--akdd-bg-surface)] border border-[var(--akdd-border-subtle)] shadow-[var(--akdd-shadow-sm)] ${className}`}
+    >
+      {children}
+    </section>
+  )
+}
+
+export function CardHeader({
+  title,
+  subtitle,
+  action,
+  className = '',
+}: {
+  title: string
+  subtitle?: string
+  action?: ReactNode
+  className?: string
+}) {
+  return (
+    <div
+      className={`flex items-center justify-between gap-3 px-5 py-4 border-b border-[var(--akdd-border-subtle)] ${className}`}
+    >
+      <div className="flex flex-col gap-0.5 min-w-0">
+        <h2 className="text-sm font-semibold text-[var(--akdd-text-primary)] truncate">{title}</h2>
+        {subtitle && <p className="text-xs text-[var(--akdd-text-muted)] truncate">{subtitle}</p>}
+      </div>
+      {action && <div className="shrink-0">{action}</div>}
+    </div>
+  )
+}
+
+export function CardContent({ children, className = '' }: CardProps) {
+  return <div className={`p-5 ${className}`}>{children}</div>
+}
+### src/components/ui/Drawer.tsx
+import { X } from 'lucide-react'
+import { useEffect, type ReactNode } from 'react'
+import { Button } from './Button'
+
+export interface DrawerProps {
+  open: boolean
+  onClose: () => void
+  title: string
+  subtitle?: string
+  headerExtra?: ReactNode
+  children: ReactNode
+}
+
+export function Drawer({ open, onClose, title, subtitle, headerExtra, children }: DrawerProps) {
+  useEffect(() => {
+    if (!open) return
+    const onKeyDown = (e: KeyboardEvent) => {
+      if (e.key === 'Escape') onClose()
+    }
+    window.addEventListener('keydown', onKeyDown)
+    return () => window.removeEventListener('keydown', onKeyDown)
+  }, [open, onClose])
+
+  if (!open) return null
+
+  return (
+    <div
+      className="fixed inset-0 z-50 flex justify-end bg-[rgb(15_23_42/0.45)] backdrop-blur-[1px]"
+      role="dialog"
+      aria-modal="true"
+      onClick={onClose}
+    >
+      <aside
+        className="flex h-full w-full max-w-xl flex-col bg-[var(--akdd-bg-surface)] border-l border-[var(--akdd-border-default)] shadow-[var(--akdd-shadow-lg)]"
+        onClick={(e) => e.stopPropagation()}
+      >
+        <div className="flex items-start justify-between gap-4 border-b border-[var(--akdd-border-subtle)] bg-[var(--akdd-bg-subtle)] px-6 py-4">
+          <div className="flex flex-col gap-1 min-w-0">
+            <h2 className="text-base font-semibold text-[var(--akdd-text-primary)]">{title}</h2>
+            {subtitle && <p className="text-xs text-[var(--akdd-text-secondary)]">{subtitle}</p>}
+            {headerExtra && <div className="flex flex-wrap items-center gap-2 pt-1">{headerExtra}</div>}
+          </div>
+          <Button variant="ghost" size="sm" onClick={onClose} aria-label="Fermer le panneau">
+            <X className="h-4 w-4" />
+          </Button>
+        </div>
+
+        <div className="flex-1 overflow-y-auto px-6 py-5">{children}</div>
+      </aside>
+    </div>
+  )
+}
+### src/components/ui/KpiCard.tsx
+import type { ReactNode } from 'react'
+
+export interface KpiCardProps {
+  label: string
+  value: string | number
+  subtitle?: string
+  icon?: ReactNode
+  accentClassName?: string
+  footer?: ReactNode
+}
+
+export function KpiCard({
+  label,
+  value,
+  subtitle,
+  icon,
+  accentClassName = 'border-l-[var(--akdd-navy-700)]',
+  footer,
+}: KpiCardProps) {
+  return (
+    <div
+      className={`flex flex-col justify-between gap-3 rounded-[var(--akdd-radius-lg)] bg-[var(--akdd-bg-surface)] border border-[var(--akdd-border-subtle)] border-l-4 ${accentClassName} p-4 shadow-[var(--akdd-shadow-sm)]`}
+    >
+      <div className="flex items-start justify-between gap-3">
+        <div className="flex flex-col gap-1 min-w-0">
+          <span className="text-xs font-medium uppercase tracking-wider text-[var(--akdd-text-muted)]">
+            {label}
+          </span>
+          <span className="text-2xl font-bold tracking-tight text-[var(--akdd-text-primary)] font-mono">
+            {value}
+          </span>
+        </div>
+        {icon && (
+          <div className="flex h-9 w-9 shrink-0 items-center justify-center rounded-[var(--akdd-radius-md)] bg-[var(--akdd-bg-subtle)] text-[var(--akdd-navy-700)]">
+            {icon}
+          </div>
+        )}
+      </div>
+
+      {(subtitle || footer) && (
+        <div className="flex flex-col gap-1.5 border-t border-[var(--akdd-border-subtle)] pt-2.5">
+          {subtitle && <p className="text-xs text-[var(--akdd-text-secondary)]">{subtitle}</p>}
+          {footer}
+        </div>
+      )}
+    </div>
+  )
+}
+### src/components/ui/Tabs.tsx
+import type { ReactNode } from 'react'
+
+export interface TabItem<T extends string> {
+  id: T
+  label: string
+  badge?: string | number
+  icon?: ReactNode
+}
+
+export interface TabsProps<T extends string> {
+  tabs: TabItem<T>[]
+  activeTab: T
+  onChange: (id: T) => void
+}
+
+export function Tabs<T extends string>({ tabs, activeTab, onChange }: TabsProps<T>) {
+  return (
+    <div
+      role="tablist"
+      className="inline-flex flex-wrap items-center gap-1 rounded-[var(--akdd-radius-md)] bg-[var(--akdd-slate-100)] p-1 border border-[var(--akdd-border-subtle)]"
+    >
+      {tabs.map((tab) => {
+        const isActive = tab.id === activeTab
+        return (
+          <button
+            key={tab.id}
+            role="tab"
+            type="button"
+            aria-selected={isActive}
+            onClick={() => onChange(tab.id)}
+            className={`inline-flex items-center gap-2 rounded-[var(--akdd-radius-sm)] px-3.5 py-1.5 text-sm font-medium transition-all cursor-pointer ${
+              isActive
+                ? 'bg-[var(--akdd-bg-surface)] text-[var(--akdd-navy-900)] shadow-[var(--akdd-shadow-sm)]'
+                : 'text-[var(--akdd-text-secondary)] hover:text-[var(--akdd-text-primary)]'
+            }`}
+          >
+            {tab.icon && <span className="inline-flex shrink-0">{tab.icon}</span>}
+            <span>{tab.label}</span>
+            {tab.badge !== undefined && (
+              <span
+                className={`rounded-full px-1.5 py-0.5 text-[11px] font-mono ${
+                  isActive
+                    ? 'bg-[var(--akdd-accent-blue-soft)] text-[var(--akdd-navy-700)]'
+                    : 'bg-[var(--akdd-slate-200)] text-[var(--akdd-slate-600)]'
+                }`}
+              >
+                {tab.badge}
+              </span>
+            )}
+          </button>
+        )
+      })}
+    </div>
+  )
+}
+### src/components/ui/index.ts
+export { Button, type ButtonProps, type ButtonSize, type ButtonVariant } from './Button'
+export {
+  Badge,
+  CentralityBadge,
+  KsdBadge,
+  StatutBadge,
+  SubsystemBadge,
+  getStatutStyleClasses,
+} from './Badge'
+export { Card, CardContent, CardHeader } from './Card'
+export { KpiCard, type KpiCardProps } from './KpiCard'
+export { Drawer, type DrawerProps } from './Drawer'
+export { Tabs, type TabItem, type TabsProps } from './Tabs'
+
+--- stderr ---
+
+
+Use `read` on the stdout/stderr paths above for the full output.
