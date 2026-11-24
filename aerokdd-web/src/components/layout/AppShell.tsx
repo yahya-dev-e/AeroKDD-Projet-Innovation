@@ -11,7 +11,6 @@ export function AppShell() {
   const location = useLocation()
   const [sidebarCollapsed, setSidebarCollapsed] = useState(false)
   const [paletteOpen, setPaletteOpen] = useState(false)
-  const isOverview = location.pathname === '/'
   const isNetwork = location.pathname.startsWith('/network')
 
   useEffect(() => {
@@ -57,9 +56,7 @@ export function AppShell() {
           className={`flex-1 bg-[var(--akdd-bg-canvas)] ${
             isNetwork
               ? 'overflow-hidden p-0'
-              : isOverview
-                ? 'overflow-y-auto p-0'
-                : 'overflow-y-auto px-6 py-7 lg:px-8 lg:py-8'
+              : 'overflow-y-auto px-5 py-4 lg:px-6 lg:py-5'
           }`}
         >
           {error ? (
