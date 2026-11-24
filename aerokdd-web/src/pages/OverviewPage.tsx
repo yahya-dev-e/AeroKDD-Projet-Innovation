@@ -1,28 +1,21 @@
 import {
   ArrowRight,
   ArrowUpRight,
-  BarChart3,
   Clock,
   Database,
   FileText,
   Layers,
   Link2,
-  Maximize2,
-  Minus,
-  Network,
-  Plus,
   Target,
 } from 'lucide-react'
 import { useMemo, useState } from 'react'
-import { Link, useNavigate } from 'react-router-dom'
+import { Link } from 'react-router-dom'
 import { SubsystemCadThumbnail } from '../components/ui'
 import heroBannerFallback from '../components/ui/assets/hero-turbofan-blueprint.png'
 import {
-  buildKddEgoGraph,
   normalizeSubsystemCode,
   statutToShortCat,
 } from '../engines/graphBuilder'
-import { runTopDownAnalysis } from '../engines/topDownEngine'
 import { useAeroKddStore } from '../store/useAeroKddStore'
 import { SUBSYSTEM_CATALOG } from '../types/subsystems'
 
@@ -38,19 +31,6 @@ const SUBSYSTEM_CARD_SUBTITLES: Record<string, string> = {
   ELECTRICAL: 'Système électrique',
   OIL: 'Système d’huile',
 }
-
-const CLUSTER_SLOTS: Array<{ x: number; y: number }> = [
-  { x: 35, y: 18 },
-  { x: 56, y: 15 },
-  { x: 77, y: 18 },
-  { x: 18, y: 31 },
-  { x: 82, y: 69 },
-  { x: 64, y: 74 },
-  { x: 50, y: 85 },
-  { x: 25, y: 84 },
-  { x: 18, y: 57 },
-  { x: 21, y: 72 },
-]
 
 function Sparkline({ path }: { path: string }) {
   return (
@@ -68,11 +48,8 @@ function Sparkline({ path }: { path: string }) {
 }
 
 export function OverviewPage() {
-  const navigate = useNavigate()
   const { kdds, relations, bibliotheque, requirements } = useAeroKddStore()
   const [heroPublicFailed, setHeroPublicFailed] = useState(false)
-  const [clusterCenterId, setClusterCenterId] = useState('FAN-020')
-  const [clusterZoom, setClusterZoom] = useState(1)
 
   const summary = useMemo(() => {
     let kCount = 0
@@ -117,55 +94,6 @@ export function OverviewPage() {
 
     return { kCount, sCount, dCount, prestCount, otherCount, bySub }
   }, [kdds, relations])
-
-  const topDownBruit = useMemo(
-    () => runTopDownAnalysis(kdds, relations, 'Bruit / Acoustique'),
-    [kdds, relations],
-  )
-
-  const clusterEgo = useMemo(() => {
-    const fallbackId = kdds.some((k) => k.id === clusterCenterId)
-      ? clusterCenterId
-      : (kdds.find((k) => k.id === 'FAN-020')?.id ?? kdds[0]?.id ?? 'FAN-020')
-    return buildKddEgoGraph(kdds, relations, fallbackId)
-  }, [kdds, relations, clusterCenterId])
-
-  const clusterNodes = useMemo(() => {
-    const seen = new Set<string>()
-    const centerId = clusterEgo.selectedKdd?.id ?? clusterCenterId
-    seen.add(centerId)
-    const items: Array<{
-      id: string
-      edgeColor: string
-      cat: string
-      x: number
-      y: number
-    }> = []
-
-    for (const link of clusterEgo.allLinks) {
-      const isOut = link.direction === 'SORTANT'
-      const peerId = isOut ? link.relation.targetId : link.relation.sourceId
-      const peerCat = isOut ? link.targetCategory : link.sourceCategory
-      if (!peerId || seen.has(peerId)) continue
-      seen.add(peerId)
-      const slot = CLUSTER_SLOTS[items.length]
-      if (!slot) break
-      const edgeColor =
-        peerCat === 'PRESTATION'
-          ? '#15803D'
-          : peerCat === 'KDD' || peerCat === 'S' || peerCat === 'D'
-            ? '#D97706'
-            : '#64748B'
-      items.push({
-        id: peerId,
-        edgeColor,
-        cat: peerCat,
-        x: slot.x,
-        y: slot.y,
-      })
-    }
-    return items
-  }, [clusterEgo, clusterCenterId])
 
   const recentFeed = useMemo(() => {
     const rows: Array<{
@@ -366,296 +294,106 @@ export function OverviewPage() {
         })}
       </section>
 
-      {/* 3. Main Asymmetric Workspace Grid (~68% Left / ~32% Right) */}
-      <section className="grid grid-cols-1 items-start gap-3.5 xl:grid-cols-[minmax(0,2.12fr)_minmax(340px,1fr)]">
-        {/* Left Column: Les 10 sous-systèmes du turboréacteur */}
-        <div className="flex flex-col rounded-xl border border-[#E2E8F0] bg-white shadow-[var(--akdd-shadow-sm)]">
-          <div className="flex flex-wrap items-center justify-between gap-2 border-b border-[#E2E8F0] px-5 py-3.5">
-            <div className="flex items-center gap-2.5">
-              <Layers className="h-4 w-4 text-[#2B5B84]" />
-              <h2 className="text-[15px] font-semibold text-[#0F1D32]">
-                Les 10 sous-systèmes du turboréacteur
-              </h2>
-            </div>
-            <span className="font-mono text-xs tabular-nums text-[#64748B]">
-              {kdds.length.toLocaleString('fr-FR')} KDD ·{' '}
-              <strong className="font-medium text-[#0F1D32]">
-                {relations.length.toLocaleString('fr-FR')}
-              </strong>{' '}
-              liens
-            </span>
+      {/* 3. Les 10 sous-systèmes du turboréacteur (Full-Width 5x2 Grid) */}
+      <section className="flex flex-col rounded-xl border border-[#E2E8F0] bg-white shadow-[var(--akdd-shadow-sm)]">
+        <div className="flex flex-wrap items-center justify-between gap-2 border-b border-[#E2E8F0] px-5 py-3.5">
+          <div className="flex items-center gap-2.5">
+            <Layers className="h-4 w-4 text-[#2B5B84]" />
+            <h2 className="text-[15px] font-semibold text-[#0F1D32]">
+              Les 10 sous-systèmes du turboréacteur
+            </h2>
           </div>
-
-          <div className="grid grid-cols-1 gap-3 p-4 sm:grid-cols-2 lg:grid-cols-5">
-            {SUBSYSTEM_CATALOG.map((sub) => {
-              const stats = summary.bySub[sub.code]
-              const subtitle = SUBSYSTEM_CARD_SUBTITLES[sub.code] ?? sub.frenchName
-              return (
-                <Link
-                  key={sub.code}
-                  to={`/subsystems/${sub.code}`}
-                  className="group relative flex flex-col justify-between rounded-xl border border-[#E2E8F0] bg-white p-3.5 transition-colors hover:border-[#2B5B84] hover:bg-[#F8FAFC]"
-                >
-                  <ArrowUpRight className="absolute top-3 right-3 h-3.5 w-3.5 text-[#94A3B8] transition-transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5 group-hover:text-[#0F1D32]" />
-
-                  <div className="flex flex-col gap-2 pt-1">
-                    <SubsystemCadThumbnail code={sub.code} />
-                    <div className="flex flex-col">
-                      <span className="font-mono text-xs font-medium tracking-[0.03em] text-[#0F1D32]">
-                        {sub.code}
-                      </span>
-                      <span className="truncate text-xs text-[#64748B]">{subtitle}</span>
-                    </div>
-                  </div>
-
-                  <div className="mt-3 flex items-center gap-1.5 border-t border-[#E2E8F0] pt-2.5 font-mono text-[11px] tabular-nums text-[#64748B]">
-                    <FileText className="h-3 w-3 shrink-0 text-[#94A3B8]" />
-                    <span>
-                      <strong className="font-medium text-[#0F1D32]">{stats?.total ?? 0}</strong>{' '}
-                      KDD · {stats?.links ?? 0} liens
-                    </span>
-                  </div>
-                </Link>
-              )
-            })}
-          </div>
+          <span className="font-mono text-xs tabular-nums text-[#64748B]">
+            {kdds.length.toLocaleString('fr-FR')} KDD ·{' '}
+            <strong className="font-medium text-[#0F1D32]">
+              {relations.length.toLocaleString('fr-FR')}
+            </strong>{' '}
+            liens
+          </span>
         </div>
 
-        {/* Right Column: 3 Stacked Live Widgets */}
-        <div className="flex flex-col gap-3.5">
-          {/* Widget 1: Réseau global (Interactive KDD Cluster Preview) */}
-          <div className="flex flex-col rounded-xl border border-[#E2E8F0] bg-white shadow-[var(--akdd-shadow-sm)]">
-            <div className="flex items-center justify-between gap-2 border-b border-[#E2E8F0] px-4 py-3">
-              <div className="flex items-center gap-2">
-                <Network className="h-4 w-4 text-[#2B5B84]" />
-                <h2 className="text-sm font-semibold text-[#0F1D32]">Réseau global</h2>
-              </div>
+        <div className="grid grid-cols-1 gap-3 p-4 sm:grid-cols-2 lg:grid-cols-5">
+          {SUBSYSTEM_CATALOG.map((sub) => {
+            const stats = summary.bySub[sub.code]
+            const subtitle = SUBSYSTEM_CARD_SUBTITLES[sub.code] ?? sub.frenchName
+            return (
               <Link
-                to="/network"
-                className="inline-flex items-center gap-1 text-xs font-medium text-[#475569] hover:text-[#0F1D32]"
+                key={sub.code}
+                to={`/subsystems/${sub.code}`}
+                className="group relative flex flex-col justify-between rounded-xl border border-[#E2E8F0] bg-white p-3.5 transition-colors hover:border-[#2B5B84] hover:bg-[#F8FAFC]"
               >
-                <span>Vue d’ensemble</span>
-                <ArrowRight className="h-3.5 w-3.5" />
-              </Link>
-            </div>
+                <ArrowUpRight className="absolute top-3 right-3 h-3.5 w-3.5 text-[#94A3B8] transition-transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5 group-hover:text-[#0F1D32]" />
 
-            <div className="p-3">
-              <div
-                className="relative h-[204px] w-full overflow-hidden rounded-lg border border-[#E2E8F0] bg-[#F8FAFC]"
-                style={{
-                  backgroundImage: 'radial-gradient(#CBD5E1 1px, transparent 1px)',
-                  backgroundSize: '12px 12px',
-                }}
-              >
-                <div
-                  className="absolute inset-0 transition-transform duration-150"
-                  style={{ transform: `scale(${clusterZoom})`, transformOrigin: '50% 50%' }}
-                >
-                  {/* Subtle background mesh + active radial edges */}
-                  <svg
-                    viewBox="0 0 100 100"
-                    preserveAspectRatio="none"
-                    className="pointer-events-none absolute inset-0 h-full w-full"
-                    aria-hidden="true"
-                  >
-                    {/* Faint background lattice */}
-                    {clusterNodes.map((n, i) => {
-                      const next = clusterNodes[(i + 1) % Math.max(clusterNodes.length, 1)]
-                      if (!next) return null
-                      return (
-                        <line
-                          key={`mesh-${n.id}`}
-                          x1={n.x}
-                          y1={n.y}
-                          x2={next.x}
-                          y2={next.y}
-                          stroke="#CBD5E1"
-                          strokeWidth="0.35"
-                        />
-                      )
-                    })}
-                    {/* Active ego edges */}
-                    {clusterNodes.map((n) => (
-                      <line
-                        key={`edge-${n.id}`}
-                        x1="50"
-                        y1="49"
-                        x2={n.x}
-                        y2={n.y}
-                        stroke={n.edgeColor}
-                        strokeWidth="0.65"
-                      />
-                    ))}
-                  </svg>
-
-                  {/* Neighbor KDD nodes (click to recenter preview) */}
-                  {clusterNodes.map((node) => {
-                    const pillStyle =
-                      node.cat === 'PRESTATION'
-                        ? 'border-[#86EFAC] bg-[#F0FDF4] text-[#14532D]'
-                        : node.cat === 'KDD'
-                          ? 'border-[#FCD34D] bg-[#FFFBEB] text-[#78350F]'
-                          : 'border-[#BFDBFE] bg-[#EFF6FF] text-[#1E3A8A]'
-
-                    return (
-                      <button
-                        key={node.id}
-                        type="button"
-                        onClick={() => setClusterCenterId(node.id)}
-                        title={`Centrer l’aperçu sur ${node.id}`}
-                        style={{ left: `${node.x}%`, top: `${node.y}%` }}
-                        className={`-translate-x-1/2 -translate-y-1/2 absolute rounded border px-1.5 py-0.5 font-mono text-[10px] font-medium transition-colors hover:border-[#0F1D32] cursor-pointer ${pillStyle}`}
-                      >
-                        {node.id}
-                      </button>
-                    )
-                  })}
-
-                  {/* Center KDD node (click to open Explorer) */}
-                  <button
-                    type="button"
-                    onClick={() =>
-                      navigate(
-                        `/explore/${encodeURIComponent(clusterEgo.selectedKdd?.id ?? clusterCenterId)}`,
-                      )
-                    }
-                    title="Ouvrir dans l’Explorateur KDD"
-                    style={{ left: '50%', top: '49%' }}
-                    className="-translate-x-1/2 -translate-y-1/2 absolute rounded-md border-2 border-[#0F1D32] bg-white px-2.5 py-1 font-mono text-[11px] font-medium text-[#0F1D32] hover:bg-[#F8FAFC] cursor-pointer"
-                  >
-                    {clusterEgo.selectedKdd?.id ?? clusterCenterId}
-                  </button>
-                </div>
-
-                {/* Mini Floating Zoom/Fit Controls */}
-                <div className="absolute top-2.5 right-2.5 z-10 flex flex-col divide-y divide-[#E2E8F0] overflow-hidden rounded-lg border border-[#E2E8F0] bg-white">
-                  <button
-                    type="button"
-                    aria-label="Réinitialiser l’aperçu"
-                    onClick={() => {
-                      setClusterCenterId('FAN-020')
-                      setClusterZoom(1)
-                    }}
-                    className="flex h-6 w-6 items-center justify-center text-[#334155] hover:bg-[#F8FAFC] hover:text-[#0F1D32] cursor-pointer"
-                  >
-                    <Maximize2 className="h-3 w-3" />
-                  </button>
-                  <button
-                    type="button"
-                    aria-label="Zoomer l’aperçu"
-                    onClick={() => setClusterZoom((z) => Math.min(1.25, +(z + 0.1).toFixed(2)))}
-                    className="flex h-6 w-6 items-center justify-center text-[#334155] hover:bg-[#F8FAFC] hover:text-[#0F1D32] cursor-pointer"
-                  >
-                    <Plus className="h-3 w-3" />
-                  </button>
-                  <button
-                    type="button"
-                    aria-label="Dézoomer l’aperçu"
-                    onClick={() => setClusterZoom((z) => Math.max(0.8, +(z - 0.1).toFixed(2)))}
-                    className="flex h-6 w-6 items-center justify-center text-[#334155] hover:bg-[#F8FAFC] hover:text-[#0F1D32] cursor-pointer"
-                  >
-                    <Minus className="h-3 w-3" />
-                  </button>
-                </div>
-              </div>
-            </div>
-          </div>
-
-          {/* Widget 2: Analyse Top-Down (Live Bruit / Acoustique Strip) */}
-          <div className="flex flex-col rounded-xl border border-[#E2E8F0] bg-white shadow-[var(--akdd-shadow-sm)]">
-            <div className="flex items-center justify-between gap-2 border-b border-[#E2E8F0] px-4 py-3">
-              <div className="flex items-center gap-2">
-                <BarChart3 className="h-4 w-4 text-[#2B5B84]" />
-                <h2 className="text-sm font-semibold text-[#0F1D32]">Analyse Top-Down</h2>
-              </div>
-              <Link
-                to="/top-down"
-                className="inline-flex items-center gap-1 text-xs font-medium text-[#475569] hover:text-[#0F1D32]"
-              >
-                <span>Bruit / Acoustique</span>
-                <ArrowRight className="h-3.5 w-3.5" />
-              </Link>
-            </div>
-
-            <div className="grid grid-cols-4 gap-2 px-4 py-3.5">
-              <div className="flex flex-col border-l-2 border-[#2B5B84] pl-2.5">
-                <span className="font-display text-2xl font-semibold leading-none tabular-nums text-[#0F1D32]">
-                  {topDownBruit.matchedPrestationsCount}
-                </span>
-                <span className="mt-1 truncate text-[11px] text-[#64748B]">Prestations</span>
-              </div>
-              <div className="flex flex-col border-l-2 border-[#15803D] pl-2.5">
-                <span className="font-display text-2xl font-semibold leading-none tabular-nums text-[#0F1D32]">
-                  {topDownBruit.directCount}
-                </span>
-                <span className="mt-1 truncate text-[11px] text-[#64748B]">Directs N1</span>
-              </div>
-              <div className="flex flex-col border-l-2 border-[#D97706] pl-2.5">
-                <span className="font-display text-2xl font-semibold leading-none tabular-nums text-[#0F1D32]">
-                  {topDownBruit.indirectCount}
-                </span>
-                <span className="mt-1 truncate text-[11px] text-[#64748B]">Indirects N2</span>
-              </div>
-              <div className="flex flex-col border-l-2 border-[#64748B] pl-2.5">
-                <span className="font-display text-2xl font-semibold leading-none tabular-nums text-[#0F1D32]">
-                  {topDownBruit.touchedSubsystemsCount}
-                </span>
-                <span className="mt-1 truncate text-[11px] text-[#64748B]">Sous-systèmes</span>
-              </div>
-            </div>
-          </div>
-
-          {/* Widget 3: Activité récente */}
-          <div className="flex flex-col rounded-xl border border-[#E2E8F0] bg-white shadow-[var(--akdd-shadow-sm)]">
-            <div className="flex items-center justify-between gap-2 border-b border-[#E2E8F0] px-4 py-3">
-              <div className="flex items-center gap-2">
-                <Clock className="h-4 w-4 text-[#2B5B84]" />
-                <h2 className="text-sm font-semibold text-[#0F1D32]">Activité récente</h2>
-              </div>
-              <Link
-                to="/repositories"
-                className="inline-flex items-center gap-1 text-xs font-medium text-[#475569] hover:text-[#0F1D32]"
-              >
-                <span>Tout l’historique</span>
-                <ArrowRight className="h-3.5 w-3.5" />
-              </Link>
-            </div>
-
-            <div className="flex flex-col divide-y divide-[#E2E8F0]">
-              {recentFeed.map((entry) => (
-                <Link
-                  key={entry.id}
-                  to={`/explore/${encodeURIComponent(entry.kddId)}`}
-                  className="flex items-center justify-between gap-3 px-4 py-2.5 text-xs transition-colors hover:bg-[#F8FAFC]"
-                >
-                  <div className="flex items-center gap-2.5 min-w-0">
-                    {entry.kind === 'KDD' ? (
-                      <span className="inline-flex h-5 w-5 shrink-0 items-center justify-center rounded border border-[#A7E3BF] bg-[#F6FEF9] font-mono text-[10px] font-medium text-[#0F5132]">
-                        K
-                      </span>
-                    ) : entry.kind === 'REL' ? (
-                      <span className="inline-flex h-5 w-5 shrink-0 items-center justify-center rounded border border-[#ADC8F0] bg-[#F5F9FF] text-[#173F7A]">
-                        <Link2 className="h-3 w-3" />
-                      </span>
-                    ) : (
-                      <span className="inline-flex h-5 w-5 shrink-0 items-center justify-center rounded border border-[#CBD5E1] bg-[#F8FAFC] text-[#334155]">
-                        <FileText className="h-3 w-3" />
-                      </span>
-                    )}
-                    <span className="truncate text-[#475569]">
-                      <strong className="font-mono font-medium text-[#0F1D32]">
-                        {entry.kddId}
-                      </strong>{' '}
-                      · {entry.label}
+                <div className="flex flex-col gap-2 pt-1">
+                  <SubsystemCadThumbnail code={sub.code} />
+                  <div className="flex flex-col">
+                    <span className="font-mono text-xs font-medium tracking-[0.03em] text-[#0F1D32]">
+                      {sub.code}
                     </span>
+                    <span className="truncate text-xs text-[#64748B]">{subtitle}</span>
                   </div>
-                  <span className="shrink-0 whitespace-nowrap font-mono text-[10.5px] text-[#94A3B8]">
-                    {entry.time}
+                </div>
+
+                <div className="mt-3 flex items-center gap-1.5 border-t border-[#E2E8F0] pt-2.5 font-mono text-[11px] tabular-nums text-[#64748B]">
+                  <FileText className="h-3 w-3 shrink-0 text-[#94A3B8]" />
+                  <span>
+                    <strong className="font-medium text-[#0F1D32]">{stats?.total ?? 0}</strong> KDD
+                    · {stats?.links ?? 0} liens
                   </span>
-                </Link>
-              ))}
-            </div>
+                </div>
+              </Link>
+            )
+          })}
+        </div>
+      </section>
+
+      {/* 4. Activité récente (Compact Horizontal Strip) */}
+      <section className="flex flex-col rounded-xl border border-[#E2E8F0] bg-white shadow-[var(--akdd-shadow-sm)]">
+        <div className="flex items-center justify-between gap-2 border-b border-[#E2E8F0] px-5 py-3">
+          <div className="flex items-center gap-2">
+            <Clock className="h-4 w-4 text-[#2B5B84]" />
+            <h2 className="text-sm font-semibold text-[#0F1D32]">Activité récente</h2>
           </div>
+          <Link
+            to="/repositories"
+            className="inline-flex items-center gap-1 text-xs font-medium text-[#475569] hover:text-[#0F1D32]"
+          >
+            <span>Tout l’historique</span>
+            <ArrowRight className="h-3.5 w-3.5" />
+          </Link>
+        </div>
+
+        <div className="grid grid-cols-1 divide-y divide-[#E2E8F0] md:grid-cols-3 md:divide-x md:divide-y-0">
+          {recentFeed.map((entry) => (
+            <Link
+              key={entry.id}
+              to={`/explore/${encodeURIComponent(entry.kddId)}`}
+              className="flex items-center justify-between gap-3 px-5 py-3 text-xs transition-colors hover:bg-[#F8FAFC]"
+            >
+              <div className="flex items-center gap-2.5 min-w-0">
+                {entry.kind === 'KDD' ? (
+                  <span className="inline-flex h-5 w-5 shrink-0 items-center justify-center rounded border border-[#A7E3BF] bg-[#F6FEF9] font-mono text-[10px] font-medium text-[#0F5132]">
+                    K
+                  </span>
+                ) : entry.kind === 'REL' ? (
+                  <span className="inline-flex h-5 w-5 shrink-0 items-center justify-center rounded border border-[#ADC8F0] bg-[#F5F9FF] text-[#173F7A]">
+                    <Link2 className="h-3 w-3" />
+                  </span>
+                ) : (
+                  <span className="inline-flex h-5 w-5 shrink-0 items-center justify-center rounded border border-[#CBD5E1] bg-[#F8FAFC] text-[#334155]">
+                    <FileText className="h-3 w-3" />
+                  </span>
+                )}
+                <span className="truncate text-[#475569]">
+                  <strong className="font-mono font-medium text-[#0F1D32]">{entry.kddId}</strong> ·{' '}
+                  {entry.label}
+                </span>
+              </div>
+              <span className="shrink-0 whitespace-nowrap font-mono text-[10.5px] text-[#94A3B8]">
+                {entry.time}
+              </span>
+            </Link>
+          ))}
         </div>
       </section>
     </div>

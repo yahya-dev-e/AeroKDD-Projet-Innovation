@@ -54,31 +54,25 @@ export function Sidebar({ collapsed, onToggleCollapse, kddCountBySubsystem }: Si
       }`}
     >
       {/* Brand Header */}
-      <div className="flex shrink-0 items-center justify-between gap-2 border-b border-[#E2E8F0] px-3.5 py-3.5">
-        <div className="flex items-center gap-2.5 min-w-0">
-          <div className="flex h-8 w-8 shrink-0 items-center justify-center rounded-lg border border-[#CBD5E1] bg-white text-[#0F1D32]">
-            <svg viewBox="0 0 24 24" className="h-5 w-5" fill="none" aria-hidden="true">
-              <circle cx="12" cy="12" r="8.5" stroke="#0F1D32" strokeWidth="1.6" />
-              <circle cx="12" cy="12" r="2.2" fill="#2B5B84" />
-              <path
-                d="M12 3.8V8.5M12 15.5V20.2M3.8 12H8.5M15.5 12H20.2M6.2 6.2L9.5 9.5M14.5 14.5L17.8 17.8M17.8 6.2L14.5 9.5M9.5 14.5L6.2 17.8"
-                stroke="#2B5B84"
-                strokeWidth="1.3"
-                strokeLinecap="round"
-              />
-            </svg>
+      <div className="flex shrink-0 items-center justify-between gap-2 border-b border-[#E2E8F0] px-3.5 py-3">
+        {collapsed ? (
+          <img
+            src="/assets/logo-ak.png"
+            alt="AeroKDD"
+            className="h-7 w-auto max-w-[40px] object-contain mix-blend-multiply"
+          />
+        ) : (
+          <div className="flex flex-col items-start min-w-0">
+            <img
+              src="/assets/logo-aerokdd.png"
+              alt="AeroKDD"
+              className="h-11 w-auto max-w-[178px] object-contain mix-blend-multiply"
+            />
+            <span className="mt-0.5 pl-1 inline-flex items-center gap-1 font-mono text-[9.5px] font-medium uppercase tracking-[0.06em] text-[#2B5B84] truncate">
+              <span className="text-[#64748B] lowercase">by</span> SHERPA ENGINEERING
+            </span>
           </div>
-          {!collapsed && (
-            <div className="flex flex-col min-w-0">
-              <span className="font-display text-xl font-semibold tracking-[-0.02em] leading-none text-[#0F1D32] truncate">
-                AeroKDD
-              </span>
-              <span className="mt-1 inline-flex items-center gap-1 font-mono text-[9.5px] font-medium uppercase tracking-[0.06em] text-[#2B5B84] truncate">
-                <span className="text-[#64748B] lowercase">by</span> SHERPA ENGINEERING
-              </span>
-            </div>
-          )}
-        </div>
+        )}
         <button
           type="button"
           onClick={onToggleCollapse}
