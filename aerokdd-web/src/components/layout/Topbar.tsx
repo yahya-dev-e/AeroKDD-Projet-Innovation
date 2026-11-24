@@ -1,4 +1,4 @@
-import { Menu, Search } from 'lucide-react'
+import { Database, Link2, Menu, Search } from 'lucide-react'
 import { useLocation } from 'react-router-dom'
 import { getSubsystemMeta } from '../../types/subsystems'
 
@@ -62,26 +62,24 @@ export function Topbar({
   onToggleSidebar,
 }: TopbarProps) {
   const location = useLocation()
-  const { section, title } = getPageTitle(location.pathname, location.search)
+  const { title } = getPageTitle(location.pathname, location.search)
 
   return (
-    <header className="flex h-14 shrink-0 items-center justify-between gap-4 border-b border-[var(--akdd-border-subtle)] bg-[var(--akdd-bg-surface)] px-6 shadow-none lg:px-8">
-      {/* Left: Breadcrumb */}
+    <header className="flex h-13 shrink-0 items-center justify-between gap-4 border-b border-[#E2E8F0] bg-[#FFFFFF] px-5 shadow-none lg:px-6">
+      {/* Left: AeroKDD | Page Title */}
       <div className="flex items-center gap-3 shrink-0">
         <button
           type="button"
           onClick={onToggleSidebar}
           aria-label="Basculer la navigation"
-          className="flex h-8 w-8 shrink-0 items-center justify-center rounded-[var(--akdd-radius-sm)] border border-[var(--akdd-border-subtle)] text-[var(--akdd-text-primary)] hover:bg-[var(--akdd-bg-subtle)] cursor-pointer lg:hidden"
+          className="flex h-8 w-8 shrink-0 items-center justify-center rounded-md border border-[#E2E8F0] text-[#0F1D32] hover:bg-[#F8FAFC] cursor-pointer lg:hidden"
         >
           <Menu className="h-4 w-4" />
         </button>
-        <div className="flex items-center gap-2 whitespace-nowrap text-sm">
-          <span className="font-mono text-[11px] font-medium uppercase tracking-[0.08em] text-[var(--akdd-text-muted)]">
-            {section}
-          </span>
-          <span className="text-[var(--akdd-slate-300)]">/</span>
-          <h1 className="font-display text-lg font-semibold tracking-[-0.02em] leading-[1.05] text-[var(--akdd-text-primary)]">
+        <div className="flex items-center gap-2.5 whitespace-nowrap text-sm">
+          <span className="font-semibold tracking-[-0.01em] text-[#0F1D32]">AeroKDD</span>
+          <span className="h-3.5 w-px bg-[#CBD5E1]" aria-hidden="true" />
+          <h1 className="font-sans text-sm font-normal tracking-normal leading-normal text-[#475569]">
             {title}
           </h1>
         </div>
@@ -91,23 +89,28 @@ export function Topbar({
       <button
         type="button"
         onClick={onOpenCommandPalette}
-        className="flex w-full max-w-[280px] items-center justify-between gap-4 rounded-full border border-[var(--akdd-border-subtle)] bg-[var(--akdd-bg-subtle)] px-3.5 py-1.5 text-xs text-[var(--akdd-text-muted)] shadow-none hover:border-[var(--akdd-ink)] hover:bg-[var(--akdd-bg-surface)] hover:text-[var(--akdd-text-primary)] transition-colors cursor-pointer"
+        className="flex w-full max-w-[320px] items-center justify-between gap-4 rounded-full border border-[#E2E8F0] bg-[#F8FAFC] px-3.5 py-1.5 text-xs text-[#64748B] shadow-none hover:border-[#2B5B84] hover:bg-white hover:text-[#0F1D32] transition-colors cursor-pointer"
       >
         <span className="flex items-center gap-2 truncate">
-          <Search className="h-3.5 w-3.5 shrink-0 text-[var(--akdd-text-muted)]" />
-          <span className="truncate">Rechercher un KDD…</span>
+          <Search className="h-3.5 w-3.5 shrink-0 text-[#64748B]" />
+          <span className="truncate">Rechercher un KDD...</span>
         </span>
-        <kbd className="shrink-0 rounded-full border border-[var(--akdd-border-subtle)] bg-[var(--akdd-bg-surface)] px-2 py-0.5 font-mono text-[10px] font-medium text-[var(--akdd-text-primary)]">
+        <kbd className="shrink-0 rounded-full border border-[#E2E8F0] bg-white px-2 py-0.5 font-mono text-[10px] font-medium text-[#0F1D32]">
           Ctrl+K
         </kbd>
       </button>
 
       {/* Right: Monospace System Telemetry */}
-      <div className="hidden md:flex shrink-0 items-center justify-end gap-2 whitespace-nowrap font-mono text-[11px] font-medium uppercase tracking-[0.08em] tabular-nums text-[var(--akdd-text-primary)]">
-        <span className="h-1.5 w-1.5 bg-[var(--akdd-ink)]" aria-hidden="true" />
-        <span>{kddCount.toLocaleString('fr-FR')} KDD</span>
-        <span className="text-[var(--akdd-text-muted)]">·</span>
-        <span>{relationCount.toLocaleString('fr-FR')} LIENS</span>
+      <div className="hidden md:flex shrink-0 items-center justify-end gap-2.5 whitespace-nowrap font-mono text-[11.5px] font-medium uppercase tracking-[0.04em] tabular-nums text-[#0F1D32]">
+        <span className="inline-flex items-center gap-1.5">
+          <Database className="h-3.5 w-3.5 text-[#2B5B84]" />
+          <span>{kddCount.toLocaleString('fr-FR')} KDD</span>
+        </span>
+        <span className="text-[#CBD5E1]">·</span>
+        <span className="inline-flex items-center gap-1.5">
+          <Link2 className="h-3.5 w-3.5 text-[#2B5B84]" />
+          <span>{relationCount.toLocaleString('fr-FR')} LIENS</span>
+        </span>
       </div>
     </header>
   )

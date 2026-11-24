@@ -23,9 +23,9 @@ export function KpiCard({
 
   return (
     <div
-      className={`flex flex-col justify-between gap-3.5 rounded-[var(--akdd-radius-lg)] bg-[var(--akdd-bg-surface)] border border-[var(--akdd-border-subtle)] ${
+      className={`flex flex-col justify-between gap-3.5 rounded-xl bg-[var(--akdd-bg-surface)] border border-[#E2E8F0] ${
         hasEdgeAccent ? `border-l-2 ${accentClassName}` : ''
-      } p-5 shadow-none`}
+      } p-5 shadow-[var(--akdd-shadow-sm)]`}
     >
       <div className="flex items-start justify-between gap-3">
         <div className="flex flex-col gap-1.5 min-w-0">

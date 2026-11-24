@@ -1,56 +1,58 @@
 /* ============================================================================
  * AeroKDD Design System Tokens (Figma Sync Target)
- * Aerospace-Industrial Monochrome Specification System
+ * Precision Swiss-Industrial Aerospace System
  * ============================================================================ */
 
 :root {
-  /* --- Strict Monochrome Ink & Zinc Scale --- */
-  --akdd-ink: #09090b;
-  --akdd-ink-soft: #18181b;
-  --akdd-ink-hover: #27272a;
+  /* --- Aerospace Navy & Steel-Blue Palette --- */
+  --akdd-ink: #0f1d32;
+  --akdd-ink-soft: #162947;
+  --akdd-ink-hover: #1c3358;
+  --akdd-steel-blue: #2b5b84;
+  --akdd-steel-blue-soft: #e8f0f7;
 
-  /* Legacy chrome aliases mapped strictly to monochrome ink/zinc */
-  --akdd-navy-950: #09090b;
-  --akdd-navy-900: #09090b;
-  --akdd-navy-800: #09090b;
-  --akdd-navy-700: #09090b;
-  --akdd-navy-600: #27272a;
-  --akdd-accent-blue: #09090b;
-  --akdd-accent-blue-soft: #f4f4f5;
+  /* Chrome & legacy aliases */
+  --akdd-navy-950: #0b1526;
+  --akdd-navy-900: #0f1d32;
+  --akdd-navy-800: #162947;
+  --akdd-navy-700: #0f1d32;
+  --akdd-navy-600: #2b5b84;
+  --akdd-accent-blue: #2b5b84;
+  --akdd-accent-blue-soft: #edf3f9;
 
-  --akdd-brand: #09090b;
-  --akdd-brand-strong: #27272a;
-  --akdd-brand-soft: #3f3f46;
-  --akdd-brand-tint: #f4f4f5;
-  --akdd-charcoal: #09090b;
-  --akdd-charcoal-raised: #18181b;
+  --akdd-brand: #0f1d32;
+  --akdd-brand-strong: #162947;
+  --akdd-brand-soft: #2b5b84;
+  --akdd-brand-tint: #edf3f9;
+  --akdd-charcoal: #0f1d32;
+  --akdd-charcoal-raised: #162947;
 
-  --akdd-slate-950: #09090b;
-  --akdd-slate-900: #18181b;
-  --akdd-slate-800: #27272a;
-  --akdd-slate-700: #3f3f46;
-  --akdd-slate-600: #52525b;
-  --akdd-slate-500: #71717a;
-  --akdd-slate-400: #a1a1aa;
-  --akdd-slate-300: #d4d4d8;
-  --akdd-slate-200: #e4e4e7;
-  --akdd-slate-100: #f4f4f5;
-  --akdd-slate-50: #fafafa;
+  --akdd-slate-950: #0f172a;
+  --akdd-slate-900: #0f1d32;
+  --akdd-slate-800: #1e293b;
+  --akdd-slate-700: #334155;
+  --akdd-slate-600: #475569;
+  --akdd-slate-500: #64748b;
+  --akdd-slate-400: #94a3b8;
+  --akdd-slate-300: #cbd5e1;
+  --akdd-slate-200: #e2e8f0;
+  --akdd-slate-100: #eef2f7;
+  --akdd-slate-50: #f8fafc;
 
   /* --- Surfaces & Text --- */
-  --akdd-bg-canvas: #ffffff;
+  --akdd-bg-canvas: #f3f6fa;
   --akdd-bg-surface: #ffffff;
-  --akdd-bg-subtle: #fafafa;
-  --akdd-bg-sidebar: #fafafa;
-  --akdd-bg-sidebar-raised: #f4f4f5;
-  --akdd-bg-sidebar-active: #09090b;
-  --akdd-sidebar-active-border: #09090b;
-  --akdd-border-default: #e4e4e7;
-  --akdd-border-subtle: #e4e4e7;
-  --akdd-border-strong: #09090b;
-  --akdd-text-primary: #09090b;
-  --akdd-text-secondary: #3f3f46;
-  --akdd-text-muted: #71717a;
+  --akdd-bg-subtle: #f8fafc;
+  --akdd-bg-sidebar: #f8fafc;
+  --akdd-bg-sidebar-raised: #eef2f7;
+  --akdd-bg-sidebar-active: #0f1d32;
+  --akdd-sidebar-active-border: #0f1d32;
+  --akdd-border-default: #cbd5e1;
+  --akdd-border-subtle: #e2e8f0;
+  --akdd-border-strong: #0f1d32;
+  --akdd-text-primary: #0f1d32;
+  --akdd-text-secondary: #334155;
+  --akdd-text-muted: #64748b;
   --akdd-text-inverse: #ffffff;
 
   /* --- Semantic KDD Engineering Micro-Tag Palette (1px Crisp Hairline Tags) --- */
@@ -158,15 +160,15 @@
   --akdd-font-mono: var(--font-mono);
 
   /* --- Architectural Radii --- */
-  --akdd-radius-xs: 2px;
-  --akdd-radius-sm: 2px;
-  --akdd-radius-md: 2px;
-  --akdd-radius-lg: 2px;
-  --akdd-radius-xl: 2px;
+  --akdd-radius-xs: 4px;
+  --akdd-radius-sm: 6px;
+  --akdd-radius-md: 8px;
+  --akdd-radius-lg: 12px;
+  --akdd-radius-xl: 14px;
   --akdd-radius-full: 9999px;
 
-  /* --- Shadows (Strictly Disabled — Hairline Borders Only) --- */
-  --akdd-shadow-sm: none;
+  /* --- Shadows (Ultra-subtle 1px elevation) --- */
+  --akdd-shadow-sm: 0 1px 2px rgba(15, 23, 42, 0.04);
   --akdd-shadow-md: none;
   --akdd-shadow-lg: none;
   --akdd-focus-ring: none;

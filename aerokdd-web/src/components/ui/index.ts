@@ -10,4 +10,8 @@ export {
 export { Card, CardContent, CardHeader } from './Card'
 export { KpiCard, type KpiCardProps } from './KpiCard'
 export { Drawer, type DrawerProps } from './Drawer'
+export {
+  SubsystemCadThumbnail,
+  type SubsystemCadThumbnailProps,
+} from './SubsystemCadThumbnail'
 export { Tabs, type TabItem, type TabsProps } from './Tabs'

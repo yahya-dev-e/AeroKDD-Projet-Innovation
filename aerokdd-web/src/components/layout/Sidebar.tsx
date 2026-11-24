@@ -41,31 +41,40 @@ export function Sidebar({ collapsed, onToggleCollapse, kddCountBySubsystem }: Si
   const [subsystemsOpen, setSubsystemsOpen] = useState(isSubsystemRoute)
 
   const linkClass = ({ isActive }: { isActive: boolean }) =>
-    `group flex items-center gap-2.5 rounded-full border px-3 py-1.5 text-[13px] font-medium transition-colors shadow-none ${
+    `group flex items-center gap-2.5 rounded-lg border px-3 py-2 text-[13px] font-medium transition-colors shadow-none ${
       isActive
-        ? 'border-[var(--akdd-ink)] bg-[var(--akdd-ink)] text-[var(--akdd-text-inverse)]'
+        ? 'border-[#0F1D32] bg-[#0F1D32] text-white'
         : 'border-transparent text-[var(--akdd-text-secondary)] hover:bg-[var(--akdd-slate-100)] hover:text-[var(--akdd-text-primary)]'
     }`
 
   return (
     <aside
-      className={`flex h-screen shrink-0 flex-col bg-[var(--akdd-bg-sidebar)] text-[var(--akdd-text-primary)] border-r border-[var(--akdd-border-subtle)] shadow-none transition-[width] duration-150 ${
-        collapsed ? 'w-[68px]' : 'w-[256px]'
+      className={`flex h-screen shrink-0 flex-col bg-[#F8FAFC] text-[var(--akdd-text-primary)] border-r border-[#E2E8F0] shadow-none transition-[width] duration-150 ${
+        collapsed ? 'w-[68px]' : 'w-[244px]'
       }`}
     >
-      {/* Brand Header — exact 56px height matching Topbar hairline */}
-      <div className="flex h-14 shrink-0 items-center justify-between gap-2 border-b border-[var(--akdd-border-subtle)] px-3.5">
+      {/* Brand Header */}
+      <div className="flex shrink-0 items-center justify-between gap-2 border-b border-[#E2E8F0] px-3.5 py-3.5">
         <div className="flex items-center gap-2.5 min-w-0">
-          <div className="flex h-6 w-6 shrink-0 items-center justify-center rounded-[var(--akdd-radius-xs)] bg-[var(--akdd-ink)] font-mono text-[10px] font-medium tracking-tight text-[var(--akdd-text-inverse)]">
-            AK
+          <div className="flex h-8 w-8 shrink-0 items-center justify-center rounded-lg border border-[#CBD5E1] bg-white text-[#0F1D32]">
+            <svg viewBox="0 0 24 24" className="h-5 w-5" fill="none" aria-hidden="true">
+              <circle cx="12" cy="12" r="8.5" stroke="#0F1D32" strokeWidth="1.6" />
+              <circle cx="12" cy="12" r="2.2" fill="#2B5B84" />
+              <path
+                d="M12 3.8V8.5M12 15.5V20.2M3.8 12H8.5M15.5 12H20.2M6.2 6.2L9.5 9.5M14.5 14.5L17.8 17.8M17.8 6.2L14.5 9.5M9.5 14.5L6.2 17.8"
+                stroke="#2B5B84"
+                strokeWidth="1.3"
+                strokeLinecap="round"
+              />
+            </svg>
           </div>
           {!collapsed && (
-            <div className="flex items-baseline gap-1.5 min-w-0">
-              <span className="font-display text-lg font-semibold uppercase tracking-[-0.02em] leading-[1.05] text-[var(--akdd-text-primary)] truncate">
-                AEROKDD
+            <div className="flex flex-col min-w-0">
+              <span className="font-display text-xl font-semibold tracking-[-0.02em] leading-none text-[#0F1D32] truncate">
+                AeroKDD
               </span>
-              <span className="font-mono text-[10px] text-[var(--akdd-text-muted)] truncate">
-                SYS
+              <span className="mt-1 inline-flex items-center gap-1 font-mono text-[9.5px] font-medium uppercase tracking-[0.06em] text-[#2B5B84] truncate">
+                <span className="text-[#64748B] lowercase">by</span> SHERPA ENGINEERING
               </span>
             </div>
           )}
@@ -74,27 +83,21 @@ export function Sidebar({ collapsed, onToggleCollapse, kddCountBySubsystem }: Si
           type="button"
           onClick={onToggleCollapse}
           aria-label={collapsed ? 'Déplier la barre latérale' : 'Replier la barre latérale'}
-          className="flex h-7 w-7 shrink-0 items-center justify-center rounded-[var(--akdd-radius-sm)] border border-transparent text-[var(--akdd-text-muted)] hover:border-[var(--akdd-border-subtle)] hover:bg-[var(--akdd-bg-surface)] hover:text-[var(--akdd-text-primary)] cursor-pointer"
+          className="flex h-7 w-7 shrink-0 items-center justify-center rounded-md border border-transparent text-[var(--akdd-text-muted)] hover:border-[#E2E8F0] hover:bg-white hover:text-[#0F1D32] cursor-pointer"
         >
           {collapsed ? <ChevronRight className="h-4 w-4" /> : <ChevronLeft className="h-4 w-4" />}
         </button>
       </div>
 
-      {/* Navigation */}
-      <nav className="flex flex-1 flex-col gap-4 overflow-y-auto px-3 py-4">
-        {/* Core */}
-        <div className="flex flex-col gap-0.5">
-          {!collapsed && (
-            <span className="px-3 pb-1.5 font-mono text-[11px] font-medium uppercase tracking-[0.08em] text-[var(--akdd-text-muted)]">
-              01 / Navigation
-            </span>
-          )}
+      {/* Clean Non-Duplicated Navigation */}
+      <nav className="flex flex-1 flex-col gap-3 overflow-y-auto px-3 py-3.5">
+        <div className="flex flex-col gap-1">
           <NavLink to="/" end className={linkClass} title="Vue d’ensemble">
-            <Home className="h-3.5 w-3.5 shrink-0 stroke-[1.75]" />
+            <Home className="h-4 w-4 shrink-0 stroke-[1.75]" />
             {!collapsed && <span className="truncate">Vue d’ensemble</span>}
           </NavLink>
 
-          {/* Subsystems Group */}
+          {/* Collapsible 10 Subsystems */}
           <div className="flex flex-col gap-1">
             <button
               type="button"
@@ -103,15 +106,15 @@ export function Sidebar({ collapsed, onToggleCollapse, kddCountBySubsystem }: Si
               }}
               aria-expanded={subsystemsOpen}
               aria-controls="sidebar-subsystems"
-              className={`flex items-center justify-between gap-2 rounded-full border px-3 py-1.5 text-[13px] font-medium transition-colors shadow-none cursor-pointer ${
+              className={`flex items-center justify-between gap-2 rounded-lg border px-3 py-2 text-[13px] font-medium transition-colors shadow-none cursor-pointer ${
                 isSubsystemRoute
-                  ? 'border-[var(--akdd-ink)] bg-[var(--akdd-ink)] text-[var(--akdd-text-inverse)]'
+                  ? 'border-[#0F1D32] bg-[#0F1D32] text-white'
                   : 'border-transparent text-[var(--akdd-text-secondary)] hover:bg-[var(--akdd-slate-100)] hover:text-[var(--akdd-text-primary)]'
               }`}
               title="Sous-systèmes (10)"
             >
               <span className="flex items-center gap-2.5 min-w-0">
-                <Layers className="h-3.5 w-3.5 shrink-0 stroke-[1.75]" />
+                <Layers className="h-4 w-4 shrink-0 stroke-[1.75]" />
                 {!collapsed && <span className="truncate">Sous-systèmes (10)</span>}
               </span>
               {!collapsed &&
@@ -137,7 +140,7 @@ export function Sidebar({ collapsed, onToggleCollapse, kddCountBySubsystem }: Si
             {!collapsed && subsystemsOpen && (
               <div
                 id="sidebar-subsystems"
-                className="ml-4 flex max-h-[212px] flex-col overflow-y-auto border-l border-[var(--akdd-border-subtle)] py-0.5"
+                className="ml-4 flex max-h-[212px] flex-col overflow-y-auto border-l border-[#E2E8F0] py-0.5"
               >
                 {SUBSYSTEM_CATALOG.map((sub) => (
                   <NavLink
@@ -146,7 +149,7 @@ export function Sidebar({ collapsed, onToggleCollapse, kddCountBySubsystem }: Si
                     className={({ isActive }) =>
                       `-ml-px flex items-center justify-between gap-2 border-l-2 pl-3 pr-2.5 py-1 text-[11.5px] font-medium leading-tight transition-colors ${
                         isActive
-                          ? 'border-[var(--akdd-ink)] bg-[var(--akdd-slate-100)] text-[var(--akdd-text-primary)]'
+                          ? 'border-[#0F1D32] bg-[#EEF2F7] text-[#0F1D32]'
                           : 'border-transparent text-[var(--akdd-text-secondary)] hover:border-[var(--akdd-slate-300)] hover:text-[var(--akdd-text-primary)]'
                       }`
                     }
@@ -166,38 +169,27 @@ export function Sidebar({ collapsed, onToggleCollapse, kddCountBySubsystem }: Si
               </div>
             )}
           </div>
-        </div>
 
-        {/* Analysis Engines */}
-        <div className="flex flex-col gap-0.5 border-t border-[var(--akdd-border-subtle)] pt-3">
-          {!collapsed && (
-            <span className="px-3 pb-1.5 font-mono text-[11px] font-medium uppercase tracking-[0.08em] text-[var(--akdd-text-muted)]">
-              02 / Analyse & Graphes
-            </span>
-          )}
           <NavLink to="/explore" className={linkClass} title="Explorateur KDD">
-            <Compass className="h-3.5 w-3.5 shrink-0 stroke-[1.75]" />
+            <Compass className="h-4 w-4 shrink-0 stroke-[1.75]" />
             {!collapsed && <span className="truncate">Explorateur KDD</span>}
           </NavLink>
           <NavLink to="/top-down" className={linkClass} title="Analyse Top-Down">
-            <GitBranch className="h-3.5 w-3.5 shrink-0 stroke-[1.75]" />
+            <GitBranch className="h-4 w-4 shrink-0 stroke-[1.75]" />
             {!collapsed && <span className="truncate">Analyse Top-Down</span>}
           </NavLink>
           <NavLink to="/network" className={linkClass} title="Réseau global">
-            <Network className="h-3.5 w-3.5 shrink-0 stroke-[1.75]" />
+            <Network className="h-4 w-4 shrink-0 stroke-[1.75]" />
             {!collapsed && <span className="truncate">Réseau global</span>}
           </NavLink>
         </div>
 
+        <div className="border-t border-[#E2E8F0]" />
+
         {/* Governance & Repositories */}
-        <div className="flex flex-col gap-0.5 border-t border-[var(--akdd-border-subtle)] pt-3">
-          {!collapsed && (
-            <span className="px-3 pb-1.5 font-mono text-[11px] font-medium uppercase tracking-[0.08em] text-[var(--akdd-text-muted)]">
-              03 / Référentiel & Projet
-            </span>
-          )}
+        <div className="flex flex-col gap-1">
           <NavLink to="/manager" className={linkClass} title="Gestionnaire KDD">
-            <FolderKanban className="h-3.5 w-3.5 shrink-0 stroke-[1.75]" />
+            <FolderKanban className="h-4 w-4 shrink-0 stroke-[1.75]" />
             {!collapsed && <span className="truncate">Gestionnaire KDD</span>}
           </NavLink>
           <NavLink
@@ -211,7 +203,7 @@ export function Sidebar({ collapsed, onToggleCollapse, kddCountBySubsystem }: Si
             }
             title="Instanciation projet (Exigences & TRACA)"
           >
-            <ClipboardCheck className="h-3.5 w-3.5 shrink-0 stroke-[1.75]" />
+            <ClipboardCheck className="h-4 w-4 shrink-0 stroke-[1.75]" />
             {!collapsed && <span className="truncate">Exigences & TRACA</span>}
           </NavLink>
           <NavLink
@@ -225,11 +217,11 @@ export function Sidebar({ collapsed, onToggleCollapse, kddCountBySubsystem }: Si
             }
             title="Bibliothèque & sources scientifiques"
           >
-            <BookOpen className="h-3.5 w-3.5 shrink-0 stroke-[1.75]" />
+            <BookOpen className="h-4 w-4 shrink-0 stroke-[1.75]" />
             {!collapsed && <span className="truncate">Bibliothèque & Sources</span>}
           </NavLink>
           <NavLink to="/admin" className={linkClass} title="Administration & maintenance">
-            <Settings className="h-3.5 w-3.5 shrink-0 stroke-[1.75]" />
+            <Settings className="h-4 w-4 shrink-0 stroke-[1.75]" />
             {!collapsed && <span className="truncate">Administration</span>}
           </NavLink>
         </div>
@@ -237,11 +229,8 @@ export function Sidebar({ collapsed, onToggleCollapse, kddCountBySubsystem }: Si
 
       {/* Footer */}
       {!collapsed && (
-        <div className="border-t border-[var(--akdd-border-subtle)] px-4 py-3 font-mono text-[11px] uppercase tracking-[0.08em] text-[var(--akdd-text-muted)]">
-          <div className="flex items-center justify-between">
-            <span>ECC × SHERPA</span>
-            <span className="text-[var(--akdd-text-primary)]">RÉV. 2.0</span>
-          </div>
+        <div className="border-t border-[#E2E8F0] px-4 py-3 font-mono text-[11px] uppercase tracking-[0.06em] text-[var(--akdd-text-muted)]">
+          <span>ECC × SHERPA · RÉV. 2.0</span>
         </div>
       )}
     </aside>
