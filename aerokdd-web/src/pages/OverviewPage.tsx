@@ -220,7 +220,7 @@ export function OverviewPage() {
         />
 
         <div className="relative z-10 flex min-h-[206px] flex-col justify-between gap-4 px-6 py-5 lg:px-8 lg:py-6">
-          {/* Top Row: Title + Right SHERPA mark */}
+          {/* Top Row: Title */}
           <div className="flex items-start justify-between gap-4">
             <div className="flex max-w-xl flex-col gap-2">
               <h1 className="font-display text-4xl font-bold leading-none tracking-[-0.02em] text-[#0F1D32] sm:text-[44px]">
@@ -235,20 +235,10 @@ export function OverviewPage() {
                 traçabilité sur 10 sous-systèmes.
               </p>
             </div>
-
-            <div className="hidden md:flex items-center gap-2 rounded-md bg-[#0F1D32]/45 px-2.5 py-1 font-mono text-[10px] font-medium uppercase tracking-[0.1em] text-white">
-              <span className="h-1.5 w-1.5 bg-[#7DD3FC]" aria-hidden="true" />
-              <span>SHERPA ENGINEERING</span>
-            </div>
           </div>
 
-          {/* Bottom-Right Pinned Partner Label & Dual Pill CTAs */}
-          <div className="flex flex-wrap items-center justify-between gap-3 pt-1 lg:justify-end">
-            <span className="inline-flex items-center gap-1.5 rounded-full bg-[#0F1D32]/50 px-3 py-1 font-mono text-[10px] font-medium uppercase tracking-[0.07em] text-white">
-              <span className="h-1.5 w-1.5 bg-white" aria-hidden="true" />
-              ÉCOLE CENTRALE CASABLANCA × SHERPA ENGINEERING
-            </span>
-
+          {/* Bottom-Right Pinned Dual Pill CTAs */}
+          <div className="flex flex-wrap items-center justify-end gap-3 pt-1">
             <div className="flex flex-wrap items-center gap-2">
               <Link
                 to="/network"
