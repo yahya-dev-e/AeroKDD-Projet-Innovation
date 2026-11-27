@@ -165,8 +165,11 @@ export function Sidebar({ collapsed, onToggleCollapse, kddCountBySubsystem }: Si
                         · {SUBSYSTEM_SHORT_NAMES[sub.code] ?? sub.frenchName}
                       </span>
                     </span>
-                    <span className="shrink-0 font-mono text-[11px] tabular-nums text-[var(--akdd-text-muted)]">
-                      {kddCountBySubsystem[sub.code] ?? 0}
+                    <span
+                      className="shrink-0 font-mono text-[10.5px] tabular-nums text-[var(--akdd-text-muted)]"
+                      title="Key Design Drivers (KDD)"
+                    >
+                      {kddCountBySubsystem[sub.code] ?? 0} KDD
                     </span>
                   </NavLink>
                 ))}

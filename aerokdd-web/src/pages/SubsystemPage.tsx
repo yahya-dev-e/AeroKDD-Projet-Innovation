@@ -28,6 +28,7 @@ import {
   KsdBadge,
   StatutBadge,
   SubsystemBadge,
+  SubsystemCadThumbnail,
   Tabs,
 } from '../components/ui'
 import { extractFamilyNumber } from '../engines/classifier'
@@ -279,12 +280,18 @@ export function SubsystemPage() {
       {/* Subsystem Header & Module Switcher */}
       <div className="flex flex-col gap-4 rounded-[var(--akdd-radius-lg)] bg-[var(--akdd-bg-surface)] border border-[var(--akdd-border-subtle)] p-6 shadow-none">
         <div className="flex flex-wrap items-center justify-between gap-4">
-          <div className="flex items-center gap-3">
-            <SubsystemBadge code={meta.code} />
-            <div className="flex flex-col">
-              <h1 className="font-display text-2xl font-semibold leading-[1.05] tracking-[-0.02em] text-[var(--akdd-text-primary)]">
-                {meta.code} — {meta.frenchName}
-              </h1>
+          <div className="flex items-center gap-4">
+            <SubsystemCadThumbnail
+              code={meta.code}
+              className="hidden sm:flex !h-20 !w-36 shrink-0 rounded-lg border border-[var(--akdd-border-subtle)] bg-white px-2 py-1"
+            />
+            <div className="flex flex-col gap-1">
+              <div className="flex items-center gap-2.5">
+                <SubsystemBadge code={meta.code} />
+                <h1 className="font-display text-2xl font-semibold leading-[1.05] tracking-[-0.02em] text-[var(--akdd-text-primary)]">
+                  {meta.code} — {meta.frenchName}
+                </h1>
+              </div>
               <p className="text-xs text-[var(--akdd-text-secondary)]">{meta.shortRole}</p>
             </div>
           </div>

@@ -4,6 +4,7 @@ import { getSubsystemMeta } from '../../types/subsystems'
 
 export interface TopbarProps {
   kddCount: number
+  elementCount: number
   relationCount: number
   onOpenCommandPalette: () => void
   onToggleSidebar: () => void
@@ -57,6 +58,7 @@ function getPageTitle(pathname: string, search: string): { section: string; titl
 
 export function Topbar({
   kddCount,
+  elementCount,
   relationCount,
   onOpenCommandPalette,
   onToggleSidebar,
@@ -102,9 +104,15 @@ export function Topbar({
 
       {/* Right: Monospace System Telemetry */}
       <div className="hidden md:flex shrink-0 items-center justify-end gap-2.5 whitespace-nowrap font-mono text-[11.5px] font-medium uppercase tracking-[0.04em] tabular-nums text-[#0F1D32]">
-        <span className="inline-flex items-center gap-1.5">
+        <span
+          className="inline-flex items-center gap-1.5"
+          title={`${kddCount} vrais Key Design Drivers sur ${elementCount} éléments SPEC`}
+        >
           <Database className="h-3.5 w-3.5 text-[#2B5B84]" />
           <span>{kddCount.toLocaleString('fr-FR')} KDD</span>
+          <span className="text-[10.5px] font-normal text-[#64748B]">
+            / {elementCount.toLocaleString('fr-FR')} ÉLÉM.
+          </span>
         </span>
         <span className="text-[#CBD5E1]">·</span>
         <span className="inline-flex items-center gap-1.5">

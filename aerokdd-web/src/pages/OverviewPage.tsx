@@ -159,8 +159,8 @@ export function OverviewPage() {
 
   const kpiCards = [
     {
-      value: kdds.length.toLocaleString('fr-FR'),
-      label: 'KDD',
+      value: summary.kCount.toLocaleString('fr-FR'),
+      label: `Key Design Drivers (sur ${kdds.length} élém.)`,
       icon: Database,
       spark: 'M 2 22 Q 18 20, 30 16 T 54 10 T 74 13',
     },
@@ -294,7 +294,10 @@ export function OverviewPage() {
             </h2>
           </div>
           <span className="font-mono text-xs tabular-nums text-[#64748B]">
-            {kdds.length.toLocaleString('fr-FR')} KDD ·{' '}
+            <strong className="font-medium text-[#0F1D32]">
+              {summary.kCount.toLocaleString('fr-FR')}
+            </strong>{' '}
+            KDD · {kdds.length.toLocaleString('fr-FR')} élém. ·{' '}
             <strong className="font-medium text-[#0F1D32]">
               {relations.length.toLocaleString('fr-FR')}
             </strong>{' '}
@@ -327,8 +330,8 @@ export function OverviewPage() {
                 <div className="mt-3 flex items-center gap-1.5 border-t border-[#E2E8F0] pt-2.5 font-mono text-[11px] tabular-nums text-[#64748B]">
                   <FileText className="h-3 w-3 shrink-0 text-[#94A3B8]" />
                   <span>
-                    <strong className="font-medium text-[#0F1D32]">{stats?.total ?? 0}</strong> KDD
-                    · {stats?.links ?? 0} liens
+                    <strong className="font-medium text-[#0F1D32]">{stats?.k ?? 0}</strong> KDD ·{' '}
+                    {stats?.total ?? 0} élém. · {stats?.links ?? 0} liens
                   </span>
                 </div>
               </Link>

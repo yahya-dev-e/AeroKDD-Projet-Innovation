@@ -1,8 +1,10 @@
 import { useState } from 'react'
+import { getSubsystemMeta } from '../../types/subsystems'
 
 export interface SubsystemCadThumbnailProps {
   code: string
   className?: string
+  imgClassName?: string
 }
 
 function CadSvgFallback({ code }: { code: string }) {
@@ -199,18 +201,26 @@ function CadSvgFallback({ code }: { code: string }) {
   }
 }
 
-export function SubsystemCadThumbnail({ code, className = '' }: SubsystemCadThumbnailProps) {
-  const [imgFailed, setImgFailed] = useState(false)
-  const assetPath = `/assets/${code.toLowerCase()}.png`
+export function SubsystemCadThumbnail({
+  code,
+  className = '',
+  imgClassName = '',
+}: SubsystemCadThumbnailProps) {
+  const [failedSrc, setFailedSrc] = useState<string | null>(null)
+  const meta = getSubsystemMeta(code)
+  const assetUrl = encodeURI(meta.imagePath)
+  const imgFailed = failedSrc === assetUrl
 
   return (
-    <div className={`flex h-16 w-full items-center justify-center ${className}`}>
+    <div className={`flex h-24 w-full items-center justify-center overflow-hidden ${className}`}>
       {!imgFailed ? (
         <img
-          src={assetPath}
-          alt=""
-          onError={() => setImgFailed(true)}
-          className="h-14 w-auto max-w-[104px] object-contain grayscale contrast-110"
+          key={assetUrl}
+          src={assetUrl}
+          alt={`${meta.code} — ${meta.frenchName}`}
+          loading="lazy"
+          onError={() => setFailedSrc(assetUrl)}
+          className={`h-full w-full object-contain mix-blend-multiply transition-transform duration-200 group-hover:scale-[1.04] ${imgClassName}`}
         />
       ) : (
         <CadSvgFallback code={code} />

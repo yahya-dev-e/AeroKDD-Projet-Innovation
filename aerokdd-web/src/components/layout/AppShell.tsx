@@ -1,5 +1,6 @@
 import { useEffect, useMemo, useState } from 'react'
 import { Outlet, useLocation } from 'react-router-dom'
+import { normalizeSubsystemCode, statutToShortCat } from '../../engines/graphBuilder'
 import { useAeroKddStore } from '../../store/useAeroKddStore'
 import { Button } from '../ui'
 import { CommandPalette } from './CommandPalette'
@@ -28,12 +29,17 @@ export function AppShell() {
     return () => window.removeEventListener('keydown', onKeyDown)
   }, [])
 
-  const kddCountBySubsystem = useMemo(() => {
+  const { trueKddCount, kddCountBySubsystem } = useMemo(() => {
     const counts: Record<string, number> = {}
+    let totalTrueKdd = 0
     for (const k of kdds) {
-      counts[k.subsystemCode] = (counts[k.subsystemCode] ?? 0) + 1
+      if (statutToShortCat(k) === 'KDD') {
+        totalTrueKdd += 1
+        const code = normalizeSubsystemCode(k.subsystemCode, k.subsystemLabel)
+        counts[code] = (counts[code] ?? 0) + 1
+      }
     }
-    return counts
+    return { trueKddCount: totalTrueKdd, kddCountBySubsystem: counts }
   }, [kdds])
 
   return (
@@ -46,7 +52,8 @@ export function AppShell() {
 
       <div className="flex flex-1 flex-col min-w-0 overflow-hidden">
         <Topbar
-          kddCount={kdds.length}
+          kddCount={trueKddCount}
+          elementCount={kdds.length}
           relationCount={relations.length}
           onOpenCommandPalette={() => setPaletteOpen(true)}
           onToggleSidebar={() => setSidebarCollapsed((c) => !c)}
@@ -71,7 +78,7 @@ export function AppShell() {
             </div>
           ) : !isLoaded && isLoading ? (
             <div className="flex h-64 items-center justify-center font-mono text-xs uppercase tracking-[0.08em] text-[var(--akdd-text-muted)]">
-              Chargement du référentiel AeroKDD (566 KDDs · 1,267 LIENS)…
+              Chargement du référentiel AeroKDD (73 KDD · 566 ÉLÉMENTS · 1,267 LIENS)…
             </div>
           ) : (
             <Outlet />
